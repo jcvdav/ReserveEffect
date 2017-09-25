@@ -1,6 +1,7 @@
 ---
 title: "Efectividad de reservas marinas a nivel nacional"
 subtitle: "Casos de estudio del Pacífico, Golfo de California, y Sistema Arrecifal Mesoamericano"
+author: "Juan Carlos Villaseñor-Derbez, Stuart Fulton, Jorge Torre"
 header-includes:
 - \usepackage{setspace}
 - \doublespacing
@@ -12,7 +13,6 @@ output:
 fontsize: 12pt
 bibliography:
 - exported-references.bib
-- packages.bib
 csl: huct.csl
 ---
 
@@ -21,25 +21,17 @@ knitr::opts_chunk$set(echo = F)
 options(knitr.table.format = "latex")
 
 windowsFonts(Times=windowsFont("TT Times New Roman"))
-
 ```
-
-Juan Carlos Villaseñor-Derbez^1\*^, Stuart Fulton^2^, Jorge Torre^2^
-
-^1^ Bren School of Environmental Science and Management, University of California Santa Barbara, Santa Barbara, California, United States
-
-^2^ Comunidad y Biodiversidad A.C., Calle Isla del Peruano, Guaymas, Sonora, México
-
 
 # Resumen ejecutivo
 
 # Introducción
 
-La sobrepesca y prácticas pesqueras no sostenibles son unas de las mayores amenazas para la conservación de los ecosistemas marinos del mundo [@halpern_2008-dK; @halpern_2017-Zi]. Esto es particularmente cierto para el caso de las pesquerías artesanales. La implementación de reservas marinas ( i.e. áreas donde la captura de una o más especies está prohibida) es una medida de manejo frecuentemente propuesta para recuperar stocks pesqueros e impulsar la productividad pesquera en aguas cercanas [@afflerbach_2014-HP; @krueck_2017-J1; @sala_2017-69]. Recientes trabajos han demostrado que también pueden mitigar y proveer amortiguamiento ante el cambio climático [@roberts_2017-J9], solve bycatch problems [@hastings_2017-sm] y en general, incrementar la biomasa, riqueza y densidades de organismos dentro de sus fronteras [@lester_2009-Ks; @giakoumi_2017-V2; @sala_2017-69].
+La sobrepesca y prácticas pesqueras no sostenibles son unas de las mayores amenazas para la conservación de los ecosistemas marinos del mundo [@halpern_2008-dK; @halpern_2017-Zi]. La implementación de reservas marinas (*i.e.* áreas donde la captura de una o más especies está prohibida) es una medida de manejo frecuentemente propuesta para recuperar stocks pesqueros e impulsar la productividad pesquera en aguas cercanas [@afflerbach_2014-HP; @krueck_2017-J1; @sala_2017-69]. Recientes trabajos han demostrado que también pueden mitigar y proveer amortiguamiento ante el cambio climático [@roberts_2017-J9], variabilidad ambiental [@micheli_2012-EU], resolver problemas de pesca incidental [@hastings_2017-sm] y, en general, incrementar la biomasa, riqueza y densidades de organismos dentro de sus fronteras [@lester_2009-Ks; @giakoumi_2017-V2; @sala_2017-69].
 
-En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, **41** RBs protegen una porción del ambiente marino en México. Sin embargo, solamente **27** de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, éste proceso aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la comisión limitan también el monitoreo y vigilancia de las reservas, limitando el desempeño de la reserva.
+En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, **41** RBs protegen una porción del ambiente marino en México. Sin embargo, solamente **27** de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva.
 
-Buscando promover una alternativa con procesos ascendentes para implementar reservas marinas, las OSCs comenzaron a trabajar con comunidades pesqueras para establecer reservas comunitarias [@uribe_2010-u2] . Estas son comúnmente establecidas dentro de zonas de concesión, una forma de derechos de uso territoriales para pesquerías (TURF, en inglés). Al permitir a los pescadores diseñar sus propias reservas, una mayor proporción de la comunidad está de acuerdo con los perímetros establecidos, y por lo tanto los respetan [@gelcich_2015-Gw; @espinosaromero_2014-PY; @beger_2004-Y8] . Adicionalmente, los pescadores pueden implementar sus reservas por un periodo acordado (usualmente cinco años), después del cual la reserva puede ser abierta a la pesca. Esto provee a los pescadores con un sentido de confianza de que, en caso de ser necesario, aún tienen acceso a pescar esa zona[^1]. Las reservas son directamente vigiladas y monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas embarcaciones (*e.g.* pangas) para patrullar la zona, o realizan avistamientos desde la costa en búsqueda de pescadores ilegales Aún así, las reservas comunitarias carecen de reconocimiento legal; por lo tanto, no hay forma de penalizar a los infractores.
+Buscando promover una alternativa con procesos ascendentes para implementar reservas marinas, las OSCs comenzaron a trabajar con comunidades pesqueras para establecer reservas comunitarias [@uribe_2010-u2] . Estas son comúnmente establecidas dentro de zonas de concesión, una forma de derechos de uso territoriales para pesquerías (TURF, en inglés). Al permitir a los pescadores diseñar sus propias reservas, una mayor proporción de la comunidad está de acuerdo con los perímetros y reglas establecidas, y por lo tanto los respetan [@gelcich_2015-Gw; @espinosaromero_2014-PY; @beger_2004-Y8] . Adicionalmente, los pescadores pueden implementar sus reservas por un periodo acordado (usualmente cinco años), después del cual la reserva puede ser abierta a la pesca. Esto provee a los pescadores con un sentido de confianza de que, en caso de ser necesario, aún tienen acceso a pescar esa zona[^1]. Las reservas son directamente vigiladas y monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas embarcaciones (*e.g.* pangas) para patrullar la zona, o realizan avistamientos desde la costa en búsqueda de pescadores ilegales Aún así, las reservas comunitarias carecen de reconocimiento legal; por lo tanto, no hay forma de penalizar a los infractores.
 
 [^1]: Hasta ahora, solamente una comunidad ha decidido abrir sur reservas a la pesca.
 
@@ -47,23 +39,163 @@ Sin embargo, en el 2014 una nueva norma [@nom049sagpesc_2014-V6] permite a los p
 
 [^2]: Existen excepciones a esto, como la “Zona de Refugio Pesquero Golfo de Ulloa” y la “Zona de Refugio Pesquero Akumal”, creadas por CONAPESCA para cerrar la pesca y prevenir la captura incidental de tortugas marinas.
 
-Aunque existen tres aproximaciones generales para implementar reservas marinas en México (*i.e.* Zonas núcleo dentro de AMP, reservas comunitarias y Zonas de Refugio Pesuqero), aún no comprendemos a fondo las características sociales que permiten su efectividad. La ciencia de reservas marinas se ha enfocado ampliamente en los efectos biológicos que estas tienen [@lester_2009-Ks; @giakoumi_2017-V2; @sala_2017-69; @afflerbach_2014-HP; @krueck_2017-J1]. Aunque el aspecto ecológico de las reservas es importante para su éxito, su efectividad también depende del estado socioeconómico y los sistemas de gobernanza de las comunidades pesqueras. La literatura indica que diferentes características influyen en el éxito de una reserva. En Palau, por ejemplo, la edad (*i.e.* tiempo de implementación), tamaño y hábitat contenido son características claves que determinan la efectividad [@friedlander_2017-oI]. Por otro lado, en el Mar Meditarráneo, @difranco_2016-Xw identifican que la procuración y vigilancia, presencia de un plan de manejo, participación de pescadores en el manejo, representación de pescadores en la toma de decisiones y promoción de la pesca sustentable son los cinco factores que incrementan la salud de los stocks, el ingreso a los pescadores, y se presenta una mayor aceptación social de las prácticas de manejo. En una aproximación global, @edgar_2014-UO encuentran que la procuración, edad, tamaño y aislamiento son determinantes de la efectividad de las reservas. Por lo tanto, observamos que las características que habilitan el éxito varían a través de regiones, y poco esfuerzo se ha hecho por comprender estas interacciones en México.
+Aunque existen tres aproximaciones generales para implementar reservas marinas en México (*i.e.* Zonas núcleo dentro de AMP, reservas comunitarias y Zonas de Refugio Pesuqero), aún no comprendemos a fondo las características sociales que permiten su efectividad. La ciencia de reservas marinas se ha enfocado ampliamente en los efectos biológicos que estas tienen [@lester_2009-Ks; @giakoumi_2017-V2; @sala_2017-69; @afflerbach_2014-HP; @krueck_2017-J1]. Aunque el aspecto ecológico de las reservas es importante para su éxito, su efectividad también depende del estado socioeconómico y los sistemas de gobernanza de las comunidades pesqueras. 
+
+La literatura indica que diferentes características influyen en el éxito de una reserva. En Palau, por ejemplo, la edad (*i.e.* tiempo transcurrido desde implementación), tamaño y hábitat contenido son características claves que determinan la efectividad [@friedlander_2017-oI]. Por otro lado, en el Mar Meditarráneo, @difranco_2016-Xw identifican que la procuración y vigilancia, presencia de un plan de manejo, participación de pescadores en el manejo, representación de pescadores en la toma de decisiones y promoción de la pesca sustentable son los cinco factores que incrementan la salud de los stocks y el ingreso económicos a los pescadores, a la vez que se presenta una mayor aceptación social de las prácticas de manejo. En una aproximación global, @edgar_2014-UO encuentran que la procuración, edad, tamaño y aislamiento son determinantes de la efectividad de las reservas. Por lo tanto, observamos que las características que habilitan el éxito varían a través de regiones, y poco esfuerzo se ha hecho por comprender estas interacciones en México.
 
 # Objetivos
 
 El objetivo de este trabajo este trabajo es realizar una evaluación de la efectividad de reservas marinas en México, presentando resultados de cinco comunidades costeras como caso de estudio. Las comunidades utilizadas en este reporte se distribuyen a lo largo de la costa Pacífica de Baja Claifornia, el Golfo de California, y el Sistema Arrecifal Mesoamericano. Con el fin de obtener una visión holística del sistema, la evaluación se realizará tomando en cuenta indicadores biológicos, socioeconómicos y de gobernanza (**Referencia aqui**).
 
-La evaluación de éstos cinco casos de estudios nos permitirá identificar patrones en los que características socioeconómicas y de gobernanza que se encuentran ligadas a la efectividad (biológica) de las reservas marinas evaluadas. Los patrones identificados podrán utilizarse para informar la toma de desiciones para la implementación de la red de reservas marinas en la Región de las Grandes Islas del Golfo de California.
+La evaluación de éstos cinco casos de estudios nos permitirá identificar l amanera en que las características socioeconómicas y de gobernanza se relacionan con la efectividad (biológica) de las reservas marinas evaluadas. Los patrones identificados podrán utilizarse para informar la toma de desiciones para la implementación de la red de reservas marinas en la Región de las Grandes Islas del Golfo de California.
 
-# Materiales y Métodos
+# Métodos
 
 ## Zonas de estudio
 
-## Caraterísticas de las comunidades y reservas seleccionadas
+- Maria Elena
+- Punta Herrero
+- Isla Natividad
+- Guaymas
+- Puerto Libertad (Cerro bola)
 
-## Análisis de datos
+```{r}
+suppressPackageStartupMessages({
+  library(sp)
+  library(tmap)
+  library(tmaptools)
+  library(MPAtools)
+  library(kableExtra)
+  library(tidyverse)
+})
+```
+
+
+```{r}
+proj <- CRS("+proj=longlat +datum=NAD27")
+
+xy1 <- data.frame(X = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087), Y = c(27.85, 19.3722361, 19.3183386, 27.969079, 29.8904957))
+coordinates(xy1) <- c("X", "Y")
+proj4string(xy1) <- proj
+res1 <- spTransform(xy1, proj)
+
+load(file = "Data/coastline_mx.Rda")
+
+tm_shape(baja2) +
+  tm_polygons() +
+  tm_shape(res1) +
+  tm_markers(shape = 21, col = "red", border.col = "black", size = 0.5)
+
+# tm_shape(baja2, bbox = bb(xlim = c(-90.269600, -86.726716),
+#                           ylim = c(18.165540, 21.536636))) +
+#   tm_polygons() +
+#   tm_shape(res1) +
+#   tm_markers(shape = 21, col = "red", border.col = "black", size = 0.5)
+```
+
+## Datos y análisis de datos
+
+Para evaluar las reservas, utilizamos tres fuentes de información. La información ecológica proviene de los monitoreos ecológicos realizados anualmente en las zonas reserva y control. Cada año, se realizan censos visuales para evaluar las comunidades de peces e invertebrados, registrando riquezas, abundancias y tallas (en peces). Esta información nos permite calcular los indicadores biológicos. La información socioeconómica proviene de los avisos de arribo de CONAPESCA. En este caso, se tienen registros mensuales de cada una de las especies aprovechadas por las diferentes comunidades, en los que se reportan los arribos (Kg) y el valor de los arribos ($). Los ingresos generados por arribos son ajustados por medio del índice de precio al consumidor. La información de governanza fue obtenida a nivel de comunidad, pidiendo a personas familiares con las comunidades que proveyeran la información necesaria.
+
+Dada la similitud de objetivos entre las reservas, la evaluación se realiza con los mismos indicadores. En este caso, se utilizan nueve indicadores biológicos, 4 socioeconómicos y 14 de gobernanza.
+
+```{r}
+data(IndListG)
+
+data.frame(Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densidad", "Nivel trófico", "Biomasa", "Ingresos", "Arribos", "Ingresos por especies objetivo", "Arribos de especies objetivo", IndListG$Indicators), stringsAsFactors = F) %>% 
+  knitr::kable(caption = "Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.", booktabs = T) %>%
+  kable_styling() %>%
+  group_rows("Biológicos", 1, 5) %>%
+  group_rows("Socioeconómicos", 6, 9) %>% 
+  group_rows("Gobernanza", 9, 23)
+```
+
+
+Dado que el interés principal de este trabajo es identificar las relaciones entre la efectividad de una reserva y las características socioeconómicas y de gobernanza de su comunidad, los análisis se realizan a nivel de comunidad, agrupando los datos para todas las reservas y sitios control. Sin embargo, para controlar por respuestas diferenciales de cada sitio (para comunidades con más de una reserva), debemos tomar en cuenta factores específicos a cada sitio. Para esto, modificamos el modelo de diferencia en diferencias utilizado para indicadores biológicos agregándo el término para sitio de la siguiente manera:
+
+$$I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \beta_3Sitio + \epsilon$$
+
+```{r}
+fish <- read.csv("Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
+
+invert <- read.csv("Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
+
+gob <- read.csv("Data/governance.csv")
+```
+
+```{r}
+source(file = "analisis.R")
+source(file = "modelo.R")
+source(file = "my_ggplot.R")
+source(file = "my_plot.R")
+source(file = "robust_se.R")
+source(file = "extract_effect.R")
+```
+
+```{r}
+
+MariaElena <- analisis(peces = fish, invert = invert, comunidad = "Maria Elena", ano.imp = 2012)
+PuntaHerrero <- analisis(peces = fish, invert = invert, comunidad = "Punta Herrero", ano.imp = 2013)
+IslaNatividad <- analisis(peces = fish, invert = invert, comunidad = "Isla Natividad", ano.imp = 2006)
+Guaymas <- analisis(peces = fish, invert = invert, comunidad = "Guaymas", ano.imp = 2012)
+PuertoLibertad <- analisis(peces = fish, invert = invert, comunidad = "Puerto Libertad", ano.imp = 2012)
+
+```
 
 # Resultados
+
+## Isla Natividad
+
+```{r}
+my_plot(IslaNatividad)
+```
+
+## Puerto Libertad
+
+```{r}
+my_plot(PuertoLibertad)
+```
+
+## Guaymas
+
+```{r}
+my_plot(Guaymas)
+```
+
+## Maria Elena
+
+```{r}
+my_plot(MariaElena)
+```
+
+## Punta Herrero
+
+```{r}
+my_plot(PuntaHerrero)
+```
+
+## Efectos generales
+
+```{r}
+rbind(extract_effect(IslaNatividad),
+      extract_effect(PuertoLibertad),
+      extract_effect(Guaymas),
+      extract_effect(MariaElena),
+      extract_effect(PuntaHerrero)) %>% 
+  mutate(Comunidad = c(rep("IN", 8),
+                       rep("PL", 8),
+                       rep("G", 8),
+                       rep("ME", 8),
+                       rep("PH", 8))) %>% 
+  ggplot(aes(x = Comunidad, y = estimate)) +
+  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0) +
+  geom_point(size = 3, color = "steelblue") +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  facet_wrap(~Indicador, scales = "free") +
+  theme(strip.background = element_rect(fill = "transparent"))
+```
 
 # Conclusiones
 

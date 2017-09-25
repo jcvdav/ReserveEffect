@@ -25,6 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Efectividad de reservas marinas a nivel nacional},
+            pdfauthor={Juan Carlos Villaseñor-Derbez, Stuart Fulton, Jorge Torre},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -77,11 +78,18 @@
   \posttitle{\par}
 \subtitle{Casos de estudio del Pacífico, Golfo de California, y Sistema Arrecifal
 Mesoamericano}
-  \author{}
-  \preauthor{}\postauthor{}
+  \author{Juan Carlos Villaseñor-Derbez, Stuart Fulton, Jorge Torre}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
   \date{}
   \predate{}\postdate{}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
 \usepackage{setspace}
 \doublespacing
 
@@ -92,32 +100,22 @@ Mesoamericano}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-Juan Carlos Villaseñor-Derbez\textsuperscript{1*}, Stuart
-Fulton\textsuperscript{2}, Jorge Torre\textsuperscript{2}
-
-\textsuperscript{1} Bren School of Environmental Science and Management,
-University of California Santa Barbara, Santa Barbara, California,
-United States
-
-\textsuperscript{2} Comunidad y Biodiversidad A.C., Calle Isla del
-Peruano, Guaymas, Sonora, México
-
 \section{Resumen ejecutivo}\label{resumen-ejecutivo}
 
 \section{Introducción}\label{introduccion}
 
 La sobrepesca y prácticas pesqueras no sostenibles son unas de las
 mayores amenazas para la conservación de los ecosistemas marinos del
-mundo (Halpern et al., 2008, 2017). Esto es particularmente cierto para
-el caso de las pesquerías artesanales. La implementación de reservas
-marinas ( i.e.~áreas donde la captura de una o más especies está
+mundo (Halpern et al., 2008, 2017). La implementación de reservas
+marinas (\emph{i.e.} áreas donde la captura de una o más especies está
 prohibida) es una medida de manejo frecuentemente propuesta para
 recuperar stocks pesqueros e impulsar la productividad pesquera en aguas
 cercanas (Afflerbach et al., 2014; Krueck et al., 2017; Sala \&
 Giakoumi, 2017). Recientes trabajos han demostrado que también pueden
 mitigar y proveer amortiguamiento ante el cambio climático (Roberts et
-al., 2017), solve bycatch problems (Hastings, Gaines \& Costello, 2017)
-y en general, incrementar la biomasa, riqueza y densidades de organismos
+al., 2017), variabilidad ambiental (Micheli et al., 2012), resolver
+problemas de pesca incidental (Hastings, Gaines \& Costello, 2017) y, en
+general, incrementar la biomasa, riqueza y densidades de organismos
 dentro de sus fronteras (Lester et al., 2009; Giakoumi et al., 2017;
 Sala \& Giakoumi, 2017).
 
@@ -128,11 +126,11 @@ hoy, \textbf{41} RBs protegen una porción del ambiente marino en México.
 Sin embargo, solamente \textbf{27} de estas incluyen (pequeñas) zonas
 núcleo donde las actividades pesqueras están prohibidas. Aunque la
 CONANP ha hecho esfuerzos importantes por involucrar a los actores
-durante la implementación de las reservas, éste proceso aún se
-caracteriza por un proceso descendente, el cual conlleva a la falta de
-cumplimiento por parte de los actores. La escasez de recursos monetarios
-y humanos de la comisión limitan también el monitoreo y vigilancia de
-las reservas, limitando el desempeño de la reserva.
+durante la implementación de las reservas, esto aún se caracteriza por
+un proceso descendente, el cual conlleva a la falta de cumplimiento por
+parte de los actores. La escasez de recursos monetarios y humanos de la
+limitan también el monitoreo y vigilancia de las reservas, y a su vez,
+el desempeño de la reserva.
 
 Buscando promover una alternativa con procesos ascendentes para
 implementar reservas marinas, las OSCs comenzaron a trabajar con
@@ -141,8 +139,8 @@ al., 2010) . Estas son comúnmente establecidas dentro de zonas de
 concesión, una forma de derechos de uso territoriales para pesquerías
 (TURF, en inglés). Al permitir a los pescadores diseñar sus propias
 reservas, una mayor proporción de la comunidad está de acuerdo con los
-perímetros establecidos, y por lo tanto los respetan (Beger et al.,
-2004; Espinosa-Romero et al., 2014; Gelcich \& Donlan, 2015) .
+perímetros y reglas establecidas, y por lo tanto los respetan (Beger et
+al., 2004; Espinosa-Romero et al., 2014; Gelcich \& Donlan, 2015) .
 Adicionalmente, los pescadores pueden implementar sus reservas por un
 periodo acordado (usualmente cinco años), después del cual la reserva
 puede ser abierta a la pesca. Esto provee a los pescadores con un
@@ -183,17 +181,19 @@ que estas tienen (Lester et al., 2009; Afflerbach et al., 2014; Giakoumi
 et al., 2017; Krueck et al., 2017; Sala \& Giakoumi, 2017). Aunque el
 aspecto ecológico de las reservas es importante para su éxito, su
 efectividad también depende del estado socioeconómico y los sistemas de
-gobernanza de las comunidades pesqueras. La literatura indica que
-diferentes características influyen en el éxito de una reserva. En
-Palau, por ejemplo, la edad (\emph{i.e.} tiempo de implementación),
-tamaño y hábitat contenido son características claves que determinan la
-efectividad (Friedlander et al., 2017). Por otro lado, en el Mar
-Meditarráneo, Di Franco et al. (2016) identifican que la procuración y
-vigilancia, presencia de un plan de manejo, participación de pescadores
-en el manejo, representación de pescadores en la toma de decisiones y
-promoción de la pesca sustentable son los cinco factores que incrementan
-la salud de los stocks, el ingreso a los pescadores, y se presenta una
-mayor aceptación social de las prácticas de manejo. En una aproximación
+gobernanza de las comunidades pesqueras.
+
+La literatura indica que diferentes características influyen en el éxito
+de una reserva. En Palau, por ejemplo, la edad (\emph{i.e.} tiempo
+transcurrido desde implementación), tamaño y hábitat contenido son
+características claves que determinan la efectividad (Friedlander et
+al., 2017). Por otro lado, en el Mar Meditarráneo, Di Franco et al.
+(2016) identifican que la procuración y vigilancia, presencia de un plan
+de manejo, participación de pescadores en el manejo, representación de
+pescadores en la toma de decisiones y promoción de la pesca sustentable
+son los cinco factores que incrementan la salud de los stocks y el
+ingreso económicos a los pescadores, a la vez que se presenta una mayor
+aceptación social de las prácticas de manejo. En una aproximación
 global, Edgar et al. (2014) encuentran que la procuración, edad, tamaño
 y aislamiento son determinantes de la efectividad de las reservas. Por
 lo tanto, observamos que las características que habilitan el éxito
@@ -212,23 +212,136 @@ sistema, la evaluación se realizará tomando en cuenta indicadores
 biológicos, socioeconómicos y de gobernanza (\textbf{Referencia aqui}).
 
 La evaluación de éstos cinco casos de estudios nos permitirá identificar
-patrones en los que características socioeconómicas y de gobernanza que
-se encuentran ligadas a la efectividad (biológica) de las reservas
-marinas evaluadas. Los patrones identificados podrán utilizarse para
-informar la toma de desiciones para la implementación de la red de
-reservas marinas en la Región de las Grandes Islas del Golfo de
-California.
+l amanera en que las características socioeconómicas y de gobernanza se
+relacionan con la efectividad (biológica) de las reservas marinas
+evaluadas. Los patrones identificados podrán utilizarse para informar la
+toma de desiciones para la implementación de la red de reservas marinas
+en la Región de las Grandes Islas del Golfo de California.
 
-\section{Materiales y Métodos}\label{materiales-y-metodos}
+\section{Métodos}\label{metodos}
 
 \subsection{Zonas de estudio}\label{zonas-de-estudio}
 
-\subsection{Caraterísticas de las comunidades y reservas
-seleccionadas}\label{carateristicas-de-las-comunidades-y-reservas-seleccionadas}
+\begin{itemize}
+\tightlist
+\item
+  Maria Elena
+\item
+  Punta Herrero
+\item
+  Isla Natividad
+\item
+  Guaymas
+\item
+  Puerto Libertad (Cerro bola)
+\end{itemize}
 
-\subsection{Análisis de datos}\label{analisis-de-datos}
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\subsection{Datos y análisis de datos}\label{datos-y-analisis-de-datos}
+
+Para evaluar las reservas, utilizamos tres fuentes de información. La
+información ecológica proviene de los monitoreos ecológicos realizados
+anualmente en las zonas reserva y control. Cada año, se realizan censos
+visuales para evaluar las comunidades de peces e invertebrados,
+registrando riquezas, abundancias y tallas (en peces). Esta información
+nos permite calcular los indicadores biológicos. La información
+socioeconómica proviene de los avisos de arribo de CONAPESCA. En este
+caso, se tienen registros mensuales de cada una de las especies
+aprovechadas por las diferentes comunidades, en los que se reportan los
+arribos (Kg) y el valor de los arribos (\$). Los ingresos generados por
+arribos son ajustados por medio del índice de precio al consumidor. La
+información de governanza fue obtenida a nivel de comunidad, pidiendo a
+personas familiares con las comunidades que proveyeran la información
+necesaria.
+
+Dada la similitud de objetivos entre las reservas, la evaluación se
+realiza con los mismos indicadores. En este caso, se utilizan nueve
+indicadores biológicos, 4 socioeconómicos y 14 de gobernanza.
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-3}Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.}
+\centering
+\begin{tabular}[t]{l}
+\toprule
+Indicador\\
+\midrule
+\addlinespace[0.5em]
+\multicolumn{1}{l}{\textbf{Biológicos}}\\
+\hspace{1em}Índice de diversidad de shannon\\
+\hspace{1em}Riqueza\\
+\hspace{1em}Densidad\\
+\hspace{1em}Nivel trófico\\
+\hspace{1em}Biomasa\\
+\addlinespace
+\addlinespace[0.5em]
+\multicolumn{1}{l}{\textbf{Socioeconómicos}}\\
+\hspace{1em}Ingresos\\
+\hspace{1em}Arribos\\
+\hspace{1em}Ingresos por especies objetivo\\
+\addlinespace[0.5em]
+\multicolumn{1}{l}{\textbf{Gobernanza}}\\
+\hspace{1em}\hspace{1em}Arribos de especies objetivo\\
+\hspace{1em}Acceso a la pesqueria\\
+\addlinespace
+\hspace{1em}Numero de pescadores\\
+\hspace{1em}Reconocimiento legal de la reserva\\
+\hspace{1em}Tipo de reserva\\
+\hspace{1em}Grado de pesca ilegal\\
+\hspace{1em}Plan de manejo\\
+\addlinespace
+\hspace{1em}Procuracion de la reserva\\
+\hspace{1em}Tamano de la reserva\\
+\hspace{1em}Razonamiento para el diseno de la reserva\\
+\hspace{1em}Pertenencia a oragnizaciones pesqueras\\
+\hspace{1em}Tipo de organizacion pesquera\\
+\addlinespace
+\hspace{1em}Representacion\\
+\hspace{1em}Reglamentacion interna\\
+\hspace{1em}Efectividad percibida\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Dado que el interés principal de este trabajo es identificar las
+relaciones entre la efectividad de una reserva y las características
+socioeconómicas y de gobernanza de su comunidad, los análisis se
+realizan a nivel de comunidad, agrupando los datos para todas las
+reservas y sitios control. Sin embargo, para controlar por respuestas
+diferenciales de cada sitio (para comunidades con más de una reserva),
+debemos tomar en cuenta factores específicos a cada sitio. Para esto,
+modificamos el modelo de diferencia en diferencias utilizado para
+indicadores biológicos agregándo el término para sitio de la siguiente
+manera:
+
+\[I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \beta_3Sitio + \epsilon\]
 
 \section{Resultados}\label{resultados}
+
+\subsection{Isla Natividad}\label{isla-natividad}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\subsection{Puerto Libertad}\label{puerto-libertad}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\subsection{Guaymas}\label{guaymas}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsection{Maria Elena}\label{maria-elena}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\subsection{Punta Herrero}\label{punta-herrero}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\subsection{Efectos generales}\label{efectos-generales}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-12-1.pdf}
 
 \section{Conclusiones}\label{conclusiones}
 
@@ -326,6 +439,13 @@ B., Gaines, S., Airamé, S. \& Warner, R. 2009. Biological effects within
 no-take marine reserves: A global synthesis. \emph{Mar. Ecol. Prog.
 Ser.} 384:33--46. DOI:
 \href{https://doi.org/10.3354/meps08029}{10.3354/meps08029}.
+
+\hypertarget{ref-micheli_2012-EU}{}
+Micheli, F., Saenz-Arroyo, A., Greenley, A., Vazquez, L., Espinoza
+Montes, J.A., Rossetto, M. \& De Leo, G.A. 2012. Evidence that marine
+reserves enhance resilience to climatic impacts. \emph{PLoS ONE}.
+7(7):e40832. DOI:
+\href{https://doi.org/10.1371/journal.pone.0040832}{10.1371/journal.pone.0040832}.
 
 \hypertarget{ref-nom049sagpesc_2014-V6}{}
 NOM-049-SAG/PESC. 2014. NORMA oficial mexicana nom-049-sag/pesc-2014,
