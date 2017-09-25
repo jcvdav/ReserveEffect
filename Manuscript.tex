@@ -308,14 +308,24 @@ Dado que el interés principal de este trabajo es identificar las
 relaciones entre la efectividad de una reserva y las características
 socioeconómicas y de gobernanza de su comunidad, los análisis se
 realizan a nivel de comunidad, agrupando los datos para todas las
-reservas y sitios control. Sin embargo, para controlar por respuestas
-diferenciales de cada sitio (para comunidades con más de una reserva),
-debemos tomar en cuenta factores específicos a cada sitio. Para esto,
-modificamos el modelo de diferencia en diferencias utilizado para
-indicadores biológicos agregándo el término para sitio de la siguiente
-manera:
+reservas y sitios control. Utilizando un análisis de diferencia en
+diferencias podemos estimar el efecto que la reserva tienen en los
+indicadores biológicos (Moland et al., 2013). En este caso, modelamos
+los años como factores, tomando como referencia el primer año en la
+serie de datos de cada comunidad. Modelar los años como factores reduce
+la estructura del modelo, y relaja el ajuste al no asumir una tendencia
+lineal entre años; es decir, el cambio observado entre 2006 - 2007 no
+deberá de ser igual al observado entre el 2009 - 2010. Incluimos también
+un término para la zona, en la que la variable toma un valor de 0 si el
+sitio es una zona control y de 1 si es una zona de reserva. Finalmente,
+incluimos un término de interacción entre la variable de Zona y Post. La
+variable Post toma un valor de 0 para todos los años existentes antes de
+la implementación de la reserva, y un valor de 1 para años posteriores a
+la implementación. En este modelo, el coeficiente \(\beta_2\) representa
+el efecto que la reservsa tuvo sobre un indicador a través del tiempo y
+con respecto a los sitios control.
 
-\[I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \beta_3Sitio + \epsilon\]
+\[I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \epsilon\]
 
 \section{Resultados}\label{resultados}
 
@@ -342,6 +352,8 @@ manera:
 \subsection{Efectos generales}\label{efectos-generales}
 
 \includegraphics{Manuscript_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\includegraphics{Manuscript_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \section{Conclusiones}\label{conclusiones}
 
@@ -446,6 +458,14 @@ Montes, J.A., Rossetto, M. \& De Leo, G.A. 2012. Evidence that marine
 reserves enhance resilience to climatic impacts. \emph{PLoS ONE}.
 7(7):e40832. DOI:
 \href{https://doi.org/10.1371/journal.pone.0040832}{10.1371/journal.pone.0040832}.
+
+\hypertarget{ref-moland_2013-VP}{}
+Moland, E., Olsen, E.M., Knutsen, H., Garrigou, P., Espeland, S.H.,
+Kleiven, A.R., André, C. \& Knutsen, J.A. 2013. Lobster and cod benefit
+from small-scale northern marine protected areas: Inference from an
+empirical before-after control-impact study. \emph{Proc Biol Sci}.
+280(1754):20122679. DOI:
+\href{https://doi.org/10.1098/rspb.2012.2679}{10.1098/rspb.2012.2679}.
 
 \hypertarget{ref-nom049sagpesc_2014-V6}{}
 NOM-049-SAG/PESC. 2014. NORMA oficial mexicana nom-049-sag/pesc-2014,

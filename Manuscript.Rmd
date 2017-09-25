@@ -65,6 +65,7 @@ suppressPackageStartupMessages({
   library(tmap)
   library(tmaptools)
   library(MPAtools)
+  library(magrittr)
   library(kableExtra)
   library(tidyverse)
 })
@@ -111,34 +112,77 @@ data.frame(Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densida
 ```
 
 
-Dado que el interés principal de este trabajo es identificar las relaciones entre la efectividad de una reserva y las características socioeconómicas y de gobernanza de su comunidad, los análisis se realizan a nivel de comunidad, agrupando los datos para todas las reservas y sitios control. Sin embargo, para controlar por respuestas diferenciales de cada sitio (para comunidades con más de una reserva), debemos tomar en cuenta factores específicos a cada sitio. Para esto, modificamos el modelo de diferencia en diferencias utilizado para indicadores biológicos agregándo el término para sitio de la siguiente manera:
+Dado que el interés principal de este trabajo es identificar las relaciones entre la efectividad de una reserva y las características socioeconómicas y de gobernanza de su comunidad, los análisis se realizan a nivel de comunidad, agrupando los datos para todas las reservas y sitios control. Utilizando un análisis de diferencia en diferencias podemos estimar el efecto que la reserva tienen en los indicadores biológicos [@moland_2013-VP]. En este caso, modelamos los años como factores, tomando como referencia el primer año en la serie de datos de cada comunidad. Modelar los años como factores reduce la estructura del modelo, y relaja el ajuste al no asumir una tendencia lineal entre años; es decir, el cambio observado entre 2006 - 2007 no deberá de ser igual al observado entre el 2009 - 2010. Incluimos también un término para la zona, en la que la variable toma un valor de 0 si el sitio es una zona control y de 1 si es una zona de reserva. Finalmente, incluimos un término de interacción entre la variable de Zona y Post. La variable Post toma un valor de 0 para todos los años existentes antes de la implementación de la reserva, y un valor de 1 para años posteriores a la implementación. En este modelo, el coeficiente $\beta_2$ representa el efecto que la reservsa tuvo sobre un indicador a través del tiempo y con respecto a los sitios control.
 
-$$I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \beta_3Sitio + \epsilon$$
+$$I = \beta_0 + \sum \gamma Ano + \beta_1 Zona + \beta_2 Post\times Zona + \epsilon$$
 
 ```{r}
 fish <- read.csv("Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
 
 invert <- read.csv("Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
 
-gob <- read.csv("Data/governance.csv")
+# load("Data/conapesca_2000-2015.RData")
+# 
+# conapesca %<>%
+#   filter(UnidadEconomica %in% c("Scpp jose maria azcorra scl", "Scpp cozumel scl", "Scpp pesc del banco chinchorro scl", "Scpp langosteros del caribe scl", "Scpp andres quintana roo sc de rl", "Scpp buzos y pescadores de la baja california scl"))
+
+gob <- read.csv("Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
 
 ```{r}
 source(file = "analisis.R")
 source(file = "modelo.R")
-source(file = "my_ggplot.R")
 source(file = "my_plot.R")
 source(file = "robust_se.R")
 source(file = "extract_effect.R")
+
+my_ggplot <- function(x, y.label){
+  
+  x$model %>% 
+    mutate(Ano = as.numeric(as.character(Ano))) %>% 
+    ggplot(aes(x = Ano, y = Indicador, color = Zona, fill = Zona)) +
+    geom_jitter(height = 0, width = 0.1, size = 1, alpha = 0.5) +
+    stat_summary(geom = "ribbon", fun.data = "mean_se", alpha = 0.5)+
+    stat_summary(geom = "point", fun.data = "mean_se", color = "black")+
+    stat_summary(geom = "line", fun.data = "mean_se", color = "black") +
+    theme_bw() +
+    theme(legend.position = "None") +
+    scale_color_brewer(palette = "Set1") +
+    scale_fill_brewer(palette = "Set1") +
+    labs(x = "Año", y = y.label)
+}
+
 ```
 
 ```{r}
 
-MariaElena <- analisis(peces = fish, invert = invert, comunidad = "Maria Elena", ano.imp = 2012)
-PuntaHerrero <- analisis(peces = fish, invert = invert, comunidad = "Punta Herrero", ano.imp = 2013)
-IslaNatividad <- analisis(peces = fish, invert = invert, comunidad = "Isla Natividad", ano.imp = 2006)
-Guaymas <- analisis(peces = fish, invert = invert, comunidad = "Guaymas", ano.imp = 2012)
-PuertoLibertad <- analisis(peces = fish, invert = invert, comunidad = "Puerto Libertad", ano.imp = 2012)
+MariaElena <- analisis(peces = fish,
+                       invert = invert,
+                       comunidad = "Maria Elena",
+                       ano.imp = 2012)
+
+PuntaHerrero <- analisis(peces = fish,
+                         invert = invert,
+                         comunidad = "Punta Herrero",
+                         ano.imp = 2013)
+
+IslaNatividad <- analisis(peces = fish,
+                          invert = invert,
+                          comunidad = "Isla Natividad",
+                          ano.imp = 2006,
+                          obj.spp = c("Haliotis fulgens", "Haliotis corrugata"))
+
+Guaymas <- analisis(peces = fish,
+                    invert = invert,
+                    comunidad = "Guaymas",
+                    ano.imp = 2012,
+                    obj.spp = c("Mycteroperca rosacea", "Lutjanus argentiventris", "Balistes polylepis", "Octopus spp", "Panulirus inflatus"))
+
+PuertoLibertad <- analisis(peces = fish,
+                           invert = invert,
+                           comunidad = "Puerto Libertad",
+                           ano.imp = 2012,
+                           obj.spp = c("Balistes polylepis","Lutjanus argentiventris", "Mycteroperca rosacea", "Spondylus limbatus", "Hexaplex nigritus", "Octopus bimaculatus"))
 
 ```
 
@@ -176,26 +220,65 @@ my_plot(PuntaHerrero)
 
 ## Efectos generales
 
-```{r}
+```{r, message = F, warning = F}
 rbind(extract_effect(IslaNatividad),
       extract_effect(PuertoLibertad),
       extract_effect(Guaymas),
       extract_effect(MariaElena),
       extract_effect(PuntaHerrero)) %>% 
-  mutate(Comunidad = c(rep("IN", 8),
-                       rep("PL", 8),
-                       rep("G", 8),
+  mutate(Comunidad = c(rep("IN", 10),
+                       rep("PL", 14),
+                       rep("G", 11),
                        rep("ME", 8),
-                       rep("PH", 8))) %>% 
+                       rep("PH", 8)),
+         P = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
+  filter(Indicador %in% c("ShannonP", "RiquezaP", "DensidadP", "TroficoP", "BiomasaP", "ShannonI", "RiquezaI", "DensidadI")) %>% 
   ggplot(aes(x = Comunidad, y = estimate)) +
   geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0) +
-  geom_point(size = 3, color = "steelblue") +
+  geom_point(size = 3, aes(color = P)) +
   coord_flip() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
   facet_wrap(~Indicador, scales = "free") +
-  theme(strip.background = element_rect(fill = "transparent"))
+  theme(strip.background = element_rect(fill = "transparent")) +
+  labs(x = "Efecto") +
+  scale_color_brewer(palette = "Set1")
 ```
+
+```{r, warning = F, message = F, fig.height = 6, fig.width = 6}
+gob_summary <- group_by(gob, Comunidad) %>% 
+  summarize(Ano = mean(Ano),
+            PescadoresAntes = mean(Num.pescadores.antes),
+            PescadoresAhora = mean(Num.pescadores.actual),
+            PescaIlegal = mean(Grado.pesca.ilegal)) %>% 
+  mutate(CambioPescadores = PescadoresAntes-PescadoresAhora,
+         Edad = 2017 - Ano) %>% 
+  select(Comunidad, PescaIlegal, Edad)
+
+rbind(extract_effect(IslaNatividad),
+      extract_effect(PuertoLibertad),
+      extract_effect(Guaymas),
+      extract_effect(MariaElena),
+      extract_effect(PuntaHerrero)) %>% 
+  mutate(Comunidad = c(rep("IN", 10),
+                       rep("PL", 14),
+                       rep("G", 11),
+                       rep("ME", 8),
+                       rep("PH", 8)),
+         P = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
+  filter(Indicador %in% c("ShannonP", "DensidadP", "TroficoP", "ShannonI", "DensidadI")) %>%
+  select(Comunidad, Indicador, estimate, P) %>% 
+  left_join(gob_summary, by = "Comunidad") %>% 
+  gather(Variable, Valor, -c(Comunidad, Indicador, estimate, P)) %>% 
+  ggplot(aes(x = Valor, y = estimate)) +
+  geom_smooth(method = "lm", color = "black") +
+  geom_point(aes(color = Comunidad)) +
+  facet_grid(Indicador~Variable, scales = "free") +
+  theme_bw() +
+  labs(x = "Valor", y = "Efecto")
+
+```
+
 
 # Conclusiones
 
