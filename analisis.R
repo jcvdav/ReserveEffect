@@ -1,4 +1,4 @@
-analisis <- function(peces, invert, comunidad, ano.imp, obj.spp = ""){
+analisis <- function(peces, invert, comunidad, ano.imp, obj.spp = NULL){
   
   results <- tibble(Indicador = c("ShannonP", "RiquezaP", "DensidadP", "TroficoP", "BiomasaP", "ShannonI", "RiquezaI", "DensidadI", "DensidadObj1", "DensidadObj2", "DensidadObj3", "DensidadObj4", "DensidadObj5", "DensidadObj6", "DensidadObj7"),
                     Modelo = list(NA))
@@ -47,7 +47,7 @@ analisis <- function(peces, invert, comunidad, ano.imp, obj.spp = ""){
   
   ### Densidades
   
-  if(length(obj.spp) > 1){
+  if(length(obj.spp) >= 1){
     n <-  1
     if(obj.spp[n] %in% unique(peces$GeneroEspecie)){data <- peces}
     if(obj.spp[n] %in% unique(invert$GeneroEspecie)){data <- invert}

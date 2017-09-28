@@ -46,7 +46,7 @@ La literatura indica que diferentes características influyen en el éxito de un
 
 # Objetivos
 
-El objetivo de este trabajo este trabajo es realizar una evaluación de la efectividad de reservas marinas en México, presentando resultados de cinco comunidades costeras como caso de estudio. Con el fin de obtener una visión holística del sistema, la evaluación se realizará tomando en cuenta indicadores biológicos, socioeconómicos y de gobernanza (**Referencia aqui**). La evaluación de éstos cinco casos de estudios nos permitirá identificar la manera en que las características socioeconómicas y de gobernanza se relacionan con la efectividad (biológica) de las reservas marinas evaluadas. Los patrones identificados podrán utilizarse para informar la toma de desiciones para la implementación de la red de reservas marinas en la Región de las Grandes Islas del Golfo de California.
+El objetivo de este trabajo este trabajo es realizar una evaluación de la efectividad de reservas marinas en México, presentando resultados de cinco comunidades costeras como caso de estudio. Con el fin de obtener una visión holística del sistema, la evaluación se realizará tomando en cuenta indicadores biológicos, socioeconómicos y de gobernanza. La evaluación de éstos cinco casos de estudios nos permitirá identificar la manera en que las características socioeconómicas y de gobernanza se relacionan con la efectividad (biológica) de las reservas marinas evaluadas. Los patrones identificados podrán utilizarse para informar la toma de desiciones para la implementación de la red de reservas marinas en la Región de las Grandes Islas del Golfo de California.
 
 # Métodos
 
@@ -68,7 +68,8 @@ suppressPackageStartupMessages({
 ```
 
 
-```{r, message = F, warning = F}
+```{r, message = F, warning = F, fig.cap = "Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de Maria Elena y Punta Herrero."}
+
 proj <- CRS("+proj=longlat +datum=NAD27")
 
 xy1 <- data.frame(X = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087), Y = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957))
@@ -128,11 +129,13 @@ La comunidad de Punta Herrero se encuentra aproximadamente a 15 km al sur del ca
 
 ```{r}
 read.csv("Data/governance_summary.csv") %>% 
-  knitr::kable(booktabs = T, col.names = c("Comunidad", "Reservas", "Año Implementación", "Año Reconocimiento", "Tipo", "Inspección y Vigilancia", "Manejo de recursos"), caption = "Características de gobernanza generales de las cinco comunidades estudiadas.") %>% 
+  knitr::kable(booktabs = T, col.names = c("Comunidad", "Reservas", "Año Implementación", "Año Reconocimiento", "Tipo", "Manejo de recursos", "Grado de pesca ilegal", "Inspección y Vigilancia", "Organizaciones pesqueras", "Edad"), caption = "Características de gobernanza generales de las cinco comunidades estudiadas.") %>% 
   kable_styling(latex_options = c("scale_down")) %>%
   column_spec(5, width = "3cm") %>%
-  column_spec(6, width = "6cm") %>%
-  column_spec(7, width = "6cm")
+  column_spec(6, width = "5cm") %>%
+  column_spec(8, width = "5cm") %>%
+  column_spec(9, width = "5cm") %>%
+  landscape()
 ```
 
 ## Datos y análisis de datos
@@ -144,14 +147,22 @@ invert <- read.csv("Data/invert_data.csv", strip.white = T, stringsAsFactors = F
 
 load("Data/conapesca_2000-2015.RData")
 
+cpi <- read.csv("Data/CPI.csv", stringsAsFactors = F, strip.white = T)
+
+cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
+
 conapesca %<>%
   filter(UnidadEconomica %in% c("Scpp cozumel scl",
                                 "Scpp jose maria azcorra scl",
                                 "Scpp buzos y pescadores de la baja california scl")) %>% 
   filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
   group_by(UnidadEconomica, Ano, NombreComun) %>%
-  summarize(PesoDesembarcado = sum(PesoDesembarcado), PesoVivo = sum(PesoVivo)) %>%
-  filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" &NombreComun == "Langosta ent. fca."))
+  summarize(PesoDesembarcado = sum(PesoDesembarcado), 
+            PesoVivo = sum(PesoVivo),
+            Valor = sum(Valor)) %>%
+  filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" &NombreComun == "Langosta ent. fca.")) %>% 
+  left_join(cpi, by = "Ano") %>% 
+  mutate(Valor = Valor * (CPI / cpi_2014))
 
 gob <- read.csv("Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
@@ -194,19 +205,17 @@ $$I = \beta_0 + \beta_1Post$$
 
 Que nos permite comparar el cambio en el promedio de los indicadores antes (Post = 0) y después (Post = 1) de la implementación de la reserva. Tanto para los indicadores biológicos como los socioeconómicos, los coeficientes fueron ajustador con el estimador de muestras heterocedásticas.
 
-La información de governanza fue obtenida a nivel de comunidad, pidiendo a personas familiares con las comunidades que proveyeran la información necesaria.
+La información de gobernanza fue obtenida a nivel de comunidad, pidiendo a personas familiares con las comunidades que proveyeran la información necesaria. La información de gobernanza no es evaluada de manera cuantitativa. En su lugar, esta se interpreta de manera tal que podamos comprender qué decisiones, reglas y estructuras tienen un impacto en la reserva.
 
-Dada la similitud de objetivos entre las reservas, la evaluación se realiza con los mismos indicadores. En este caso, se utilizan 8 indicadores biológicos, 2 socioeconómicos y 14 de gobernanza (Tabla 2). Según la disponibilidad de datos, se calculó la densidad de las especies objetivo presentadas en la sección de descripción de las comunidades. El criterio de selección fue que cada especie debía tener, por lo menos, dos observaciones anuales para las zonas de reserva y control.
+Dada la similitud de objetivos entre las reservas, la evaluación se realiza con los mismos indicadores. En este caso, se utilizan 6 indicadores biológicos, 2 socioeconómicos y 5 de gobernanza (Tabla 2). Según la disponibilidad de datos, se calculó la densidad de las especies objetivo presentadas en la sección de descripción de las comunidades. El criterio de selección fue que cada especie debía tener, por lo menos, dos observaciones anuales para las zonas de reserva y control.
 
 ```{r}
-data(IndListG)
-
-data.frame(Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densidad", "Nivel trófico", "Biomasa", "Densidad de especies objetivo", "Ingresos por especies objetivo", "Arribos de especies objetivo", IndListG$Indicators), stringsAsFactors = F) %>% 
+data.frame(Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densidad", "Nivel trófico", "Biomasa", "Densidad de especies objetivo", "Ingresos por especies objetivo", "Arribos de especies objetivo", "Tipo de acceso a la pesquería", "Grado de pesca ilegal", "Procuración de la reserva", "Tipo de organización pesquera", "Edad de la reserva"), stringsAsFactors = F) %>% 
   knitr::kable(caption = "Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.", booktabs = T) %>%
   kable_styling() %>%
   group_rows("Biológicos", 1, 6) %>%
   group_rows("Socioeconómicos", 7, 8) %>% 
-  group_rows("Gobernanza", 9, 22)
+  group_rows("Gobernanza", 9, 13)
 ```
 
 ```{r}
@@ -252,16 +261,6 @@ my_plot <- function(x, breaks) {
 
 ```{r}
 
-MariaElena <- analisis(peces = fish,
-                       invert = invert,
-                       comunidad = "Maria Elena",
-                       ano.imp = 2012)
-
-PuntaHerrero <- analisis(peces = fish,
-                         invert = invert,
-                         comunidad = "Punta Herrero",
-                         ano.imp = 2013)
-
 IslaNatividad <- analisis(peces = fish,
                           invert = invert,
                           comunidad = "Isla Natividad",
@@ -280,79 +279,123 @@ Guaymas <- analisis(peces = fish,
                     ano.imp = 2012,
                     obj.spp = c("Mycteroperca rosacea", "Lutjanus argentiventris", "Balistes polylepis"))
 
+MariaElena <- analisis(peces = fish,
+                       invert = invert,
+                       comunidad = "Maria Elena",
+                       ano.imp = 2012)
+
+PuntaHerrero <- analisis(peces = fish,
+                         invert = invert,
+                         comunidad = "Punta Herrero",
+                         ano.imp = 2013,
+                         obj.spp = "Panulirus argus")
+
 ```
 
 \clearpage
 
 # Resultados
 
-A continuación se presentan los resultados de cada una de las comunidades. Los resultados biológicos se presentarán para cada comunidad, discutiendo primero los indicadores en común con otras comunidades (Shannon, Riqueza, Densidad, Nivel Trófico, Biomasa para peces e invertebrados) y, según su caso, las densidades de las especies objetivo.
+A continuación se presentan los resultados de cada una de las comunidades. Los resultados biológicos se presentarán para cada comunidad, discutiendo primero los indicadores en común con otras comunidades (Shannon, Riqueza, Densidad, Nivel Trófico, Biomasa para peces e invertebrados) y, según su caso, las densidades de las especies objetivo. Habiendo presentado los resultados biológicos, nos enfocaremos después en los socioeconómicos y de gobernanza. Usaremos esta información para identificar las causas (sociales) del éxito (biológico) de las reservas.
 
-## Isla Natividad
+## Biológicos
 
-Para las dos reservas de Isla Natividad, todos los indicadores tienen un comportamiento similar a lo largo del tiempo. Sin embargo, hay indicios del efecto de la reserva. Por ejemplo, el Índice de diversidad de Shannon para peces muestra una mejora importante. Al inicio de la serie de tiempo, el indicador tenía un valor menor para la reserva que para el control. Sin embargo, la diferencia entre reserva y control se ha reducido con el paso del tiempo, indicando un incremento en el indicador para la zona de reserva. Un patrón similar, pero menos evidente, se observa para la riqueza de peces. Sin embargo, no parece existir un efecto de la reserva en la densidad de peces; los promedios anuales de las reservas y sitios control son similares, y no var[ian con el tiempo. Para el caso del nivel trófico de peces, el efecto es menor y mucho más lento que para el Índice de Shannon o la riqueza. En este caso, vemos un comportamiento similar para ambos tratamientos hasta el 2012, donde la reserva comienza a tener una mayor dispersión (rango más amplio) en los niveles tróficos. Finalmente, para el 2016, se observan diferencias evidentes en el nivel trófico medio. Para los indicadores de invertebrados, todos muestran (en diferente magnitud) un decremento, posiblemente explicado por los eventos de hypoxia reportados en la zona [@micheli_2012-EU]. Sin embargo, es evidente que la reservas producen un efecto de amortiguamiento ante estos cambios ambientales, pues la reducción en las reservas es menor que en los sitios control.
+### Isla Natividad
 
-```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Isla Natividad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para las dos reservas de Isla Natividad, todos los indicadores tienen un comportamiento similar a lo largo del tiempo (Fig. 3). Sin embargo, hay indicios del efecto de la reserva. Por ejemplo, el Índice de diversidad de Shannon para peces muestra una mejora importante. Al inicio de la serie de tiempo, el indicador tenía un valor menor para la reserva que para el control. Sin embargo, la diferencia entre reserva y control se ha reducido con el paso del tiempo, indicando un incremento en el indicador para la zona de reserva. Un patrón similar, pero menos evidente, se observa para la riqueza de peces. Sin embargo, no parece existir un efecto de la reserva en la densidad de peces; los promedios anuales de las reservas y sitios control son similares, y no var[ian con el tiempo. Para el caso del nivel trófico de peces, el efecto es menor y mucho más lento que para el Índice de Shannon o la riqueza. En este caso, vemos un comportamiento similar para ambos tratamientos hasta el 2012, donde la reserva comienza a tener una mayor dispersión (rango más amplio) en los niveles tróficos. Finalmente, para el 2016, se observan diferencias evidentes en el nivel trófico medio. Para los indicadores de invertebrados, todos muestran (en diferente magnitud) un decremento, posiblemente explicado por los eventos de hypoxia reportados en la zona [@micheli_2012-EU]. Sin embargo, es evidente que la reservas producen un efecto de amortiguamiento ante estos cambios ambientales, pues la reducción en las reservas es menor que en los sitios control.
+
+```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Isla Natividad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 my_plot(IslaNatividad, breaks = c(2006, 2009, 2012, 2015))
 ```
 
-```{r, fig.width = 4, fig.height = 6, fig.cap = "Series de tiempo densidad de especies objetivo para Isla Natividad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para el caso de las especies objetivo de Ilsa Natividad, se analizaron las densidades de tres de los invertebrados de mayor valor comercial: los abulones (*H. fulgens* y *H. corrugata*), y la langosta (*P. interruptus*; Fig. 4). Cabe mencionar que desde 2010 la Cooperativa de Isla Natividad decidió, de manera voluntaria, cerrar la pesca de abulón como una medida para recuperar sus poblaciones. Por lo tanto, los efectos de la reserva (diferencias entre reserva y control) únicamente son relevantes para el periodo 2006 - 2010. Para *H. fulgens*, las densidades tuvieron un decremento en el primer par de años en la reserva, pero para 2009 y 2010 ya habían regresado a los niveles anteriores. Al igual que el caso de invertebrados generales, ésto pudo deberse a los eventos de bajos niveles de oxígeno. Por el contrario, *H. corruugata* mostró incrementos inmediatos en la reserva; aunque la reserve, inicialmente, presentaba densidades menores (~ org. / transecto), las densidades rápidamente aumentaron en 2007 y 2008, sobrepasando a la zona control. Después de esto, las densidades dentro y guera de la reserva se redujeron a casi 1 org. / transecto, pero la disminución fue menor para la reserva que para el sitio control, evidenciando el efecto de amortiguamiento.
+
+```{r, fig.width = 7, fig.height = 2, fig.cap = "Series de tiempo densidad de especies objetivo para Isla Natividad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 gridExtra::grid.arrange(my_ggplot(IslaNatividad$Modelo[[9]], y.label = "H. fulgens / transecto", breaks = c(2006, 2009, 2012, 2015)),
                         my_ggplot(IslaNatividad$Modelo[[10]], y.label = "H. corrugata / transecto", breaks = c(2006, 2009, 2012, 2015)),
-                        my_ggplot(IslaNatividad$Modelo[[10]], y.label = "P. interruptus / transecto", breaks = c(2006, 2009, 2012, 2015)))
+                        my_ggplot(IslaNatividad$Modelo[[10]], y.label = "P. interruptus / transecto", breaks = c(2006, 2009, 2012, 2015)),
+             nrow = 1)
 ```
 
 \clearpage
 
-## Puerto Libertad
+### Puerto Libertad
 
-```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Puerto Libertad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para Puerto Libertad, el 2014 no se realizaron monitoreos. Sin embargo, aún es posible ver que la reserva parece afectar positivamente todos los indicadores (Fig. 5). Aunque para el Índice de Diversidad de Shannon hubo una disminución entre 2012 y 2013, la disminución se observa para ambos sitios. Sin embargo, para el 2015 el valor es mayor para la reserva que para el control. La riqueza de peces también mostró un mejor comportamiento, en el que la riqueza del sitio control disminuyó pero aumentó para la reserva. La densidad de peces mostró aumentos importantes dentro de la reserva, casi duplicando de 35 org. / transecto a 64 org. / transecto. El sitio control permaneció relativamente constante, oscilando entre 24 y 27 org. / transecto. El nivel trófico de peces mostró un comportamiento similar al del Índice de Shannon, disminuyendo de 2012 a 2013 pero recuperándose para el 2015. Para los indicadores de invertebrados, observamos un incremento en diversidad para el 2013, posiblemente causado por falta de depredación por peces (es el mismo año en el que el nivel trófico y la diversidad de peces disminuye). Independientemente de la tendencia temporal de los indicadores en la zona, la reserva siempre tiene valores más altos de diversidad y riqueza de especies. De igual manera, la densidad de organismos de invertebrados mostró un leve incremento para la reserva (de 35 a 42 org. / transecto), mientras que el sitio control tuvo disminuciones de 60 org / transecto a 42 org / transecto.
+
+
+```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Puerto Libertad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 my_plot(PuertoLibertad, breaks = c(2012, 2013, 2014, 2015, 2016))
 ```
 
-```{r, fig.width = 4, fig.height = 4, fig.cap = "Series de tiempo densidad de especies objetivo para Puerto Libertad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para Puerto Libertad, las únicas dos especies objetivo con imformación suficiente para realizar el análisis fueron *B. polylepis* y *S. limbatus* (Fig. 6). Aún cuando el sitio contol muestra incrementos en la densidad de *B. polylepis* (2 a 11 org. / transecto), el incremento es mayor para la reserva (5 a 28 org. / transecto). En cambio, para *S. limbatus* no parece haber un efecto importante de la reserva, mostrando densidades similares a través del tiempo para ambos sitios.
+
+```{r, fig.width = 5, fig.height = 2, fig.cap = "Series de tiempo densidad de especies objetivo para Puerto Libertad. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 
 gridExtra::grid.arrange(my_ggplot(PuertoLibertad$Modelo[[9]], y.label = "B. polylepis / transecto", breaks = c(2012, 2013, 2014, 2015, 2016)),
-                        my_ggplot(PuertoLibertad$Modelo[[12]], y.label = "S. limbatus / transecto", breaks = c(2012, 2013, 2014, 2015, 2016)))
+                        my_ggplot(PuertoLibertad$Modelo[[12]], y.label = "S. limbatus / transecto", breaks = c(2012, 2013, 2014, 2015, 2016)),
+                        nrow = 1)
 ```
 
 \clearpage
 
-## Guaymas
+### Guaymas
 
-```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Guaymas. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para el caso de Guaymas (Isla San Pedro Nolasco), los monitoreos se llevaron a cabo del 2011 al 2014. Los datos disponibles no muestran que las reservas hayan tenido un comportamiento distinto al de los sitios control a lo largo del tiempo (Fig. 7). La diversidad de peces e invertebrados y riqueza de invertebrados muestran decrementos de constantes. La riqueza de peces, densidad de peces, nivel trófico, biomasa de peces y densidad de invertebrados presentan, a lo largo del tiempo, un comportamiento constante para cada sitio y entre sitios.
+
+```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Guaymas. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 my_plot(Guaymas, breaks = c(2011, 2012, 2013, 2014))
 ```
 
-```{r, fig.width = 4, fig.height = 6, fig.cap = "Series de tiempo densidad de especies objetivo para Guaymas. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+
+\clearpage
+
+Las especies objetivo con suficiente información para realizar el análisis en Guaymas fueron *M. rosacea*, *L. argentiventris* y *B. polylepis* (Fig. 8). Al igual que los indicadores biológicos generales, las densidades de especies objetivo no mostraron cambios importantes a lo largo del tiempo ni diferencias entre tratamientos, indicando así una falta de efectividad.
+
+```{r, fig.width = 7, fig.height = 2, fig.cap = "Series de tiempo densidad de especies objetivo para Guaymas. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 gridExtra::grid.arrange(my_ggplot(Guaymas$Modelo[[9]], y.label = "M. rosacea / transecto", breaks = c(2011, 2012, 2013, 2014)),
                         my_ggplot(Guaymas$Modelo[[10]], y.label = "L. argentiventris / transecto", breaks = c(2011, 2012, 2013, 2014)),
-                        my_ggplot(Guaymas$Modelo[[11]], y.label = "B. polylepis / transecto", breaks = c(2011, 2012, 2013, 2014)))
+                        my_ggplot(Guaymas$Modelo[[11]], y.label = "B. polylepis / transecto", breaks = c(2011, 2012, 2013, 2014)),
+                        nrow = 1)
 ```
 
 \clearpage
 
-## Maria Elena
+### Maria Elena
 
-```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Maria Elena. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Para Maria Elena, las zonas de reserva muestran cambios en indicadores como diversidad de peces, nivel trófico, diversidad de invertebrados y densidad de invertebrados (Fig. 9). El Índice de Diversidad de Shannon para peces incrementó de 2.3 a 2.9 para la reserva, mientras que disminuyó de 2.7 a 2.2 para el sitio control, entre 2012 y 2016. El nivel trófico de peces mostró poca variación, pero los valores siempre fueron mayores para las reservas que para los sitios control.
+
+```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Maria Elena. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 
 my_plot(MariaElena, breaks = c(2012, 2013, 2014, 2015, 2016))
 ```
 
 \clearpage
 
-## Punta Herrero
+### Punta Herrero
 
-```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Punta Herrero. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+Los indicadores biológicos de Punta Herrero (Fig. 10) presentan cambios positivos para la riqueza de peces ganando, en promedio, una especie. La densidad de peces también mostró un incremento importante de 81 org. / transecto a 132 org. / transecto, mientras que el cambio en el control solo fue de 36.6 a 79 org. / transecto. Aunque el cambio fue pequeño, la diversidad, riqueza y densidad de invertebrados también mostraron un comportamiento positivo con respecto al sitio control.
+
+```{r, fig.cap = "Series de tiempo de los indicadores biológicos para Punta Herrero. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
 
 my_plot(PuntaHerrero, breaks = c(2012, 2013, 2014, 2015, 2016))
 ```
 
+Para Punta Herrero se tuilizó a la langosta (*P. argus*) como especie objetivo (Fig. 11), que mostró un incremento importante en sus densidade. El incremento promedio para la reserva fue de 2 org. / transecto, mientras que el control mostró incrementos de 0.25 org. / transecto.
+
+```{r, fig.width = 4, fig.height = 2.5, fig.cap = "Series de tiempo densidad de especies objetivo para Guaymas. El rojo indica zonas de reserva, el azul zonas control. Cada punto representa un transecto, y los puntos se encuentran ajustados horizontalmente para evitar traslapes. Las líneas y puntos negros indican el promedio anual para cada zona. Las barras de error indican 1 Error Estándar con respecto del promedio."}
+my_ggplot(PuntaHerrero$Modelo[[9]], y.label = "P. argus / transecto", breaks = c(2011, 2012, 2013, 2014, 2015, 2016))
+```
+
 \clearpage
 
-## Efectos generales
+### Efectos generales
 
-```{r, message = F, warning = F}
+A continuación se presentan los efectos estimados para cada indicador y cada comunidad (Fig. 12). La siguiente figura presenta el valor del coeficiente de diferencia en diferencia ($\beta_2$) junto con los errores estándar reportados. El valor del coeficiente es una medida de las diferencias observadas entre la tendencia temporal de la reserva y el control. Por lo tanto, valores de $\beta_2 < 0$ indican que, a través del tiempo, la reserva tuvo una disminución -- o un incremento más lento-- con respecto al sitio control. De igual manera, $\beta_2 > 0$ indican que la reserva mostró un incremento -- o una disminución más abrupta-- con respecto al sitio control. De manera general, asumiermos que un valor positivo de $\beta_2$ indica que la reserva fue efectiva para ese indicador.
+
+Por lo tanto, la evaluación de efectos (*i.e.* $\beta_2$) es una recapitulación y resumen de las observaciones realizadas en las series de tiempo. En este caso, Puerto Libertad es la comunidad con el mejor desempeño, mostrando dos indicadores positivos y significativos y cuatro indicadores positivos pero no significativos (Fig. 13). Después, Isla Natividad y Maria Elena presentaron tres indicadores positivos, pero solamente uno fue significativo. En el lado negativo, Maria Elena mostró dos indicadores significativamente negativos e Isla Natividad únicamente uno. Aunque Punta Herrero tuvo cinco indicadores positivos y solamente tres negativos, ninguno de ellos fue significativo. Finalmente, Guaymas únicamente presentó dos indicadores positivos (pero no significativos) y tuvo seis indicadores negativos, de los cuales uno fue significativo.
+
+```{r, message = F, warning = F, fig.cap = "Estimación del efecto de la reserva en los indicadores biológicos para cinco comunidades costeras. Los círculos indican el tamaño del efecto según el análisis de diferencia en diferencias, y las barras muestran el error estándar del coeficiente estimado. Los colores indican la significancia del coeficiente, con el color rojo indicando p < 0.05. PL = Puerto Libertad, PH = Punta Herrero, ME = Maria Elena, IN = Isla Natividad, G = Guaymas."}
 rbind(extract_effect(IslaNatividad),
       extract_effect(PuertoLibertad),
       extract_effect(Guaymas),
@@ -362,7 +405,7 @@ rbind(extract_effect(IslaNatividad),
                        rep("PL", 14),
                        rep("G", 11),
                        rep("ME", 8),
-                       rep("PH", 8)),
+                       rep("PH", 9)),
          P = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
   filter(Indicador %in% c("ShannonP", "RiquezaP", "DensidadP", "TroficoP", "BiomasaP", "ShannonI", "RiquezaI", "DensidadI")) %>% 
   ggplot(aes(x = Comunidad, y = estimate)) +
@@ -377,10 +420,47 @@ rbind(extract_effect(IslaNatividad),
   scale_color_brewer(palette = "Set1")
 ```
 
+```{r, fig.cap = "Resumen del número de indicadores significativos (rojos) y no significativos (azul) para ocho indicadores utilizados en la evaluación de reservas de cinco comunidades costeras. PL = Puerto Libertad, PH = Punta Herrero, ME = Maria Elena, IN = Isla Natividad, G = Guaymas."}
+rbind(extract_effect(IslaNatividad),
+      extract_effect(PuertoLibertad),
+      extract_effect(Guaymas),
+      extract_effect(MariaElena),
+      extract_effect(PuntaHerrero)) %>% 
+  mutate(Comunidad = c(rep("IN", 11),
+                       rep("PL", 14),
+                       rep("G", 11),
+                       rep("ME", 8),
+                       rep("PH", 9)),
+         P = ifelse(p.value <= 0.05, "p < 0.05", "p > 0.05"),
+         Pos = ifelse(estimate > 0, "positive", "negative")) %>% 
+  filter(Indicador %in% c("ShannonP", "RiquezaP", "DensidadP", "TroficoP", "BiomasaP", "ShannonI", "RiquezaI", "DensidadI")) %>%
+  mutate(Count = 1) %>% 
+  spread(Pos, Count, fill = 0) %>% 
+  group_by(Comunidad, P) %>% 
+  summarize(negative = -sum(negative),
+            positive = sum(positive)) %>%
+  gather(Direccion, Indicadores, -c(Comunidad, P)) %>% 
+  ggplot(aes(x = Comunidad, y = Indicadores, fill = P)) +
+  geom_col(color = "black", width = 0.75) +
+  coord_flip() +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1") +
+  scale_y_continuous(breaks = c(-6, -4, -2, 0, 2, 4, 6))
+```
+
+\clearpage
+
 ## Socioeconómicos
 
-```{r}
-ggplot(conapesca, aes(x = Ano, y = PesoVivo/1000, color = UnidadEconomica)) +
+Para los indicadores socioeconómicos, el análisis se realizó unicamente para las comunidades de Isla Natividad, Maria Elena y Punta Herrero (Fig. 13). En este caso, se utilizó la langosta roja (*P. interruptus*; para Isla Natividad) y la langosta espinoza (*P. argus*) para Maria Elena y Punta Herrero. Como se observa en la siguiente figura y en la Tabla 3, los arribos de Isla Natividad incrementaron, en promedio, 7.3 $\pm$ 14.6 (M $\pm$ ES) toneladas después de la implementación de la reserva. Para Maria Elena, el cambio fue de 5.8 $\pm$ 8.7 toneladas, y para Punta Herrero hubo un decremento en 1.8 $\pm$ 5.13 toneladas. Sin embargo, estas diferencias no son significativas. Dado el diseño experimental, no es posible asumir que lo cambios observados son por causa de la reserva.
+
+```{r, fig.cap = "Arribos (toneladas) anuales de langosta para tres comunidades costeras de México. Las líneas punteadas verticales indican el año de implementación de las reservas de cada comunidad. Las líneas sólidas indican el ajuste de un modelo lineal, y las sombras indican intervalos de confianza (95%) al rededor de la línea de regresión.", message = F, warning = F}
+
+com_coop <- data.frame(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl", "Scpp cozumel scl", "Scpp jose maria azcorra scl"),
+                       Comunidad = c("Isla Natividad", "Maria Elena", "Punta Herrero"))
+
+left_join(conapesca, com_coop, by = "UnidadEconomica") %>% 
+  ggplot(aes(x = Ano, y = PesoVivo/1000, color = Comunidad)) +
   geom_smooth(method = "lm") +
   geom_point() +
   theme_bw() +
@@ -408,15 +488,67 @@ conapesca %>%
          P = paste0(P1, P2),
          estimate = formatC(estimate, digits = 2, format = "f"),
          std.error = formatC(std.error, digits = 2, format = "f"),
-         texto = paste0(estimate, "(", std.error, ")", P)) %>% 
-  select(model, term, texto) %>% 
+         texto = paste0(estimate, " (", std.error, ")", P)) %>% 
+  select(model, Variable = term, texto) %>% 
   spread(model, texto) %>% 
-  knitr::kable(booktabs = T)
+  knitr::kable(booktabs = T, caption = "Resultados del análisis de regresión de arribos de langosta. Los números entre paréntesis indican el Error Estándar de los coeficientes estimados. * Indica p < 0.1; ** Indica p < 0.05.")
 
 ```
 
+En el caso de los ingresos generados por los arribos previamente mencionados (Fig. 14), Isla Natividad y Maria Elena reportan, en promedio, 14.3 millones y 1.2 millones de pesos más, respectivamente. Para el caso de Punta Herrero, se reportan pérdidas por 60,000 pesos. Las cantidasdes observadas y reportadas corresponden al valor del peso en el 2014 (el año más reciente en la serie de tiempo de los datos). Al igual que con los arribos, no es posible asumir que los cambios observados en los ingresos se deben exclusivamente a la reserva.
 
-```{r, warning = F, message = F, fig.height = 6, fig.width = 6}
+```{r, message = F, warning = F}
+
+com_coop <- data.frame(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl", "Scpp cozumel scl", "Scpp jose maria azcorra scl"),
+                       Comunidad = c("Isla Natividad", "Maria Elena", "Punta Herrero"))
+
+left_join(conapesca, com_coop, by = "UnidadEconomica") %>% 
+  ggplot(aes(x = Ano, y = Valor/1000, color = Comunidad)) +
+  geom_smooth(method = "lm") +
+  geom_point() +
+  theme_bw() +
+  scale_color_brewer(palette = "Set1") +
+  geom_vline(xintercept = 2006, color = "red", linetype = "dashed", size = 1) +
+  geom_vline(xintercept = 2012, color = "blue", linetype = "dashed", size = 1) +
+  geom_vline(xintercept = 2013, color = "darkgreen", linetype = "dashed", size = 1) +
+  labs(x = "Año", y = "Valor (Miles de pesos)")
+```
+
+```{r}
+anos <- data.frame(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl", "Scpp cozumel scl", "Scpp jose maria azcorra scl"), AnoImp = c(2006, 2012, 2013), stringsAsFactors = F)
+
+conapesca %>% 
+  ungroup() %>% 
+  mutate(UnidadEconomica = as.character(UnidadEconomica)) %>% 
+  left_join(anos, by = "UnidadEconomica") %>% 
+  mutate(Post = ifelse(Ano <= AnoImp, 0, 1)) %>% 
+  split(.$UnidadEconomica) %>% 
+  map(~ lm(Valor/1000 ~ Post, data = .x)) %>% 
+  map_df(tidy) %>% 
+  mutate(model = c("Isla Natividad", "Isla Natividad", "Maria Elena", "Maria Elena", "Punta Herrero", "Punta Herrero"),
+         P1 = ifelse(p.value < 0.1, "*", ""),
+         P2 = ifelse(p.value < 0.05, "*", ""),
+         P = paste0(P1, P2),
+         estimate = formatC(estimate, digits = 2, format = "f"),
+         std.error = formatC(std.error, digits = 2, format = "f"),
+         texto = paste0(estimate, "(", std.error, ")", P)) %>% 
+  select(model, Variable = term, texto) %>% 
+  spread(model, texto) %>% 
+  knitr::kable(booktabs = T, caption = "Resultados del análisis de regresión de ingresos de langosta. Los números entre paréntesis indican el Error Estándar de los coeficientes estimados. * Indica p < 0.1; ** Indica p < 0.05.")
+
+```
+
+\clearpage
+
+## Gobernanza
+
+A continuación se presentan algunos de los indicadores numéricos de gobernanza y su relación con el tamaño de efecto (*i.e.* $\beta_2$) de los indicadores biológicos previamente presentados (Fig. 15). Se observa que la edad de la reserva (*i.e.* tiempo transcurrido desde su implementación) es un buen predictor para el incrmento en densidad de invertebrados y el nivel trófico de peces. Éste mismo indicicador también sugiere que existe una disminución en la densidad de peces. Sin embargo, al comparar con otros indicadores biológicos, la interpretación es que hay menos peces, pero de mayor nivel trófico, lo cual ha sido reportado para reservas marinas en las que los depredadores regresan y muchas de las presas se encuentran ahora bajo depredación o competencia [@anderson_2014-yi]. Por el otro lado, la percepción del nivel (de 0 a 5) de la intensidad de la pesca ilegal no parece tener un efecto importante en ninguno de los indicadores biológicos.
+
+Sin embargo, éstos no son todos los indicadores de gobernanza utilizados, y es necesario incoroporal los demás para obtener la historia completa y comprender por qué algunas comunidades fueron más exitosas que otras. Como se observó previamente, Puerto Libertad fue la comunidad con el mayor número de indicadores positivos. Aunque la reserva fue implementada desde el 2012, esta no fue reconocida hasta el verano del 2017. A pesar de esto y de la carencia de un programa de vigilancia establecido, la presencia de los comités comunitarios parece brindar fortaleza a la reserva, donde todos los miembros de la comunidad están de acuerdo en protegerla. Además, a diferencia de Guaymas --con ambientes similares, y relativamente bajo los mismos forzamientos ambientales--, es una comunidad pequeña y que se encuentra más aislada. De igual manera, Isla Natividad y Maria Elena, las siguientes dos comunidades con indicadore spositivos y significativos, son comunidades relativamente pequeñas y aisladas, con un buen sistema de organización por medio de cooperativas pesqueras.
+
+\clearpage
+
+```{r, warning = F, message = F, fig.height = 6, fig.width = 6, fig.cap = "Relación entre tamaño de efecto (eje y) y el valor de dos indicadores de gobernanza (eje x). PL = Puerto Libertad, PH = Punta Herrero, ME = Maria Elena, IN = Isla Natividad, G = Guaymas."}
 gob_summary <- group_by(gob, Comunidad) %>% 
   summarize(Ano = mean(Ano),
             PescadoresAntes = mean(Num.pescadores.antes),
@@ -435,7 +567,7 @@ rbind(extract_effect(IslaNatividad),
                        rep("PL", 14),
                        rep("G", 11),
                        rep("ME", 8),
-                       rep("PH", 8)),
+                       rep("PH", 9)),
          P = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
   filter(Indicador %in% c("ShannonP", "DensidadP", "TroficoP", "ShannonI", "DensidadI")) %>%
   select(Comunidad, Indicador, estimate, P) %>% 
@@ -450,7 +582,48 @@ rbind(extract_effect(IslaNatividad),
 
 ```
 
+Con excepción de las zonas de concesión, cantidad y tipo de instrumentos de manejo no parecen tener un efecto importante en el efecto de la reserva. Las reservas dentro de una zona de concesión (Isla Natividad, Maria Elena, Punta Herrero) tuvieron un mejor desempeño. Aunque Puerto Libertad no cuenta con una concesión, la presencia de comités comunitarios y el aislamiento relativo permiten que haya cierto uso exclusivo de los recursos.
+
+```{r, include = F, eval = F}
+rbind(extract_effect(IslaNatividad),
+      extract_effect(PuertoLibertad),
+      extract_effect(Guaymas),
+      extract_effect(MariaElena),
+      extract_effect(PuntaHerrero)) %>% 
+  mutate(Comunidad = c(rep("IN", 11),
+                       rep("PL", 14),
+                       rep("G", 11),
+                       rep("ME", 8),
+                       rep("PH", 9)),
+         P = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05"),
+         Pos = ifelse(estimate > 0, 1, 0)) %>% 
+  filter(Indicador %in% c("ShannonP", "RiquezaP", "DensidadP", "TroficoP", "BiomasaP", "ShannonI", "RiquezaI", "DensidadI")) %>% 
+  group_by(Comunidad, P) %>% 
+  summarize(Indicadores = sum(Pos)) %>% 
+  left_join(gob_summary, by = "Comunidad") %>% 
+  gather(Variable, Valor, -c(Comunidad, Indicadores, P)) %>% 
+  ggplot(aes(x = Valor, y = Indicadores)) +
+  geom_smooth(method = "lm", color = "black") +
+  geom_point(aes(color = Comunidad)) +
+  facet_grid(P~Variable, scales = "free") +
+  theme_bw() +
+  labs(x = "Valor", y = "Efecto")
+```
+
+\clearpage
 
 # Conclusiones
+
+Al evaluar las cinco comunidades costeras nos fue posible identificar características relacionadas a la efectividad. El primer punto es el aislamiento de la comunidad. Ésto ha sido reportado antes [@edgar_2014-UO] como una de las características relacionadas con la efectividad de la reserva, y ocurre cuando es difícil o costoso --incluso para los pescadores furtivos-- acceder a las aguas protegidas. En zonas no aisladas, la vigilancia puede ayudar a reducir el incentivo de pesca ilegal al incrementar la probabilidad de ser visto. Ya sea por aislamiento o por una buena vigilancia de la reserva, el resultado final es un bajo grado de pesca ilegal, que se traduce en incrementos en los indicadores biológicos.
+
+También es relevante mencionar el papel que la edad de la reserva juega. Si bien no es posible modificar este atributo de las reservas (a diferencia de incrementar vigilancia, por ejemplo),  en ocasiones será necesario esperar más tiempo para observar cambios a corto y mediano plazo. En la medida de lo posible, realizar investigación que permita estimar mejor los "tiempos de recuperación" de las reservas, puede ayudar a poner metas alcanzables dentro del periodo establecido.
+
+Más importante aún es la presencia de organizaciones pesqueras. Aunque el esquema de cooperativas es el más reconocido por promover el comanejo de los recursos [@mccay_2014-CN; @mccay_2017-1m], la realidad es que cualquier estructura o foro que permita el diálogo entre usuarios resulta igualmente efectiva [@mccay_1990-81]. En este caso, la presencia de Comités Comunitarios en Puerto Libertad cumple la labor de permitir la interacción, intercambio de ideas y generación de acuerdos entre usuarios.
+
+Además, la presencia de zonas de concesión también es una fuente de éxito. Las reservas dentro de concesiones suelen ser más efectivas [@afflerbach_2014-HP], ya que las concesiones promueven un sentido de pertenencia sobre los recursos naturales [@mccay_2014-CN; @afflerbach_2014-HP]. Aunque el caso más afectivo (Puerto Libertad) no cuenta con una zona de concesión, la presencia del Comité Comunitario y los tipos de acceso a la pesquería presentes, junto con el aislamiento, son suficientes para establecer que existe una cierta restricción de acceso al uso de los recursos de la zona.
+
+Para los cinco casos de estudio evaluados en este trabajo, el aislamiento y vigilancia (como reductores de pesca ilegal), la presencia de organizaciones pesqueras, poblaciones relativamente pequeñas y aisladas y con acceso exclusivo al aprovechamiento de recursos podrían explicar la efectividad observada en los indicadores biológicos. Aunque no es posible asumir causalidad, es razonable asumir que una comunidad organizada, aislada y con buena vigilancia podrá tener mejores resultados en sus reservas. Por lo tanto, en la medida de lo posible, éstas características deberan de buscarse ---o generarse-- en las comunidades candidatas al establecimiento de reservas marinas.
+
+\clearpage
 
 # Referencias

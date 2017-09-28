@@ -1,6 +1,6 @@
-Comunidad,Reservas,AnoImp,AnoLegal,Tipo,InsVig,Manejo
-Isla Natividad,2,2006,,Reserva Comunitaria,Los pescadores tienen un sistema de turnos para vigilar la reserva día y noche desde embarcaciones patrulla,"Permisos de escama, concesión de langosta, tallas mínimas, temporadas de veda, cuotas"
-Puerto Libertad,1,2012,2017,Reserva Comunitaria - Zona de Refugio Pesquero,No tiene,"Permisos, tallas minimas, temporadas de veda, cuotas de captura, Zonas de Manejo Integral"
-Guaymas,3,2012,2017,Reserva Comunitaria - Zona de Refugio Pesquero,No tiene,"Plan de mejora pesquera jurel,Permisos, tallas minimas, temporadas de veda"
-Maria Elena,8,2012,2012,Zona de refugio Pesquero,"Equipo de vigilancia comunitaria, con apoyo de la CONANP y COBI. COBI donó embarcacion. Recorridos frecuentes","Permisos de pesca de escama, concesión de langosta, tallas minimas, temporadas de veda"
-Punta Herrero,4,2013,2013,Zona de refugio Pesquero,"Equipo de vigilancia comunitaria, con apoyo de la CONANP. Se reañizan pocos recorridos marinos","Permisos de pesca de escama y tiburon, concesión de langosta, tallas minimas, temporadas de veda"
+Comunidad,Reservas,AnoImp,AnoLegal,Tipo,Manejo,PescIleg,InsVig,OrgPesc,Edad
+Isla Natividad,2,2006,,Reserva Comunitaria,"Permisos de escama, concesión de langosta, tallas mínimas, temporadas de veda, cuotas",1,Los pescadores tienen un sistema de turnos para vigilar la reserva día y noche desde embarcaciones patrulla,"Cooperativa, dentro federacion de cooperativas pacifico norte",11
+Puerto Libertad,1,2012,2017,Reserva Comunitaria - Zona de Refugio Pesquero,"Permisos, tallas minimas, temporadas de veda, cuotas de captura, Zonas de Manejo Integral",1,No tiene,"Comité de pesca y acuacultura (comunitario), cooperativas, permisionarios",5
+Guaymas,3,2012,2017,Reserva Comunitaria - Zona de Refugio Pesquero,"Plan de mejora pesquera jurel,Permisos, tallas minimas, temporadas de veda",3,No tiene,"Comités comunitarios, cooperativas, Union regional pesquera Guaymas-Empalme, sindicato pesca deportiva",5
+Maria Elena,8,2012,2012,Zona de refugio Pesquero,"Permisos de pesca de escama, concesión de langosta, tallas minimas, temporadas de veda",1,"Equipo de vigilancia comunitaria, con apoyo de la CONANP y COBI. COBI donó embarcacion. Recorridos frecuentes",Cooperativa,5
+Punta Herrero,4,2013,2013,Zona de refugio Pesquero,"Permisos de pesca de escama y tiburon, concesión de langosta, tallas minimas, temporadas de veda",3,"Equipo de vigilancia comunitaria, con apoyo de la CONANP. Se reañizan pocos recorridos marinos",Cooperativa,4
