@@ -1,0 +1,39 @@
+---
+title: "Three archetypes of no-take marine reserves yield positive (but idiosyncratic) social and ecological benefits in Mexico"
+rtitle: "Mexican marine reserves"
+author: "Juan Carlos Villaseñor-Derbez,$^{1,*}$, Stuart Fulton,$^{2}$ Jorge Torre,$^{2}$"
+institution: "
+$^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
+$^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
+"
+corrauth: "Me, at home"
+email: "jvillasenor@bren.ucsb.edu"
+abstract: ""
+keywords: "Marine Reserves, Marine Conservation, Fisheries, Citizen Science, Mexico"
+bibliography: "../exported-references.bib"
+output:
+  pdf_document:
+    keep_tex: yes
+    template: template.tex
+csl: FMS.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+La sobrepesca y prácticas pesqueras no sostenibles son unas de las mayores amenazas para la conservación de los ecosistemas marinos del mundo [@halpern_2008-dK; @halpern_2017-Zi]. La implementación de reservas marinas (*i.e.* áreas donde la captura de una o más especies está prohibida) es una medida de manejo frecuentemente propuesta para recuperar stocks pesqueros e impulsar la productividad pesquera en aguas cercanas [@afflerbach_2014-HP; @krueck_2017-J1; @sala_2017-69]. Recientes trabajos han demostrado que también pueden mitigar y proveer amortiguamiento ante el cambio climático [@roberts_2017-J9], variabilidad ambiental [@micheli_2012-EU], resolver problemas de pesca incidental [@hastings_2017-sm] y, en general, incrementar la biomasa, riqueza y densidades de organismos dentro de sus fronteras [@lester_2009-Ks; @giakoumi_2017-V2; @sala_2017-69].
+
+En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva.
+
+Buscando promover una alternativa con procesos ascendentes para implementar reservas marinas, las Organizaciones de la Sociedad Civil (OSCs) comenzaron a trabajar con comunidades pesqueras para establecer reservas comunitarias [@uribe_2010-u2] . Estas son comúnmente establecidas dentro de zonas de concesión, una forma de derechos de uso territoriales para pesquerías (TURF, en inglés). Al permitir a los pescadores diseñar sus propias reservas, una mayor proporción de la comunidad está de acuerdo con los perímetros y reglas establecidas, y por lo tanto los respetan [@gelcich_2015-Gw; @espinosaromero_2014-PY; @beger_2004-Y8] . Adicionalmente, los pescadores pueden implementar sus reservas por un periodo acordado (usualmente cinco años), después del cual la reserva puede ser abierta a la pesca. Esto provee a los pescadores con un sentido de confianza de que, en caso de ser necesario, aún tienen acceso a pescar esa zona[^1]. Las reservas son directamente vigiladas y monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas embarcaciones (*e.g.* pangas) para patrullar la zona, o realizan avistamientos desde la costa en búsqueda de pescadores ilegales Aún así, las reservas comunitarias carecen de reconocimiento legal; por lo tanto, no hay forma de penalizar a los infractores.
+
+# Materials and Methods
+
+# Results
+
+# Discussion
+
+# References

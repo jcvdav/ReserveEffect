@@ -1,6 +1,6 @@
 ---
 title: "Efectividad de reservas marinas en México"
-author: "Juan Carlos Villaseñor-Derbez, Stuart Fulton, Jorge Torre"
+author: "Juan Carlos Villaseñor-Derbez, Stuart Fulton, Alvin Suárez-Castillo"
 header-includes:
 - \usepackage{setspace}
 - \doublespacing
