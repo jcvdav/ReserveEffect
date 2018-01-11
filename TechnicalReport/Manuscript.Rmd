@@ -75,7 +75,7 @@ coordinates(xy1) <- c("X", "Y")
 proj4string(xy1) <- proj
 res1 <- spTransform(xy1, proj)
 
-load(file = "Data/coastline_mx.Rda")
+load(file = "../Data/coastline_mx.Rda")
 
 data(World)
 W <- spTransform(World, proj)
@@ -126,7 +126,7 @@ María Elena es una comunidad pesquera en la costa de Quintana Roo. Los arrecife
 La comunidad de Punta Herrero se encuentra aproximadamente a 15 km al sur del campo pesquero de María Elena. De igual manera, los arrecifes coralinos y manglares son los principales ecosistemas representados en la zona, y la principal especie explotada es la langosta. Sin embargo, la SCPP José María Azcorra también cuenta con permisos para pesca de escama y tiburón y una concesión de langosta. En una réplica del ejercicio realizado en María Elena -con presencia de los mismos actores-, cuatro ZRP fueron establecidas en el 2013, con una vigencia de cinco años. El equipo de vigilancia comunitaria, con apoyo de la CONANP, se encarga de la vigilancia de las reservas.
 
 ```{r}
-read.csv("Data/governance_summary.csv") %>% 
+read.csv("../Data/governance_summary.csv") %>% 
   knitr::kable(booktabs = T, col.names = c("Comunidad", "Reservas", "Año Implementación", "Año Reconocimiento", "Tipo", "Manejo de recursos", "Grado de pesca ilegal", "Inspección y Vigilancia", "Organizaciones pesqueras", "Edad"), caption = "Características de gobernanza generales de las cinco comunidades estudiadas.") %>% 
   kable_styling(latex_options = c("scale_down")) %>%
   column_spec(5, width = "3cm") %>%
@@ -139,13 +139,13 @@ read.csv("Data/governance_summary.csv") %>%
 ## Datos y análisis de datos
 
 ```{r}
-fish <- read.csv("Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
+fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
 
-invert <- read.csv("Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
+invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
 
-load("Data/conapesca_2000-2015.RData")
+load("../Data/conapesca_2000-2015.RData")
 
-cpi <- read.csv("Data/CPI.csv", stringsAsFactors = F, strip.white = T)
+cpi <- read.csv("../Data/CPI.csv", stringsAsFactors = F, strip.white = T)
 
 cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
 
@@ -162,7 +162,7 @@ conapesca %<>%
   left_join(cpi, by = "Ano") %>% 
   mutate(Valor = Valor * (CPI / cpi_2014))
 
-gob <- read.csv("Data/governance.csv", strip.white = T, stringsAsFactors = T)
+gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
 
 Para evaluar las reservas, utilizamos tres fuentes de información. La información ecológica proviene de los monitoreos ecológicos realizados anualmente en las zonas reserva y control. Cada año, se realizan censos visuales para evaluar las comunidades de peces e invertebrados, registrando riquezas, abundancias y tallas (en peces). Esta información nos permite calcular los indicadores biológicos de manera anual. Al tener valores de diferentes indicadores biológicos antes y después de la implementación de las reservas, para las zonas de reserva y sitios control, tenemos un diseño muestreal de Antes-Después-Control-Impacto. Utilizando un análisis de diferencia en diferencias podemos estimar el efecto que la reserva tienen en los indicadores biológicos [@moland_2013-VP] con el uso de un modelo de regresión lineal múltiple:

@@ -1,0 +1,163 @@
+---
+title: "Three archetypes of no-take marine reserves in Mexico yield positive (but idiosyncratic) social and ecological benefits"
+rtitle: "Mexican marine reserves"
+author: "Juan Carlos Villaseñor-Derbez,$^{1,*}$, Stuart Fulton,$^{2}$ Jorge Torre,$^{2}$"
+institution: "
+$^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
+$^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
+"
+corrauth: "Me, at home"
+email: "jvillasenor@bren.ucsb.edu"
+abstract: "This is my abstract"
+keywords: "Marine Reserves, Marine Conservation, Fisheries, Citizen Science, Mexico"
+# biblio: test.bib
+output:
+  bookdown::pdf_document2:
+    keep_tex: yes
+    template: template.tex
+# csl: FMS.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+Succinct, with no subheadings.
+
+Rationale
+Objectives
+Research question
+
+La sobrepesca y prácticas pesqueras no sostenibles son unas de las mayores amenazas para la conservación de los ecosistemas marinos del mundo \citep{halpern_2008-dK,halpern_2017-Zi}. La implementación de reservas marinas (*i.e.* áreas donde la captura de una o más especies está prohibida) es una medida de manejo frecuentemente propuesta para recuperar stocks pesqueros e impulsar la productividad pesquera en aguas cercanas \citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recientes trabajos han demostrado que también pueden mitigar y proveer amortiguamiento ante el cambio climático \citep{roberts_2017-J9}, variabilidad ambiental \citep{micheli_2012-EU}, resolver problemas de pesca incidental \citep{hastings_2017-sm} y, en general, incrementar la biomasa, riqueza y densidades de organismos dentro de sus fronteras \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}.
+
+En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva.
+
+Buscando promover una alternativa con procesos ascendentes para implementar reservas marinas, las Organizaciones de la Sociedad Civil (OSCs) comenzaron a trabajar con comunidades pesqueras para establecer reservas comunitarias \citep{uribe_2010-u2} . Estas son comúnmente establecidas dentro de zonas de concesión, una forma de derechos de uso territoriales para pesquerías (TURF, en inglés). Al permitir a los pescadores diseñar sus propias reservas, una mayor proporción de la comunidad está de acuerdo con los perímetros y reglas establecidas, y por lo tanto los respetan \citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8} . Adicionalmente, los pescadores pueden implementar sus reservas por un periodo acordado (usualmente cinco años), después del cual la reserva puede ser abierta a la pesca. Esto provee a los pescadores con un sentido de confianza de que, en caso de ser necesario, aún tienen acceso a pescar esa zona. Las reservas son directamente vigiladas y monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas embarcaciones (*e.g.* pangas) para patrullar la zona, o realizan avistamientos desde la costa en búsqueda de pescadores ilegales Aún así, las reservas comunitarias carecen de reconocimiento legal; por lo tanto, no hay forma de penalizar a los infractores.
+
+Sin embargo, en el 2014 una nueva norma \citep{nom049sagpesc_2014-V6} permite a los pescadores solicitar el establecimiento de reservas marinas bajo el nombre de “Zonas de refugio Pesquero” (ZRP). El manejo de las ZRP combina procesos ascendentes y descendentes al reconocer legalmente las reservas propuestas por las comunidades. Posterior a la revisión por parte de la Comisión Nacional de Acuacultura y Pesca (CONAPESCA) y la opinión técnica del Instituto Nacional de Acuacultura y Pesca (INAPESCA) las ZRP son establecidas por el periodo solicitado por los pescadores. El monitoreo y la vigilancia de las ZRP es típicamente llevado a cabo por la comunidad , con ayuda de OSCs locales. Hasta este cambio regulatorio, las reservas comunitarias no contaban con el soporte legal, y eran solamente reconocidas por la comunidad. Al día de hoy, existen 39 ZRP establecidas en el Pacífico, Golfo de California y Caribe Mexicano.
+
+Aunque existen tres aproximaciones generales para implementar reservas marinas en México (*i.e.* Zonas núcleo dentro de AMP, reservas comunitarias y Zonas de Refugio Pesquero), aún no comprendemos a fondo las características sociales que permiten su efectividad. La ciencia de reservas marinas se ha enfocado ampliamente en los efectos biológicos que estas tienen \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69,afflerbach_2014-HP,krueck_2017-J1}. Aunque el aspecto ecológico de las reservas es importante para su éxito, su efectividad también depende del estado socioeconómico y los sistemas de gobernanza de las comunidades pesqueras. 
+
+La literatura indica que diferentes características influyen en el éxito de una reserva. En Palau, por ejemplo, la edad (*i.e.* tiempo transcurrido desde implementación), tamaño y hábitat contenido son características claves que determinan la efectividad \citep{friedlander_2017-oI}. Por otro lado, en el Mar Mediterráneo, @difranco_2016-Xw identifican que la procuración y vigilancia, presencia de un plan de manejo, participación de pescadores en el manejo, representación de pescadores en la toma de decisiones y promoción de la pesca sustentable son los cinco factores que incrementan la salud de los stocks y el ingreso económicos a los pescadores, a la vez que se presenta una mayor aceptación social de las prácticas de manejo. En una aproximación global, @edgar_2014-UO encuentran que la procuración, edad, tamaño y aislamiento son determinantes de la efectividad de las reservas. Por lo tanto, observamos que las características que habilitan el éxito varían a través de regiones, y poco esfuerzo se ha hecho por comprender estas interacciones en México.
+
+# Materials and Methods
+
+This section may be divided by subheadings. This section should contain sufficient detail so that when read in conjunction with cited references, all procedures can be repeated. For experiments reporting results on animal or human subject research, an ethics approval statement should be included in this section (for further information, see section Materials and Data Policies)
+
+## Study area
+
+```{r}
+suppressPackageStartupMessages({
+  library(sp)
+  library(tmap)
+  library(tmaptools)
+  library(MPAtools)
+  library(magrittr)
+  library(kableExtra)
+  library(broom)
+  library(tidyverse)
+})
+```
+
+
+```{r, message = F, warning = F, fig.cap = "Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de María Elena y Punta Herrero.", fig.pos = 'h'}
+
+####
+
+proj <- CRS("+proj=longlat +datum=NAD27")
+
+data(World)
+W <- spTransform(World, proj)
+W <- W[!W$name == "Mexico",]
+
+load(file = "../Data/coastline_mx.Rda")
+
+locations <- cbind(x_coord = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087), y_coord = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957)) %>% 
+  SpatialPoints(proj4string = proj)
+
+location_labels <- data.frame(X = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087),
+                              Y = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957),
+                              Location = c("Isla Natividad", "Maria Elena", "Punta Herrero", "Puerto Libertad", "Guaymas"),
+                              Region = c("Pacific", "Caribbean","Caribbean", "Gulf of California", "Gulf of California"))
+coordinates(location_labels) <- c("X", "Y")
+proj4string(location_labels) <- proj
+location_labels <- spTransform(location_labels, proj)
+
+SAM_polygon <- cbind(x_coord = c(-88, -87, -87, -88, -88), y_coord = c(19, 19, 20, 20, 20)) %>% 
+  Polygon() %>% 
+  list() %>% 
+  Polygons(srl = ., ID = 1) %>% 
+  list() %>% 
+  SpatialPolygons(proj4string = proj)
+
+mex <- tm_shape(W, bbox = bb(baja2)) +
+  tm_polygons() +
+  tm_shape(baja2) +
+  tm_polygons() +
+  # tm_shape(SAM_polygon) +
+  # tm_borders(col = "black", lwd = 2) +
+  tm_shape(location_labels) +
+  tm_symbols(shape = "Location", col = "Region", palette = c("#33A02C", "#1F78B4", "#E31A1C"), border.col = "black", size = 0.5) +
+  tm_compass(position = c("left", "bottom")) +
+  tm_scale_bar(position = c("left", "bottom")) +
+  tm_grid(n.x = 4, n.y = 5)
+
+sam <- tm_shape(baja2, bbox = bb(xlim = c(-88, -86.726716),
+                          ylim = c(19.25, 19.5))) +
+  tm_polygons() +
+  tm_shape(location_labels) +
+  tm_symbols(shape = "Location", col = "Region", palette = c("#33A02C", "#1F78B4", "#E31A1C"), border.col = "black", size = 0.5) +
+  tm_compass() +
+  tm_scale_bar() +
+  tm_legend(show=FALSE) +
+  tm_grid(n.x = 4, n.y = 5)
+
+tmap_arrange(mex, sam, ncol = 2)
+```
+
+
+## Data collection
+
+## Data analysis
+
+### Biological
+
+### Socioeconomic
+
+### Governance
+
+# Results
+
+
+# Discussion
+
+This section may be divided by subheadings. Discussions should cover the key findings of the study: discuss any prior art related to the subject so to place the novelty of the discovery in the appropriate context; discuss the potential short-comings and limitations on their interpretations; discuss their integration into the current understanding of the problem and how this advances the current views; speculate on the future direction of the research and freely postulate theories that could be tested in the future.
+
+Summary of main findings
+Limitations
+Conclusions
+
+
+\section*{Conflict of Interest Statement}
+
+The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+
+\section*{Author Contributions}
+
+JC analyzed and interpreted data, discussed the results and wrote the manuscrip. SF and JT edited the manuscript and discussed the results.
+
+\section*{Funding}
+Details of all funding sources should be provided, including grant numbers if applicable. Please ensure to add all necessary funding information, as after publication this is no longer possible.
+
+\section*{Acknowledgments}
+This is a short text to acknowledge the contributions of specific colleagues, institutions, or agencies that aided the efforts of the authors.
+
+\section*{Supplemental Data}
+ \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder 
+
+\bibliographystyle{frontiersinSCNS_ENG_HUMS}
+\bibliography{references}
+
+\section*{Figure captions}
