@@ -1,15 +1,15 @@
 ---
 title: "Three archetypes of no-take marine reserves in Mexico yield positive (but idiosyncratic) social and ecological benefits"
 rtitle: "Mexican marine reserves"
-author: "Juan Carlos Villaseñor-Derbez,$^{1,*}$, Stuart Fulton,$^{2}$ Jorge Torre,$^{2}$"
+author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
 institution: "
 $^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
 $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
 "
 corrauth: "Me, at home"
 email: "jvillasenor@bren.ucsb.edu"
-abstract: "This is my abstract"
-keywords: "Marine Reserves, Marine Conservation, Fisheries, Citizen Science, Mexico"
+abstract: "En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva. En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva."
+keywords: "Marine Reserves, Marine Conservation, Fisheries, Citizen Science, Mexico. "
 # biblio: test.bib
 output:
   bookdown::pdf_document2:
@@ -19,7 +19,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(knitr.table.format = "latex")
 ```
 
 # Introduction
@@ -36,11 +37,11 @@ En México, las reservas marinas han sido comúnmente establecidas como zonas n�
 
 Buscando promover una alternativa con procesos ascendentes para implementar reservas marinas, las Organizaciones de la Sociedad Civil (OSCs) comenzaron a trabajar con comunidades pesqueras para establecer reservas comunitarias \citep{uribe_2010-u2} . Estas son comúnmente establecidas dentro de zonas de concesión, una forma de derechos de uso territoriales para pesquerías (TURF, en inglés). Al permitir a los pescadores diseñar sus propias reservas, una mayor proporción de la comunidad está de acuerdo con los perímetros y reglas establecidas, y por lo tanto los respetan \citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8} . Adicionalmente, los pescadores pueden implementar sus reservas por un periodo acordado (usualmente cinco años), después del cual la reserva puede ser abierta a la pesca. Esto provee a los pescadores con un sentido de confianza de que, en caso de ser necesario, aún tienen acceso a pescar esa zona. Las reservas son directamente vigiladas y monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas embarcaciones (*e.g.* pangas) para patrullar la zona, o realizan avistamientos desde la costa en búsqueda de pescadores ilegales Aún así, las reservas comunitarias carecen de reconocimiento legal; por lo tanto, no hay forma de penalizar a los infractores.
 
-Sin embargo, en el 2014 una nueva norma \citep{nom049sagpesc_2014-V6} permite a los pescadores solicitar el establecimiento de reservas marinas bajo el nombre de “Zonas de refugio Pesquero” (ZRP). El manejo de las ZRP combina procesos ascendentes y descendentes al reconocer legalmente las reservas propuestas por las comunidades. Posterior a la revisión por parte de la Comisión Nacional de Acuacultura y Pesca (CONAPESCA) y la opinión técnica del Instituto Nacional de Acuacultura y Pesca (INAPESCA) las ZRP son establecidas por el periodo solicitado por los pescadores. El monitoreo y la vigilancia de las ZRP es típicamente llevado a cabo por la comunidad , con ayuda de OSCs locales. Hasta este cambio regulatorio, las reservas comunitarias no contaban con el soporte legal, y eran solamente reconocidas por la comunidad. Al día de hoy, existen 39 ZRP establecidas en el Pacífico, Golfo de California y Caribe Mexicano.
+Sin embargo, en el 2014 una nueva norma \citep{nom} permite a los pescadores solicitar el establecimiento de reservas marinas bajo el nombre de “Zonas de refugio Pesquero” (ZRP). El manejo de las ZRP combina procesos ascendentes y descendentes al reconocer legalmente las reservas propuestas por las comunidades. Posterior a la revisión por parte de la Comisión Nacional de Acuacultura y Pesca (CONAPESCA) y la opinión técnica del Instituto Nacional de Acuacultura y Pesca (INAPESCA) las ZRP son establecidas por el periodo solicitado por los pescadores. El monitoreo y la vigilancia de las ZRP es típicamente llevado a cabo por la comunidad , con ayuda de OSCs locales. Hasta este cambio regulatorio, las reservas comunitarias no contaban con el soporte legal, y eran solamente reconocidas por la comunidad. Al día de hoy, existen 39 ZRP establecidas en el Pacífico, Golfo de California y Caribe Mexicano.
 
 Aunque existen tres aproximaciones generales para implementar reservas marinas en México (*i.e.* Zonas núcleo dentro de AMP, reservas comunitarias y Zonas de Refugio Pesquero), aún no comprendemos a fondo las características sociales que permiten su efectividad. La ciencia de reservas marinas se ha enfocado ampliamente en los efectos biológicos que estas tienen \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69,afflerbach_2014-HP,krueck_2017-J1}. Aunque el aspecto ecológico de las reservas es importante para su éxito, su efectividad también depende del estado socioeconómico y los sistemas de gobernanza de las comunidades pesqueras. 
 
-La literatura indica que diferentes características influyen en el éxito de una reserva. En Palau, por ejemplo, la edad (*i.e.* tiempo transcurrido desde implementación), tamaño y hábitat contenido son características claves que determinan la efectividad \citep{friedlander_2017-oI}. Por otro lado, en el Mar Mediterráneo, @difranco_2016-Xw identifican que la procuración y vigilancia, presencia de un plan de manejo, participación de pescadores en el manejo, representación de pescadores en la toma de decisiones y promoción de la pesca sustentable son los cinco factores que incrementan la salud de los stocks y el ingreso económicos a los pescadores, a la vez que se presenta una mayor aceptación social de las prácticas de manejo. En una aproximación global, @edgar_2014-UO encuentran que la procuración, edad, tamaño y aislamiento son determinantes de la efectividad de las reservas. Por lo tanto, observamos que las características que habilitan el éxito varían a través de regiones, y poco esfuerzo se ha hecho por comprender estas interacciones en México.
+La literatura indica que diferentes características influyen en el éxito de una reserva. En Palau, por ejemplo, la edad (*i.e.* tiempo transcurrido desde implementación), tamaño y hábitat contenido son características claves que determinan la efectividad \citep{friedlander_2017-oI}. Por otro lado, en el Mar Mediterráneo, \citet{difranco_2016-Xw} identifican que la procuración y vigilancia, presencia de un plan de manejo, participación de pescadores en el manejo, representación de pescadores en la toma de decisiones y promoción de la pesca sustentable son los cinco factores que incrementan la salud de los stocks y el ingreso económicos a los pescadores, a la vez que se presenta una mayor aceptación social de las prácticas de manejo. En una aproximación global, \citet{edgar_2014-UO} encuentran que la procuración, edad, tamaño y aislamiento son determinantes de la efectividad de las reservas. Por lo tanto, observamos que las características que habilitan el éxito varían a través de regiones, y poco esfuerzo se ha hecho por comprender estas interacciones en México.
 
 # Materials and Methods
 
@@ -48,79 +49,128 @@ This section may be divided by subheadings. This section should contain sufficie
 
 ## Study area
 
-```{r}
+... a map of the general location of the study sites is shown in figure \ref{fig:map}.
+
+```{r loadp_kgs}
 suppressPackageStartupMessages({
   library(sp)
+  library(sf)
+  library(ggsn)
+  library(patchwork)
   library(tmap)
-  library(tmaptools)
   library(MPAtools)
   library(magrittr)
   library(kableExtra)
   library(broom)
+  library(cowplot)
   library(tidyverse)
 })
 ```
 
 
-```{r, message = F, warning = F, fig.cap = "Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de María Elena y Punta Herrero.", fig.pos = 'h'}
-
-####
+```{r create_map, include = T, fig.cap = "\\label{fig:map}Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de María Elena y Punta Herrero."}
 
 proj <- CRS("+proj=longlat +datum=NAD27")
 
 data(World)
 W <- spTransform(World, proj)
-W <- W[!W$name == "Mexico",]
+W <- W[!W$name == "Mexico",] %>% 
+  st_as_sf()
 
-load(file = "../Data/coastline_mx.Rda")
-
-locations <- cbind(x_coord = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087), y_coord = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957)) %>% 
-  SpatialPoints(proj4string = proj)
+coastline_mx <- readRDS("../Data/Spatial/coastline_mx.rds")
 
 location_labels <- data.frame(X = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087),
                               Y = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957),
                               Location = c("Isla Natividad", "Maria Elena", "Punta Herrero", "Puerto Libertad", "Guaymas"),
-                              Region = c("Pacific", "Caribbean","Caribbean", "Gulf of California", "Gulf of California"))
+                              Region = c("Pacific", "Caribbean","Caribbean", "Gulf of California", "Gulf of California"),
+                              stringsAsFactors = F)
 coordinates(location_labels) <- c("X", "Y")
 proj4string(location_labels) <- proj
-location_labels <- spTransform(location_labels, proj)
+location_labels <- spTransform(location_labels, proj) %>% 
+  st_as_sf()
 
-SAM_polygon <- cbind(x_coord = c(-88, -87, -87, -88, -88), y_coord = c(19, 19, 20, 20, 20)) %>% 
-  Polygon() %>% 
-  list() %>% 
-  Polygons(srl = ., ID = 1) %>% 
-  list() %>% 
-  SpatialPolygons(proj4string = proj)
+main_map <- ggplot() +
+  geom_sf(data = W) +
+  geom_sf(data = coastline_mx) +
+  geom_sf(data = location_labels, aes(color = Location, fill = Location), size = 3) +
+  theme_classic() +
+  scale_color_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(legend.position = "none")
 
-mex <- tm_shape(W, bbox = bb(baja2)) +
-  tm_polygons() +
-  tm_shape(baja2) +
-  tm_polygons() +
-  # tm_shape(SAM_polygon) +
-  # tm_borders(col = "black", lwd = 2) +
-  tm_shape(location_labels) +
-  tm_symbols(shape = "Location", col = "Region", palette = c("#33A02C", "#1F78B4", "#E31A1C"), border.col = "black", size = 0.5) +
-  tm_compass(position = c("left", "bottom")) +
-  tm_scale_bar(position = c("left", "bottom")) +
-  tm_grid(n.x = 4, n.y = 5)
+mex <- main_map +
+  lims(x = c(-118.36648, -86.71074), y = c(14.53507, 32.71863))
 
-sam <- tm_shape(baja2, bbox = bb(xlim = c(-88, -86.726716),
-                          ylim = c(19.25, 19.5))) +
-  tm_polygons() +
-  tm_shape(location_labels) +
-  tm_symbols(shape = "Location", col = "Region", palette = c("#33A02C", "#1F78B4", "#E31A1C"), border.col = "black", size = 0.5) +
-  tm_compass() +
-  tm_scale_bar() +
-  tm_legend(show=FALSE) +
-  tm_grid(n.x = 4, n.y = 5)
+legends <- main_map +
+  lims(x = c(-87, -86.5), y = c(19.4, 19.6)) +
+  theme_map() +
+  theme(legend.justification = c(0.5, 0.5),
+        legend.position = c(0.5, 0.5),
+        legend.background = element_rect(fill = "transparent")) +
+  ggExtra::removeGrid() +
+  blank()
 
-tmap_arrange(mex, sam, ncol = 2)
+sam <- main_map +
+  lims(x = c(-88, -87), y = c(19.1, 19.7))
+
+goc <- main_map +
+  lims(x = c(-115.5, -110.5), y = c(27, 30))
+
+plot_grid(mex, sam, goc, legends, labels = c("A", "C", "B"), ncol = 2)
+
 ```
-
 
 ## Data collection
 
 ## Data analysis
+
+```{r load_data}
+fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
+
+invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
+
+load("../Data/conapesca_2000-2015.RData")
+
+cpi <- read.csv("../Data/CPI.csv", stringsAsFactors = F, strip.white = T)
+
+cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
+
+conapesca %<>%
+  filter(UnidadEconomica %in% c("Scpp cozumel scl",
+                                "Scpp jose maria azcorra scl",
+                                "Scpp buzos y pescadores de la baja california scl")) %>% 
+  filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
+  group_by(UnidadEconomica, Ano, NombreComun) %>%
+  summarize(PesoDesembarcado = sum(PesoDesembarcado), 
+            PesoVivo = sum(PesoVivo),
+            Valor = sum(Valor)) %>%
+  filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" & NombreComun == "Langosta ent. fca.")) %>% 
+  left_join(cpi, by = "Ano") %>% 
+  mutate(Valor = Valor * (CPI / cpi_2014))
+
+gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
+```
+
+```{r complete_fish, eval = F}
+fish2 <- fish %>% 
+  select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
+  group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
+  select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
+  arrange()
+```
+
+
+Table \ref{table:indicators} is the way to cite a table.
+
+```{r}
+data.frame(Category = c("Biological", "Biological","Biological","Biological","Biological","Biological", "Socioeconomic", "Socioeconomic", "Governance", "Governance", "Governance", "Governance", "Governance"),
+           Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densidad", "Nivel trófico", "Biomasa", "Densidad de especies objetivo", "Ingresos por especies objetivo", "Arribos de especies objetivo", "Tipo de acceso a la pesquería", "Grado de pesca ilegal", "Procuración de la reserva", "Tipo de organización pesquera", "Edad de la reserva"), stringsAsFactors = F) %>% 
+  knitr::kable(caption = "\\label{table:indicators}Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.")
+```
+
 
 ### Biological
 
@@ -129,7 +179,6 @@ tmap_arrange(mex, sam, ncol = 2)
 ### Governance
 
 # Results
-
 
 # Discussion
 
@@ -155,9 +204,20 @@ Details of all funding sources should be provided, including grant numbers if ap
 This is a short text to acknowledge the contributions of specific colleagues, institutions, or agencies that aided the efforts of the authors.
 
 \section*{Supplemental Data}
- \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder 
+ \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder
+ 
+\paragraph*{S1 Figure}
+\label{S1_Figure}
+Maps of the marine reserves and corresponding control sites at each community.
+
+\paragraph*{S2 Table}
+\label{S2_Table}
+Table with a general overview of on the governance characteristics of each community.
+ 
+
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS}
 \bibliography{references}
 
 \section*{Figure captions}
+

@@ -1,0 +1,9 @@
+Year,Community,Site,Zone,Transect,GenusSpecies,Abundance
+1,A,A,Control,1,A,1
+1,A,A,Control,2,B,2
+1,A,B,Reserve,1,C,2
+1,A,B,Reserve,2,D,3
+2,A,A,Control,1,H,1
+2,A,A,Control,2,I,2
+2,A,B,Reserve,1,J,2
+2,A,B,Reserve,2,K,3
