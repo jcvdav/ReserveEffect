@@ -1,15 +1,15 @@
 ---
-title: "Three archetypes of no-take marine reserves in Mexico yield positive (but idiosyncratic) social and ecological benefits"
+title: "Community-based marine reserves produce biological and economic benefits"
 rtitle: "Mexican marine reserves"
 author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
 institution: "
 $^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
 $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
 "
-corrauth: "Me, at home"
+corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, Santa Barbara, Santa Barbara, CA, 93106"
 email: "jvillasenor@bren.ucsb.edu"
-abstract: "En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva. En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva."
-keywords: "Marine Reserves, Marine Conservation, Fisheries, Citizen Science, Mexico. "
+abstract: ""
+keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico."
 # biblio: test.bib
 output:
   bookdown::pdf_document2:
@@ -65,60 +65,83 @@ suppressPackageStartupMessages({
   library(cowplot)
   library(tidyverse)
 })
+
+source(file = "../Scripts/robust_se.R")
+source(file = "../Scripts/abundance_model.R")
 ```
 
 
-```{r create_map, include = T, fig.cap = "\\label{fig:map}Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de María Elena y Punta Herrero."}
+```{r load_spatial}
 
+# Determine a projection for the maps
 proj <- CRS("+proj=longlat +datum=NAD27")
 
+# Load coastline for Mexico and World
 data(World)
-W <- spTransform(World, proj)
-W <- W[!W$name == "Mexico",] %>% 
+W <- spTransform(World, proj) %>% 
   st_as_sf()
 
+# Load high-res mexican coastline
 coastline_mx <- readRDS("../Data/Spatial/coastline_mx.rds")
 
-location_labels <- data.frame(X = c(-115.24, -87.5129043, -87.4611756, -111.377856,-112.7294087),
-                              Y = c(27.85, 19.3722361, 19.3183386, 27.979079, 29.8904957),
-                              Location = c("Isla Natividad", "Maria Elena", "Punta Herrero", "Puerto Libertad", "Guaymas"),
-                              Region = c("Pacific", "Caribbean","Caribbean", "Gulf of California", "Gulf of California"),
+# Declare points for reference map
+location_labels <- data.frame(X = c(-115.24, -87.4611756),
+                              Y = c(27.85, 19.3183386),
+                              Location = c("Isla Natividad", "Punta Herrero"),
+                              Region = c("Pacific", "Caribbean"),
                               stringsAsFactors = F)
 coordinates(location_labels) <- c("X", "Y")
 proj4string(location_labels) <- proj
 location_labels <- spTransform(location_labels, proj) %>% 
   st_as_sf()
 
-main_map <- ggplot() +
+# Load ZRP shapefile
+zrp <- st_read(dsn = "../Data/Spatial", layer = "ZRP", quiet = T) %>% 
+  filter(Name %in% c("El Cabezo", "El Faro", "Gallineros")) %>% 
+  st_transform(crs = "+proj=longlat +datum=NAD27")
+
+# Load Community reserve shapefile
+rescom <- st_read(dsn = "../Data/Spatial", layer = "Res_Com", quiet = T) %>% 
+  filter(Nombre == "La_Plana") %>% 
+  st_transform(crs = "+proj=longlat +datum=NAD27")
+
+```
+
+```{r create_map, include = T, fig.cap = "\\label{fig:map}Mapa de la localización general de las comunidades de estudio. El panel de la derecha es un acercamiento a las comunidades de María Elena y Punta Herrero."}
+# Define reference map
+mex <- ggplot() +
   geom_sf(data = W) +
-  geom_sf(data = coastline_mx) +
-  geom_sf(data = location_labels, aes(color = Location, fill = Location), size = 3) +
+  geom_sf(data = location_labels, color = "steelblue", size = 3) +
   theme_classic() +
   scale_color_brewer(palette = "Set1") +
   scale_fill_brewer(palette = "Set1") +
-  theme(legend.position = "none")
-
-mex <- main_map +
+  theme(legend.position = "none") +
   lims(x = c(-118.36648, -86.71074), y = c(14.53507, 32.71863))
 
-legends <- main_map +
-  lims(x = c(-87, -86.5), y = c(19.4, 19.6)) +
-  theme_map() +
-  theme(legend.justification = c(0.5, 0.5),
-        legend.position = c(0.5, 0.5),
-        legend.background = element_rect(fill = "transparent")) +
-  ggExtra::removeGrid() +
-  blank()
+# Map for Punta Herrero
+ph <- ggplot() +
+  geom_sf(data = coastline_mx) +
+  lims(x = c(-87.5, -87.4), y = c(19.280990, 19.35)) +
+  geom_sf(data = zrp, fill = "red") +
+  theme_classic()
 
-sam <- main_map +
-  lims(x = c(-88, -87), y = c(19.1, 19.7))
+# Map for Maria Elena
+ma <- ggplot() +
+  geom_sf(data = coastline_mx) +
+  lims(x = c(-87.54, -87.44), y = c(19.38, 19.44)) +
+  geom_sf(data = zrp, fill = "red") +
+  theme_classic()
 
-goc <- main_map +
-  lims(x = c(-115.5, -110.5), y = c(27, 30))
+# Map for Natividad
+pbc <- ggplot() +
+  geom_sf(data = coastline_mx) +
+  lims(x = c(-115.24, -115.14), y = c(27.83, 27.90)) +
+  geom_sf(data = rescom, fill = "red") +
+  theme_classic()
 
-plot_grid(mex, sam, goc, legends, labels = c("A", "C", "B"), ncol = 2)
-
+plot_grid(mex, ph, pbc, ma, labels = c("A", "B", "C", "D"), ncol = 2)
 ```
+
 
 ## Data collection
 
@@ -126,12 +149,14 @@ plot_grid(mex, sam, goc, legends, labels = c("A", "C", "B"), ncol = 2)
 
 ```{r load_data}
 fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F) %>% 
-  filter(Comunidad %in% c("Isla Natividad", "Puerto Libertad", "Guaymas", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(RC))
+  filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
+  filter(!is.na(RC),
+         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)"))
 
 invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F) %>% 
-  filter(Comunidad %in% c("Isla Natividad", "Puerto Libertad", "Guaymas", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(RC))
+  filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
+  filter(!is.na(RC),
+         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)"))
 
 load("../Data/conapesca_2000-2015.RData")
 
@@ -159,14 +184,14 @@ gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 
 ```{r, prepare_covars}
 fish_covars <- fish %>% 
-  select(RC, Ano, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura) %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
-  summarize_all("mean", na.rm = T)
+  group_by(RC, Ano, Sitio, Zona, Transecto, Comunidad) %>% 
+  count() %>% 
+  select(-n)
 
 invert_covars <- invert %>% 
-  select(RC, Ano, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura) %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
-  summarize_all("mean", na.rm = T)
+  group_by(RC, Ano, Sitio, Zona, Transecto, Comunidad) %>% 
+  count() %>% 
+  select(-n)
 ```
 
 ```{r complete_fish}
@@ -177,8 +202,9 @@ fish_complete <- fish %>%
   ungroup() %>% 
   complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
   left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
-  select(Ano, RC, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura, GeneroEspecie, Abundancia) %>% 
-  arrange()
+  select(Comunidad, Ano, RC, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
+  arrange() %>% 
+  filter(!is.na(RC))
 
 invert_complete <- invert %>%
   select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
@@ -187,17 +213,14 @@ invert_complete <- invert %>%
   ungroup() %>% 
   complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
   left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
-  select(Ano, RC, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura, GeneroEspecie, Abundancia) %>% 
+  select(Comunidad, Ano, RC, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
   arrange()
 ```
 
 ```{r model_fit}
-fish_abundance_model <- fish_complete %>% 
-  mutate(Ano = as.factor(Ano)) %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
-  summarize(Abundancia = sum(Abundancia)) %>% 
-  ungroup() %>% 
-  glm(Abundancia ~ Ano * Zona * RC + 0, data = ., family = "poisson")
+fish_abundance_model <- abundance_model(fish_complete)
+
+invert_abundance_model <- abundance_model(invert_complete)
 ```
 
 ```{r, eval = F}
@@ -219,25 +242,25 @@ fish_complete %>%
   summarize(Abundancia = sum(Abundancia)) %>% 
   ungroup() %>% 
   mutate(predictions = predict(fish_abundance_model, ., type = "response"),
-         RMSE = predictions - Abundancia) %>% 
-  summarize_at(.vars = "RMSE", .funs = function(x){sqrt(mean(x^2, na.rm = T))})
+         Err = predictions - Abundancia) %>% 
+  ggplot(aes(x = Err)) +
+  geom_histogram(binwidth = 10) +
+  theme_classic()
+
+fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  mutate(predictions = predict(fish_abundance_model, ., type = "response"),
+         Err = predictions - Abundancia) %>% 
+  ggplot(aes(x = predictions, y = Err)) +
+  geom_point() +
+  geom_abline(slope = 0) +
+  theme_classic()
 
 glance(fish_abundance_model)
 ```
-
-```{r}
-broom::tidy(fish_abundance_model) %>% 
-  filter(str_detect(term ,":ZonaReserva"), !str_detect(term ,"RC")) %>%
-  # mutate(rows = 1:nrow(.)) %>% 
-  # filter(rows <= 10) %>% 
-  ggplot(aes(x = term, y = estimate)) +
-  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
-  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed") +
-  theme_classic() +
-  coord_flip()
-```
-
 
 
 Table \ref{table:indicators} is the way to cite a table.
@@ -253,6 +276,87 @@ data.frame(Category = c("Biological", "Biological","Biological","Biological","Bi
 ### Governance
 
 # Results
+
+```{r}
+comunidades <- fish %>% 
+  group_by(Comunidad, RC) %>% 
+  count() %>% 
+  ungroup() %>% 
+  select(-n)
+
+tidy_terms <- robust_se(fish_abundance_model) %>% 
+  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
+           grepl("Ano20..:ZonaReserva", term)
+         ) %$%
+  str_split(term, pattern = ":", simplify = T) %>% 
+  as.tibble() %>% 
+  set_colnames(c("Ano", "Zona", "RC")) %>% 
+  select(-Zona) %>% 
+  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = ""))) %>% 
+  filter(!(Ano > 2011 & RC == "")) %>% 
+  mutate(RC = gsub(RC, pattern = "RC", replacement = ""),
+         RC = ifelse(RC == "", "La Plana / Las Cuevas - La Dulce / Babencho", RC))
+
+robust_se(fish_abundance_model) %>% 
+  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
+           grepl("Ano20..:ZonaReserva", term),
+         !term %in% c("Ano2012:ZonaReserva", "Ano2013:ZonaReserva", "Ano2014:ZonaReserva", "Ano2015:ZonaReserva", "Ano2016:ZonaReserva")) %>%
+  cbind(tidy_terms) %>%
+  mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
+  left_join(comunidades, by = "RC") %>%
+  mutate(Comunidad = ifelse(is.na(Comunidad), "Isla Natividad", Comunidad)) %>%
+  ggplot(aes(x = Ano, y = estimate)) +
+  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
+  geom_line(aes(group = RC, color = RC)) +
+  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_classic() +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  facet_wrap(~Comunidad, ncol = 2) +
+  theme(legend.justification = c(0, 0), 
+        legend.position = c(0.55, 0.01))
+```
+
+```{r}
+comunidades <- invert %>% 
+  group_by(Comunidad, RC) %>% 
+  count() %>% 
+  ungroup() %>% 
+  select(-n)
+
+tidy_terms <- robust_se(invert_abundance_model) %>% 
+  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
+           grepl("Ano20..:ZonaReserva", term)
+         ) %$%
+  str_split(term, pattern = ":", simplify = T) %>% 
+  as.tibble() %>% 
+  set_colnames(c("Ano", "Zona", "RC")) %>% 
+  select(-Zona) %>% 
+  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = ""))) %>% 
+  filter(!(Ano > 2011 & RC == "")) %>% 
+  mutate(RC = gsub(RC, pattern = "RC", replacement = ""),
+         RC = ifelse(RC == "", "La Plana / Las Cuevas - La Dulce / Babencho", RC))
+
+robust_se(invert_abundance_model) %>% 
+  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
+           grepl("Ano20..:ZonaReserva", term),
+         !term %in% c("Ano2012:ZonaReserva", "Ano2013:ZonaReserva", "Ano2014:ZonaReserva", "Ano2015:ZonaReserva", "Ano2016:ZonaReserva")) %>%
+  cbind(tidy_terms) %>%
+  mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
+  left_join(comunidades, by = "RC") %>%
+  mutate(Comunidad = ifelse(is.na(Comunidad), "Isla Natividad", Comunidad)) %>%
+  ggplot(aes(x = Ano, y = estimate)) +
+  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
+  geom_line(aes(group = RC, color = RC)) +
+  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_classic() +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  facet_wrap(~Comunidad, ncol = 2) +
+  theme(legend.justification = c(0, 0), 
+        legend.position = c(0.55, 0.01))
+```
+
 
 # Discussion
 
