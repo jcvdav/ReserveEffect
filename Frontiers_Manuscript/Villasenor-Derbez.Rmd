@@ -125,9 +125,13 @@ plot_grid(mex, sam, goc, legends, labels = c("A", "C", "B"), ncol = 2)
 ## Data analysis
 
 ```{r load_data}
-fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
+fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F) %>% 
+  filter(Comunidad %in% c("Isla Natividad", "Puerto Libertad", "Guaymas", "Maria Elena", "Punta Herrero")) %>% 
+  filter(!is.na(RC))
 
-invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F)
+invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F) %>% 
+  filter(Comunidad %in% c("Isla Natividad", "Puerto Libertad", "Guaymas", "Maria Elena", "Punta Herrero")) %>% 
+  filter(!is.na(RC))
 
 load("../Data/conapesca_2000-2015.RData")
 
@@ -151,16 +155,89 @@ conapesca %<>%
 gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
 
-```{r complete_fish, eval = F}
-fish2 <- fish %>% 
+### Biological
+
+```{r, prepare_covars}
+fish_covars <- fish %>% 
+  select(RC, Ano, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize_all("mean", na.rm = T)
+
+invert_covars <- invert %>% 
+  select(RC, Ano, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize_all("mean", na.rm = T)
+```
+
+```{r complete_fish}
+fish_complete <- fish %>% 
   select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
   group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
   summarize(Abundancia = sum(Abundancia)) %>% 
   ungroup() %>% 
   complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
+  left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
+  select(Ano, RC, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura, GeneroEspecie, Abundancia) %>% 
+  arrange()
+
+invert_complete <- invert %>%
   select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
+  group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
+  left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
+  select(Ano, RC, Sitio, Zona, Transecto, ProfundidadInicial, Visibilidad, Temperatura, GeneroEspecie, Abundancia) %>% 
   arrange()
 ```
+
+```{r model_fit}
+fish_abundance_model <- fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  glm(Abundancia ~ Ano * Zona * RC + 0, data = ., family = "poisson")
+```
+
+```{r, eval = F}
+fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  mutate(predictions = predict(fish_abundance_model, ., type = "response")) %>% 
+  ggplot(aes(x = predictions, y = Abundancia, color = RC)) +
+  geom_point() +
+  theme_classic() +
+  geom_abline() +
+  theme(legend.position = "none")
+
+fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  mutate(predictions = predict(fish_abundance_model, ., type = "response"),
+         RMSE = predictions - Abundancia) %>% 
+  summarize_at(.vars = "RMSE", .funs = function(x){sqrt(mean(x^2, na.rm = T))})
+
+glance(fish_abundance_model)
+```
+
+```{r}
+broom::tidy(fish_abundance_model) %>% 
+  filter(str_detect(term ,":ZonaReserva"), !str_detect(term ,"RC")) %>%
+  # mutate(rows = 1:nrow(.)) %>% 
+  # filter(rows <= 10) %>% 
+  ggplot(aes(x = term, y = estimate)) +
+  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
+  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_classic() +
+  coord_flip()
+```
+
 
 
 Table \ref{table:indicators} is the way to cite a table.
@@ -170,9 +247,6 @@ data.frame(Category = c("Biological", "Biological","Biological","Biological","Bi
            Indicador = c("Índice de diversidad de shannon", "Riqueza", "Densidad", "Nivel trófico", "Biomasa", "Densidad de especies objetivo", "Ingresos por especies objetivo", "Arribos de especies objetivo", "Tipo de acceso a la pesquería", "Grado de pesca ilegal", "Procuración de la reserva", "Tipo de organización pesquera", "Edad de la reserva"), stringsAsFactors = F) %>% 
   knitr::kable(caption = "\\label{table:indicators}Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.")
 ```
-
-
-### Biological
 
 ### Socioeconomic
 
