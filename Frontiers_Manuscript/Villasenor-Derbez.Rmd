@@ -23,6 +23,55 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 options(knitr.table.format = "latex")
 ```
 
+___
+
+**Esqueleto:**
+
+- Introduction
+
+  - Las reservas marinas son una herramienta para X y Y, con beneficios A y B
+
+  - Existen diferencias entre reservas bottom up y top down
+
+  - En Mexico, las reservas se implementan de 3 maneras
+
+  - Los ZRP tienen X objetivos
+
+  - A X anos de la implementacion de la NOM-049, no hay estudio formal de ZRP o reservas comunitarias
+
+  - Proveer la primer evaluacion de reservas comunitarias triple bottom line
+
+- Materials and methods
+
+  - Study areas
+
+    - Main type of ecosystem
+
+    - Number of fishers (aprox)
+
+  - Data collection
+
+    - Sampling design (BACI)
+
+    - Sampling protocol (transects, richness, abundance, sizes)
+
+    - Sample sizes
+
+  - Data analysis
+
+    - Objectives and indicators
+
+    - Analysis of numeric indicators
+
+    - Analysis of descriptive indicators
+
+- Results
+
+- Discusion
+
+____
+
+
 # Introduction
 
 Succinct, with no subheadings.
@@ -278,83 +327,42 @@ data.frame(Category = c("Biological", "Biological","Biological","Biological","Bi
 # Results
 
 ```{r}
-comunidades <- fish %>% 
-  group_by(Comunidad, RC) %>% 
-  count() %>% 
-  ungroup() %>% 
-  select(-n)
 
-tidy_terms <- robust_se(fish_abundance_model) %>% 
-  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
-           grepl("Ano20..:ZonaReserva", term)
-         ) %$%
+fish_model2 <- invert_complete %>% 
+  filter(Comunidad == "Isla Natividad") %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  ungroup() %>% 
+  glm(Abundancia ~ Ano * Zona, data = ., family = "quasipoisson")
+
+tidy_terms <-  fish_model2 %>% 
+  robust_se() %>%
+  filter(grepl("Ano20.*:ZonaReserva", term)) %$%
   str_split(term, pattern = ":", simplify = T) %>% 
   as.tibble() %>% 
-  set_colnames(c("Ano", "Zona", "RC")) %>% 
+  set_colnames(c("Ano", "Zona")) %>% 
   select(-Zona) %>% 
-  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = ""))) %>% 
-  filter(!(Ano > 2011 & RC == "")) %>% 
-  mutate(RC = gsub(RC, pattern = "RC", replacement = ""),
-         RC = ifelse(RC == "", "La Plana / Las Cuevas - La Dulce / Babencho", RC))
+  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = "")))
 
-robust_se(fish_abundance_model) %>% 
-  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
-           grepl("Ano20..:ZonaReserva", term),
-         !term %in% c("Ano2012:ZonaReserva", "Ano2013:ZonaReserva", "Ano2014:ZonaReserva", "Ano2015:ZonaReserva", "Ano2016:ZonaReserva")) %>%
+robust_se(fish_model2) %>%
+  filter(grepl("Ano20.*:ZonaReserva", term)) %>% 
   cbind(tidy_terms) %>%
   mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
-  left_join(comunidades, by = "RC") %>%
-  mutate(Comunidad = ifelse(is.na(Comunidad), "Isla Natividad", Comunidad)) %>%
   ggplot(aes(x = Ano, y = estimate)) +
   geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
-  geom_line(aes(group = RC, color = RC)) +
-  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
+  geom_point(aes(fill = p), size = 4, shape = 21, color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_classic() +
   scale_fill_brewer(palette = "Set1", direction = -1) +
-  facet_wrap(~Comunidad, ncol = 2) +
   theme(legend.justification = c(0, 0), 
         legend.position = c(0.55, 0.01))
+  
 ```
 
+
 ```{r}
-comunidades <- invert %>% 
-  group_by(Comunidad, RC) %>% 
-  count() %>% 
-  ungroup() %>% 
-  select(-n)
 
-tidy_terms <- robust_se(invert_abundance_model) %>% 
-  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
-           grepl("Ano20..:ZonaReserva", term)
-         ) %$%
-  str_split(term, pattern = ":", simplify = T) %>% 
-  as.tibble() %>% 
-  set_colnames(c("Ano", "Zona", "RC")) %>% 
-  select(-Zona) %>% 
-  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = ""))) %>% 
-  filter(!(Ano > 2011 & RC == "")) %>% 
-  mutate(RC = gsub(RC, pattern = "RC", replacement = ""),
-         RC = ifelse(RC == "", "La Plana / Las Cuevas - La Dulce / Babencho", RC))
-
-robust_se(invert_abundance_model) %>% 
-  filter(grepl("Ano20.*:ZonaReserva:RC", term) |
-           grepl("Ano20..:ZonaReserva", term),
-         !term %in% c("Ano2012:ZonaReserva", "Ano2013:ZonaReserva", "Ano2014:ZonaReserva", "Ano2015:ZonaReserva", "Ano2016:ZonaReserva")) %>%
-  cbind(tidy_terms) %>%
-  mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
-  left_join(comunidades, by = "RC") %>%
-  mutate(Comunidad = ifelse(is.na(Comunidad), "Isla Natividad", Comunidad)) %>%
-  ggplot(aes(x = Ano, y = estimate)) +
-  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
-  geom_line(aes(group = RC, color = RC)) +
-  geom_point(fill = "steelblue", size = 4, shape = 21, color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed") +
-  theme_classic() +
-  scale_fill_brewer(palette = "Set1", direction = -1) +
-  facet_wrap(~Comunidad, ncol = 2) +
-  theme(legend.justification = c(0, 0), 
-        legend.position = c(0.55, 0.01))
 ```
 
 
