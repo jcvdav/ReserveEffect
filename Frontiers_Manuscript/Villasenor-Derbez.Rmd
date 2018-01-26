@@ -116,7 +116,8 @@ suppressPackageStartupMessages({
 })
 
 source(file = "../Scripts/robust_se.R")
-source(file = "../Scripts/abundance_model.R")
+source(file = "../Scripts/model.R")
+source(file = "../Scripts/plot_model.R")
 ```
 
 
@@ -200,7 +201,7 @@ plot_grid(mex, ph, pbc, ma, labels = c("A", "B", "C", "D"), ncol = 2)
 fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(RC),
-         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)"))
+         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)", "El Faro - El Faro (Control)", "Anegado de Chal - Anegado de Chal (Control)"))
 
 invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
@@ -267,9 +268,13 @@ invert_complete <- invert %>%
 ```
 
 ```{r model_fit}
-fish_abundance_model <- abundance_model(fish_complete)
+fish_abundance_model <- fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  model(com = "Isla Natividad", sfe = F, family = "quasipoisson")
 
-invert_abundance_model <- abundance_model(invert_complete)
+# invert_abundance_model <- abundance_model(invert_complete)
 ```
 
 ```{r, eval = F}
@@ -327,37 +332,55 @@ data.frame(Category = c("Biological", "Biological","Biological","Biological","Bi
 # Results
 
 ```{r}
+fish_complete %>% 
+  group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>%
+  filter(Comunidad == "Punta Herrero") %>% 
+  group_by(Zona, Ano) %>% 
+  summarize(Abundancia = mean(Abundancia)) %>% 
+  ggplot(aes(x = Ano, y = Abundancia, color = Zona)) +
+  geom_point() +
+  geom_line()
+```
 
-fish_model2 <- invert_complete %>% 
-  filter(Comunidad == "Isla Natividad") %>% 
+```{r}
+fish_complete %>% 
+  group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>%
+  filter(Comunidad == "Punta Herrero") %>% 
+  group_by(Zona, Ano) %>% 
+  summarize(Abundancia = mean(Abundancia)) %>% 
+  spread(Zona, Abundancia) %>%
+  mutate(Abundancia = c(183.94, Reserva[-1] - Control[-1] - 183.94)) %>%
+  ggplot(aes(x = Ano, y = Abundancia)) +
+  geom_point() +
+  geom_line()
+```
+
+
+```{r}
+com <- "Maria Elena"
+
+jc3 <- fish_complete %>% 
   mutate(Ano = as.factor(Ano)) %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto) %>% 
+  group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
   summarize(Abundancia = sum(Abundancia)) %>% 
-  ungroup() %>% 
-  glm(Abundancia ~ Ano * Zona, data = ., family = "quasipoisson")
+  filter(Comunidad == com) %>%
+  lm(Abundancia ~ Ano * Zona + GeneroEspecie, data = .)
 
-tidy_terms <-  fish_model2 %>% 
-  robust_se() %>%
-  filter(grepl("Ano20.*:ZonaReserva", term)) %$%
-  str_split(term, pattern = ":", simplify = T) %>% 
-  as.tibble() %>% 
-  set_colnames(c("Ano", "Zona")) %>% 
-  select(-Zona) %>% 
-  mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = "")))
-
-robust_se(fish_model2) %>%
-  filter(grepl("Ano20.*:ZonaReserva", term)) %>% 
-  cbind(tidy_terms) %>%
-  mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05")) %>% 
-  ggplot(aes(x = Ano, y = estimate)) +
-  geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
-  geom_point(aes(fill = p), size = 4, shape = 21, color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed") +
-  theme_classic() +
-  scale_fill_brewer(palette = "Set1", direction = -1) +
-  theme(legend.justification = c(0, 0), 
-        legend.position = c(0.55, 0.01))
+fish_complete %>% 
+  mutate(Ano = as.factor(Ano)) %>% 
+  group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto) %>% 
+  summarize(Abundancia = sum(Abundancia)) %>% 
+  filter(Comunidad == com) %>%
+  lm(Abundancia ~ Ano * Zona, data = .) %>% #summary()
+  plot_model()
   
+```
+
+
+```{r}
+
 ```
 
 
