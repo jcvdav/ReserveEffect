@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.17)  25 JAN 2018 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.17)  27 JAN 2018 11:33
 entering extended mode
 **./Villasenor-Derbez.tex
 (Villasenor-Derbez.tex
@@ -834,7 +834,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./logo1.jpg, id=43, 335.3328pt x 120.2091pt>
+<./logo1.jpg, id=55, 335.3328pt x 120.2091pt>
 File: ./logo1.jpg Graphic file (type jpg)
 <use ./logo1.jpg>
 Package pdftex.def Info: ./logo1.jpg used on input line 38.
@@ -882,80 +882,62 @@ Underfull \hbox (badness 10000) detected at line 38
 []
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 47.
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 47.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 47.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 47.
-
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <13> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 104.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 107.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 91.
 [1
 
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo1.jpg>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 183.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 154.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 183.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 154.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [2]
-<Villasenor-Derbez_files/figure-latex/create_map-1.pdf, id=135, 469.755pt x 325
-.215pt>
-File: Villasenor-Derbez_files/figure-latex/create_map-1.pdf Graphic file (type 
-pdf)
-<use Villasenor-Derbez_files/figure-latex/create_map-1.pdf>
-Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/create_map-1.pdf 
-used on input line 217.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-<Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf, id=137, 469.755pt 
+<Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf, id=151, 469.755pt 
 x 325.215pt>
-File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (
+File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (
 type pdf)
-<use Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1
-.pdf used on input line 274.
+<use Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf>
+Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1
+.pdf used on input line 212.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 215.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [3]
-Overfull \vbox (258.93456pt too high) has occurred while \output is active []
-
-
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
-[4 <./Villasenor-Derbez_files/figure-latex/create_map-1.pdf> <./Villasenor-Derb
-ez_files/figure-latex/unnamed-chunk-3-1.pdf>]
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 320.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 320.
-(Villasenor-Derbez.bbl
+[4 <./Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf>]
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [5]
+<Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf, id=181, 433.62pt x
+ 578.16pt>
+File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (
+type pdf)
+<use Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1
+.pdf used on input line 348.
+(pdftex.def)             Requested size: 433.61894pt x 578.15858pt.
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 390.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 390.
+(Villasenor-Derbez.bbl
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
-[6])
+[6]
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+[7])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 3.
 See the caption package documentation for explanation.
@@ -963,44 +945,49 @@ See the caption package documentation for explanation.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
-[7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
+[8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+[9 <./Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
 (Villasenor-Derbez.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 338.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
 Package rerunfilecheck Info: File `Villasenor-Derbez.out' has not changed.
-(rerunfilecheck)             Checksum: 9CA25735C15E794990CF9AF099DC6C69;596.
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
-
+(rerunfilecheck)             Checksum: 0C0CE16347B72F523AE73287AE37316E;820.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 12155 strings out of 493329
- 180445 string characters out of 3139072
- 330937 words of memory out of 3000000
- 15242 multiletter control sequences out of 15000+200000
- 41896 words of font info for 162 fonts, out of 3000000 for 9000
+ 12163 strings out of 493329
+ 180266 string characters out of 3139072
+ 333025 words of memory out of 3000000
+ 15209 multiletter control sequences out of 15000+200000
+ 39942 words of font info for 173 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
  60i,9n,94p,1099b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucr
-r8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
-imes/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Villasenor-Derbez.pdf (7 pages, 7680155 bytes).
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/urw/helvetic/uhvbo8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
+/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr
+o8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Villasenor-Derbez.pdf (9 pages, 7731043 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 31840 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 30328 words of extra memory for PDF output out of 35830 (max. 10000000)
 

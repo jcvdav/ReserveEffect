@@ -197,11 +197,7 @@ filter(invert, Comunidad %in% c("Isla Natividad", "Puerto Libertad", "Guaymas", 
   coord_flip()
 ```
 
-También incluimos información socioeconómica relevante proveniente de los avisos de arribo de CONAPESCA. En este caso, se tienen registros mensuales de los recursos aprovechados por las diferentes comunidades, en los que se reportan los arribos (Toneladas) y el valor de los arribos ($). La información se encuentra disponible para el periodo 2001 - 2014. Ya que las categorías registradas por CONAPESCA son amplias y existe un nivel de error, utilizamos únicamente los arribos reportados para langosta entera fresca a nivel de cooperativa. Los ingresos generados por arribos son ajustados por medio del índice de precio al consumidor. El análisis de datos socioeconómicos se aplicó únicamente a Isla Natividad, María Elena y Punta Herrero, siguiendo un modelo con la forma:
-
-$$I = \beta_0 + \beta_1Post$$
-
-Que nos permite comparar el cambio en el promedio de los indicadores antes (Post = 0) y después (Post = 1) de la implementación de la reserva. Tanto para los indicadores biológicos como los socioeconómicos, los coeficientes fueron ajustador con el estimador de muestras heterocedásticas.
+También incluimos información socioeconómica relevante proveniente de los avisos de arribo de CONAPESCA. En este caso, se tienen registros mensuales de los recursos aprovechados por las diferentes comunidades, en los que se reportan los arribos (Toneladas) y el valor de los arribos ($). La información se encuentra disponible para el periodo 2001 - 2014. Ya que las categorías registradas por CONAPESCA son amplias y existe un nivel de error, utilizamos únicamente los arribos reportados para langosta entera fresca a nivel de cooperativa. Los ingresos generados por arribos son ajustados por medio del índice de precio al consumidor. 
 
 La información de gobernanza fue obtenida a nivel de comunidad, pidiendo a personas familiares con las comunidades que proveyeran la información necesaria. La información de gobernanza no es evaluada de manera cuantitativa. En su lugar, esta se interpreta de manera tal que podamos comprender qué decisiones, reglas y estructuras tienen un impacto en la reserva.
 
