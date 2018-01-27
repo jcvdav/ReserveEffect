@@ -1,12 +1,16 @@
-model <- function(x, com, family = "gaussian", sfe = T){
-  data <- x %>%  
-    dplyr::filter(Comunidad == com)
+model <- function(x, family = "gaussian", sfe = T, spfe = T){
+  
+  # x %<>% filter(Comunidad == com)
   
   if(sfe){
-    glm(Abundancia ~ Ano * Zona + Sitio -1, data = data, family = family)
+    if(spfe){model <- glm(Indicador ~ Ano * Zona + Sitio + GeneroEspecie, data = x, family = family)} #Site FE and Spp FE
+    if(!spfe){model <- glm(Indicador ~ Ano * Zona + Sitio, data = x, family = family)} #Site FE, no Spp FE
   }
   
   if(!sfe){
-    glm(Abundancia ~ Ano * Zona -1, data = data, family = family)
+    if(spfe){model <- glm(Indicador ~ Ano * Zona + GeneroEspecie, data = x, family = family)} #No site FE and Spp FE
+    if(!spfe){model <- glm(Indicador ~ Ano * Zona, data = x, family = family)} #No site and no Spp FE
   }
+  
+  return(model)
 }
