@@ -1,4 +1,4 @@
-plot_model <- function(model, various = F, model_names = NULL){
+plot_model <- function(model, various = F, model_names = NULL, legend = F){
   
   if(various){
     
@@ -21,7 +21,7 @@ plot_model <- function(model, various = F, model_names = NULL){
         set_colnames(c("Ano", "Zona")) %>% 
         select(-Zona) %>% 
         mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = "")),
-               model = model_names[i])
+               Community = model_names[i])
       
       p_i <- robust_se(model[[i]]) %>%
         filter(grepl(":ZonaReserva", term)) %>% 
@@ -31,16 +31,19 @@ plot_model <- function(model, various = F, model_names = NULL){
       p_all <- rbind(p_all,  p_i)
     }
     
+    pd <- position_dodge(width = 0.4)
+    
     p <- p_all %>% 
-      ggplot(aes(x = Ano, y = estimate)) +
-      geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, color = "red", size = 1) +
-      geom_point(aes(shape = model), size = 4) +
+      ggplot(aes(x = Ano, y = estimate, color = Community)) +
+      geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0, size = 1, position = pd) +
+      geom_point(aes(shape = Community), size = 4, position = pd, alpha = 0.5) +
       geom_hline(yintercept = 0, linetype = "dashed") +
       scale_fill_brewer(palette = "Set1") +
       theme(legend.justification = c(0, 1),
-            legend.position = c(0, 1)) +
+            legend.position = c(0, 1),
+            text = element_text(size = 12)) +
       labs(x = "Year", y = "Effect size") +
-      geom_line(aes(group = model))
+      scale_color_brewer(palette = "Set1")
     
   }
   
@@ -66,6 +69,11 @@ plot_model <- function(model, various = F, model_names = NULL){
       theme(legend.justification = c(1, 1), 
             legend.position = c(1, 1)) +
       labs(x = "Year", y = "Effect size")
+  }
+  
+  if(!legend){
+    p <- p +
+      theme(legend.position = "None")
   }
   
   return(p)
