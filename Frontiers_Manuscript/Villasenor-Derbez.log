@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.17)  27 JAN 2018 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.17)  7 FEB 2018 19:36
 entering extended mode
 **./Villasenor-Derbez.tex
 (Villasenor-Derbez.tex
@@ -445,10 +445,17 @@ Package microtype Info: Loading configuration file microtype.cfg.
 File: microtype.cfg 2016/05/14 v2.6a microtype main configuration file (RS)
 )) ("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count155
+\float@exts=\toks35
+\float@box=\box36
+\@float@everytoks=\toks36
+\@floatcapt=\box37
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks35
-\inpenc@posthook=\toks36
+\inpenc@prehook=\toks37
+\inpenc@posthook=\toks38
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OML ...
@@ -759,60 +766,61 @@ Now handling font encoding PD1 ...
 )) (Villasenor-Derbez.aux)
 \openout1 = `Villasenor-Derbez.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 28.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count155
+\scratchcounter=\count156
 \scratchdimen=\dimen140
-\scratchbox=\box36
-\nofMPsegments=\count156
-\nofMParguments=\count157
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count158
+\scratchbox=\box38
+\nofMPsegments=\count157
+\nofMParguments=\count158
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count159
 \MPscratchDim=\dimen141
-\MPnumerator=\count159
-\makeMPintoPDFobject=\count160
-\everyMPtoPDFconversion=\toks38
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
+\everyMPtoPDFconversion=\toks40
 )
-Package crop Info: requested driver: `' on input line 25.
-Package crop Info: detected driver: `pdftex' on input line 25.
-Package crop Info: using `pdftex' graphics driver on input line 25.
+Package crop Info: requested driver: `' on input line 28.
+Package crop Info: detected driver: `pdftex' on input line 28.
+Package crop Info: using `pdftex' graphics driver on input line 28.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 25.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring OFF on input line 28.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count161
+\c@section@level=\count162
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 (Villasenor-Derbez.out) (Villasenor-Derbez.out)
 \@outlinefile=\write3
 \openout3 = `Villasenor-Derbez.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 25.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1500.
@@ -826,7 +834,7 @@ Package microtype Info: No adjustment of character kerning.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-ptm.cfg"
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 38.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
@@ -837,39 +845,39 @@ Package microtype Info: Loading generic settings for font family
 <./logo1.jpg, id=55, 335.3328pt x 120.2091pt>
 File: ./logo1.jpg Graphic file (type jpg)
 <use ./logo1.jpg>
-Package pdftex.def Info: ./logo1.jpg used on input line 38.
+Package pdftex.def Info: ./logo1.jpg used on input line 41.
 (pdftex.def)             Requested size: 144.0pt x 51.62103pt.
 
-Underfull \hbox (badness 10000) detected at line 38
+Underfull \hbox (badness 10000) detected at line 41
 []
  []
 
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 38--38
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 41--41
 [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 38.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-cmr.cfg"
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msb.cfg"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 38.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -878,37 +886,37 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) detected at line 38
+Underfull \hbox (badness 10000) detected at line 41
 []
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <13> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 91.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 102.
 [1
 
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo1.jpg>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 154.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 159.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 154.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 159.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [2]
-<Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf, id=151, 469.755pt 
+<Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf, id=177, 469.755pt 
 x 325.215pt>
 File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (
 type pdf)
 <use Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf>
 Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1
-.pdf used on input line 212.
+.pdf used on input line 223.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 215.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 226.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
@@ -919,25 +927,48 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [5]
-<Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf, id=181, 433.62pt x
+<Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf, id=208, 433.62pt x
  578.16pt>
 File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (
 type pdf)
 <use Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1
-.pdf used on input line 348.
+.pdf used on input line 359.
 (pdftex.def)             Requested size: 433.61894pt x 578.15858pt.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 390.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 390.
-(Villasenor-Derbez.bbl
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [6]
+<Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf, id=213, 289.08pt x
+ 216.81pt>
+File: Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (
+type pdf)
+<use Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf>
+Package pdftex.def Info: Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1
+.pdf used on input line 368.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
-[7])
+[7 <./Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>]
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 403.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 403.
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+[8 <./Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf>] (Villasenor-
+Derbez.bbl
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+[9])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 3.
 See the caption package documentation for explanation.
@@ -945,18 +976,12 @@ See the caption package documentation for explanation.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
-[8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (3.49998pt too high) has occurred while \output is active []
-
-[9 <./Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+[10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 421.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 421.
 (Villasenor-Derbez.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 421.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 421.
 Package rerunfilecheck Info: File `Villasenor-Derbez.out' has not changed.
 (rerunfilecheck)             Checksum: 0C0CE16347B72F523AE73287AE37316E;820.
 
@@ -964,13 +989,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 12163 strings out of 493329
- 180266 string characters out of 3139072
- 333025 words of memory out of 3000000
- 15209 multiletter control sequences out of 15000+200000
- 39942 words of font info for 173 fonts, out of 3000000 for 9000
+ 12261 strings out of 493329
+ 181937 string characters out of 3139072
+ 333909 words of memory out of 3000000
+ 15281 multiletter control sequences out of 15000+200000
+ 40344 words of font info for 177 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 60i,9n,94p,1099b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,9n,94p,1099b,475s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -985,9 +1010,9 @@ nts/type1/urw/helvetic/uhvbo8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 o8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Villasenor-Derbez.pdf (9 pages, 7731043 bytes).
+Output written on Villasenor-Derbez.pdf (10 pages, 7744826 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 30328 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 315 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 30333 words of extra memory for PDF output out of 35830 (max. 10000000)
 

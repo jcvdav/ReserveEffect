@@ -1,15 +1,18 @@
 \documentclass{frontiersSCNS}
 \usepackage{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
+\usepackage{float}
+
 
 \linenumbers
 
 \usepackage[utf8]{inputenc}
+\floatplacement{figure}{H}
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Villaseñor-Derbez {et~al.}}
-\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,*}\), Stuart Fulton\(^{2}\), Jorge
-Torre\(^{2}\)}
+\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,*}\), Eréndira
+Aceves-Bueno\(^{1,*}\), Stuart Fulton\(^{2}\)}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
 \def\Address{\(^{1}\)Bren School of Environmental Science and Management, University
@@ -40,20 +43,28 @@ Santa Barbara, Santa Barbara, CA, 93106}
 
 \section{Introduction}\label{introduction}
 
-La sobrepesca y prácticas pesqueras no sostenibles son unas de las
-mayores amenazas para la conservación de los ecosistemas marinos del
-mundo \citep{halpern_2008-dK,halpern_2017-Zi}. La implementación de
-reservas marinas (\emph{i.e.} áreas donde la captura de una o más
-especies está prohibida) es una medida de manejo frecuentemente
-propuesta para recuperar stocks pesqueros e impulsar la productividad
-pesquera en aguas cercanas
-\citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recientes
-trabajos han demostrado que también pueden mitigar y proveer
-amortiguamiento ante el cambio climático \citep{roberts_2017-J9},
-variabilidad ambiental \citep{micheli_2012-EU}, resolver problemas de
-pesca incidental \citep{hastings_2017-sm} y, en general, incrementar la
-biomasa, riqueza y densidades de organismos dentro de sus fronteras
-\citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}.
+Overfishing and unsustainable fishing practices threaten marine
+ecosystems around the world \citep{halpern_2008-dK,halpern_2017-Zi}. The
+implementation of marine reserves (\emph{i.e.} areas where all fishing
+activities are off--limits; MRs) is a common management approach used to
+manage the spatial distribution of fishing effort and recover stocks
+\citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recent research
+poses that marine reserves can also help buffer climate change
+\citep{roberts_2017-J9}, provide a refuge to environmental variability
+\citep{micheli_2012-EU}, help reduce by-catch \citep{hastings_2017-sm}
+and, in general, increase biomass, richness and densities of organisms
+within the protected regions
+\citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}. However, the
+extent to which MRs yield benefits to fisheries remains relatively
+unexplored \citep{krueck_2017-J1} and the focus is often only in the
+social and economic dimensions \citep{klein_2008,charles_2008}, rarely
+providing a hollistic evaluation of the social-ecological system
+\citep{halpern_2013,lpezangarita_2014,mascia_2017-m_}. Here, we combine
+causal inference techniques \citep{depalma_2018} and the
+social-ecological systems framework
+\citep{ostrom_2009-hg,mascia_2017-m_} to provide a comprehensive
+evaluation of four community-based marine reserves in three coastal
+communities in Mexico.
 
 En México, las reservas marinas han sido comúnmente establecidas como
 zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por
@@ -353,6 +364,8 @@ ordered by survey type (left: fish; right: invertebrates) and
 indicators: Abundance (A, B), Richness (C, D), and Shannon's diversity
 index (E, F)}
 \end{figure}
+
+\includegraphics{Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf}
 
 \section{Discussion}\label{discussion}
 

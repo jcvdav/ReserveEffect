@@ -1,7 +1,7 @@
 ---
 title: "Community-based marine reserves produce biological and economic benefits"
 rtitle: "Mexican marine reserves"
-author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
+author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Stuart Fulton$^{2}$"
 institution: "
 $^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
 $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
@@ -10,12 +10,10 @@ corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, 
 email: "jvillasenor@bren.ucsb.edu"
 abstract: ""
 keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico."
-# biblio: test.bib
 output:
   bookdown::pdf_document2:
     keep_tex: yes
     template: template.tex
-# csl: FMS.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -27,17 +25,7 @@ options(knitr.table.format = "latex")
 
 <!-- - Introduction -->
 
-<!--   - Las reservas marinas son una herramienta para X y Y, con beneficios A y B -->
 
-<!--   - Existen diferencias entre reservas bottom up y top down -->
-
-<!--   - En Mexico, las reservas se implementan de 3 maneras -->
-
-<!--   - Los ZRP tienen X objetivos -->
-
-<!--   - A X anos de la implementacion de la NOM-049, no hay estudio formal de ZRP o reservas comunitarias -->
-
-<!--   - Proveer la primer evaluacion de reservas comunitarias triple bottom line -->
 
 <!-- - Materials and methods -->
 
@@ -72,11 +60,23 @@ options(knitr.table.format = "latex")
 
 <!-- Succinct, with no subheadings. -->
 
+<!--   - Las reservas marinas son una herramienta para X y Y, con beneficios A y B -->
+
+<!--   - Existen diferencias entre reservas bottom up y top down -->
+
+<!--   - En Mexico, las reservas se implementan de 3 maneras -->
+
+<!--   - Los ZRP tienen X objetivos -->
+
+<!--   - A X anos de la implementacion de la NOM-049, no hay estudio formal de ZRP o reservas comunitarias -->
+
+<!--   - Proveer la primer evaluacion de reservas comunitarias triple bottom line -->
+
 <!-- Rationale -->
 <!-- Objectives -->
 <!-- Research question -->
 
-La sobrepesca y prácticas pesqueras no sostenibles son unas de las mayores amenazas para la conservación de los ecosistemas marinos del mundo \citep{halpern_2008-dK,halpern_2017-Zi}. La implementación de reservas marinas (*i.e.* áreas donde la captura de una o más especies está prohibida) es una medida de manejo frecuentemente propuesta para recuperar stocks pesqueros e impulsar la productividad pesquera en aguas cercanas \citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recientes trabajos han demostrado que también pueden mitigar y proveer amortiguamiento ante el cambio climático \citep{roberts_2017-J9}, variabilidad ambiental \citep{micheli_2012-EU}, resolver problemas de pesca incidental \citep{hastings_2017-sm} y, en general, incrementar la biomasa, riqueza y densidades de organismos dentro de sus fronteras \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}.
+Overfishing and unsustainable fishing practices threaten marine ecosystems around the world \citep{halpern_2008-dK,halpern_2017-Zi}. The implementation of marine reserves (*i.e.* areas where all fishing activities are off--limits; MRs) is a common management approach used to manage the spatial distribution of fishing effort and recover stocks \citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recent research poses that marine reserves can also help buffer climate change \citep{roberts_2017-J9}, provide a refuge to environmental variability \citep{micheli_2012-EU}, help reduce by-catch \citep{hastings_2017-sm} and, in general, increase biomass, richness and densities of organisms within the protected regions \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}. However, the extent to which MRs yield benefits to fisheries remains relatively unexplored \citep{krueck_2017-J1} and the focus is often only in the social and economic dimensions \citep{klein_2008,charles_2008}, rarely providing a hollistic evaluation of the social-ecological system \citep{halpern_2013,lpezangarita_2014,mascia_2017-m_}. Here, we combine causal inference techniques \citep{depalma_2018} and the social-ecological systems framework \citep{ostrom_2009-hg,mascia_2017-m_} to provide a comprehensive evaluation of four community-based marine reserves in three coastal communities in Mexico.
 
 En México, las reservas marinas han sido comúnmente establecidas como zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de hoy, 36 RBs protegen una porción del ambiente marino en México. Sin embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho esfuerzos importantes por involucrar a los actores durante la implementación de las reservas, esto aún se caracteriza por un proceso descendente, el cual conlleva a la falta de cumplimiento por parte de los actores. La escasez de recursos monetarios y humanos de la limitan también el monitoreo y vigilancia de las reservas, y a su vez, el desempeño de la reserva.
 
@@ -130,6 +130,8 @@ suppressPackageStartupMessages({
 source(file = "../Scripts/abundance.R")
 source(file = "../Scripts/richness.R")
 source(file = "../Scripts/shannon.R")
+source(file = "../Scripts/biomass.R")
+source(file = "../Scripts/trophic.R")
 
 # Load analysis functions
 source(file = "../Scripts/model.R") #fits the model
@@ -231,7 +233,28 @@ data.frame(Category = c("Biological", "","","","","", "Socioeconomic", "", "Gove
 fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(RC),
-         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)", "El Faro - El Faro (Control)", "Anegado de Chal - Anegado de Chal (Control)"))
+         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)", "El Faro - El Faro (Control)", "Anegado de Chal - Anegado de Chal (Control)")) %>% 
+  mutate(GeneroEspecie = case_when(
+    GeneroEspecie == "Cephalopholis cruentatus" ~ "Cephalopholis cruentata",
+    GeneroEspecie == "Haemulon macrostomun" ~ "Haemulon macrostomum",
+    GeneroEspecie == "Xcochin spp" ~ "Balistes capriscus",
+    GeneroEspecie == "Pterois volitans/miles" ~ "Pterois volitans",
+    GeneroEspecie == "Mycteroperca spp" ~ "Mycteroperca",
+    GeneroEspecie == "Chromis spp" ~ "Chromis",
+    GeneroEspecie == "Damisela spp" ~ "Stegastes",
+    GeneroEspecie == "Haemulon spp" ~ "Haemulon",
+    GeneroEspecie == "Lancero spp" ~ "Acanthurus",
+    GeneroEspecie == "Kyphosus sectatrix/incisor" ~ "Kyphosus",
+    GeneroEspecie == "Sebastes spp" ~ "Sebastes",
+    GeneroEspecie == "Loro spp" ~ "Scarus",
+    GeneroEspecie == "Lutjanus spp" ~ "Lutjanus",
+    GeneroEspecie == "Mariposa spp" ~ "Chaetodon",
+    GeneroEspecie == "Pluma spp" ~ "Calamus pennatula",
+    GeneroEspecie == "Sparisoma aurolineatum" ~ "Sparisoma aurofrenatum",
+    GeneroEspecie == "Vieja spp" ~ "Bodianus rufus",
+    # GeneroEspecie == "" ~ "",
+    TRUE ~ GeneroEspecie
+  ))
 
 invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
@@ -292,6 +315,36 @@ fish_complete <- fish %>%
   arrange() %>% 
   filter(!is.na(RC))
 
+data("species_bio")
+
+spp <- group_by(fish_complete, GeneroEspecie) %>% 
+  count() %>% 
+  left_join(species_bio, by = "GeneroEspecie") %>% 
+  filter(is.na(a) | is.na(b))
+
+FB_update <- rfishbase::length_weight(c("Kyphosus incisor", "Kyphosus sectatrix", "Pterois volitans", "Scarus guacamaia", "Chaetodon capistratus", "Chaetodon capistratus", "Chaetodon striatus", "Calamus pennatula"), fields = c("a", "b")) %>% 
+  select(GeneroEspecie = sciname, a, b) %>% 
+  mutate(GeneroEspecie = case_when(
+    GeneroEspecie %in% c("Kyphosus sectatrix", "Kyphosus incisor") ~ "Kyphosus",
+    GeneroEspecie %in% c("Chaetodon capistratus", "Chaetodon striatus") ~ "Chaetodon",
+    TRUE ~ GeneroEspecie
+  )) %>% 
+  group_by(GeneroEspecie) %>% 
+  summarize_all(mean, na.rm = T)
+
+GenusLevelBio <- species_bio %>% 
+  filter(Genus %in% c("Mycteroperca", "Chromis", "Stegastes", "Haemulon", "Acanthurus", "Sebastes", "Lutjanus", "Scarus")) %>%
+  select(GeneroEspecie = Genus, a, b) %>% 
+  group_by(GeneroEspecie) %>% 
+  summarize_all(mean, na.rm = T)
+
+species_bio %<>%
+  select(GeneroEspecie, a, b) %>% 
+  rbind(FB_update) %>% 
+  rbind(GenusLevelBio)
+```
+
+```{r complete_inverts}
 invert_complete <- invert %>%
   select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
   group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
@@ -302,6 +355,7 @@ invert_complete <- invert %>%
   select(Comunidad, Ano, RC, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
   arrange()
 ```
+
 
 ```{r model_fit}
 
@@ -345,6 +399,32 @@ H_ME <- fish_complete %>%
 H_PH <- fish_complete %>% 
   shannon(com = "Punta Herrero") %>% 
   model(sfe = F, spfe = F)
+
+## Biomass
+B_IN <- fish %>% 
+  biomass(com = "Isla Natividad") %>% 
+  model(sfe = F)
+
+B_ME <- fish%>% 
+  biomass(com = "Maria Elena") %>% 
+  model(sfe = T)
+
+B_PH <- fish %>% 
+  biomass(com = "Punta Herrero") %>% 
+  model(sfe = F)
+
+## Trophic level
+# T_IN <- fish %>% 
+#   trophic("Isla Natividad") %>% 
+#   model(sfe = F, spfe = F)
+# 
+# T_ME <- fish %>% 
+#   trophic("Maria Elena") %>% 
+#   model(spfe = F)
+# 
+# T_PH <- fish %>% 
+#   trophic("Punta Herrero") %>% 
+#   model(sfe = F, spfe = F)
 
 
 # Invertebrates
@@ -420,6 +500,7 @@ F_S <- plot_model(model = list(S_IN, S_ME, S_PH),
 F_H <- plot_model(model = list(H_IN, H_ME, H_PH),
                   various = T,
                   model_names = c("IN", "ME", "PH"))
+
 # Invert plots
 I_N <- plot_model(model = list(Ni_IN, Ni_ME, Ni_PH),
                   various = T,
@@ -436,6 +517,14 @@ I_H <- plot_model(model = list(Hi_IN, Hi_ME, Hi_PH),
 cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_S),
                    labels = "AUTO",
                    ncol = 2)
+```
+
+```{r, fig.width = 4, fig.height = 3}
+F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
+                 various = T,
+                 model_names = c("IS", "ME", "PH"))
+
+F_B
 ```
 
 
