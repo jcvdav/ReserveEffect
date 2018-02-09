@@ -24,7 +24,7 @@ plot_model <- function(model, various = F, model_names = NULL, legend = F){
                Community = model_names[i])
       
       p_i <- robust_se(model[[i]]) %>%
-        filter(grepl(":ZonaReserva", term)) %>% 
+        filter(grepl(":ZonaReserva", term)) %>%
         cbind(tidy_terms) %>%
         mutate(p = ifelse(p.value < 0.05, "p < 0.05", "p > 0.05"))
       
@@ -39,9 +39,7 @@ plot_model <- function(model, various = F, model_names = NULL, legend = F){
       geom_point(aes(shape = Community), size = 4, position = pd, alpha = 0.5) +
       geom_hline(yintercept = 0, linetype = "dashed") +
       scale_fill_brewer(palette = "Set1") +
-      theme(legend.justification = c(0, 1),
-            legend.position = c(0, 1),
-            text = element_text(size = 12)) +
+      theme(text = element_text(size = 12)) +
       labs(x = "Year", y = "Effect size") +
       scale_color_brewer(palette = "Set1")
     

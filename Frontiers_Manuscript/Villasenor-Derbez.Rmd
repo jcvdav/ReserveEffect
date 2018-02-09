@@ -1,5 +1,5 @@
 ---
-title: "Community-based marine reserves produce biological and economic benefits"
+title: "Cool title here"
 rtitle: "Mexican marine reserves"
 author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Stuart Fulton$^{2}$"
 institution: "
@@ -8,7 +8,7 @@ $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
 "
 corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, Santa Barbara, Santa Barbara, CA, 93106"
 email: "jvillasenor@bren.ucsb.edu"
-abstract: ""
+abstract: "Nice abstract here"
 keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico."
 output:
   bookdown::pdf_document2:
@@ -116,7 +116,6 @@ suppressPackageStartupMessages({
   library(sp)
   library(sf)
   library(ggsn)
-  library(patchwork)
   library(tmap)
   library(MPAtools)
   library(magrittr)
@@ -287,7 +286,7 @@ gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 
 Utilizando un análisis de diferencia en diferencias podemos estimar el efecto que la reserva tienen en los indicadores biológicos \citep{moland_2013-VP} con el uso de un modelo de regresión lineal múltiple:
 
-$$I = \beta_0 + \sum \gamma Year + \beta_1 Zona + \sum \lambda Year\times Zona + \Omega + \epsilon$$
+$$I = \alpha_{i} + \gamma_{it} Year + \beta_{i} Zona + \lambda_{it} Year\times Zona + \sigma_{j} + \Pi_{k} + \epsilon$$
 
 En este caso, modelamos los años como factores, tomando como referencia el primer año en la serie de datos de cada comunidad. Modelar los años como factores reduce la estructura del modelo, y relaja el ajuste al no asumir una tendencia lineal entre años; es decir, el cambio observado entre 2006 - 2007 no deberá de ser igual al observado entre el 2009 - 2010. Incluimos también un término para la zona, en la que la variable toma un valor de 0 si el sitio es una zona control y de 1 si es una zona de reserva. Finalmente, incluimos un término de interacción entre la variable de Zona y el Año. En este modelo, $\lambda_i$ representa el efecto que la reservas tuvo sobre un indicador en cada año y con respecto a los sitios control. El termino $\Omega$ captura efectos fijos por especies y por sitio.
 
@@ -364,15 +363,15 @@ invert_complete <- invert %>%
 ## Abundance
 N_IN <- fish_complete %>% 
   abundance(com = "Isla Natividad") %>% 
-  model(sfe = F)
+  model(sfe = F, family = "quasipoisson")
 
 N_ME <- fish_complete %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = T)
+  model(sfe = T, family = "quasipoisson")
 
 N_PH <- fish_complete %>% 
   abundance(com = "Punta Herrero") %>% 
-  model(sfe = F)
+  model(sfe = F, family = "quasipoisson")
 
 ## Richness
 S_IN <- fish_complete %>% 
@@ -432,15 +431,15 @@ B_PH <- fish %>%
 ## Abundance
 Ni_IN <- invert_complete %>% 
   abundance(com = "Isla Natividad") %>% 
-  model(sfe = F)
+  model(sfe = F, family = "quasipoisson")
 
 Ni_ME <- invert_complete %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = T)
+  model(sfe = T, family = "quasipoisson")
 
 Ni_PH <- invert_complete %>% 
   abundance(com = "Punta Herrero") %>% 
-  model(sfe = F)
+  model(sfe = F, family = "quasipoisson")
 
 ## Richness
 Si_IN <- invert_complete %>% 
@@ -467,6 +466,24 @@ Hi_ME <- invert_complete %>%
 Hi_PH <- invert_complete %>% 
   shannon(com = "Punta Herrero") %>% 
   model(sfe = F, spfe = F)
+
+## Lobsters
+L_IN <- invert_complete %>%
+  filter(GeneroEspecie == "Panulirus interruptus") %>% 
+  abundance(com = "Isla Natividad") %>% 
+  model(sfe = F, spfe = F, family = "quasipoisson")
+
+L_ME <- invert_complete %>% 
+  filter(GeneroEspecie == "Panulirus argus") %>% 
+  abundance(com = "Maria Elena") %>% 
+  model(sfe = T, spfe = F, family = "quasipoisson")
+
+L_PH <- invert_complete %>% 
+  filter(GeneroEspecie == "Panulirus argus") %>% 
+  abundance(com = "Punta Herrero") %>% 
+  model(sfe = F, spfe = F, family = "quasipoisson")
+
+
 ```
 
 
@@ -484,14 +501,18 @@ Que nos permite comparar el cambio en el promedio de los indicadores antes (Post
 
 A continuación se presentan los resultados de cada una de las comunidades. Los resultados biológicos se presentarán para cada comunidad, discutiendo primero los indicadores en común con otras comunidades (Shannon, Riqueza, Densidad, Nivel Trófico, Biomasa para peces e invertebrados) y, según su caso, las densidades de las especies objetivo. Habiendo presentado los resultados biológicos, nos enfocaremos después en los socioeconómicos y de gobernanza. Usaremos esta información para identificar las causas (sociales) del éxito (biológico) de las reservas.
 
-
-```{r, fig.width = 6, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares). Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), and Shannon's diversity index (E, F)"}
+```{r, fig.width = 6.5, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F), and fish biomass (G)"}
 
 # Fish plots
 F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
                   various = T,
-                  model_names = c("IN", "ME", "PH"),
-                  legend = T)
+                  model_names = c("IN", "ME", "PH"), legend = T)  +
+  theme(legend.justification = c(0, 0),
+        legend.position = c(0, 0),
+        legend.text = element_text(size = 8),
+        legend.title = element_text(size = 8),
+        legend.direction = "horizontal") +
+  scale_colour_brewer(guide = guide_legend(title.position = "top", nrow = 1), palette = "Set1")
 
 F_S <- plot_model(model = list(S_IN, S_ME, S_PH),
                   various = T,
@@ -500,6 +521,10 @@ F_S <- plot_model(model = list(S_IN, S_ME, S_PH),
 F_H <- plot_model(model = list(H_IN, H_ME, H_PH),
                   various = T,
                   model_names = c("IN", "ME", "PH"))
+
+F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
+                 various = T,
+                 model_names = c("IS", "ME", "PH"))
 
 # Invert plots
 I_N <- plot_model(model = list(Ni_IN, Ni_ME, Ni_PH),
@@ -514,19 +539,52 @@ I_H <- plot_model(model = list(Hi_IN, Hi_ME, Hi_PH),
                   various = T,
                   model_names = c("IN", "ME", "PH"))
 
-cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_S),
+cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_S, F_B),
                    labels = "AUTO",
                    ncol = 2)
 ```
 
-```{r, fig.width = 4, fig.height = 3}
-F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
-                 various = T,
-                 model_names = c("IS", "ME", "PH"))
+```{r, fig.width = 4, fig.height = 6, fig.cap = "\\label{fig:lobsters}Effect sizes for lobster abundances in marine reserves from Isla Natividad (IN; red romboids), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
 
-F_B
+L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
+                     various = T,
+                     model_names = c("IS", "ME", "PH")) +
+  theme(legend.position = c(0, 1))
+
+L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
+                                          "Scpp cozumel scl",
+                                          "Scpp jose maria azcorra scl"),
+                      Comunidad = c("Isla Natividad",
+                                    "María Elena",
+                                    "Punta Herrero")) %>% 
+  left_join(conapesca, ., by = "UnidadEconomica") %>% 
+  mutate(Post = case_when(Comunidad == "Isla Natividad" && Ano <= 2006 ~ "Pre",
+                          Comunidad == "Maria Elena" && Ano <= 2012 ~ "Pre",
+                          Comunidad == "Punta Herrer" && Ano <= 2012 ~ "Pre",
+                          TRUE ~ "Post"))
+
+L_catches <- ggplot(L_conapesca, aes(x = Ano, y = PesoVivo/1000, color = Comunidad, group = Comunidad, fill = Comunidad)) +
+  geom_smooth(method = "lm") +
+  geom_point(size = 2, alpha = 0.5) +
+  scale_color_brewer(palette = "Set1") +
+  geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
+  labs(x = "Year", y = "Catches (Tones)") +
+  theme(legend.position = "none")
+
+L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1000, color = Comunidad, group = Comunidad, fill = Comunidad)) +
+  geom_smooth(method = "lm") +
+  geom_point(size = 2, alpha = 0.5) +
+  scale_color_brewer(palette = "Set1") +
+  geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
+  labs(x = "Year", y = "Value (MXP)") +
+  theme(legend.position = "none")
+
+
+cowplot::plot_grid(plotlist = list(L_plot, L_catches, L_value),
+                   labels = "AUTO",
+                   ncol = 1)
+
 ```
-
 
 # Discussion
 
