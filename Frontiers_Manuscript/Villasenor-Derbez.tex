@@ -25,6 +25,20 @@ Santa Barbara, Santa Barbara, CA, 93106}
 
 \def\corrEmail{\href{mailto:jvillasenor@bren.ucsb.edu}{\nolinkurl{jvillasenor@bren.ucsb.edu}}}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \onecolumn
 \firstpage{1}
@@ -43,7 +57,7 @@ Santa Barbara, Santa Barbara, CA, 93106}
 
 \begin{abstract}
 
-Nice abstract here
+Abstract here
 
 
 
@@ -51,7 +65,7 @@ Nice abstract here
 \medskip
 \tiny
  \keyFont{ \section{Keywords:} Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen
-Science, Mexico.}
+Science, Mexico, Social--Ecological Systems}
 
 
 
@@ -60,304 +74,251 @@ Science, Mexico.}
 
 \section{Introduction}\label{introduction}
 
-Overfishing and unsustainable fishing practices threaten marine
-ecosystems around the world \citep{halpern_2008-dK,halpern_2017-Zi}. The
-implementation of marine reserves (\emph{i.e.} areas where all fishing
-activities are off--limits; MRs) is a common management approach used to
-manage the spatial distribution of fishing effort and recover stocks
-\citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}. Recent research
-poses that marine reserves can also help buffer climate change
-\citep{roberts_2017-J9}, provide a refuge to environmental variability
-\citep{micheli_2012-EU}, help reduce by-catch \citep{hastings_2017-sm}
-and, in general, increase biomass, richness and densities of organisms
-within the protected regions
-\citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}. However, the
-extent to which MRs yield benefits to fisheries remains relatively
-unexplored \citep{krueck_2017-J1} and the focus is often only in the
-social and economic dimensions \citep{klein_2008,charles_2008}, rarely
-providing a hollistic evaluation of the social-ecological system
-\citep{halpern_2013,lpezangarita_2014,mascia_2017-m_}. Here, we combine
-causal inference techniques \citep{depalma_2018} and the
-social-ecological systems framework
-\citep{ostrom_2009-hg,mascia_2017-m_} to provide a comprehensive
-evaluation of four community-based marine reserves in three coastal
-communities in Mexico.
+Marine ecosystems around the world sustain significant impacts due to
+overfishing and unsustainable fishing practices
+\citep{halpern_2008-dK,worm_2006-IB,pauly_2005-qV}. A common approach to
+manage the spatial distribution of fishing effort and recover stocks is
+through the implementation of marine reserves (\emph{i.e.} areas where
+all fishing activities are off--limits; MRs)
+\citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}.
 
-En México, las reservas marinas han sido comúnmente establecidas como
-zonas núcleo dentro de Reservas de la Biósfera (RBs), administradas por
-la Comisión Nacional de Áreas Naturales Protegidas (CONANP). Al día de
-hoy, 36 RBs protegen una porción del ambiente marino en México. Sin
-embargo, solamente 26 de estas incluyen (pequeñas) zonas núcleo donde
-las actividades pesqueras están prohibidas. Aunque la CONANP ha hecho
-esfuerzos importantes por involucrar a los actores durante la
-implementación de las reservas, esto aún se caracteriza por un proceso
-descendente, el cual conlleva a la falta de cumplimiento por parte de
-los actores. La escasez de recursos monetarios y humanos de la limitan
-también el monitoreo y vigilancia de las reservas, y a su vez, el
-desempeño de la reserva.
+Marine reserve science has largely focused on understanding the
+ecological effects of these areas, which include increased biomass,
+richness, and densities of organisms within the protected regions
+\citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}, climate change
+mitigation \citep{roberts_2017-J9}, and protection from environmental
+variability \citep{micheli_2012-EU}. However, there is considerably less
+literature focusing on the relationship between socioeconomic and
+governance structures and their relationship to ecological
+effectriveness \citep{halpern_2013,lpezangarita_2014,mascia_2017-m_} or
+benefits to fisheries \citep{krueck_2017-J1}; evaluations of marine
+reserves rarely provide a hollistic view of the social-ecological system
+\citep{lpezangarita_2014}. Here, we combine causal inference techniques
+\citep{depalma_2018} and the social-ecological systems framework
+\citep{ostrom_2009-hg} to provide a comprehensive ecological and
+socioeconomic evaluation of four community-based marine reserves in
+three coastal communities in Mexico.
 
-Buscando promover una alternativa con procesos ascendentes para
-implementar reservas marinas, las Organizaciones de la Sociedad Civil
-(OSCs) comenzaron a trabajar con comunidades pesqueras para establecer
-reservas comunitarias \citep{uribe_2010-u2} . Estas son comúnmente
-establecidas dentro de zonas de concesión, una forma de derechos de uso
-territoriales para pesquerías (TURF, en inglés). Al permitir a los
-pescadores diseñar sus propias reservas, una mayor proporción de la
-comunidad está de acuerdo con los perímetros y reglas establecidas, y
-por lo tanto los respetan
-\citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8} .
-Adicionalmente, los pescadores pueden implementar sus reservas por un
-periodo acordado (usualmente cinco años), después del cual la reserva
-puede ser abierta a la pesca. Esto provee a los pescadores con un
-sentido de confianza de que, en caso de ser necesario, aún tienen acceso
-a pescar esa zona. Las reservas son directamente vigiladas y
-monitoreadas por la comunidad, quienes comúnmente utilizan pequeñas
-embarcaciones (\emph{e.g.} pangas) para patrullar la zona, o realizan
-avistamientos desde la costa en búsqueda de pescadores ilegales Aún así,
-las reservas comunitarias carecen de reconocimiento legal; por lo tanto,
-no hay forma de penalizar a los infractores.
+Marine Reserves in Mexico have been commonly implemented as ``core
+zones'' within Biosphere Reserves (BRs) that are administered by the
+National Commision of Protected Areas (\emph{Comisión Nacional de Áreas
+Marinas Protegidas}, CONANP). While CONANP has made efforts to have a
+participatory process, the implementation of these zones is still
+characterized by top--down approaches. This motivated Civil Society
+Organizations (CSOs) to work with coastal communities to implement
+community--based marine reserves \citep{uribe_2010-u2}, which are
+usually established within a Territorial Use Rights for Fisheries
+(TURFs); thus making them TURF--reserves \citep{afflerbach_2014-HP}.
+This bottom--up approach allows fishers to disign their own reserves,
+which increases compliance and self--enforcement
+\citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8}. However,
+these reserves still lack legal recognition, making them vulnerable to
+poaching. In 2014, a new norm \citep{nom} allowed fishers to request the
+legal recognition of a community--based reserve under the name of
+``Fishing Refugia'' (\emph{Zona de Refugio Pesquero}, FR). This new norm
+thus combines bottom--up approaches to design marine reserves, along
+with a legal recognition of the management intervention. Since then,
+\emph{39} FR have been implemented along the Pacific, Gulfof
+Caloifornia, and Mexican Caribbean coastlines, but no formal evaluation
+of their effectiveness has taken place.
 
-Sin embargo, en el 2014 una nueva norma \citep{nom} permite a los
-pescadores solicitar el establecimiento de reservas marinas bajo el
-nombre de ``Zonas de refugio Pesquero'' (ZRP). El manejo de las ZRP
-combina procesos ascendentes y descendentes al reconocer legalmente las
-reservas propuestas por las comunidades. Posterior a la revisión por
-parte de la Comisión Nacional de Acuacultura y Pesca (CONAPESCA) y la
-opinión técnica del Instituto Nacional de Acuacultura y Pesca (INAPESCA)
-las ZRP son establecidas por el periodo solicitado por los pescadores.
-El monitoreo y la vigilancia de las ZRP es típicamente llevado a cabo
-por la comunidad , con ayuda de OSCs locales. Hasta este cambio
-regulatorio, las reservas comunitarias no contaban con el soporte legal,
-y eran solamente reconocidas por la comunidad. Al día de hoy, existen 39
-ZRP establecidas en el Pacífico, Golfo de California y Caribe Mexicano.
+While there are ecological factors defining the success of a MR
+(\emph{i.e.} habitat representation, initial state of protection,
+connectivity to other protected areas), their effectivness also depends
+on the socioeconomic and governance settings under which they are
+implemented. Literature shows that many non-ecological characteristics
+can play an equally important role in the effectivenes of MRs. For
+example, age of a reserve (\emph{i.e.} time since its implementation),
+size, and habitat contained were key to the effectiveness of MRs in
+Palau \citep{friedlander_2017-oI}. In the Mediterranean,
+\citet{difranco_2016-Xw} identify that surveilance and enfocrement,
+presence of a management plan, and involvement of fishers in management
+and decision--making along with promotion of sustainable fishing
+practices were the key fators that increased stock health and income to
+fishers. At a global level, \citet{edgar_2014-UO} indicate that
+enforcement, age, size, and isolation were important factors determining
+effectiveness of the reserves.
 
-Aunque existen tres aproximaciones generales para implementar reservas
-marinas en México (\emph{i.e.} Zonas núcleo dentro de AMP, reservas
-comunitarias y Zonas de Refugio Pesquero), aún no comprendemos a fondo
-las características sociales que permiten su efectividad. La ciencia de
-reservas marinas se ha enfocado ampliamente en los efectos biológicos
-que estas tienen
-\citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69,afflerbach_2014-HP,krueck_2017-J1}.
-Aunque el aspecto ecológico de las reservas es importante para su éxito,
-su efectividad también depende del estado socioeconómico y los sistemas
-de gobernanza de las comunidades pesqueras.
-
-La literatura indica que diferentes características influyen en el éxito
-de una reserva. En Palau, por ejemplo, la edad (\emph{i.e.} tiempo
-transcurrido desde implementación), tamaño y hábitat contenido son
-características claves que determinan la efectividad
-\citep{friedlander_2017-oI}. Por otro lado, en el Mar Mediterráneo,
-\citet{difranco_2016-Xw} identifican que la procuración y vigilancia,
-presencia de un plan de manejo, participación de pescadores en el
-manejo, representación de pescadores en la toma de decisiones y
-promoción de la pesca sustentable son los cinco factores que incrementan
-la salud de los stocks y el ingreso económicos a los pescadores, a la
-vez que se presenta una mayor aceptación social de las prácticas de
-manejo. En una aproximación global, \citet{edgar_2014-UO} encuentran que
-la procuración, edad, tamaño y aislamiento son determinantes de la
-efectividad de las reservas. Por lo tanto, observamos que las
-características que habilitan el éxito varían a través de regiones, y
-poco esfuerzo se ha hecho por comprender estas interacciones en México.
-
-El objetivo de este trabajo este trabajo es realizar una evaluación de
-la efectividad de reservas marinas en México, presentando resultados de
-cinco comunidades costeras como caso de estudio. Con el fin de obtener
-una visión holística del sistema, la evaluación se realizará tomando en
-cuenta indicadores biológicos, socioeconómicos y de gobernanza. La
-evaluación de éstos cinco casos de estudios nos permitirá identificar la
-manera en que las características socioeconómicas y de gobernanza se
-relacionan con la efectividad (biológica) de las reservas marinas
-evaluadas. Los patrones identificados podrán utilizarse para informar la
-toma de decisiones para la implementación de la red de reservas marinas
-en la Región de las Grandes Islas del Golfo de California.
+The objective of this work is twofold: i) Provide the first evaluation
+of community--based marine reserves in Mexico, and ii) provide a
+comprehensive evaluation of the social--ecological system to identify
+how sociocoenomic and governance characteristics relate to ecological
+effectiveness. With the purpose of providing a hollistic evaluation, we
+combine ecological, socioeconomic, and governance indicators. We use
+causal inference techniques to provide a measurement of the effect of
+the management intervention, and combine it with the social--ecological
+systems framework \citep{ostrom_2009-hg}.
 
 \section{Materials and Methods}\label{materials-and-methods}
 
 \subsection{Study area}\label{study-area}
 
-Las comunidades utilizadas en este reporte se distribuyen a lo largo de
-la costa Pacífica de Baja California (n = 1) y el Sistema Arrecifal
-Mesoamericano (n = 2; Fig \ref{fig:map}).
+We focus our evaluation in three coastal communities from the Pacific
+coast of Baja California (n = 1) and the Mesoamerican Reef System (n =
+2; Fig \ref{fig:map}). Isla Natividad (IN) lies west of the Baja
+California Peninsula (Fig \ref{fig:map}B), where kelp forests
+(\emph{Macrocystis pyrifera}) and rocky reefs are the predominant
+habitats. The island is home to a fishing cooperative (\emph{Sociedad
+Cooperative de Producción Pesquera Buzos y Pescadores de la Baja
+California SCL}), that holds a TURF for spiny lobster (\emph{Panulirus
+interruptus}). However, other resources like finfish (yellowtail jack,
+\emph{Seriola lalandi}), sea cucumber (\emph{Parastichopus
+parvimensis}), red sea urchin (\emph{Mesocentrotus franciscanus}), snail
+(\emph{Megastraea turbanica} y \emph{M. undosa}), and abalone
+(\emph{Haliotis spp}, until 2010) are also important sources of income.
+In 2006, the community decided to implement two community--based marine
+reserves within their fishing grounds, seeking to recover depleted
+stocks of invertebrate species (mainly lobster and abalone). Until
+today, these reserves are yet to be legally recognized as Fishing
+Refugia.
 
-\subsubsection{Isla Natividad}\label{isla-natividad}
-
-La Isla Natividad se encuentra en la costa oeste de la Península de Baja
-California, donde el hábitat predominante es el bosque de kelp o sargazo
-gigante (\emph{Macrocystis pyrifera}) y los arrecifes rocosos. En la
-isla, la Sociedad Cooperativa de Producción Pesquera (SCPP) Buzos y
-Pescadores de la Baja California SCL realiza actividades de extracción
-de los recursos marinos. Aunque la langosta roja (\emph{Panulirus
-interruptus}) es la especie más importante en términos económicos, otras
-especies importantes incluyen la escama (con un enfoque en Jurel;
-\emph{Seriola lalandi}), el pepino de mar (\emph{Parastichopus
-parvimensis}), el erizo rojo (\emph{Mesocentrotus franciscanus}), el
-caracol (\emph{Megastraea turbanica} y \emph{M. undosa}) y, hasta el
-2010, el abulón (\emph{Haliotis sp.}). En 2006, por medio de un proceso
-participativo, la cooperativa decidió establecer dos reservas marinas de
-manera voluntaria. Agentes externos a la cooperativa, como personal de
-Comunidad y Biodiversidad A.C., académicos de la Universidad de
-Stanford, y personal de la CONANP (de la oficina de Reserva de la
-Biósfera El Vizcaíno), también participaron en el diseño e
-implementación de las reservas. Las reservas fueron establecidas como
-instrumento de manejo pesquero, buscando recuperar las poblaciones de
-abulón y otros invertebrados. Al día de hoy, las reservas marinas de
-Isla Natividad no han recibido reconocimiento legal, pero la cooperativa
-ha mostrado interés por reconocerlas como Zonas de Refugio Pesquero
-(ZRP). Los pescadores tienen un sistema de turnos para vigilar la
-reserva día y noche desde embarcaciones patrulla.
-
-\subsubsection{María Elena}\label{maria-elena}
-
-María Elena es una comunidad pesquera en la costa de Quintana Roo. Los
-arrecifes coralinos y manglares son los principales ecosistemas
-representados en la zona. El campo pesquero es utilizado por pescadores
-de la SCPP Cozumel scl (de la Isla de Cozumel). La principal especie
-aprovechada por ésta organización es la langosta espinosa del caribe
-(\emph{Panulirus argus}). La cooperativa cuenta con permiso de pesca de
-escama y concesión de langosta. En el 2012, la Cooperativa, en conjunto
-con la Alianza Kanan Kay, COBI, CONANP, CONAPESCA, Oceanus, Fundación
-Claudia y Roberto Hernández, Fundación Haciendas del Mundo Maya,
-establecieron ocho ZRP con una vigencia de cinco años. La vigilancia de
-las reservas se realiza por medio del equipo de vigilancia comunitaria,
-con apoyo de la CONANP y una embarcación -donada por COBI- utilizada
-para realizar recorridos frecuentes.
-
-\subsubsection{Punta Herrero}\label{punta-herrero}
-
-La comunidad de Punta Herrero se encuentra aproximadamente a 15 km al
-sur del campo pesquero de María Elena. De igual manera, los arrecifes
-coralinos y manglares son los principales ecosistemas representados en
-la zona, y la principal especie explotada es la langosta. Sin embargo,
-la SCPP José María Azcorra también cuenta con permisos para pesca de
-escama y tiburón y una concesión de langosta. En una réplica del
-ejercicio realizado en María Elena -con presencia de los mismos
-actores-, cuatro ZRP fueron establecidas en el 2013, con una vigencia de
-cinco años. El equipo de vigilancia comunitaria, con apoyo de la CONANP,
-se encarga de la vigilancia de las reservas.
+The other two communities are Maria Elena (ME; Fig \ref{fig:map}C) and
+Punta Herrero (PH; Fig \ref{fig:map}D) in the Yucatan Peninsula, where
+coral reefs and mangroves are the representative coastal ecosystems. ME
+is a fishing camp --visited intermitently during the fishing season--
+belonging to the Cozumel fishing cooperative. PH is home to the ``José
+María Azcorra'' fishing cooperative. The main source of income to both
+communities is the caribbean spinly lobster fishery (\emph{Panulirus
+argus}), which is carried out within their respective TURFs. These
+communities also target finfish in the off season, mainly snappers
+(Lutjanidae) and groupers (Serranidae). ME established eight marine
+reserves in 2012, and PH established four marine reserves in 2013. All
+these reserves are legally recognized as Fishing Refugia.
 
 \begin{figure}
 \centering
 \includegraphics{Villasenor-Derbez_files/figure-latex/unnamed-chunk-1-1.pdf}
-\caption{\label{fig:unnamed-chunk-1}\label{fig:map}Mapa de la localización
-general de las comunidades de estudio. El panel de la derecha es un
-acercamiento a las comunidades de María Elena y Punta Herrero.}
+\caption{\label{fig:unnamed-chunk-1}\label{fig:map}Location of the three
+coastal communities studied (A). Isla Natividad (B) is located off the
+Baja California Peninsula, Maria Elena (C) and Punta Herrero (D) are
+located in the yucatan Peninsula.}
 \end{figure}
 
 \subsection{Data collection}\label{data-collection}
 
-Para evaluar las reservas, utilizamos tres fuentes de información. La
-información ecológica proviene de los monitoreos ecológicos realizados
-anualmente en las zonas reserva y control. Cada año, se realizan censos
-visuales para evaluar las comunidades de peces e invertebrados,
-registrando riquezas, abundancias y tallas (en peces). Esta información
-nos permite calcular los indicadores biológicos de manera anual. Al
-tener valores de diferentes indicadores biológicos antes y después de la
-implementación de las reservas, para las zonas de reserva y sitios
-control, tenemos un diseño muestreal de Antes-Después-Control-Impacto.
+To perform the evaluation of these reserves we use thre sources of
+information. Ecological data come from the annual ecological monitorings
+of reserve and control areas, carried out by members from each community
+and personnel from the Mexican CSO ``Comunidad y Biodiversidad''
+(\href{www.cobi.org.mx}{COBI}). These monitorings record richness and
+abundances of fish and invertebrate species in the reservs and control
+sites. For fish census, size structures are also collected to derive
+biomass. We define control sites as regions with habitat characteristics
+similar to the corresponding reserves, and that presumably had the same
+probability of being selected as reserves during the design phase. From
+all the reserves in these three communities, we use the ones that have
+data for reserve and control sites before and after the implementation
+of the reserve (n = 4) , thus providing us with a
+Before--After--Control--Impact (\emph{i.e.} BACI) design that allows us
+to capture and control for temporal and spatial dynamics
+\citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference
+techniques have proven effective to evaluate marine reserves, as they
+allow us to causaly attribute observed changes to the intervention
+\citep{moland_2013-VP,Villasenor-Derbez_2018}.
 
-También incluimos información socioeconómica relevante proveniente de
-los avisos de arribo de CONAPESCA. En este caso, se tienen registros
-mensuales de los recursos aprovechados por las diferentes comunidades,
-en los que se reportan los arribos (Toneladas) y el valor de los arribos
-(\$). La información se encuentra disponible para el periodo 2001 -
-2014. Ya que las categorías registradas por CONAPESCA son amplias y
-existe un nivel de error, utilizamos únicamente los arribos reportados
-para langosta entera fresca a nivel de cooperativa. Los ingresos
-generados por arribos son ajustados por medio del índice de precio al
-consumidor.
+Socioeconomic data come from landing receipts reported to the National
+Commission for Aquaculture and Fisheries (\emph{Comisión Nacional de
+Acuacultura y Pesca}; CONAPESCA). Data contain monthly lobster landings
+(Kg) and value (MXP) from 2000 to 2014. This information was aggregated
+by year, and economic values were adjusted by the Consumer Price Index
+\citep{oecd_2017-VV} via Eq \ref{eqn:cpi}.
 
-La información de gobernanza fue obtenida a nivel de comunidad, pidiendo
-a personas familiares con las comunidades que proveyeran la información
-necesaria. La información de gobernanza no es evaluada de manera
-cuantitativa. En su lugar, esta se interpreta de manera tal que podamos
-comprender qué decisiones, reglas y estructuras tienen un impacto en la
-reserva.
+\begin{equation}
+I_t = RI_t\times\frac{CPI_t}{CPI_T}
+\label{eqn:cpi}
+\end{equation}
+
+Where \(I_t\) represents the adjusted income for year \(t\) as the
+product between the reported income for that year and the ratio between
+the consumer price index in that year (\(CPI_t\)) to the most recent
+year's consumer price index (\(CPI_T\)).
+
+\textbf{Governance data were collected at the community--level, using
+key informants to collect the necesary information on X, Y, and Z. Algo
+mas de Ere.}
 
 \subsection{Data analysis}\label{data-analysis}
 
-Dada la similitud de objetivos entre las reservas, la evaluación se
-realiza con los mismos indicadores. En este caso, se utilizan 6
-indicadores biológicos, 2 socioeconómicos y 5 de gobernanza (Tabla
-\ref{table:indicators}). Según la disponibilidad de datos, se calculó la
-densidad de las especies objetivo presentadas en la sección de
-descripción de las comunidades. El criterio de selección fue que cada
-especie debía tener, por lo menos, dos observaciones anuales para las
-zonas de reserva y control.
+Following a framework that relates reserve objectives to performance
+indicators \citep{Villasenor-Derbez_2018}, we use five biological, two
+socioeconomic, and five governance indicators to evaluate these marine
+reserves Table \ref{table:indicators}.
 
-\begin{table}
+\begin{table}[H]
 
-\caption{\label{tab:unnamed-chunk-2}\label{table:indicators}Lista de indicadores utilizados para evaluar resvas marinas, agrupados por tipo.}
+\caption{\label{tab:unnamed-chunk-2}\label{table:indicators}List of indicators used to evaluate the effectiveness of marine reserves, grouped by category.}
 \centering
 \begin{tabular}[t]{l|l}
 \hline
 Category & Indicador\\
 \hline
-Biological & Índice de diversidad de shannon\\
+Biological & Abundance\\
 \hline
- & Riqueza\\
+ & Richness\\
 \hline
- & Densidad\\
+ & Shannon's diversity index\\
 \hline
- & Nivel trófico\\
+ & Biomass\\
 \hline
- & Biomasa\\
+ & Abundance of target species (lobsters)\\
 \hline
- & Densidad de especies objetivo\\
+Socioeconomic & Income from target species\\
 \hline
-Socioeconomic & Ingresos por especies objetivo\\
+ & Landings from target species\\
 \hline
- & Arribos de especies objetivo\\
+Governance & Type of access to the fishery\\
 \hline
-Governance & Tipo de acceso a la pesquería\\
+ & Perceived degree of illegal fishing\\
 \hline
- & Grado de pesca ilegal\\
+ & Reserve surveilance anf enforcement\\
 \hline
- & Procuración de la reserva\\
+ & Type of fishing organization\\
 \hline
- & Tipo de organización pesquera\\
-\hline
- & Edad de la reserva\\
+ & Age of the reserve\\
 \hline
 \end{tabular}
 \end{table}
 
-\subsubsection{Biological}\label{biological}
+Biological indicators are analyzed with a difference--in--differences
+analysis (Eq \ref{eqn:reg_bio}), which allows us to estimate the effect
+that the reserve has on the biological indicators by comparing trends
+across time and space (\emph{i.e.} reserve and control sites)
+\citep{moland_2013-VP,Villasenor-Derbez_2018}. The analysis is performed
+with generalized linear models of the form:
 
-Utilizando un análisis de diferencia en diferencias podemos estimar el
-efecto que la reserva tienen en los indicadores biológicos
-\citep{moland_2013-VP} con el uso de un modelo de regresión lineal
-múltiple:
+\begin{equation}
+I = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times Zone_i + \sigma_jSpp_j + \Pi_{k}Site_k + \epsilon
+\label{eqn:reg_bio}
+\end{equation}
 
-\[I = \beta_0 + \sum \gamma Year + \beta_1 Zona + \sum \lambda Year\times Zona + \Omega + \epsilon\]
+Where year--fixed effects are represented by \(\gamma_{it} Year_t\),
+\(\beta Zone_i\) captures the difference between reserve (\(Zone = 1\))
+and control (\(Zone = 0\)) sites, and the interaction term
+\(\lambda_{it} Year_t\times Zone_i\) represents the average treatment
+effect for each year. When evaluating biomass and abundances, we include
+species--fixed effects (\(\sigma_j\)), and when more than one reserve is
+present we also include site--fixed effects (\(\Pi_k\)). For abundances
+(\emph{i.e.} count data) the model is estimated with a quasipoisson
+error distribution.
 
-En este caso, modelamos los años como factores, tomando como referencia
-el primer año en la serie de datos de cada comunidad. Modelar los años
-como factores reduce la estructura del modelo, y relaja el ajuste al no
-asumir una tendencia lineal entre años; es decir, el cambio observado
-entre 2006 - 2007 no deberá de ser igual al observado entre el 2009 -
-2010. Incluimos también un término para la zona, en la que la variable
-toma un valor de 0 si el sitio es una zona control y de 1 si es una zona
-de reserva. Finalmente, incluimos un término de interacción entre la
-variable de Zona y el Año. En este modelo, \(\lambda_i\) representa el
-efecto que la reservas tuvo sobre un indicador en cada año y con
-respecto a los sitios control. El termino \(\Omega\) captura efectos
-fijos por especies y por sitio.
+Socioeconomic indicators are evaluated with a similar approach (Eq
+\ref{eqn:soc_reg}), where landings and income before and after the
+implementation of the reserve are compared:
 
-\subsubsection{Socioeconomic}\label{socioeconomic}
+\begin{equation}
+I = \beta_0 + \beta_1Post
+\label{eqn:soc_reg}
+\end{equation}
 
-El análisis de datos socioeconómicos se aplicó únicamente a Isla
-Natividad, María Elena y Punta Herrero, siguiendo un modelo con la
-forma:
-
-\[I = \beta_0 + \beta_1Post\]
-
-Que nos permite comparar el cambio en el promedio de los indicadores
-antes (Post = 0) y después (Post = 1) de la implementación de la
-reserva. Tanto para los indicadores biológicos como los socioeconómicos,
-los coeficientes fueron ajustador con el estimador de muestras
-heterocedásticas.
+This approach does not allow for a causal attribution of the observed
+changes to the reserve, but still allows us to draw important
+information that can inform our conclusions. For both approaches, model
+coefficients are estimated via ordinary least--squares and
+heteroskedastic--robust standard errors \citep{zeileis_2004-7n}.
 
 \subsubsection{Governance}\label{governance}
+
+\textbf{Texto de ere y los SES}
 
 \section{Results}\label{results}
 
