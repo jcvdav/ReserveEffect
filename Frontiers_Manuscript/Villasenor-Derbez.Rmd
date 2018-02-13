@@ -111,7 +111,7 @@ location_labels <- spTransform(location_labels, proj) %>%
 
 # Load ZRP shapefile
 zrp <- st_read(dsn = "../Data/Spatial", layer = "ZRP", quiet = T) %>% 
-  filter(Name %in% c("El Cabezo", "El Faro", "Gallineros")) %>% 
+  filter(Name %in% c("El Cabezo", "El Faro")) %>% 
   st_transform(crs = "+proj=longlat +datum=NAD27")
 
 # Load Community reserve shapefile
@@ -135,7 +135,7 @@ mex <- ggplot() +
 # Map for Punta Herrero
 ph <- ggplot() +
   geom_sf(data = coastline_mx) +
-  lims(x = c(-87.5, -87.4), y = c(19.280990, 19.35)) +
+  lims(x = c(-87.5, -87.4), y = c(19.29, 19.36)) +
   geom_sf(data = zrp, fill = "red") +
   theme_classic()
 
@@ -153,7 +153,7 @@ pbc <- ggplot() +
   geom_sf(data = rescom, fill = "red") +
   theme_classic()
 
-plot_grid(mex, ph, pbc, ma, labels = c("A", "C", "B", "D"), ncol = 2)
+plot_grid(mex, ma, pbc, ph, labels = c("A", "C", "B", "D"), ncol = 2)
 ```
 
 ## Data collection
@@ -162,7 +162,11 @@ plot_grid(mex, ph, pbc, ma, labels = c("A", "C", "B", "D"), ncol = 2)
 fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(RC),
-         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)", "El Faro - El Faro (Control)", "Anegado de Chal - Anegado de Chal (Control)")) %>% 
+         RC %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
+                   "Cabezo - Cabezo (Control)",
+                   "Manchon - Manchon (Control)",
+                   "El Faro - El Faro (Control)")) %>% 
+  filter(!(RC %in% c("El Faro - El Faro (Control)") & Ano == 2012)) %>% 
   mutate(GeneroEspecie = case_when(
     GeneroEspecie == "Cephalopholis cruentatus" ~ "Cephalopholis cruentata",
     GeneroEspecie == "Haemulon macrostomun" ~ "Haemulon macrostomum",
@@ -181,14 +185,17 @@ fish <- read.csv("../Data/fish_data.csv", strip.white = T, stringsAsFactors = F)
     GeneroEspecie == "Pluma spp" ~ "Calamus pennatula",
     GeneroEspecie == "Sparisoma aurolineatum" ~ "Sparisoma aurofrenatum",
     GeneroEspecie == "Vieja spp" ~ "Bodianus rufus",
-    # GeneroEspecie == "" ~ "",
     TRUE ~ GeneroEspecie
   ))
 
 invert <- read.csv("../Data/invert_data.csv", strip.white = T, stringsAsFactors = F) %>% 
   filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(RC),
-         !RC %in% c("Punta Prieta - La Guanera", "El Gallinero - El Ganillero (Control)", "El Faro - El Faro (Control)", "Anegado de Chal - Anegado de Chal (Control)"))
+         RC %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
+                   "Cabezo - Cabezo (Control)",
+                   "Manchon - Manchon (Control)",
+                   "El Faro - El Faro (Control)")) %>% 
+  filter(!(RC %in% c("El Faro - El Faro (Control)") & Ano == 2012))
 
 load("../Data/conapesca_2000-2015.RData")
 
@@ -212,7 +219,34 @@ conapesca %<>%
 gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
 
-To perform the evaluation of these reserves we use thre sources of information. Ecological data come from the annual ecological monitorings of reserve and control areas, carried out by members from each community and personnel from the Mexican CSO "Comunidad y Biodiversidad" ([COBI](www.cobi.org.mx)). These monitorings record richness and abundances of fish and invertebrate species in the reservs and control sites. For fish census, size structures are also collected to derive biomass. We define control sites as regions with habitat characteristics similar to the corresponding reserves, and that presumably had the same probability of being selected as reserves during the design phase. From all the reserves in these three communities, we use the ones that have data for reserve and control sites before and after the implementation of the reserve (n = 4) , thus providing us with a Before--After--Control--Impact (*i.e.* BACI) design that allows us to capture and control for temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causaly attribute observed changes to the intervention \citep{moland_2013-VP,Villasenor-Derbez_2018}.
+To perform the evaluation of these reserves we use thre sources of information. Ecological data come from the annual ecological monitorings of reserve and control areas, carried out by members from each community and personnel from the Mexican CSO "Comunidad y Biodiversidad" ([COBI](www.cobi.org.mx)). These monitorings record richness and abundances of fish and invertebrate species in the reservs and control sites. For fish census, size structures are also collected to derive biomass. We define control sites as regions with habitat characteristics similar to the corresponding reserves, and that presumably had the same probability of being selected as reserves during the design phase. From all the reserves in these three communities, we use the ones that have data for reserve and control sites before and after the implementation of the reserve. This provides us with a Before--After--Control--Impact (*i.e.* BACI) design that allows us to capture and control for temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causaly attribute observed changes to the intervention \citep{moland_2013-VP,Villasenor-Derbez_2018}. All reserves were surveyed annualy from at least one year before implementation until 2016. Table \ref{tab:com_sum} shows a summary of the number of reserves, year of implementation, and number of transects for each reserve.
+
+```{r}
+inv_summary <- group_by(invert, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
+  count() %>% 
+  ungroup() %>% 
+  group_by(Comunidad, RC, Zona) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>% 
+  spread(Zona, n) %>% 
+  select(Comunidad, RC, Control, Reserve = Reserva)
+
+group_by(fish, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
+  count() %>% 
+  ungroup() %>% 
+  group_by(Comunidad, RC, Zona) %>% 
+  summarize(Start = min(Ano), n = n()) %>% 
+  ungroup() %>% 
+  spread(Zona, n) %>% 
+  mutate(Implementation = c(2006, 2012, 2013, 2013)) %>% 
+  select(Comunidad, RC, Implementation, Start, Control, Reserve = Reserva) %>% 
+  left_join(inv_summary, by = c("Comunidad", "RC")) %>% 
+  knitr::kable(format = "latex",
+               caption = "\\label{tab:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.",
+               col.names = c("Community", "Reserve - Control", "Imp", "Start", "Cf", "Rf", "Ci", "Ri")) #%>% 
+  # kableExtra::add_header_above(header = c(" " = 4, "Fish" = 6, "Invert" = 8))
+```
+
 
 Socioeconomic data come from landing receipts reported to the National Commission for Aquaculture and Fisheries (*Comisión Nacional de Acuacultura y Pesca*; CONAPESCA). Data contain monthly lobster landings (Kg) and value (MXP) from 2000 to 2014. This information was aggregated by year, and economic values were adjusted by the Consumer Price Index \citep{oecd_2017-VV} via Eq \ref{eqn:cpi}.
 
@@ -237,19 +271,19 @@ tibble(Category = c("Biological", "","","","", "Socioeconomic", "", "Governance"
   kable_styling(latex_options = "HOLD_position")
 ```
 
-Biological indicators are analyzed with a difference--in--differences analysis (Eq \ref{eqn:reg_bio}), which allows us to estimate the effect that the reserve has on the biological indicators by comparing trends across time and space (*i.e.* reserve and control sites) \citep{moland_2013-VP,Villasenor-Derbez_2018}. The analysis is performed with generalized linear models of the form:
+Biological indicators are analyzed with a difference--in--differences analysis (Eq \ref{eqn:reg_bio}), which allows us to estimate the effect that the reserve has on the biological indicators by comparing trends across time and treatments \citep{moland_2013-VP,Villasenor-Derbez_2018}. The analysis is performed with generalized linear models of the form:
 
 \begin{equation}
-I = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times Zone_i + \sigma_jSpp_j + \Pi_{k}Site_k + \epsilon
+I_i = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times Zone_i + \sigma_jSpp_j + \epsilon
 \label{eqn:reg_bio}
 \end{equation}
 
-Where year--fixed effects are represented by $\gamma_{it} Year_t$, $\beta Zone_i$ captures the difference between reserve ($Zone = 1$) and control ($Zone = 0$) sites, and the interaction term $\lambda_{it} Year_t\times Zone_i$ represents the average treatment effect for each year. When evaluating biomass and abundances, we include species--fixed effects ($\sigma_j$), and when more than one reserve is present we also include site--fixed effects ($\Pi_k$). For abundances (*i.e.* count data) the model is estimated with a quasipoisson error distribution.
+Where year--fixed effects are represented by $\gamma_{it} Year_t$, and $\beta Zone_i$ captures the difference between reserve ($Zone = 1$) and control ($Zone = 0$) sites. The interaction term $\lambda_{it} Year_t\times Zone_i$ represents represent the mean change in the indicator inside the reserve, for year $t$, with respect to the first year of evaluation in the control site (See Table \ref{tab:com_sum}). When evaluating biomass and abundances, we include species--fixed effects ($\sigma_j$). For abundances and richness (*i.e.* count data) the model is estimated with a quasipoisson error distribution.
 
 Socioeconomic indicators are evaluated with a similar approach (Eq \ref{eqn:soc_reg}), where landings and income before and after the implementation of the reserve are compared:
 
 \begin{equation}
-I = \beta_0 + \beta_1Post
+I_i = \beta_0 + \beta_1Post
 \label{eqn:soc_reg}
 \end{equation}
 
@@ -258,6 +292,8 @@ This approach does not allow for a causal attribution of the observed changes to
 ### Governance
 
 **Texto de ere y los SES**
+
+\clearpage
 
 ```{r, prepare_covars}
 fish_covars <- fish %>% 
@@ -324,7 +360,6 @@ invert_complete <- invert %>%
   arrange()
 ```
 
-
 ```{r model_fit}
 # Fish
 
@@ -335,7 +370,7 @@ N_IN <- fish_complete %>%
 
 N_ME <- fish_complete %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = T, family = "quasipoisson")
+  model(sfe = F, family = "quasipoisson")
 
 N_PH <- fish_complete %>% 
   abundance(com = "Punta Herrero") %>% 
@@ -344,15 +379,15 @@ N_PH <- fish_complete %>%
 ## Richness
 S_IN <- fish_complete %>% 
   richness(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 S_ME <- fish_complete %>% 
   richness(com = "Maria Elena") %>% 
-  model(sfe = T, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 S_PH <- fish_complete %>% 
   richness(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 ## Shannon
 H_IN <- fish_complete %>% 
@@ -361,7 +396,7 @@ H_IN <- fish_complete %>%
 
 H_ME <- fish_complete %>% 
   shannon(com = "Maria Elena") %>% 
-  model(sfe = T, spfe = F)
+  model(sfe = F, spfe = F)
 
 H_PH <- fish_complete %>% 
   shannon(com = "Punta Herrero") %>% 
@@ -374,25 +409,11 @@ B_IN <- fish %>%
 
 B_ME <- fish%>% 
   biomass(com = "Maria Elena") %>% 
-  model(sfe = T)
+  model(sfe = F)
 
 B_PH <- fish %>% 
   biomass(com = "Punta Herrero") %>% 
   model(sfe = F)
-
-## Trophic level
-# T_IN <- fish %>% 
-#   trophic("Isla Natividad") %>% 
-#   model(sfe = F, spfe = F)
-# 
-# T_ME <- fish %>% 
-#   trophic("Maria Elena") %>% 
-#   model(spfe = F)
-# 
-# T_PH <- fish %>% 
-#   trophic("Punta Herrero") %>% 
-#   model(sfe = F, spfe = F)
-
 
 # Invertebrates
 
@@ -403,7 +424,7 @@ Ni_IN <- invert_complete %>%
 
 Ni_ME <- invert_complete %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = T, family = "quasipoisson")
+  model(sfe = F, family = "quasipoisson")
 
 Ni_PH <- invert_complete %>% 
   abundance(com = "Punta Herrero") %>% 
@@ -412,15 +433,15 @@ Ni_PH <- invert_complete %>%
 ## Richness
 Si_IN <- invert_complete %>% 
   richness(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 Si_ME <- invert_complete %>% 
   richness(com = "Maria Elena") %>% 
-  model(sfe = T, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 Si_PH <- invert_complete %>% 
   richness(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F)
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 ## Shannon
 Hi_IN <- invert_complete %>% 
@@ -429,7 +450,7 @@ Hi_IN <- invert_complete %>%
 
 Hi_ME <- invert_complete %>% 
   shannon(com = "Maria Elena") %>% 
-  model(sfe = T, spfe = F)
+  model(sfe = F, spfe = F)
 
 Hi_PH <- invert_complete %>% 
   shannon(com = "Punta Herrero") %>% 
@@ -444,21 +465,29 @@ L_IN <- invert_complete %>%
 L_ME <- invert_complete %>% 
   filter(GeneroEspecie == "Panulirus argus") %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = T, spfe = F, family = "quasipoisson")
+  model(sfe = F, spfe = F, family = "quasipoisson")
 
 L_PH <- invert_complete %>% 
   filter(GeneroEspecie == "Panulirus argus") %>% 
   abundance(com = "Punta Herrero") %>% 
   model(sfe = F, spfe = F, family = "quasipoisson")
-
-
 ```
 
 # Results
 
-A continuación se presentan los resultados de cada una de las comunidades. Los resultados biológicos se presentarán para cada comunidad, discutiendo primero los indicadores en común con otras comunidades (Shannon, Riqueza, Densidad, Nivel Trófico, Biomasa para peces e invertebrados) y, según su caso, las densidades de las especies objetivo. Habiendo presentado los resultados biológicos, nos enfocaremos después en los socioeconómicos y de gobernanza. Usaremos esta información para identificar las causas (sociales) del éxito (biológico) de las reservas.
+Our methodological approach with biological indicators allows us to make a causal link between the implementation of marine reserves and the observed trends by accounting for temporal and spatial dynamics \citep{depalma_2018}. The effect of the reserve is captured by the $\lambda_t$ coefficient, and represents the difference observed between the control site before the implementation of the reserve and the reserve site at time $t$ after controling for other time and space variations (*i.e.* $\gamma_t$ and $\beta$ respectively). Here we present the effect that marine reserves had on each of the biological indicators for each coastal community, along with the trends in socioeconomic indicators of lobster catches and revenues. We also provide an overview of the state of the socioeconomic and governance settings of each community, and discuss how these dimensions might be intertwined with each other.
 
-```{r, fig.width = 6.5, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F), and fish biomass (G)"}
+## Biological
+
+Effect sizes for biological indicators are shown in Figure \ref{fig:indicators}. Isla Natividad, the community with the oldest reserve, shows inconsistent effects across indicators and sources of data (*i.e.* fish vs. invertebrates). For example, the reserve had a small effect on fish abundances (Fig \ref{fig:indicators}A), where only year 2010 showed significat effect sizes in fish abundances ($p<0.05$) and all other years oscillated above and under zero ($p > 0.05$). However, in the case of invertebrate abundances (Fig \ref{fig:indicators}B), there was a clear positive effect of the reserve, as all but 1 year (2008) presented positive effect sizes relative to the control site ($p < 0.05$). Maria Elena and Punta Herrero showed no significant increase in fish and invertebrate abundances ($p< 0.05$), except for invertebrates in Punta Herrero for 2014 --right after the implementation of the reserves-- which showed a significant increase (*i.e.* $\lambda_{2014} = 2.5$, $p < 0.05$). Full tables with model coefficients are presented in the supplementary materials (**S1 Table**, **S2 Table**, **S3 Table**).
+
+While the number of fish species oscillated above and bellow zero through time for all reserves, none of these changes were statistically significant ($p > 0.05$) indicating that the reserves had no effect on fish species richness (Fig \ref{fig:indicators}C). For invertebrate species in Isla Natividad, all effect sizes were negative, but only significant for 2008, 2009, 2011, and 2014 ($p < 0.05$; Fig \ref{fig:indicators}D). For Maria Elena and Punta Herrero, the data do not show significant changes in invertebrate species richness ($p > 0.05$).
+
+Effect sizes for Shannon's diversity index for fish (Fig \ref{fig:indicators}E) in Isla Natividad oscillated between $\lambda_{2011} = -0.45$ and $\lambda_{2010} = -0.005$, but were not significantly different from null hypotheses of no change (*i.e.* $\lambda_t = 0$; $p > 0.05$). For invertebrates in that same community (Fig \ref{fig:indicators}F), Shannon's diversity index showed a significant decrease between 2008 and 2014, with largest decrease observed for 2011 ($\lambda_{2011} = -0.91$; $p < 0.05$). In the case of Maria Elena and Punta Herrero, Shannon's diversity index for fish showed increases in the order of $\lambda_t = 1$. For Maria Elena and Punta Herrero, these effects were only statistically significant for 2014, and 2014 and 2015 ($p < 0.05$).
+
+Biomass was only evaluated for fish data (Fig \ref{fig:indicators}G). In Isla Natividad, fish biomass presented a steady but small increase ($p>0.05$), and exhibited an increased variability in biomass between 2013 and 2016. Maria Elena and Punta Herrero also showed small, non-statistically significant increases in fish biomass ($p>0.05$). The last biological indicator is abundance of target species, *Panulirus interruptus* and *P. argus*, for the Pacific and Caribbean, respectively (Fig \ref{fig:indicators}H). Isla Natividad presented small constantly-positive effects but were not significantly different from the reference point of control site before the implementation of the reserve ($p > 0.05$. Maria Elena showed significant increases in lobster densities in the order of $\lambda_t = 10$ ($p < 0.05$). Finally, punta herrero presented alternating negative and positive effects, but these were not different from the baseline case ($p > 0.05$).
+
+```{r, fig.width = 6.5, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F),fish biomass (G), and lobster (*Panulirus spp*) abundances (H). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size, and errorbars are heteroskedastic-robust standard errors."}
 
 # Fish plots
 F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
@@ -496,17 +525,19 @@ I_H <- plot_model(model = list(Hi_IN, Hi_ME, Hi_PH),
                   various = T,
                   model_names = c("IN", "ME", "PH"))
 
-cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_S, F_B),
+## Lobsters
+L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
+                     various = T,
+                     model_names = c("IS", "ME", "PH"))
+
+cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_H, F_B, L_plot),
                    labels = "AUTO",
                    ncol = 2)
 ```
 
-```{r, fig.width = 4, fig.height = 6, fig.cap = "\\label{fig:lobsters}Effect sizes for lobster abundances in marine reserves from Isla Natividad (IN; red romboids), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
+## Socioeconomic
 
-L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
-                     various = T,
-                     model_names = c("IS", "ME", "PH")) +
-  theme(legend.position = c(0, 1))
+```{r, fig.width = 3, fig.height = 4, fig.cap = "\\label{fig:lobsters}Time series of lobster catches (A) and revenues (B) in at Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
 
 L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
                                           "Scpp cozumel scl",
@@ -526,24 +557,45 @@ L_catches <- ggplot(L_conapesca, aes(x = Ano, y = PesoVivo/1000, color = Comunid
   scale_color_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
   labs(x = "Year", y = "Catches (Tones)") +
-  theme(legend.position = "none")
+  theme(legend.position = "none",
+        text = element_text(size = 12))
 
-L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1000, color = Comunidad, group = Comunidad, fill = Comunidad)) +
+L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1e6, color = Comunidad, group = Comunidad, fill = Comunidad)) +
   geom_smooth(method = "lm") +
   geom_point(size = 2, alpha = 0.5) +
   scale_color_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
-  labs(x = "Year", y = "Value (MXP)") +
-  theme(legend.position = "none")
+  labs(x = "Year", y = "Value (M MXP)") +
+  theme(legend.position = "none",
+        text = element_text(size = 12))
 
 
-cowplot::plot_grid(plotlist = list(L_plot, L_catches, L_value),
+cowplot::plot_grid(plotlist = list(L_catches, L_value),
                    labels = "AUTO",
                    ncol = 1)
 
 ```
 
+## Governance
+
 # Discussion
+
+The biological effects of the reserve contrast the existing literature. Why no effect on bio? IN hypoxia. ME and PH, age? Perhaps is the use of causal inference methods?
+
+Isla natividad no funciona por hipoxya
+
+Maria Elena funciona "bien"
+
+Punta Herrero no funciona por poaching.
+
+Aun con las mejores caracteristicas sociales, noe s posible vencer al ambiente (IN). Para el Caribe, parece ser que buena vigilancia y poca pesca ilegal son determinantes para obtener buenos resultados. Preguntarle a Stuart si ME solamente se pesca durante lanosta, y todo el ano es reserva.
+
+IN captures more dynamics. Reflects hypoxia events. Citar paper Giron
+
+Differences between fish and inverts sheds a lights on direct and indirect effects (Paper que recomendo Fio).
+
+
+
 
 <!-- This section may be divided by subheadings. Discussions should cover the key findings of the study: discuss any prior art related to the subject so to place the novelty of the discovery in the appropriate context; discuss the potential short-comings and limitations on their interpretations; discuss their integration into the current understanding of the problem and how this advances the current views; speculate on the future direction of the research and freely postulate theories that could be tested in the future. -->
 
@@ -558,7 +610,7 @@ The authors declare that the research was conducted in the absence of any commer
 
 \section*{Author Contributions}
 
-JC analyzed and interpreted data, discussed the results and wrote the manuscrip. SF and JT edited the manuscript and discussed the results.
+JC and EA analyzed and interpreted data, discussed the results and wrote the manuscrip. SF and JT edited the manuscript and discussed the results.
 
 \section*{Funding}
 Details of all funding sources should be provided, including grant numbers if applicable. Please ensure to add all necessary funding information, as after publication this is no longer possible.
@@ -571,13 +623,40 @@ This is a short text to acknowledge the contributions of specific colleagues, in
  
 \paragraph*{S1 Figure}
 \label{S1_Figure}
-Maps of the marine reserves and corresponding control sites at each community.
+Timeseries of indicators for IN
+
+\paragraph*{S2 Figure}
+\label{S2_Figure}
+Timeseries of indicators for ME
+
+\paragraph*{S3 Figure}
+\label{S3_Figure}
+Timeseries of indicators for PH
+
+\paragraph*{S1 Table}
+\label{S1_Table}
+Coefficient estimates for Isla Natividad
 
 \paragraph*{S2 Table}
 \label{S2_Table}
-Table with a general overview of on the governance characteristics of each community.
- 
+Coefficient estimates for Maria Elena
 
+\paragraph*{S3 Table}
+\label{S3_Table}
+Coefficient estimates for Punta Herrero
+
+```{r, results = "asis", eval = F}
+stargazer::stargazer(list(N_IN, Ni_IN, S_IN, Si_IN, H_IN, Hi_IN, B_IN, L_IN),
+                     type = "latex",
+                     single.row = T,
+                     omit = "GeneroEspecie",
+                     model.names = F,
+                     column.labels = c("Abundance (f)", "Abundance(i)", "Richness (f)", "Richness(i)", "Shannon (f)", "Shannon (i)", "Biomass", "Lobsters"),
+                     dep.var.labels.include = FALSE,
+                     model.numbers = FALSE,
+                     digits = 2,
+                     intercept.bottom = F, title = "\\paragraph*{S1 Table}\\label{S1_Table}")
+```
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS}
 \bibliography{references}

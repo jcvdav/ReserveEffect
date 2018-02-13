@@ -208,13 +208,35 @@ similar to the corresponding reserves, and that presumably had the same
 probability of being selected as reserves during the design phase. From
 all the reserves in these three communities, we use the ones that have
 data for reserve and control sites before and after the implementation
-of the reserve (n = 4) , thus providing us with a
-Before--After--Control--Impact (\emph{i.e.} BACI) design that allows us
-to capture and control for temporal and spatial dynamics
-\citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference
-techniques have proven effective to evaluate marine reserves, as they
-allow us to causaly attribute observed changes to the intervention
-\citep{moland_2013-VP,Villasenor-Derbez_2018}.
+of the reserve. This provides us with a Before--After--Control--Impact
+(\emph{i.e.} BACI) design that allows us to capture and control for
+temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI
+designs and causal inference techniques have proven effective to
+evaluate marine reserves, as they allow us to causaly attribute observed
+changes to the intervention
+\citep{moland_2013-VP,Villasenor-Derbez_2018}. All reserves were
+surveyed annualy from at least one year before implementation until
+2016. Table \ref{tab:com_sum} shows a summary of the number of reserves,
+year of implementation, and number of transects for each reserve.
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-2}\label{tab:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.}
+\centering
+\begin{tabular}[t]{l|l|r|r|r|r|r|r}
+\hline
+Community & Reserve - Control & Imp & Start & Cf & Rf & Ci & Ri\\
+\hline
+Isla Natividad & La Plana / Las Cuevas - La Dulce / Babencho & 2006 & 2006 & 405 & 242 & 415 & 245\\
+\hline
+Maria Elena & Cabezo - Cabezo (Control) & 2012 & 2012 & 44 & 45 & 27 & 21\\
+\hline
+Punta Herrero & El Faro - El Faro (Control) & 2013 & 2013 & 39 & 40 & 24 & 32\\
+\hline
+Punta Herrero & Manchon - Manchon (Control) & 2013 & 2012 & 43 & 45 & 27 & 42\\
+\hline
+\end{tabular}
+\end{table}
 
 Socioeconomic data come from landing receipts reported to the National
 Commission for Aquaculture and Fisheries (\emph{Comisión Nacional de
@@ -246,7 +268,7 @@ reserves Table \ref{table:indicators}.
 
 \begin{table}[H]
 
-\caption{\label{tab:unnamed-chunk-2}\label{table:indicators}List of indicators used to evaluate the effectiveness of marine reserves, grouped by category.}
+\caption{\label{tab:unnamed-chunk-3}\label{table:indicators}List of indicators used to evaluate the effectiveness of marine reserves, grouped by category.}
 \centering
 \begin{tabular}[t]{l|l}
 \hline
@@ -282,22 +304,23 @@ Governance & Type of access to the fishery\\
 Biological indicators are analyzed with a difference--in--differences
 analysis (Eq \ref{eqn:reg_bio}), which allows us to estimate the effect
 that the reserve has on the biological indicators by comparing trends
-across time and space (\emph{i.e.} reserve and control sites)
+across time and treatments
 \citep{moland_2013-VP,Villasenor-Derbez_2018}. The analysis is performed
 with generalized linear models of the form:
 
 \begin{equation}
-I = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times Zone_i + \sigma_jSpp_j + \Pi_{k}Site_k + \epsilon
+I_i = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times Zone_i + \sigma_jSpp_j + \epsilon
 \label{eqn:reg_bio}
 \end{equation}
 
-Where year--fixed effects are represented by \(\gamma_{it} Year_t\),
+Where year--fixed effects are represented by \(\gamma_{it} Year_t\), and
 \(\beta Zone_i\) captures the difference between reserve (\(Zone = 1\))
-and control (\(Zone = 0\)) sites, and the interaction term
-\(\lambda_{it} Year_t\times Zone_i\) represents the average treatment
-effect for each year. When evaluating biomass and abundances, we include
-species--fixed effects (\(\sigma_j\)), and when more than one reserve is
-present we also include site--fixed effects (\(\Pi_k\)). For abundances
+and control (\(Zone = 0\)) sites. The interaction term
+\(\lambda_{it} Year_t\times Zone_i\) represents represent the mean
+change in the indicator inside the reserve, for year \(t\), with respect
+to the first year of evaluation in the control site (See Table
+\ref{tab:com_sum}). When evaluating biomass and abundances, we include
+species--fixed effects (\(\sigma_j\)). For abundances and richness
 (\emph{i.e.} count data) the model is estimated with a quasipoisson
 error distribution.
 
@@ -306,7 +329,7 @@ Socioeconomic indicators are evaluated with a similar approach (Eq
 implementation of the reserve are compared:
 
 \begin{equation}
-I = \beta_0 + \beta_1Post
+I_i = \beta_0 + \beta_1Post
 \label{eqn:soc_reg}
 \end{equation}
 
@@ -320,39 +343,134 @@ heteroskedastic--robust standard errors \citep{zeileis_2004-7n}.
 
 \textbf{Texto de ere y los SES}
 
+\clearpage
+
 \section{Results}\label{results}
 
-A continuación se presentan los resultados de cada una de las
-comunidades. Los resultados biológicos se presentarán para cada
-comunidad, discutiendo primero los indicadores en común con otras
-comunidades (Shannon, Riqueza, Densidad, Nivel Trófico, Biomasa para
-peces e invertebrados) y, según su caso, las densidades de las especies
-objetivo. Habiendo presentado los resultados biológicos, nos enfocaremos
-después en los socioeconómicos y de gobernanza. Usaremos esta
-información para identificar las causas (sociales) del éxito (biológico)
-de las reservas.
+Our methodological approach with biological indicators allows us to make
+a causal link between the implementation of marine reserves and the
+observed trends by accounting for temporal and spatial dynamics
+\citep{depalma_2018}. The effect of the reserve is captured by the
+\(\lambda_t\) coefficient, and represents the difference observed
+between the control site before the implementation of the reserve and
+the reserve site at time \(t\) after controling for other time and space
+variations (\emph{i.e.} \(\gamma_t\) and \(\beta\) respectively). Here
+we present the effect that marine reserves had on each of the biological
+indicators for each coastal community, along with the trends in
+socioeconomic indicators of lobster catches and revenues. We also
+provide an overview of the state of the socioeconomic and governance
+settings of each community, and discuss how these dimensions might be
+intertwined with each other.
 
-\begin{figure}
-\centering
-\includegraphics{Villasenor-Derbez_files/figure-latex/unnamed-chunk-3-1.pdf}
-\caption{\label{fig:unnamed-chunk-3}\label{fig:indicators}Effect sizes for
-marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME;
-blue triangles), and Punta Herrero (PH; green squares) for
-community-levell indicators. Plots are ordered by survey type (left:
-fish; right: invertebrates) and indicators: Abundance (A, B), Richness
-(C, D), Shannon's diversity index (E, F), and fish biomass (G)}
-\end{figure}
+\subsection{Biological}\label{biological}
+
+Effect sizes for biological indicators are shown in Figure
+\ref{fig:indicators}. Isla Natividad, the community with the oldest
+reserve, shows inconsistent effects across indicators and sources of
+data (\emph{i.e.} fish vs.~invertebrates). For example, the reserve had
+a small effect on fish abundances (Fig \ref{fig:indicators}A), where
+only year 2010 showed significat effect sizes in fish abundances
+(\(p<0.05\)) and all other years oscillated above and under zero
+(\(p > 0.05\)). However, in the case of invertebrate abundances (Fig
+\ref{fig:indicators}B), there was a clear positive effect of the
+reserve, as all but 1 year (2008) presented positive effect sizes
+relative to the control site (\(p < 0.05\)). Maria Elena and Punta
+Herrero showed no significant increase in fish and invertebrate
+abundances (\(p< 0.05\)), except for invertebrates in Punta Herrero for
+2014 --right after the implementation of the reserves-- which showed a
+significant increase (\emph{i.e.} \(\lambda_{2014} = 2.5\),
+\(p < 0.05\)). Full tables with model coefficients are presented in the
+supplementary materials (\textbf{S1 Table}, \textbf{S2 Table},
+\textbf{S3 Table}).
+
+While the number of fish species oscillated above and bellow zero
+through time for all reserves, none of these changes were statistically
+significant (\(p > 0.05\)) indicating that the reserves had no effect on
+fish species richness (Fig \ref{fig:indicators}C). For invertebrate
+species in Isla Natividad, all effect sizes were negative, but only
+significant for 2008, 2009, 2011, and 2014 (\(p < 0.05\); Fig
+\ref{fig:indicators}D). For Maria Elena and Punta Herrero, the data do
+not show significant changes in invertebrate species richness
+(\(p > 0.05\)).
+
+Effect sizes for Shannon's diversity index for fish (Fig
+\ref{fig:indicators}E) in Isla Natividad oscillated between
+\(\lambda_{2011} = -0.45\) and \(\lambda_{2010} = -0.005\), but were not
+significantly different from null hypotheses of no change (\emph{i.e.}
+\(\lambda_t = 0\); \(p > 0.05\)). For invertebrates in that same
+community (Fig \ref{fig:indicators}F), Shannon's diversity index showed
+a significant decrease between 2008 and 2014, with largest decrease
+observed for 2011 (\(\lambda_{2011} = -0.91\); \(p < 0.05\)). In the
+case of Maria Elena and Punta Herrero, Shannon's diversity index for
+fish showed increases in the order of \(\lambda_t = 1\). For Maria Elena
+and Punta Herrero, these effects were only statistically significant for
+2014, and 2014 and 2015 (\(p < 0.05\)).
+
+Biomass was only evaluated for fish data (Fig \ref{fig:indicators}G). In
+Isla Natividad, fish biomass presented a steady but small increase
+(\(p>0.05\)), and exhibited an increased variability in biomass between
+2013 and 2016. Maria Elena and Punta Herrero also showed small,
+non-statistically significant increases in fish biomass (\(p>0.05\)).
+The last biological indicator is abundance of target species,
+\emph{Panulirus interruptus} and \emph{P. argus}, for the Pacific and
+Caribbean, respectively (Fig \ref{fig:indicators}H). Isla Natividad
+presented small constantly-positive effects but were not significantly
+different from the reference point of control site before the
+implementation of the reserve (\(p > 0.05\). Maria Elena showed
+significant increases in lobster densities in the order of
+\(\lambda_t = 10\) (\(p < 0.05\)). Finally, punta herrero presented
+alternating negative and positive effects, but these were not different
+from the baseline case (\(p > 0.05\)).
 
 \begin{figure}
 \centering
 \includegraphics{Villasenor-Derbez_files/figure-latex/unnamed-chunk-4-1.pdf}
-\caption{\label{fig:unnamed-chunk-4}\label{fig:lobsters}Effect sizes for
-lobster abundances in marine reserves from Isla Natividad (IN; red
-romboids), Maria Elena (ME; blue triangles), and Punta Herrero (PH;
-green squares).}
+\caption{\label{fig:unnamed-chunk-4}\label{fig:indicators}Effect sizes for
+marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME;
+blue triangles), and Punta Herrero (PH; green squares) for
+community-levell indicators. Plots are ordered by survey type (left:
+fish; right: invertebrates) and indicators: Abundance (A, B), Richness
+(C, D), Shannon's diversity index (E, F),fish biomass (G), and lobster
+(\emph{Panulirus spp}) abundances (H). Points are jittered hotizontally
+to avoid overplotting. Points indicate the effect size, and errorbars
+are heteroskedastic-robust standard errors.}
 \end{figure}
 
+\subsection{Socioeconomic}\label{socioeconomic}
+
+\begin{figure}
+\centering
+\includegraphics{Villasenor-Derbez_files/figure-latex/unnamed-chunk-5-1.pdf}
+\caption{\label{fig:unnamed-chunk-5}\label{fig:lobsters}Time series of
+lobster catches (A) and revenues (B) in at Isla Natividad (IN; red
+circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green
+squares).}
+\end{figure}
+
+\subsection{Governance}\label{governance-1}
+
 \section{Discussion}\label{discussion}
+
+The biological effects of the reserve contrast the existing literature.
+Why no effect on bio? IN hypoxia. ME and PH, age? Perhaps is the use of
+causal inference methods?
+
+Isla natividad no funciona por hipoxya
+
+Maria Elena funciona ``bien''
+
+Punta Herrero no funciona por poaching.
+
+Aun con las mejores caracteristicas sociales, noe s posible vencer al
+ambiente (IN). Para el Caribe, parece ser que buena vigilancia y poca
+pesca ilegal son determinantes para obtener buenos resultados.
+Preguntarle a Stuart si ME solamente se pesca durante lanosta, y todo el
+ano es reserva.
+
+IN captures more dynamics. Reflects hypoxia events. Citar paper Giron
+
+Differences between fish and inverts sheds a lights on direct and
+indirect effects (Paper que recomendo Fio).
 
 \section*{Conflict of Interest Statement}
 
@@ -362,8 +480,9 @@ potential conflict of interest.
 
 \section*{Author Contributions}
 
-JC analyzed and interpreted data, discussed the results and wrote the
-manuscrip. SF and JT edited the manuscript and discussed the results.
+JC and EA analyzed and interpreted data, discussed the results and wrote
+the manuscrip. SF and JT edited the manuscript and discussed the
+results.
 
 \section*{Funding}
 
@@ -388,14 +507,32 @@ LaTeX folder
 \paragraph*{S1 Figure}
 \label{S1_Figure}
 
-Maps of the marine reserves and corresponding control sites at each
-community.
+Timeseries of indicators for IN
+
+\paragraph*{S2 Figure}
+\label{S2_Figure}
+
+Timeseries of indicators for ME
+
+\paragraph*{S3 Figure}
+\label{S3_Figure}
+
+Timeseries of indicators for PH
+
+\paragraph*{S1 Table}
+\label{S1_Table}
+
+Coefficient estimates for Isla Natividad
 
 \paragraph*{S2 Table}
 \label{S2_Table}
 
-Table with a general overview of on the governance characteristics of
-each community.
+Coefficient estimates for Maria Elena
+
+\paragraph*{S3 Table}
+\label{S3_Table}
+
+Coefficient estimates for Punta Herrero
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS}\bibliography{references}
 
