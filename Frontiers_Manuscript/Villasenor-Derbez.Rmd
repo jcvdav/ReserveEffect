@@ -479,7 +479,7 @@ Our methodological approach with biological indicators allows us to make a causa
 
 ## Biological
 
-Effect sizes for biological indicators are shown in Figure \ref{fig:indicators}. Isla Natividad, the community with the oldest reserve, shows inconsistent effects across indicators and sources of data (*i.e.* fish vs. invertebrates). For example, the reserve had a small effect on fish abundances (Fig \ref{fig:indicators}A), where only year 2010 showed significat effect sizes in fish abundances ($p<0.05$) and all other years oscillated above and under zero ($p > 0.05$). However, in the case of invertebrate abundances (Fig \ref{fig:indicators}B), there was a clear positive effect of the reserve, as all but 1 year (2008) presented positive effect sizes relative to the control site ($p < 0.05$). Maria Elena and Punta Herrero showed no significant increase in fish and invertebrate abundances ($p< 0.05$), except for invertebrates in Punta Herrero for 2014 --right after the implementation of the reserves-- which showed a significant increase (*i.e.* $\lambda_{2014} = 2.5$, $p < 0.05$). Full tables with model coefficients are presented in the supplementary materials (**S1 Table**, **S2 Table**, **S3 Table**).
+Effect sizes for biological indicators are shown in Figure \ref{fig:indicators}, and Figure \ref{fig:res_com} shows the summarized biological effects by community. Isla Natividad shows inconsistent effects across data sources (*i.e.* fish vs. invertebrates). For example, the reserve had a small effect on fish abundances (Fig \ref{fig:indicators}A), where only year 2010 showed significat effect sizes in fish abundances ($p<0.05$) and all other years oscillated above and under zero ($p > 0.05$). However, invertebrate abundances (Fig \ref{fig:indicators}B) presented a positive trend relative to the control site before implementation ($p < 0.05$) for all but 1 year (2008). Maria Elena and Punta Herrero showed no significant increase in fish and invertebrate abundances ($p< 0.05$), except for invertebrates in Punta Herrero for 2014 --right after the implementation of the reserves-- which showed a significant increase (*i.e.* $\lambda_{2014} = 2.5$, $p < 0.05$). Full tables with model coefficients are presented in the supplementary materials (**S1 Table**, **S2 Table**, **S3 Table**).
 
 While the number of fish species oscillated above and bellow zero through time for all reserves, none of these changes were statistically significant ($p > 0.05$) indicating that the reserves had no effect on fish species richness (Fig \ref{fig:indicators}C). For invertebrate species in Isla Natividad, all effect sizes were negative, but only significant for 2008, 2009, 2011, and 2014 ($p < 0.05$; Fig \ref{fig:indicators}D). For Maria Elena and Punta Herrero, the data do not show significant changes in invertebrate species richness ($p > 0.05$).
 
@@ -535,9 +535,67 @@ cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_H, F_B, L_plot),
                    ncol = 2)
 ```
 
+```{r, fig.height = 3, fig.width = 6, fig.cap = "\\label{fig:res_com}Summarized effects of the marne reserves by direction (positive - negative) and significance."}
+observe <- function(model){      tidy_terms <- model %>% 
+        robust_se() %>%
+        filter(grepl(":ZonaReserva", term)) %$%
+        str_split(term, pattern = ":", simplify = T) %>% 
+        as.tibble() %>% 
+        set_colnames(c("Ano", "Zona")) %>% 
+        select(-Zona) %>% 
+        mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = "")))
+      
+      p_i <- robust_se(model) %>%
+        filter(grepl(":ZonaReserva", term)) %>%
+        cbind(tidy_terms) %>%
+        mutate(ptest = ((p.value < 0.05)*-1)+0.05)
+       return(p_i)}
+
+IN <- list(N_IN, Ni_IN, S_IN, Si_IN, H_IN, Hi_IN, B_IN, L_IN) %>% map_df(.f = observe) %>%
+  as.tibble() %>% 
+  select(estimate, p.value) %>% 
+  mutate(Com = "Isla Natividad",
+         n_ind = nrow(.))
+
+ME <- list(N_ME, Ni_ME, S_ME, Si_ME, H_ME, Hi_ME, B_ME, L_ME) %>% map_df(.f = observe) %>%
+  as.tibble() %>% 
+  select(estimate, p.value) %>% 
+  mutate(Com = "Maria Elena",
+         n_ind = nrow(.)) 
+
+PH <- list(N_PH, Ni_PH, S_PH, Si_PH, H_PH, Hi_PH, B_PH, L_PH) %>% map_df(.f = observe) %>%
+  as.tibble() %>% 
+  select(estimate, p.value) %>% 
+  mutate(Com = "Punta Herrero",
+         n_ind = nrow(.)) 
+
+rbind(IN, ME, PH) %>% 
+  mutate(direction = case_when(estimate < 0 ~ "Negative",
+                               estimate > 0 ~ "Positive"),
+         Significance = case_when(p.value < 0.05 ~ "p < 0.05",
+                            p.value >= 0.05 ~ "p > 0.05")) %>%
+  group_by(Com, direction, Significance, n_ind) %>% 
+  summarize(A = n()) %>% 
+  ungroup() %>% 
+  mutate(A = A/n_ind,
+         A = ifelse(direction == "Negative", -A, A),
+         Significance = fct_relevel(Significance, "p > 0.05")) %>% 
+  ggplot(aes(x = Com, y = A, fill = Significance)) +
+  geom_col(color = "black", alpha = 0.8, width = 0.8) +
+  geom_hline(yintercept = 0, linetype = "dashed", size = 1) +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  coord_flip() +
+  labs(x = "Community", y = "Percentage of total coefficients") +
+  scale_y_continuous(breaks = c(-0.5, -0.25, 0, 0.25, 0.5, 0.75), limits = c(-0.5, 0.75),
+                     labels = scales::percent) +
+  theme(legend.text = element_text(size = 8),
+        legend.title = element_text(size = 8))
+```
+
+
 ## Socioeconomic
 
-```{r, fig.width = 3, fig.height = 4, fig.cap = "\\label{fig:lobsters}Time series of lobster catches (A) and revenues (B) in at Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
+```{r, fig.width = 3.5, fig.height = 4, fig.cap = "\\label{fig:lobsters}Time series of lobster catches (A) and revenues (B) in at Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
 
 L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
                                           "Scpp cozumel scl",
@@ -573,7 +631,6 @@ L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1e6, color = Comunidad, gr
 cowplot::plot_grid(plotlist = list(L_catches, L_value),
                    labels = "AUTO",
                    ncol = 1)
-
 ```
 
 ## Governance
