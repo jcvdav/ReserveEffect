@@ -1,14 +1,14 @@
 ---
-title: "Cool title here"
-rtitle: "Mexican marine reserves"
-author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Stuart Fulton$^{2}$"
+title: "Enabling conditions for effective community based marine reserves in small scale fisheries"
+rtitle: "Marine reserve effectiveness"
+author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Álvin Suarez-Castillo$^{2}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
 institution: "
 $^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
 $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
 "
 corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, Santa Barbara, Santa Barbara, CA, 93106"
 email: "jvillasenor@bren.ucsb.edu"
-abstract: "Abstract here"
+abstract: "Abstract after comments from co-authors"
 keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico, Social--Ecological Systems"
 output:
   bookdown::pdf_document2:
@@ -25,38 +25,22 @@ options(knitr.table.format = "latex")
 
 Marine ecosystems around the world sustain significant impacts due to overfishing and unsustainable fishing practices \citep{halpern_2008-dK,worm_2006-IB,pauly_2005-qV}. A common approach to manage the spatial distribution of fishing effort and recover stocks is through the implementation of marine reserves (*i.e.* areas where all fishing activities are off--limits; MRs) \citep{afflerbach_2014-HP,krueck_2017-J1,sala_2017-69}.
 
-Marine reserve science has largely focused on understanding the ecological effects of these areas, which include increased biomass, richness, and densities of organisms within the protected regions \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}, climate change mitigation \citep{roberts_2017-J9}, and protection from environmental variability \citep{micheli_2012-EU}. However, there is considerably less literature focusing on the relationship between socioeconomic and governance structures and their relationship to ecological effectriveness \citep{halpern_2013,lpezangarita_2014,mascia_2017-m_} or benefits to fisheries \citep{krueck_2017-J1}; evaluations of marine reserves rarely provide a hollistic view of the social-ecological system \citep{lpezangarita_2014}. Here, we combine causal inference techniques \citep{depalma_2018} and the social-ecological systems framework \citep{ostrom_2009-hg} to provide a comprehensive ecological and socioeconomic evaluation of four community-based marine reserves in three coastal communities in Mexico.
+Marine reserve science has largely focused on understanding the ecological effects of these areas, which include increased biomass, richness, and densities of organisms within the protected regions \citep{lester_2009-Ks,giakoumi_2017-V2,sala_2017-69}, climate change mitigation \citep{roberts_2017-J9}, and protection from environmental variability \citep{micheli_2012-EU}. However, there is considerably less literature focusing on the relationship between socioeconomic and governance structures and their relationship to ecological effectiveness \citep{halpern_2013,lpezangarita_2014,mascia_2017-m_} or benefits to fisheries \citep{krueck_2017-J1}; evaluations of marine reserves rarely provide a holistic view of the social-ecological system \citep{lpezangarita_2014}. Here, we combine causal inference techniques \citep{depalma_2018} and the social-ecological systems framework \citep{ostrom_2009-hg} to provide a comprehensive ecological and socioeconomic evaluation of four community-based marine reserves in three coastal communities in Mexico.
 
-Marine Reserves in Mexico have been commonly implemented as "core zones" within Biosphere Reserves (BRs) that are administered by the National Commision of Protected Areas (*Comisión Nacional de Áreas Marinas Protegidas*, CONANP). While CONANP has made efforts to have a participatory process, the implementation of these zones is still characterized by top--down approaches. This motivated Civil Society Organizations (CSOs) to work with coastal communities to implement community--based marine reserves \citep{uribe_2010-u2}, which are usually established within a Territorial Use Rights for Fisheries (TURFs); thus making them TURF--reserves \citep{afflerbach_2014-HP}. This bottom--up approach allows fishers to disign their own reserves, which  increases compliance and self--enforcement \citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8}. However, these reserves still lack legal recognition, making them vulnerable to poaching. In 2014, a new norm \citep{nom} allowed fishers to request the legal recognition of a community--based reserve under the name of "Fishing Refugia" (*Zona de Refugio Pesquero*, FR). This new norm thus combines bottom--up approaches to design marine reserves, along with a legal recognition of the management intervention. Since then, *39* FR have been implemented along the Pacific, Gulfof Caloifornia, and Mexican Caribbean coastlines, but no formal evaluation of their effectiveness has taken place.
+Marine Reserves in Mexico have been commonly implemented as "core zones" within Biosphere Reserves that are administered by the National Commission of Protected Areas (*Comisión Nacional de Áreas Marinas Protegidas*, CONANP). While CONANP has made efforts to have a participatory process, the implementation of these zones is still characterized by top--down approaches. This motivated Civil Society Organizations (CSOs) to work with coastal communities to implement community--based marine reserves \citep{uribe_2010-u2}, which are usually established within a Territorial Use Rights for Fisheries (TURFs); thus making them TURF--reserves \citep{afflerbach_2014-HP}. This bottom--up approach allows fishers to design their own reserves, which  increases compliance and self--enforcement \citep{gelcich_2015-Gw,espinosaromero_2014-PY,beger_2004-Y8}. However, these reserves still lack legal recognition, making them vulnerable to poaching. In 2014, a new norm \citep{nom} allowed fishers to request the legal recognition of a community--based reserve under the name of "Fishing Refugia" (*Zona de Refugio Pesquero*, FR). This new norm thus combines bottom--up approaches to design marine reserves, along with a legal recognition of the management intervention. Since then, *39* FR have been implemented along the Pacific, Gulf of California, and Mexican Caribbean coastlines, but no formal evaluation of their effectiveness has taken place.
 
-While there are ecological factors defining the success of a MR (*i.e.* habitat representation, initial state of protection, connectivity to other protected areas), their effectivness also depends on the socioeconomic and governance settings under which they are implemented. Literature shows that many non-ecological characteristics can play an equally important role in the effectivenes of MRs. For example, age of a reserve (*i.e.* time since its implementation), size, and habitat contained were key to the effectiveness of MRs in Palau \citep{friedlander_2017-oI}. In the Mediterranean, \citet{difranco_2016-Xw} identify that surveilance and enfocrement, presence of a management plan, and involvement of fishers in management and decision--making along with promotion of sustainable fishing practices were the key fators that increased stock health and income to fishers. At a global level, \citet{edgar_2014-UO} indicate that enforcement, age, size, and isolation were important factors determining effectiveness of the reserves.
+While there are ecological factors defining the success of a MR (*i.e.* habitat representation, initial state of protection, connectivity to other protected areas), their effectiveness also depends on the socioeconomic and governance settings under which they are implemented. Literature shows that many non-ecological characteristics can play an equally important role in the effectiveness of MRs. For example, age of a reserve (*i.e.* time since its implementation), size, and habitat contained were key to the effectiveness of MRs in Palau \citep{friedlander_2017-oI}. In the Mediterranean, \citet{difranco_2016-Xw} identify that surveillance and enforcement, presence of a management plan, and involvement of fishers in management and decision--making along with promotion of sustainable fishing practices were the key factors that increased stock health and income to fishers. At a global level, \citet{edgar_2014-UO} indicate that enforcement, age, size, and isolation were important factors determining effectiveness of the reserves.
 
-The objective of this work is twofold: i) Provide the first evaluation of community--based marine reserves in Mexico, and ii) provide a comprehensive evaluation of the social--ecological system to identify how sociocoenomic and governance characteristics relate to ecological effectiveness. With the purpose of providing a hollistic evaluation, we combine ecological, socioeconomic, and governance indicators. We use causal inference techniques to provide a measurement of the effect of the management intervention, and combine it with the social--ecological systems framework \citep{ostrom_2009-hg}.
+The objective of this work is twofold: i) Provide the first evaluation of community--based marine reserves in Mexico, and ii) provide a comprehensive evaluation of the social--ecological system to identify how socioeconomic and governance characteristics relate to ecological effectiveness. With the purpose of providing a holistic evaluation, we combine ecological, socioeconomic, and governance indicators. We use causal inference techniques to provide a measurement of the effect of the management intervention, and combine it with the social--ecological systems framework \citep{ostrom_2009-hg}.
 
 
 # Materials and Methods
 
-<!--   - Data collection -->
-
-<!--     - Sampling design (BACI) -->
-
-<!--     - Sampling protocol (transects, richness, abundance, sizes) -->
-
-<!--     - Sample sizes -->
-
-<!--   - Data analysis -->
-
-<!--     - Objectives and indicators -->
-
-<!--     - Analysis of numeric indicators -->
-
-<!--     - Analysis of descriptive indicators -->
-
 ## Study area
 
-We focus our evaluation in three coastal communities from the Pacific coast of Baja California (n = 1) and the Mesoamerican Reef System (n = 2; Fig \ref{fig:map}). Isla Natividad (IN) lies west of the Baja California Peninsula (Fig \ref{fig:map}B), where kelp forests (*Macrocystis pyrifera*) and rocky reefs are the predominant habitats. The island is home to a fishing cooperative (*Sociedad Cooperative de Producción Pesquera Buzos y Pescadores de la Baja California SCL*), that holds a TURF for spiny lobster (*Panulirus interruptus*). However, other resources like finfish (yellowtail jack, *Seriola lalandi*), sea cucumber (*Parastichopus parvimensis*), red sea urchin (*Mesocentrotus franciscanus*), snail (*Megastraea turbanica* y *M. undosa*), and abalone (*Haliotis spp*, until 2010) are also important sources of income. In 2006, the community decided to implement two community--based marine reserves within their fishing grounds, seeking to recover depleted stocks of invertebrate species (mainly lobster and abalone). Until today, these reserves are yet to be legally recognized as Fishing Refugia.
+We focus our evaluation in three coastal communities from the Pacific coast of Baja California (n = 1) and the Mesoamerican Reef System (n = 2; Fig \ref{fig:map}). Isla Natividad (IN) lies west of the Baja California Peninsula (Fig \ref{fig:map}B), where kelp forests (*Macrocystis pyrifera*) and rocky reefs are the predominant habitats. The island is home to a fishing cooperative (*Sociedad Cooperative de Producción Pesquera Buzos y Pescadores de la Baja California SCL*), that holds a TURF for spiny lobster (*Panulirus interruptus*). However, other resources like finfish (yellow-tail jack, *Seriola lalandi*), sea cucumber (*Parastichopus parvimensis*), red sea urchin (*Mesocentrotus franciscanus*), snail (*Megastraea turbanica* y *M. undosa*), and abalone (*Haliotis spp*, until 2010) are also important sources of income. In 2006, the community decided to implement two community--based marine reserves within their fishing grounds, seeking to recover depleted stocks of invertebrate species (mainly lobster and abalone). Until today, these reserves are yet to be legally recognized as Fishing Refugia.
 
-The other two communities are Maria Elena (ME; Fig \ref{fig:map}C) and Punta Herrero (PH; Fig \ref{fig:map}D) in the Yucatan Peninsula, where coral reefs and mangroves are the representative coastal ecosystems. ME is a fishing camp --visited intermitently during the fishing season-- belonging to the Cozumel fishing cooperative. PH is home to the "José María Azcorra" fishing cooperative. The main source of income to both communities is the caribbean spinly lobster fishery (*Panulirus argus*), which is carried out within their respective TURFs. These communities also target finfish in the off season, mainly snappers (Lutjanidae) and groupers (Serranidae). ME established eight marine reserves in 2012, and PH established four marine reserves in 2013. All these reserves are legally recognized as Fishing Refugia.
+The other two communities are Maria Elena (ME; Fig \ref{fig:map}C) and Punta Herrero (PH; Fig \ref{fig:map}D) in the Yucatan Peninsula, where coral reefs and mangroves are the representative coastal ecosystems. ME is a fishing camp --visited intermittently during the fishing season-- belonging to the Cozumel fishing cooperative. PH is home to the "José María Azcorra" fishing cooperative. The main source of income to both communities is the Caribbean spiny lobster fishery (*Panulirus argus*), which is carried out within their respective TURFs. These communities also target finfish in the off season, mainly snappers (Lutjanidae) and groupers (Serranidae). ME established eight marine reserves in 2012, and PH established four marine reserves in 2013. All these reserves are legally recognized as Fishing Refugia.
 
 ```{r loadp_kgs}
 suppressPackageStartupMessages({
@@ -219,7 +203,7 @@ conapesca %<>%
 gob <- read.csv("../Data/governance.csv", strip.white = T, stringsAsFactors = T)
 ```
 
-To perform the evaluation of these reserves we use thre sources of information. Ecological data come from the annual ecological monitorings of reserve and control areas, carried out by members from each community and personnel from the Mexican CSO "Comunidad y Biodiversidad" ([COBI](www.cobi.org.mx)). These monitorings record richness and abundances of fish and invertebrate species in the reservs and control sites. For fish census, size structures are also collected to derive biomass. We define control sites as regions with habitat characteristics similar to the corresponding reserves, and that presumably had the same probability of being selected as reserves during the design phase. From all the reserves in these three communities, we use the ones that have data for reserve and control sites before and after the implementation of the reserve. This provides us with a Before--After--Control--Impact (*i.e.* BACI) design that allows us to capture and control for temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causaly attribute observed changes to the intervention \citep{moland_2013-VP,Villasenor-Derbez_2018}. All reserves were surveyed annualy from at least one year before implementation until 2016. Table \ref{tab:com_sum} shows a summary of the number of reserves, year of implementation, and number of transects for each reserve.
+To perform the evaluation of these reserves we use thee sources of information. Ecological data come from the annual ecological monitoring of reserve and control areas, carried out by members from each community and personnel from the Mexican CSO "Comunidad y Biodiversidad" ([COBI](www.cobi.org.mx)). These monitorings record richness and abundances of fish and invertebrate species in the reserves and control sites. For fish census, size structures are also collected to derive biomass. We define control sites as regions with habitat characteristics similar to the corresponding reserves, and that presumably had the same probability of being selected as reserves during the design phase. From all the reserves in these three communities, we use the ones that have data for reserve and control sites before and after the implementation of the reserve. This provides us with a Before-After-Control-Impact (*i.e.* BACI) design that allows us to capture and control for temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causally attribute observed changes to the intervention \citep{moland_2013-VP,Villasenor-Derbez_2018}. All reserves were surveyed annually from at least one year before implementation until 2016. Table \ref{table:com_sum} shows a summary of the number of reserves, year of implementation, and number of transects for each reserve.
 
 ```{r}
 inv_summary <- group_by(invert, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
@@ -242,9 +226,8 @@ group_by(fish, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
   select(Comunidad, RC, Implementation, Start, Control, Reserve = Reserva) %>% 
   left_join(inv_summary, by = c("Comunidad", "RC")) %>% 
   knitr::kable(format = "latex",
-               caption = "\\label{tab:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.",
-               col.names = c("Community", "Reserve - Control", "Imp", "Start", "Cf", "Rf", "Ci", "Ri")) #%>% 
-  # kableExtra::add_header_above(header = c(" " = 4, "Fish" = 6, "Invert" = 8))
+               caption = "\\label{table:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.",
+               col.names = c("Community", "Reserve - Control", "Imp", "Start", "Cf", "Rf", "Ci", "Ri"))
 ```
 
 
@@ -257,18 +240,30 @@ I_t = RI_t\times\frac{CPI_t}{CPI_T}
 
 Where $I_t$ represents the adjusted income for year $t$ as the product between the reported income for that year and the ratio between the consumer price index in that year ($CPI_t$) to the most recent year’s consumer price index ($CPI_T$).
 
-**Governance data were collected at the community--level, using key informants to collect the necesary information on X, Y, and Z. Algo mas de Ere.**
+Governance data were collected at the community-level. The information was compiled by combining key informants and the authors; experience and knowledge of the communities to collect the necessary information. These data contain information on the ecological system where the fishing activities develop, as well as the governance structures present in the cooperative. We also gathered information on the resource unit (*i.e.* lobsters) and the relevant actors present in each community \citep{leslie_2015-na}.
 
 ## Data analysis
 
-Following a framework that relates reserve objectives to performance indicators \citep{Villasenor-Derbez_2018}, we use five biological, two socioeconomic, and five governance indicators to evaluate these marine reserves Table \ref{table:indicators}.
-
+Following a framework that relates reserve objectives to performance indicators \citep{Villasenor-Derbez_2018}, we use five biological and two socioeconomic indicators to evaluate these marine reserves Table \ref{table:indicators}. We also use a set of governance indicators to analyze the governance structures of each cooperative \citep{leslie_2015-na}. The indicators (Table \ref{table:gov_ind}) focus on the resource system (four indicators), governance system (seven indicators), resource units (three indicators) and actors (three indicators).
 
 ```{r}
-tibble(Category = c("Biological", "","","","", "Socioeconomic", "", "Governance", "", "", "", ""),
-           Indicador = c("Abundance", "Richness", "Shannon's diversity index", "Biomass", "Abundance of target species (lobsters)", "Income from target species", "Landings from target species", "Type of access to the fishery", "Perceived degree of illegal fishing", "Reserve surveilance anf enforcement", "Type of fishing organization", "Age of the reserve")) %>% 
+tibble(Category = c("Biological", "","","","", "Socioeconomic", ""),
+           Indicador = c("Abundance", "Richness", "Shannon's diversity index", "Biomass", "Abundance of target species (lobsters)", "Income from target species", "Landings from target species")) %>% 
   knitr::kable(caption = "\\label{table:indicators}List of indicators used to evaluate the effectiveness of marine reserves, grouped by category.", format = "latex") %>% 
   kable_styling(latex_options = "HOLD_position")
+```
+
+```{r}
+read.csv("../Data/gov_ind.csv") %>% 
+  knitr::kable(caption = "\\label{table:gov_ind}Indicators used for the operationalization of the SES framework \\citep{leslie_2015-na}", col.names = c("Indicator", "Isla Natividad", "Maria Elena", "Punta Herrero"), format = "latex") %>% 
+  kableExtra::column_spec(1, width = "10em") %>% 
+  kableExtra::column_spec(2, width = "8em") %>% 
+  kableExtra::column_spec(3, width = "8em") %>% 
+  kableExtra::column_spec(4, width = "8em") %>% 
+  kableExtra::row_spec(1 , bold = T) %>% 
+  kableExtra::row_spec(6 , bold = T) %>% 
+  kableExtra::row_spec(14 , bold = T) %>% 
+  kableExtra::row_spec(18 , bold = T)
 ```
 
 Biological indicators are analyzed with a difference--in--differences analysis (Eq \ref{eqn:reg_bio}), which allows us to estimate the effect that the reserve has on the biological indicators by comparing trends across time and treatments \citep{moland_2013-VP,Villasenor-Derbez_2018}. The analysis is performed with generalized linear models of the form:
@@ -278,7 +273,7 @@ I_i = \alpha_{i} + \gamma_{it} Year_t + \beta Zone_i + \lambda_{it} Year_t\times
 \label{eqn:reg_bio}
 \end{equation}
 
-Where year--fixed effects are represented by $\gamma_{it} Year_t$, and $\beta Zone_i$ captures the difference between reserve ($Zone = 1$) and control ($Zone = 0$) sites. The interaction term $\lambda_{it} Year_t\times Zone_i$ represents represent the mean change in the indicator inside the reserve, for year $t$, with respect to the first year of evaluation in the control site (See Table \ref{tab:com_sum}). When evaluating biomass and abundances, we include species--fixed effects ($\sigma_j$). For abundances and richness (*i.e.* count data) the model is estimated with a quasipoisson error distribution.
+Where year--fixed effects are represented by $\gamma_{it} Year_t$, and $\beta Zone_i$ captures the difference between reserve ($Zone = 1$) and control ($Zone = 0$) sites. The interaction term $\lambda_{it} Year_t\times Zone_i$ represents represent the mean change in the indicator inside the reserve, for year $t$, with respect to the first year of evaluation in the control site (See Table \ref{table:com_sum}). When evaluating biomass and abundances, we include species--fixed effects ($\sigma_j$). For abundances and richness (*i.e.* count data) the model is estimated with a quasipoisson error distribution.
 
 Socioeconomic indicators are evaluated with a similar approach (Eq \ref{eqn:soc_reg}), where landings and income before and after the implementation of the reserve are compared:
 
@@ -288,10 +283,6 @@ I_i = \beta_0 + \beta_1Post
 \end{equation}
 
 This approach does not allow for a causal attribution of the observed changes to the reserve, but still allows us to draw important information that can inform our conclusions. For both approaches, model coefficients are estimated via ordinary least--squares and heteroskedastic--robust standard errors \citep{zeileis_2004-7n}.
-
-### Governance
-
-**Texto de ere y los SES**
 
 \clearpage
 
@@ -475,17 +466,17 @@ L_PH <- invert_complete %>%
 
 # Results
 
-Our methodological approach with biological indicators allows us to make a causal link between the implementation of marine reserves and the observed trends by accounting for temporal and spatial dynamics \citep{depalma_2018}. The effect of the reserve is captured by the $\lambda_t$ coefficient, and represents the difference observed between the control site before the implementation of the reserve and the reserve site at time $t$ after controling for other time and space variations (*i.e.* $\gamma_t$ and $\beta$ respectively). Here we present the effect that marine reserves had on each of the biological indicators for each coastal community, along with the trends in socioeconomic indicators of lobster catches and revenues. We also provide an overview of the state of the socioeconomic and governance settings of each community, and discuss how these dimensions might be intertwined with each other.
+Our methodological approach with biological indicators allows us to make a causal link between the implementation of marine reserves and the observed trends by accounting for temporal and spatial dynamics \citep{depalma_2018}. The effect of the reserve is captured by the $\lambda_t$ coefficient, and represents the difference observed between the control site before the implementation of the reserve and the reserve site at time $t$ after controlling for other time and space variations (*i.e.* $\gamma_t$ and $\beta$ respectively). Here we present the effect that marine reserves had on each of the biological indicators for each coastal community, along with the trends in socioeconomic indicators of lobster catches and revenues. We also provide an overview of the state of the socioeconomic and governance settings of each community, and discuss how these dimensions might be intertwined with each other.
 
 ## Biological
 
-Effect sizes for biological indicators are shown in Figure \ref{fig:indicators}, and Figure \ref{fig:res_com} shows the summarized biological effects by community. Isla Natividad shows inconsistent effects across data sources (*i.e.* fish vs. invertebrates). For example, the reserve had a small effect on fish abundances (Fig \ref{fig:indicators}A), where only year 2010 showed significat effect sizes in fish abundances ($p<0.05$) and all other years oscillated above and under zero ($p > 0.05$). However, invertebrate abundances (Fig \ref{fig:indicators}B) presented a positive trend relative to the control site before implementation ($p < 0.05$) for all but 1 year (2008). Maria Elena and Punta Herrero showed no significant increase in fish and invertebrate abundances ($p< 0.05$), except for invertebrates in Punta Herrero for 2014 --right after the implementation of the reserves-- which showed a significant increase (*i.e.* $\lambda_{2014} = 2.5$, $p < 0.05$). Full tables with model coefficients are presented in the supplementary materials (**S1 Table**, **S2 Table**, **S3 Table**).
+Effect sizes for biological indicators are shown in Figure \ref{fig:indicators}, and Figure \ref{fig:res_com} shows the summarized biological effects by community. Isla Natividad shows inconsistent effects across data sources (*i.e.* fish vs. invertebrates). For example, the reserve had a small effect on fish abundances (Fig \ref{fig:indicators}A), where only year 2010 showed significant effect sizes in fish abundances ($p<0.05$) and all other years oscillated above and under zero ($p > 0.05$). However, invertebrate abundances (Fig \ref{fig:indicators}B) presented a positive trend relative to the control site before implementation ($p < 0.05$) for all but 1 year (2008). Maria Elena and Punta Herrero showed no significant increase in fish and invertebrate abundances ($p< 0.05$), except for invertebrates in Punta Herrero for 2014 --right after the implementation of the reserves-- which showed a significant increase (*i.e.* $\lambda_{2014} = 2.5$, $p < 0.05$). Full tables with model coefficients are presented in the supplementary materials (**S1 Table**, **S2 Table**, **S3 Table**).
 
 While the number of fish species oscillated above and bellow zero through time for all reserves, none of these changes were statistically significant ($p > 0.05$) indicating that the reserves had no effect on fish species richness (Fig \ref{fig:indicators}C). For invertebrate species in Isla Natividad, all effect sizes were negative, but only significant for 2008, 2009, 2011, and 2014 ($p < 0.05$; Fig \ref{fig:indicators}D). For Maria Elena and Punta Herrero, the data do not show significant changes in invertebrate species richness ($p > 0.05$).
 
 Effect sizes for Shannon's diversity index for fish (Fig \ref{fig:indicators}E) in Isla Natividad oscillated between $\lambda_{2011} = -0.45$ and $\lambda_{2010} = -0.005$, but were not significantly different from null hypotheses of no change (*i.e.* $\lambda_t = 0$; $p > 0.05$). For invertebrates in that same community (Fig \ref{fig:indicators}F), Shannon's diversity index showed a significant decrease between 2008 and 2014, with largest decrease observed for 2011 ($\lambda_{2011} = -0.91$; $p < 0.05$). In the case of Maria Elena and Punta Herrero, Shannon's diversity index for fish showed increases in the order of $\lambda_t = 1$. For Maria Elena and Punta Herrero, these effects were only statistically significant for 2014, and 2014 and 2015 ($p < 0.05$).
 
-Biomass was only evaluated for fish data (Fig \ref{fig:indicators}G). In Isla Natividad, fish biomass presented a steady but small increase ($p>0.05$), and exhibited an increased variability in biomass between 2013 and 2016. Maria Elena and Punta Herrero also showed small, non-statistically significant increases in fish biomass ($p>0.05$). The last biological indicator is abundance of target species, *Panulirus interruptus* and *P. argus*, for the Pacific and Caribbean, respectively (Fig \ref{fig:indicators}H). Isla Natividad presented small constantly-positive effects but were not significantly different from the reference point of control site before the implementation of the reserve ($p > 0.05$. Maria Elena showed significant increases in lobster densities in the order of $\lambda_t = 10$ ($p < 0.05$). Finally, punta herrero presented alternating negative and positive effects, but these were not different from the baseline case ($p > 0.05$).
+Biomass was only evaluated for fish data (Fig \ref{fig:indicators}G). In Isla Natividad, fish biomass presented a steady but small increase ($p>0.05$), and exhibited an increased variability in biomass between 2013 and 2016. Maria Elena and Punta Herrero also showed small, non-statistically significant increases in fish biomass ($p>0.05$). The last biological indicator is abundance of target species, *Panulirus interruptus* and *P. argus*, for the Pacific and Caribbean, respectively (Fig \ref{fig:indicators}H). Isla Natividad presented small constantly-positive effects but were not significantly different from the reference point of control site before the implementation of the reserve ($p > 0.05$. Maria Elena showed significant increases in lobster densities in the order of $\lambda_t = 10$ ($p < 0.05$). Finally, Punta Herrero presented alternating negative and positive effects, but these were not different from the baseline case ($p > 0.05$).
 
 ```{r, fig.width = 6.5, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F),fish biomass (G), and lobster (*Panulirus spp*) abundances (H). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size, and errorbars are heteroskedastic-robust standard errors."}
 
@@ -595,23 +586,49 @@ rbind(IN, ME, PH) %>%
 
 ## Socioeconomic
 
-```{r, fig.width = 3.5, fig.height = 4, fig.cap = "\\label{fig:lobsters}Time series of lobster catches (A) and revenues (B) in at Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
+Lobster catches and income showed a increase after the implementation of the reserves for Isla Natividad and Maria Elena, but not for Punta Herrero (Fig \ref{fig:lobsters}). However, the differences in catches and and revenue were not different in the periods before and after the implementation ($p > 0.05$) except for revenues in Isla Natividad, which presented a significant increase of 14.37 (M MXP; $p<0.05$). Table \ref{table:soc_res} presents all the regression coefficients.
 
+```{r, results = "asis"}
 L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
                                           "Scpp cozumel scl",
                                           "Scpp jose maria azcorra scl"),
                       Comunidad = c("Isla Natividad",
-                                    "María Elena",
+                                    "Maria Elena",
                                     "Punta Herrero")) %>% 
   left_join(conapesca, ., by = "UnidadEconomica") %>% 
-  mutate(Post = case_when(Comunidad == "Isla Natividad" && Ano <= 2006 ~ "Pre",
-                          Comunidad == "Maria Elena" && Ano <= 2012 ~ "Pre",
-                          Comunidad == "Punta Herrer" && Ano <= 2012 ~ "Pre",
-                          TRUE ~ "Post"))
+  mutate(Post = case_when(Comunidad == "Isla Natividad" && Ano <= 2006 ~ 0,
+                          Comunidad == "Maria Elena" && Ano <= 2012 ~ 0,
+                          Comunidad == "Punta Herrero" && Ano <= 2013 ~ 0,
+                          TRUE ~ 1))
+
+C_IN <- filter(L_conapesca, Comunidad == "Isla Natividad") %>% 
+  lm(PesoVivo/1000~Post, data = .)
+
+C_ME <- filter(L_conapesca, Comunidad == "Maria Elena") %>% 
+  lm(PesoVivo/1000~Post, data = .)
+
+C_PH <- filter(L_conapesca, Comunidad == "Punta Herrero") %>% 
+  lm(PesoVivo/1000~Post, data = .)
+
+V_IN <- filter(L_conapesca, Comunidad == "Isla Natividad") %>% 
+  lm(Valor/1000000~Post, data = .)
+
+V_ME <- filter(L_conapesca, Comunidad == "Maria Elena") %>% 
+  lm(Valor/1000000~Post, data = .)
+
+V_PH <- filter(L_conapesca, Comunidad == "Punta Herrero") %>% 
+  lm(Valor/1000000~Post, data = .)
+
+stargazer::stargazer(C_IN, C_ME, C_PH, V_IN, V_ME, V_PH, digits = 2, type = "latex", header = F, omit.stat = c("adj.rsq", "ser", "f"), title = "\\label{table:soc_res} Regression coefficients for lobster catches and revenues for Isla Natividad (1, 4), Maria Elena (2, 5), and Punta Herrero (3, 6).", single.row = T, report = c("vc*"), dep.var.labels = c("Catches (tones)", "Revenue(M MXP)"))
+
+```
+
+
+```{r, fig.width = 3.5, fig.height = 4, fig.cap = "\\label{fig:lobsters}Time series of lobster catches (A) and revenues (B) in at Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares)."}
 
 L_catches <- ggplot(L_conapesca, aes(x = Ano, y = PesoVivo/1000, color = Comunidad, group = Comunidad, fill = Comunidad)) +
   geom_smooth(method = "lm") +
-  geom_point(size = 2, alpha = 0.5) +
+  geom_point(aes(shape = Comunidad), size = 2, alpha = 0.5) +
   scale_color_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
   labs(x = "Year", y = "Catches (Tones)") +
@@ -620,7 +637,7 @@ L_catches <- ggplot(L_conapesca, aes(x = Ano, y = PesoVivo/1000, color = Comunid
 
 L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1e6, color = Comunidad, group = Comunidad, fill = Comunidad)) +
   geom_smooth(method = "lm") +
-  geom_point(size = 2, alpha = 0.5) +
+  geom_point(aes(shape = Comunidad), size = 2, alpha = 0.5) +
   scale_color_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
   labs(x = "Year", y = "Value (M MXP)") +
@@ -635,24 +652,38 @@ cowplot::plot_grid(plotlist = list(L_catches, L_value),
 
 ## Governance
 
+Although we have little information on the social dimension of these fisheries, using the SES framework indicators (Table \ref{table:gov_ind}), we can analyze the performance of each governance system with respect to MR enforcement (Table \ref{table:gov_res}). In general, the presence and success of conservation initiatives depends on the incentives of local communities to maintain a healthy status of the resources they depend upon \citep{jupiter_2017}. The enabling conditions for conservation seem to be strongly present in Isla Natividad. Due to the clarity of access rights and isolation, the benefits of conservation directly benefit the members of the fishing cooperative. These conditions have favored the development of an efficient community based enforcement system. In contrast, the communities of Maria Elena and Punta Herrero are located near other fishing communities and cities. In Maria Elena, the fishing pressure caused by outsiders can be reduced by implementing a strong enforcement system (in water and land) supported by CSOs and the local government (CONANP). Lastly, the community of Punta Herrero shows the highest levels of illegal activities which can be attributed to its connectedness to other communities and the lack of appropriate technologies for enforcement.
+
+```{r}
+read.csv("../Data/gov_res.csv") %>% 
+  knitr::kable(caption = "\\label{table:gov_res}Analysis of the fishing cooperatives based on the Social-Ecological systems framework \\citep{mcginnis_2014}.",
+               col.names = c("", "Indicator", "Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
+  kableExtra::column_spec(1, width = "10em") %>%
+  kableExtra::column_spec(2, width = "10em") %>%
+  kableExtra::row_spec(1 , bold = T) %>% 
+  kableExtra::row_spec(7 , bold = T) %>% 
+  kableExtra::row_spec(15 , bold = T) %>% 
+  kableExtra::row_spec(19 , bold = T)
+```
+
+
+\clearpage
+
 # Discussion
 
-The biological effects of the reserve contrast the existing literature. Why no effect on bio? IN hypoxia. ME and PH, age? Perhaps is the use of causal inference methods?
+Our results indicated idiosyncratic biological effects of the reserves across communities and indicators, with a combination of positive and negative effects. However, many of these effects were not statistically significant, indicating no effect of the reserve \ref{fig:res_com}. The socioeconomic indicators pertaining to landings and revenues associated to those landings showed little or no temporal change before and after reserve implementation. These contrasting effects, however, might be clarified when understanding the social-ecological context in which these communities and their reserves sit. In this section, we discuss potential shortcomings in our analysis, and provide plausible explanations to the observed biological and socioeconomic basing on previous literature and our analysis of the social-ecological system.
 
-Isla natividad no funciona por hipoxya
+The contrasting biological effectiveness observed is perhaps explained by our approach to evaluate the temporal and spatial changes of each indicator. Some works have solely focused on an inside-outside comparison of indicators \citep{guidetti_2014-8Z,friedlander_2017-oI,rodriguez_2017-PD}, which do not address temporal variability \citep{depalma_2018}. Other works have compared the trend observed within a reserve through time \citep{betti_2017-lq}, which cannot distinguish between the temporal trends in a reserve and the entire system \citep{depalma_2018}. By accounting for trends between sites and through times, we can control for time and space dynamics, and provide a better identification of the effect. However, it is worth looking deeper into each case, and identifying other plausible explanations.
 
-Maria Elena funciona "bien"
+Age, isolation, and enforcement are important factors influencing effectiveness of a marine reserve \citep{edgar_2014-UO}. Isla Natividad has the oldest reserve, is fairly isolated, and has a well-established community-based enforcement system. While other communities are certainly within reach, these are known to be well organized fishing communities with successful resource management \citep{mccay_2017-1m,mccay_2014-CN}. The reserve at Isla Natividad presented the largest percentage of significantly positive changes in biological indicators (19%), but an important portion of was also negative (15%). With the age, relative isolation, and enforcement level of this reserve, it would be expected for it to be considerably effective. The potential gap in performance can be attributed to perturbations that do not distinguish reserve boundaries, such as environmental variability (**no recuerdo esta cita**). The region is known to be under the influence of recurrent hypoxia and high-temperature events known to cause massive adult mortalities \citep{micheli_2012-EU}.
 
-Punta Herrero no funciona por poaching.
+Maria Elena and Punta Herrero are relatively young reserves (See Table \ref{table:com_sum}). From these, the Maria Elena exhibited the highest performance in terms of biological indicators (15% significantly positive). In contrast, Punta Herrero had a similar proportion of positive and negative effects.
 
-Aun con las mejores caracteristicas sociales, noe s posible vencer al ambiente (IN). Para el Caribe, parece ser que buena vigilancia y poca pesca ilegal son determinantes para obtener buenos resultados. Preguntarle a Stuart si ME solamente se pesca durante lanosta, y todo el ano es reserva.
+The way in which we measure changes in catches and revenues can not identify whether the observed differences are simply caused by pre-existing temporal trends or by the implementation of the reserve. Yet, there were no detectable changes in these indicators, except for landings in Isla Natividad. Other research has shown that reserves in Isla Natividad yield fishery benefits for the abalone fishery \citep{rossetto_2015-V0}. Since the trend was not detected in catches --directly related to abundance and fishing effort-- it is plausible that these differences are purely explained by an increase in market-level prices.
 
-IN captures more dynamics. Reflects hypoxia events. Citar paper Giron
+The fact that there was no detectable change in catches for Maria Elena and Punta Herrero can be explained by a combination of factors related to the design, management, age, or ecological factors. Reserves in these communities are relatively small and young, and may need more time for lobster abundances to increase enough to export larvae or adult organisms. Other community-based marine reserves in tropical ecosystems have taken up to six years to show a spillover effect \citep{dasilva_2015-zX}. A complimentary explanation lies in the results observed for the governance system. The lack of enforcement in Punta Herrero, for example, could explain the lack of effectiveness observed in their reserves.
 
-Differences between fish and inverts sheds a lights on direct and indirect effects (Paper que recomendo Fio).
-
-
-
+Our results show that community-based marine reserves can be effective if the environmental and social settings allow it. By studying the social-ecological system as a whole, we can provide a wider range of explanations to the patterns observed. It is interesting that even under the best enabling social conditions, climate variability can hinder the effect of a reserve --Although it is interesting to imagine what the state of that fishery had been if the reserve and organized cooperative were not present--. On the contrary, we show how under low climate variability, absence of proper governance structures can limit the effectiveness and benefits of a reserve. Whether the combination of a stable environment and governance structures are additive or multiplicative represents an interesting area for future research, especially under a changing climate.
 
 <!-- This section may be divided by subheadings. Discussions should cover the key findings of the study: discuss any prior art related to the subject so to place the novelty of the discovery in the appropriate context; discuss the potential short-comings and limitations on their interpretations; discuss their integration into the current understanding of the problem and how this advances the current views; speculate on the future direction of the research and freely postulate theories that could be tested in the future. -->
 
@@ -667,13 +698,16 @@ The authors declare that the research was conducted in the absence of any commer
 
 \section*{Author Contributions}
 
-JC and EA analyzed and interpreted data, discussed the results and wrote the manuscrip. SF and JT edited the manuscript and discussed the results.
+JC and EA analyzed and interpreted data, discussed the results, and wrote the manuscript. AS, SF and JT edited the manuscript and discussed the results.
 
 \section*{Funding}
-Details of all funding sources should be provided, including grant numbers if applicable. Please ensure to add all necessary funding information, as after publication this is no longer possible.
+JCVD CONACyT + LAFF
+ASC
+SF
+JT
 
 \section*{Acknowledgments}
-This is a short text to acknowledge the contributions of specific colleagues, institutions, or agencies that aided the efforts of the authors.
+The authors wish to acknowledge Arturo Hernández and Imelda Amador for contributions on the governance data, as well as pre-processing biological data. This study would have not been possible without the effort by members of the communities here mentioned, who collected the biological data.
 
 \section*{Supplemental Data}
  \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder
