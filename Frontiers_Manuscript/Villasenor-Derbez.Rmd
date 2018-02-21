@@ -8,7 +8,7 @@ $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
 "
 corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, Santa Barbara, Santa Barbara, CA, 93106"
 email: "jvillasenor@bren.ucsb.edu"
-abstract: "Abstract after comments from co-authors"
+abstract: "Coastal marine ecosystems provide livelihoods for small-scale fishers and coastal communities around the world. However, overfishing and unsustainable fishing practices threaten the marine environment and jeopardize the wellbeing of coastal communities. A common approach to protect the environment and recover overexploited stocks is to implement no-take marine reserves (areas where all extractive activities are off-limits). In small-scale fisheries, these are sometimes implemented as community-based reserves, where a group of fishers collectively agree to close an area to fishing. While we know that reductions in fishing effort are followed by a series of ecological benefits (increased biomass, abundance, and species diversity), we do not fully understand how environmental and governance dynamics influence the conservation and fisheries benefits of community-based marine reserves. In this work, we evaluate the ecological outcomes of four reserves established by three coastal communities in temperate and tropical ecosystems of Mexico. By combining causal inference techniques with an operationalization of the social-ecological systems framework, we identify the environmental and social conditions that enable reserve effectiveness. Our results show a strong interaction between environmental variation and community organization, which influences reserve effectiveness. For example, the most effective reserve had strong governance structures accompanied with low environmental variability. Thus, even when a community is well organized (and reserves are well enforced), environmental variation can hinder the benefits of a reserve, and vice versa. Our results are particularly relevant under present changing climate conditions, as they can better inform management and decision making."
 keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico, Social--Ecological Systems"
 output:
   bookdown::pdf_document2:
@@ -20,6 +20,8 @@ output:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 options(knitr.table.format = "latex")
 ```
+
+\clearpage
 
 # Introduction
 
