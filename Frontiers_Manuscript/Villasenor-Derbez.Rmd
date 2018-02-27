@@ -72,7 +72,6 @@ source(file = "../Scripts/plot_model.R") #plots effect sizes
 
 
 ```{r load_spatial}
-
 # Determine a projection for the maps
 proj <- CRS("+proj=longlat +datum=NAD27")
 
@@ -632,6 +631,7 @@ L_catches <- ggplot(L_conapesca, aes(x = Ano, y = PesoVivo/1000, color = Comunid
   geom_smooth(method = "lm") +
   geom_point(aes(shape = Comunidad), size = 2, alpha = 0.5) +
   scale_color_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
   labs(x = "Year", y = "Catches (Tones)") +
   theme(legend.position = "none",
@@ -641,6 +641,7 @@ L_value <- ggplot(L_conapesca, aes(x = Ano, y = Valor/1e6, color = Comunidad, gr
   geom_smooth(method = "lm") +
   geom_point(aes(shape = Comunidad), size = 2, alpha = 0.5) +
   scale_color_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1") +
   geom_vline(xintercept = c(2006, 2012, 2013), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
   labs(x = "Year", y = "Value (M MXP)") +
   theme(legend.position = "none",
