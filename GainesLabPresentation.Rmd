@@ -1,14 +1,33 @@
 ---
-title: "Community-based marine reserves in Mexico: their effectiveness"
-subtitle: "(Or their lack of?)"
-author: "Juan Carlos Villaseñor-Derbez"
+title: "Community-based marine reserves in Mexico: do they work?"
+author: "JC"
 date: "27/02/18"
-output: xaringan::moon_reader
+output:
+  xaringan::moon_reader:
+    nature:
+      slideNumberFormat: ""
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+# Before we start
+
+- This is onging work
+
+- Other collaborators
+
+- Help me better tell the story (if there is one)
+
+
+
+
+> Even when a community is very well organized, environmental variation can hinder reserve effectiveness
+
+> Even if environment is stable, lack of community organization can hinder reserve effectiveness
+
+---
 
 # Background
 
@@ -129,7 +148,7 @@ ggplot() +
 data.frame(Community = c("Isla Natividad", "Maria Elena", "Punta Herrero"),
            N_reserves = c(2, 3, 3),
            N_reserves2 = c("1", "1", "2*"),
-           Size = c(10.58, 483.98, 153.13),
+           Size = c(10.58, 9.73, 527.79),
            Implemented = c(2006, 2012, 2013)) %>% 
   knitr::kable(format = "html", col.names = c("Community", "Reserves", "Evaluated", "Size (ha)", "Implemented"))
 ```
@@ -140,18 +159,15 @@ data.frame(Community = c("Isla Natividad", "Maria Elena", "Punta Herrero"),
 
 --
 
-- The objectives are *"mixed"* on paper (consrvation + fisheries)
-- Ask a fisher, they'll say:
-
-> "We want to increase lobsters populations and catches"
+- The objectives are *"mixed"* on paper (conservation + fisheries)
 
 ---
 
+- Ask a fisher, they'll say:
+
+> "We want to increase lobster populations and catches"
+
 ![](./Img/Imagen5.jpg)
-
-Lobster is their most important resource
-
-- (*Panulirus interruptus* and *P. argus*)
 
 ---
 class: inverse
@@ -168,15 +184,21 @@ class: inverse
 
 --
 
-## What are the enabling conditions?
+## How do environmental and social dynamics influence the outcomes of community-based marine reserves?
 
 ---
 
 # Methods
 
-Data:
+Combine:
+
+- Causal inference
+
+- Operationalization of the social-ecological systems framework (Gracias Ere!)
 
 --
+
+Data:
 
 - Fish and invert surveys BACI
 
@@ -208,17 +230,15 @@ $$I_{i,t,s} = \alpha_{i} + \sum_{t = 1}^T\gamma_{t} Y_t + \beta Z_i +  \sum_{t =
 
 ---
 
-## Fisheries side
+## Fisheries-side
 
 - Change in lobster income and landings
 
 ## Social / governance data
 
-- Thanks Ere!
-
-  - Rules and structures under which decisions are made
+- Rules and structures under which decisions are made
   
-  - Use this to help identify "enabling conditions"
+- Use this to help identify "enabling conditions"
 
 ---
 
@@ -232,13 +252,32 @@ Are these community-based marine reserves effective?
 
 # Results
 
+.pull-left[
+Some general trends:
+- Positive effects in invertebrate abundances
+- Fish richness post 2010 takes a dive (IN)
+- Negative effect in invertebrate richness (IN)
+- Not much more...
+]
+
+.pull-right[
+![](./Img/plot.png)
+]
+
+---
+
+
+# Results
+
 Are these community-based marine reserves effective?
 
 ![](./Img/plot_summary.png)
 
 ---
 
-## Are they effective for lobster?
+# Results
+
+Are they effective for lobster?
 
 Lobster abundances
 
@@ -246,14 +285,18 @@ Lobster abundances
 
 ---
 
-## Are they effective for lobster?
+# Results
+
+Are they effective for lobster?
+
+- Landings and income
 
 <table style="text-align:center">
 <tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="6"><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
-<tr><td style="text-align:left"></td><td colspan="3">Catches (tones)</td><td colspan="3">Revenue(M MXP)</td></tr>
+<tr><td style="text-align:left"></td><td colspan="3">Landings (tones)</td><td colspan="3">Revenue(M MXP)</td></tr>
 <tr><td style="text-align:left"></td><td>(IN)</td><td>(ME)</td><td>(PH)</td><td>(IN)</td><td>(ME)</td><td>(PH)</td></tr>
-<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">PostbPost</td><td>7.37</td><td>5.83</td><td>-1.26</td><td><strong>14.37<sup>***</sup></strong></td><td>1.24</td><td>-0.06</td></tr>
+<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Post</td><td>7.37</td><td>5.83</td><td>-1.26</td><td><strong>14.37<sup>***</sup></strong></td><td>1.24</td><td>-0.06</td></tr>
 <tr><td style="text-align:left">Constant</td><td>122.68<sup>***</sup></td><td>11.41<sup>***</sup></td><td>6.06<sup>***</sup></td><td>10.89<sup>***</sup></td><td>2.04<sup>***</sup></td><td>1.06<sup>***</sup></td></tr>
 <tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>15</td><td>14</td><td>13</td><td>15</td><td>14</td><td>13</td></tr>
 <tr><td style="text-align:left">R<sup>2</sup></td><td>0.02</td><td>0.04</td><td>0.01</td><td>0.52</td><td>0.04</td><td>0.0004</td></tr>
@@ -264,17 +307,215 @@ Lobster abundances
 
 ## Are they effective for lobster?
 
-![](./Img/econ2.png)
+Income
+
+```{r, warning = F, message = F}
+
+load("./Data/conapesca_2000-2015.RData")
+
+cpi <- read.csv("./Data/CPI.csv", stringsAsFactors = F, strip.white = T)
+
+cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
+
+conapesca %<>%
+  filter(UnidadEconomica %in% c("Scpp cozumel scl",
+                                "Scpp jose maria azcorra scl",
+                                "Scpp buzos y pescadores de la baja california scl")) %>% 
+  filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
+  group_by(UnidadEconomica, Ano, NombreComun) %>%
+  summarize(PesoDesembarcado = sum(PesoDesembarcado), 
+            PesoVivo = sum(PesoVivo),
+            Valor = sum(Valor)) %>%
+  filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" & NombreComun == "Langosta ent. fca.")) %>% 
+  left_join(cpi, by = "Ano") %>% 
+  mutate(Valor = Valor * (CPI / cpi_2014))
+
+
+L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
+                                          "Scpp cozumel scl",
+                                          "Scpp jose maria azcorra scl"),
+                      Comunidad = c("Isla Natividad",
+                                    "Maria Elena",
+                                    "Punta Herrero")) %>% 
+  left_join(conapesca, ., by = "UnidadEconomica") %>% 
+  mutate(Post = case_when(Comunidad == "Isla Natividad" && Ano <= 2006 ~ 0,
+                          Comunidad == "Maria Elena" && Ano <= 2012 ~ 0,
+                          Comunidad == "Punta Herrero" && Ano <= 2013 ~ 0,
+                          TRUE ~ 1))
+
+L_conapesca2 <- L_conapesca %>% 
+  group_by(Comunidad, Post) %>% 
+  summarize(meanC = mean(PesoVivo/1000),
+            meanI = mean(Valor/1e6))
+
+left_join(L_conapesca, L_conapesca2, by = c("Comunidad", "Post")) %>% 
+  ggplot(aes(x = Ano, y = Valor/1e6, color = Comunidad, group = paste(Comunidad, Post), fill = Comunidad)) +
+  geom_line(aes(y = meanI), size = 1) +
+  geom_point(aes(shape = Comunidad), size = 2) +
+  scale_color_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1") +
+  geom_vline(xintercept = c(2006.5, 2012.5, 2013.5), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
+  labs(x = "Year", y = "Income (M MXP)") +
+  theme(legend.position = "none",
+        text = element_text(size = 12)) +
+  cowplot::theme_cowplot()
+```
 
 ---
 
 ## Are they effective for lobster?
 
-![](./Img/econ1.png)
+Landings
+
+```{r}
+left_join(L_conapesca, L_conapesca2, by = c("Comunidad", "Post")) %>% 
+  ggplot(aes(x = Ano, y = PesoVivo/1e3, color = Comunidad, group = paste(Comunidad, Post), fill = Comunidad)) +
+  geom_line(aes(y = meanC), size = 1) +
+  geom_point(aes(shape = Comunidad), size = 2) +
+  scale_color_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set1") +
+  geom_vline(xintercept = c(2006.5, 2012.5, 2013.5), color = c("red", "blue", "darkgreen"), linetype = "dashed", size = 0.5) +
+  labs(x = "Year", y = "Landings (Tones)") +
+  theme(legend.position = "none",
+        text = element_text(size = 12)) +
+  cowplot::theme_cowplot()
+```
 
 ---
 
 # Results
+
+Isla Natividad
+
+- Designed for invertebrates
+  
+--
+
+- Very well organized community
+  
+--
+
+- Relatively isolated, but still surrounded by "good fishers"
+
+--
+
+- Reserve is well enforced
+
+--
+
+- Reserve has been in place quite some time
+
+--
+
+- Should be the perfect example... but
+  
+--
+  
+- Has had mass mortality events due to hypoxia (2009, 2010) and warm water (~2015)
+  
+
+---
+
+# Results
+
+Maria Elena
+  
+- Also intended to protect grouper reproductive aggregations
+  
+--
+  
+- Well enforced
+  
+--
+  
+- Community is very well organized
+  
+--
+  
+- No hypoxia or other environmental disturbances
+  
+--
+  
+- Small (~ 10 ha)
+  
+--
+  
+- Fairly young (5 years of data)
+
+---
+
+# Results
+
+Punta Herrero
+
+--
+
+- Also intended to protect grouper reproductive aggregations
+
+--
+
+- Good size (~ 500 ha)
+
+--
+
+- Low enforcement
+
+--
+
+- Community is not very well organized
+
+--
+
+- No hypoxia or other environmental disturbances
+
+--
+
+- Fairly young (4 years of data)
+
+---
+
+# Telling the story
+
+> Even when a community is very well organized, environmental variation can hinder reserve effectiveness
+
+> Even if environment is stable, lack of community organization can hinder reserve effectiveness
+
+## Missing pieces
+
+- Data on environmental disturbances (can get DO, S, T > 2009 for N)
+
+---
+background-image: url(https://raw.githubusercontent.com/jcvdav/ReserveEffect/master/Img/Imagen5.jpg)
+class: inverse, center, middle
+background-size: cover
+
+# Thanks!
+
+--
+
+## Questions?
+
+--
+
+## Suggestions?
+
+--
+
+## Comments?
+
+--
+
+### Anyone??
+
+--
+
+# Help!
+
+---
+
+---
+
+# Extras
 
 Enabling conditions
 
@@ -287,10 +528,6 @@ data.frame(Feature = c("No-take", "Well-enforced", "Old (> 10yrs)", "Large", "Is
 ```
 
 From: Edgar *et al.*, (2014); Di Franco *et al.* (2016)
-
----
-
-# 
 
 
 
