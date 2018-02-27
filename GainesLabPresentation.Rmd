@@ -194,7 +194,8 @@ Combine:
 
 - Causal inference
 
-- Operationalization of the social-ecological systems framework (Gracias Ere!)
+- Operationalization of the social-ecological systems framework
+  - (Gracias Ere!)
 
 --
 
@@ -387,60 +388,67 @@ left_join(L_conapesca, L_conapesca2, by = c("Comunidad", "Post")) %>%
 
 Isla Natividad
 
-- Designed for invertebrates
+- Should be the perfect example:
+
+--
+
+  - Designed for invertebrates
   
 --
 
-- Very well organized community
+  - Very well organized community
   
 --
 
-- Relatively isolated, but still surrounded by "good fishers"
+  - Relatively isolated, but still surrounded by "good fishers"
 
 --
 
-- Reserve is well enforced
+  - Reserve is well enforced
 
 --
 
-- Reserve has been in place quite some time
-
---
-
-- Should be the perfect example... but
+  - Reserve has been in place quite some time
   
 --
+
+- But:
   
-- Has had mass mortality events due to hypoxia (2009, 2010) and warm water (~2015)
-  
+  - Mortality events due to hypoxia (2009, 2010) and warm water (~2015)
 
 ---
 
 # Results
 
 Maria Elena
+
+- This is:
+
+--
   
-- Also intended to protect grouper reproductive aggregations
+  - Well enforced
   
 --
   
-- Well enforced
+  - Community is very well organized
   
 --
   
-- Community is very well organized
+  - No hypoxia or other environmental disturbances
+  
+--
+
+- But not a great design:
+  
+  - Also intended to protect grouper reproductive aggregations
+
+--
+  
+  - Small (~ 10 ha)
   
 --
   
-- No hypoxia or other environmental disturbances
-  
---
-  
-- Small (~ 10 ha)
-  
---
-  
-- Fairly young (5 years of data)
+  - Fairly young (5 years of data)
 
 ---
 
@@ -448,29 +456,35 @@ Maria Elena
 
 Punta Herrero
 
---
-
-- Also intended to protect grouper reproductive aggregations
+- Opposite to Isla Natividad:
 
 --
 
-- Good size (~ 500 ha)
+  - Good size (~ 500 ha)
 
 --
 
-- Low enforcement
+  - No hypoxia or other environmental disturbances
+  
+--
+  
+- But:
 
 --
 
-- Community is not very well organized
+  - Also intended to protect grouper reproductive aggregations
 
 --
 
-- No hypoxia or other environmental disturbances
+  - Low enforcement
 
 --
 
-- Fairly young (4 years of data)
+  - Community is not very well organized
+
+--
+
+  - Fairly young (4 years of data)
 
 ---
 
