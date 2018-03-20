@@ -1,5 +1,5 @@
 ---
-title: "Enabling conditions for effective community based marine reserves in small scale fisheries"
+title: "Enabling conditions for effective community-based marine reserves in small-scale fisheries"
 author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Alvin Suarez-Castillo$^{2}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
 date: "$^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA. $^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico"
 output: pdf_document
