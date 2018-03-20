@@ -94,7 +94,7 @@ W <- spTransform(World, proj) %>%
   st_as_sf()
 
 # Load high-res mexican coastline
-coastline_mx <- readRDS("./Data/Spatial/coastline_mx.rds")
+coastline_mx <- readRDS(here::here("data", "spatial","coastline_mx.rds"))
 
 # Declare points for reference map
 location_labels <- data.frame(X = c(-115.24, -87.4611756),
@@ -104,12 +104,12 @@ location_labels <- data.frame(X = c(-115.24, -87.4611756),
                               N = c("N = 1", "N = 3"),
                               stringsAsFactors = F)
 
-zrp <- st_read(dsn = "./Data/Spatial", layer = "ZRP", quiet = T) %>% 
+zrp <- st_read(dsn = here::here("data", "spatial"), layer = "ZRP", quiet = T) %>% 
   sf::st_centroid() %>% 
   select(Name, geometry) %>% 
   mutate(Type = "FR")
 
-rescom <- st_read(dsn = "./Data/Spatial", layer = "Res_Com", quiet = T) %>% 
+rescom <- st_read(dsn = here::here("data", "spatial"), layer = "Res_Com", quiet = T) %>% 
   sf::st_centroid() %>% 
   select(Name = Nombre, geometry) %>% 
   mutate(Type = "CB")
@@ -167,7 +167,7 @@ data.frame(Community = c("Isla Natividad", "Maria Elena", "Punta Herrero"),
 
 > "We want to increase lobster populations and catches"
 
-![](./Img/Imagen5.jpg)
+![](./img/Imagen5.jpg)
 
 ---
 class: inverse
@@ -247,7 +247,7 @@ $$I_{i,t,s} = \alpha_{i} + \sum_{t = 1}^T\gamma_{t} Y_t + \beta Z_i +  \sum_{t =
 
 Are these community-based marine reserves effective?
 
-![](./Img/plot.png)
+![](./img/plot.png)
 
 ---
 
@@ -262,7 +262,7 @@ Some general trends:
 ]
 
 .pull-right[
-![](./Img/plot.png)
+![](./img/plot.png)
 ]
 
 ---
@@ -272,7 +272,7 @@ Some general trends:
 
 Are these community-based marine reserves effective?
 
-![](./Img/plot_summary.png)
+![](./img/plot_summary.png)
 
 ---
 
@@ -282,7 +282,7 @@ Are they effective for lobster?
 
 Lobster abundances
 
-![](./Img/Lobsters.png)
+![](./img/Lobsters.png)
 
 ---
 
@@ -312,9 +312,9 @@ Income
 
 ```{r, warning = F, message = F}
 
-load("./Data/conapesca_2000-2015.RData")
+load(here::here("data","conapesca_2000-2015.RData"))
 
-cpi <- read.csv("./Data/CPI.csv", stringsAsFactors = F, strip.white = T)
+cpi <- read.csv(here::here("data","CPI.csv"), stringsAsFactors = F, strip.white = T)
 
 cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
 
@@ -499,7 +499,7 @@ Punta Herrero
 - Data on environmental disturbances (can get DO, S, T > 2009 for N)
 
 ---
-background-image: url(https://raw.githubusercontent.com/jcvdav/ReserveEffect/master/Img/Imagen5.jpg)
+background-image: url(https://raw.githubusercontent.com/jcvdav/ReserveEffect/master/img/Imagen5.jpg)
 class: inverse, center, middle
 background-size: cover
 
