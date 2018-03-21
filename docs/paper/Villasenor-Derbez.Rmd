@@ -1,15 +1,13 @@
 ---
-title: "Enabling conditions for effective community based marine reserves in small scale fisheries"
+title: "Enabling conditions for effective community-based marine reserves in small-scale fisheries"
 rtitle: "Marine reserve effectiveness"
 author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,*}$, Álvin Suarez-Castillo$^{2}$, Stuart Fulton$^{2}$, Jorge Torre$^{2}$"
-institution: "
-$^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
-$^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico
-"
+institution: "$^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA\\newline
+$^{2}$Comunidad y Biodiversidad A.C.,  Guaymas, Mexico"
 corrauth: "Juan Carlos Villaseñor-Derbez, Bren Hall, University of California, Santa Barbara, Santa Barbara, CA, 93106"
 email: "jvillasenor@bren.ucsb.edu"
 abstract: "Coastal marine ecosystems provide livelihoods for small-scale fishers and coastal communities around the world. However, overfishing and unsustainable fishing practices threaten the marine environment and jeopardize the wellbeing of coastal communities. A common approach to protect the environment and recover overexploited stocks is to implement no-take marine reserves (areas where all extractive activities are off-limits). In small-scale fisheries, these are sometimes implemented as community-based reserves, where a group of fishers collectively agree to close an area to fishing. While we know that reductions in fishing effort are followed by a series of ecological benefits (increased biomass, abundance, and species diversity), we do not fully understand how environmental and governance dynamics influence the conservation and fisheries benefits of community-based marine reserves. In this work, we evaluate the ecological outcomes of four reserves established by three coastal communities in temperate and tropical ecosystems of Mexico. By combining causal inference techniques with an operationalization of the social-ecological systems framework, we identify the environmental and social conditions that enable reserve effectiveness. Our results show a strong interaction between environmental variation and community organization, which influences reserve effectiveness. For example, the most effective reserve had strong governance structures accompanied with low environmental variability. Thus, even when a community is well organized (and reserves are well enforced), environmental variation can hinder the benefits of a reserve, and vice versa. Our results are particularly relevant under present changing climate conditions, as they can better inform management and decision making."
-keywords: "Marine Reserves, Marine Conservation, Small Scale Fisheries, Citizen Science, Mexico, Social--Ecological Systems"
+keywords: "Marine Protected Areas, Marine Conservation, Small-Scale Fisheries, Citizen Science, Mexico, Social-Ecological Systems"
 output:
   bookdown::pdf_document2:
     keep_tex: yes
@@ -75,7 +73,7 @@ source(file = here::here("scripts", "plot_model.R")) #plots effect sizes
 
 ```{r load_spatial}
 # Determine a projection for the maps
-proj <- CRS("+proj=longlat +datum=NAD27")
+proj <- "+proj=longlat +datum=NAD27"
 
 # Load coastline for Mexico and World
 data(World)
@@ -355,100 +353,8 @@ invert_complete <- invert %>%
 ```
 
 ```{r model_fit}
-# Fish
-
-## Abundance
-N_IN <- fish_complete %>% 
-  abundance(com = "Isla Natividad") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-N_ME <- fish_complete %>% 
-  abundance(com = "Maria Elena") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-N_PH <- fish_complete %>% 
-  abundance(com = "Punta Herrero") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-## Richness
-S_IN <- fish_complete %>% 
-  richness(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-S_ME <- fish_complete %>% 
-  richness(com = "Maria Elena") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-S_PH <- fish_complete %>% 
-  richness(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-## Shannon
-H_IN <- fish_complete %>% 
-  shannon(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F)
-
-H_ME <- fish_complete %>% 
-  shannon(com = "Maria Elena") %>% 
-  model(sfe = F, spfe = F)
-
-H_PH <- fish_complete %>% 
-  shannon(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F)
-
-## Biomass
-B_IN <- fish %>% 
-  biomass(com = "Isla Natividad") %>% 
-  model(sfe = F)
-
-B_ME <- fish%>% 
-  biomass(com = "Maria Elena") %>% 
-  model(sfe = F)
-
-B_PH <- fish %>% 
-  biomass(com = "Punta Herrero") %>% 
-  model(sfe = F)
 
 # Invertebrates
-
-## Abundance
-Ni_IN <- invert_complete %>% 
-  abundance(com = "Isla Natividad") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-Ni_ME <- invert_complete %>% 
-  abundance(com = "Maria Elena") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-Ni_PH <- invert_complete %>% 
-  abundance(com = "Punta Herrero") %>% 
-  model(sfe = F, family = "quasipoisson")
-
-## Richness
-Si_IN <- invert_complete %>% 
-  richness(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-Si_ME <- invert_complete %>% 
-  richness(com = "Maria Elena") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-Si_PH <- invert_complete %>% 
-  richness(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
-
-## Shannon
-Hi_IN <- invert_complete %>% 
-  shannon(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F)
-
-Hi_ME <- invert_complete %>% 
-  shannon(com = "Maria Elena") %>% 
-  model(sfe = F, spfe = F)
-
-Hi_PH <- invert_complete %>% 
-  shannon(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F)
 
 ## Lobsters
 L_IN <- invert_complete %>%
@@ -465,6 +371,49 @@ L_PH <- invert_complete %>%
   filter(GeneroEspecie == "Panulirus argus") %>% 
   abundance(com = "Punta Herrero") %>% 
   model(sfe = F, spfe = F, family = "quasipoisson")
+
+## Abundance
+Ni_IN <- invert_complete %>% 
+  abundance(com = "Isla Natividad") %>% 
+  model(sfe = F, family = "quasipoisson")
+
+Ni_ME <- invert_complete %>% 
+  abundance(com = "Maria Elena") %>% 
+  model(sfe = F, family = "quasipoisson")
+
+Ni_PH <- invert_complete %>% 
+  abundance(com = "Punta Herrero") %>% 
+  model(sfe = F, family = "quasipoisson")
+
+
+# Fish
+
+## Biomass
+B_IN <- fish %>% 
+  biomass(com = "Isla Natividad") %>% 
+  model(sfe = F)
+
+B_ME <- fish%>% 
+  biomass(com = "Maria Elena") %>% 
+  model(sfe = F)
+
+B_PH <- fish %>% 
+  biomass(com = "Punta Herrero") %>% 
+  model(sfe = F)
+
+## Abundance
+N_IN <- fish_complete %>% 
+  abundance(com = "Isla Natividad") %>% 
+  model(sfe = F, family = "quasipoisson")
+
+N_ME <- fish_complete %>% 
+  abundance(com = "Maria Elena") %>% 
+  model(sfe = F, family = "quasipoisson")
+
+N_PH <- fish_complete %>% 
+  abundance(com = "Punta Herrero") %>% 
+  model(sfe = F, family = "quasipoisson")
+
 ```
 
 # Results
@@ -481,52 +430,40 @@ Effect sizes for Shannon's diversity index for fish (Fig \ref{fig:indicators}E) 
 
 Biomass was only evaluated for fish data (Fig \ref{fig:indicators}G). In Isla Natividad, fish biomass presented a steady but small increase ($p>0.05$), and exhibited an increased variability in biomass between 2013 and 2016. Maria Elena and Punta Herrero also showed small, non-statistically significant increases in fish biomass ($p>0.05$). The last biological indicator is abundance of target species, *Panulirus interruptus* and *P. argus*, for the Pacific and Caribbean, respectively (Fig \ref{fig:indicators}H). Isla Natividad presented small constantly-positive effects but were not significantly different from the reference point of control site before the implementation of the reserve ($p > 0.05$. Maria Elena showed significant increases in lobster densities in the order of $\lambda_t = 10$ ($p < 0.05$). Finally, Punta Herrero presented alternating negative and positive effects, but these were not different from the baseline case ($p > 0.05$).
 
-```{r, fig.width = 6.5, fig.height = 8, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F),fish biomass (G), and lobster (*Panulirus spp*) abundances (H). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size, and errorbars are heteroskedastic-robust standard errors."}
+```{r, fig.width = 6.5, fig.height = 4, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for community-levell indicators. Plots are ordered by survey type (left: fish; right: invertebrates) and indicators: Abundance (A, B), Richness (C, D), Shannon's diversity index (E, F),fish biomass (G), and lobster (*Panulirus spp*) abundances (H). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size, and errorbars are heteroskedastic-robust standard errors."}
 
-# Fish plots
-F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
-                  various = T,
-                  model_names = c("IN", "ME", "PH"), legend = T)  +
+# Invert plots
+## Lobsters
+L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
+                     various = T,
+                     model_names = c("IS", "ME", "PH"))  +
   theme(legend.justification = c(0, 0),
-        legend.position = c(0, 0),
+        legend.position = c(0, 0.4),
         legend.text = element_text(size = 8),
         legend.title = element_text(size = 8),
         legend.direction = "horizontal") +
-  scale_colour_brewer(guide = guide_legend(title.position = "top", nrow = 1), palette = "Set1")
+  scale_colour_brewer(guide = guide_legend(title.position = "top", nrow = 3), palette = "Set1")
 
-F_S <- plot_model(model = list(S_IN, S_ME, S_PH),
-                  various = T,
-                  model_names = c("IN", "ME", "PH"))
-
-F_H <- plot_model(model = list(H_IN, H_ME, H_PH),
-                  various = T,
-                  model_names = c("IN", "ME", "PH"))
-
-F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
-                 various = T,
-                 model_names = c("IS", "ME", "PH"))
-
-# Invert plots
+## Abundance
 I_N <- plot_model(model = list(Ni_IN, Ni_ME, Ni_PH),
                   various = T,
                   model_names = c("IN", "ME", "PH"))
 
-I_S <- plot_model(model = list(Si_IN, Si_ME, Si_PH),
+# Fish plots
+## Biomass
+F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
+                 various = T,
+                 model_names = c("IS", "ME", "PH"))
+
+## Abundance
+F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
                   various = T,
-                  model_names = c("IN", "ME", "PH"))
+                  model_names = c("IN", "ME", "PH"), legend = F)
 
-I_H <- plot_model(model = list(Hi_IN, Hi_ME, Hi_PH),
-                  various = T,
-                  model_names = c("IN", "ME", "PH"))
-
-## Lobsters
-L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
-                     various = T,
-                     model_names = c("IS", "ME", "PH"))
-
-cowplot::plot_grid(plotlist = list(F_N, I_N, F_S, I_S, F_H, I_H, F_B, L_plot),
+cowplot::plot_grid(plotlist = list(L_plot, F_B, I_N, F_N),
                    labels = "AUTO",
                    ncol = 2)
+
 ```
 
 ```{r, fig.height = 3, fig.width = 6, fig.cap = "\\label{fig:res_com}Summarized effects of the marne reserves by direction (positive - negative) and significance."}
@@ -545,19 +482,19 @@ observe <- function(model){      tidy_terms <- model %>%
         mutate(ptest = ((p.value < 0.05)*-1)+0.05)
        return(p_i)}
 
-IN <- list(N_IN, Ni_IN, S_IN, Si_IN, H_IN, Hi_IN, B_IN, L_IN) %>% map_df(.f = observe) %>%
+IN <- list(N_IN, Ni_IN, B_IN, L_IN) %>% map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Isla Natividad",
          n_ind = nrow(.))
 
-ME <- list(N_ME, Ni_ME, S_ME, Si_ME, H_ME, Hi_ME, B_ME, L_ME) %>% map_df(.f = observe) %>%
+ME <- list(N_ME, Ni_ME, B_ME, L_ME) %>% map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Maria Elena",
          n_ind = nrow(.)) 
 
-PH <- list(N_PH, Ni_PH, S_PH, Si_PH, H_PH, Hi_PH, B_PH, L_PH) %>% map_df(.f = observe) %>%
+PH <- list(N_PH, Ni_PH, B_PH, L_PH) %>% map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Punta Herrero",
@@ -580,7 +517,7 @@ rbind(IN, ME, PH) %>%
   scale_fill_brewer(palette = "Set1", direction = -1) +
   coord_flip() +
   labs(x = "Community", y = "Percentage of total coefficients") +
-  scale_y_continuous(breaks = c(-0.5, -0.25, 0, 0.25, 0.5, 0.75), limits = c(-0.5, 0.75),
+  scale_y_continuous(breaks = seq(-0.65, 0.9, by = 0.25), limits = c(-0.65, 0.9),
                      labels = scales::percent) +
   theme(legend.text = element_text(size = 8),
         legend.title = element_text(size = 8))
