@@ -7,7 +7,6 @@
 ```
 ReserfeEffect
 ├───data
-│   └───spatial
 ├───docs
 │   ├───paper
 │   │   ├───FMS_templates
@@ -15,6 +14,8 @@ ReserfeEffect
 │   │       └───figure-latex
 │   ├───technical_report
 │   └───WSSFConf_abstract
+├───raw_data
+│   └───spatial
 ├───scripts
 └───slides
     ├───GainesLabPresentation_files
