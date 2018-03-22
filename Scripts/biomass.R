@@ -1,12 +1,12 @@
 biomass <- function(x, com){
   results <- x %>% 
-    filter(Comunidad == com) %>% 
-    filter(Abundancia > 0) %>% 
-    left_join(species_bio, by = c("GeneroEspecie")) %>% 
-    mutate(Ano = as.factor(Ano),
-           biomass = Abundancia * a * (Talla^b)/1000) %>% 
-    group_by(RC, Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
-    summarize(Indicador = sum(biomass, na.rm = T))
+    filter(comunidad == com) %>% 
+    mutate(ano = as.factor(ano),
+           year = as.factor(year),
+           biomass = abundancia * a * (talla^b)/1000) %>% 
+    group_by(rc, ano, year, sitio, zona, transecto, generoespecie) %>% 
+    summarize(indicador = sum(biomass, na.rm = T)) %>% 
+    ungroup()
   
   return(results)
 }

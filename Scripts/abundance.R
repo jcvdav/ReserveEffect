@@ -1,14 +1,16 @@
 abundance <- function(x, com, spp = NULL){
   
   if(!is.null(spp)){
-    x %<>% filter(GeneroEspecie == spp)
+    x %<>% filter(generoespecie == spp)
   }
   
   results <- x %>% 
-    filter(Comunidad == com) %>%
-    mutate(Ano = as.factor(Ano)) %>% 
-    group_by(Comunidad, RC, Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
-    summarize(Indicador = sum(Abundancia))
+    filter(comunidad == com) %>%
+    mutate(ano = as.factor(ano),
+           year = as.factor(year)) %>% 
+    group_by(rc, ano, year, sitio, zona, transecto, generoespecie) %>% 
+    summarize(indicador = sum(abundancia)) %>% 
+    ungroup()
     
     return(results)
 }
