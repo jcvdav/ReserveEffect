@@ -9,7 +9,7 @@ model <- function(x, family = "gaussian", sfe = T, spfe = T){
   
   if(!sfe){
     if(spfe){model <- glm(indicador ~ year * zona + generoespecie -1, data = x, family = family)} #No site FE and Spp FE
-    if(!spfe){model <- glm(indicador ~ year * zona, data = x, family = family)} #No site and no Spp FE
+    if(!spfe){model <- glm(indicador ~ year * zona -1, data = x, family = family)} #No site and no Spp FE
   }
   
   return(model)

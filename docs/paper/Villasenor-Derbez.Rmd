@@ -59,8 +59,6 @@ suppressPackageStartupMessages({
 
 # Load indicator functions
 source(file = here::here("scripts", "abundance.R")) #Calculate abundance per transect
-source(file = here::here("scripts", "richness.R")) # Calculate richness per transect
-source(file = here::here("scripts", "shannon.R")) #Calculate shannon's index per transect
 source(file = here::here("scripts", "biomass.R")) # Calculate fish biomass per transect
 source(file = here::here("scripts", "trophic.R")) # Calculate mean trophic level per transect
 
@@ -81,7 +79,7 @@ W <- spTransform(World, proj) %>%
   st_as_sf()
 
 # Load high-res mexican coastline
-coastline_mx <- readRDS(here::here("data", "spatial", "coastline_mx.rds"))
+coastline_mx <- readRDS(here::here("raw_data", "spatial", "coastline_mx.rds"))
 
 # Declare points for reference map
 location_labels <- data.frame(X = c(-115.24, -87.4611756),
@@ -95,12 +93,12 @@ location_labels <- spTransform(location_labels, proj) %>%
   st_as_sf()
 
 # Load ZRP shapefile
-zrp <- st_read(dsn = here::here("data", "spatial"), layer = "ZRP", quiet = T) %>% 
+zrp <- st_read(dsn = here::here("raw_data", "spatial"), layer = "ZRP", quiet = T) %>% 
   filter(Name %in% c("El Cabezo", "El Faro")) %>% 
   st_transform(crs = "+proj=longlat +datum=NAD27")
 
 # Load Community reserve shapefile
-rescom <- st_read(dsn = here::here("data", "spatial"), layer = "Res_Com", quiet = T) %>% 
+rescom <- st_read(dsn = here::here("raw_data", "spatial"), layer = "Res_Com", quiet = T) %>% 
   filter(Nombre == "La_Plana") %>% 
   st_transform(crs = "+proj=longlat +datum=NAD27")
 
@@ -148,7 +146,7 @@ invert <- read.csv(file = here::here("data", "invertebrates.csv"))
 
 fish <- read.csv(file = here::here("data", "fish.csv"))
 
-conapesca <- read.csv(x = conapesca, file = here::here("data", "conapesca.csv"))
+conapesca <- read.csv(file = here::here("data", "conapesca.csv"))
 
 gob <- read.csv(here::here("data" ,"governance.csv"), strip.white = T, stringsAsFactors = T)
 ```
@@ -173,7 +171,7 @@ group_by(fish, comunidad, rc, zona, sitio, transecto, ano) %>%
   ungroup() %>% 
   spread(zona, n) %>% 
   mutate(implementation = c(2006, 2012, 2013, 2013)) %>% 
-  select(comunidad, implementation, ano, rc, control = Control, reserve = Reserva) %>% 
+  select(comunidad, rc, implementation, ano, control = Control, reserve = Reserva) %>% 
   left_join(inv_summary, by = c("comunidad", "rc")) %>% 
   knitr::kable(format = "latex",
                caption = "\\label{table:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.",
@@ -345,38 +343,43 @@ F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
 cowplot::plot_grid(plotlist = list(L_plot, F_B, I_N, F_N),
                    labels = "AUTO",
                    ncol = 2)
-
 ```
 
 ```{r, fig.height = 3, fig.width = 6, fig.cap = "\\label{fig:res_com}Summarized effects of the marne reserves by direction (positive - negative) and significance."}
-observe <- function(model){      tidy_terms <- model %>% 
+observe <- function(model){
+  tidy_terms <- model %>% 
         robust_se() %>%
-        filter(grepl(":ZonaReserva", term)) %$%
+        filter(grepl(":zonaReserva", term)) %$%
         str_split(term, pattern = ":", simplify = T) %>% 
         as.tibble() %>% 
         set_colnames(c("Ano", "Zona")) %>% 
         select(-Zona) %>% 
-        mutate(Ano = as.numeric(gsub(Ano, pattern = "Ano", replacement = "")))
+        mutate(Ano = as.numeric(gsub(Ano, pattern = "year", replacement = "")))
       
       p_i <- robust_se(model) %>%
-        filter(grepl(":ZonaReserva", term)) %>%
+        filter(grepl(":zonaReserva", term)) %>%
         cbind(tidy_terms) %>%
         mutate(ptest = ((p.value < 0.05)*-1)+0.05)
-       return(p_i)}
+      
+       return(p_i)
+      }
 
-IN <- list(N_IN, Ni_IN, B_IN, L_IN) %>% map_df(.f = observe) %>%
+IN <- list(N_IN, Ni_IN, B_IN, L_IN) %>%
+  map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Isla Natividad",
          n_ind = nrow(.))
 
-ME <- list(N_ME, Ni_ME, B_ME, L_ME) %>% map_df(.f = observe) %>%
+ME <- list(N_ME, Ni_ME, B_ME, L_ME) %>%
+  map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Maria Elena",
          n_ind = nrow(.)) 
 
-PH <- list(N_PH, Ni_PH, B_PH, L_PH) %>% map_df(.f = observe) %>%
+PH <- list(N_PH, Ni_PH, B_PH, L_PH) %>%
+  map_df(.f = observe) %>%
   as.tibble() %>% 
   select(estimate, p.value) %>% 
   mutate(Com = "Punta Herrero",
@@ -399,7 +402,7 @@ rbind(IN, ME, PH) %>%
   scale_fill_brewer(palette = "Set1", direction = -1) +
   coord_flip() +
   labs(x = "Community", y = "Percentage of total coefficients") +
-  scale_y_continuous(breaks = seq(-0.65, 0.9, by = 0.25), limits = c(-0.65, 0.9),
+  scale_y_continuous(breaks = seq(-0.5, 1, by = 0.25), limits = c(-0.5, 1),
                      labels = scales::percent) +
   theme(legend.text = element_text(size = 8),
         legend.title = element_text(size = 8))
