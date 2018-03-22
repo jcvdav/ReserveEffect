@@ -144,62 +144,11 @@ plot_grid(mex, ma, pbc, ph, labels = c("A", "C", "B", "D"), ncol = 2)
 ## Data collection
 
 ```{r load_data}
-fish <- read.csv(here::here("data", "fish_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
-  filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(RC),
-         RC %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
-                   "Cabezo - Cabezo (Control)",
-                   "Manchon - Manchon (Control)",
-                   "El Faro - El Faro (Control)")) %>% 
-  filter(!(RC %in% c("El Faro - El Faro (Control)") & Ano == 2012)) %>% 
-  mutate(GeneroEspecie = case_when(
-    GeneroEspecie == "Cephalopholis cruentatus" ~ "Cephalopholis cruentata",
-    GeneroEspecie == "Haemulon macrostomun" ~ "Haemulon macrostomum",
-    GeneroEspecie == "Xcochin spp" ~ "Balistes capriscus",
-    GeneroEspecie == "Pterois volitans/miles" ~ "Pterois volitans",
-    GeneroEspecie == "Mycteroperca spp" ~ "Mycteroperca",
-    GeneroEspecie == "Chromis spp" ~ "Chromis",
-    GeneroEspecie == "Damisela spp" ~ "Stegastes",
-    GeneroEspecie == "Haemulon spp" ~ "Haemulon",
-    GeneroEspecie == "Lancero spp" ~ "Acanthurus",
-    GeneroEspecie == "Kyphosus sectatrix/incisor" ~ "Kyphosus",
-    GeneroEspecie == "Sebastes spp" ~ "Sebastes",
-    GeneroEspecie == "Loro spp" ~ "Scarus",
-    GeneroEspecie == "Lutjanus spp" ~ "Lutjanus",
-    GeneroEspecie == "Mariposa spp" ~ "Chaetodon",
-    GeneroEspecie == "Pluma spp" ~ "Calamus pennatula",
-    GeneroEspecie == "Sparisoma aurolineatum" ~ "Sparisoma aurofrenatum",
-    GeneroEspecie == "Vieja spp" ~ "Bodianus rufus",
-    TRUE ~ GeneroEspecie
-  ))
+invert <- read.csv(file = here::here("data", "invertebrates.csv"))
 
-invert <- read.csv(here::here("data", "invert_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
-  filter(Comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(RC),
-         RC %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
-                   "Cabezo - Cabezo (Control)",
-                   "Manchon - Manchon (Control)",
-                   "El Faro - El Faro (Control)")) %>% 
-  filter(!(RC %in% c("El Faro - El Faro (Control)") & Ano == 2012))
+fish <- read.csv(file = here::here("data", "fish.csv"))
 
-load(here::here("data","conapesca_2000-2015.RData"))
-
-cpi <- read.csv(here::here("data", "CPI.csv"), stringsAsFactors = F, strip.white = T)
-
-cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
-
-conapesca %<>%
-  filter(UnidadEconomica %in% c("Scpp cozumel scl",
-                                "Scpp jose maria azcorra scl",
-                                "Scpp buzos y pescadores de la baja california scl")) %>% 
-  filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
-  group_by(UnidadEconomica, Ano, NombreComun) %>%
-  summarize(PesoDesembarcado = sum(PesoDesembarcado), 
-            PesoVivo = sum(PesoVivo),
-            Valor = sum(Valor)) %>%
-  filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" & NombreComun == "Langosta ent. fca.")) %>% 
-  left_join(cpi, by = "Ano") %>% 
-  mutate(Valor = Valor * (CPI / cpi_2014))
+conapesca <- read.csv(x = conapesca, file = here::here("data", "conapesca.csv"))
 
 gob <- read.csv(here::here("data" ,"governance.csv"), strip.white = T, stringsAsFactors = T)
 ```
@@ -207,25 +156,25 @@ gob <- read.csv(here::here("data" ,"governance.csv"), strip.white = T, stringsAs
 To perform the evaluation of these reserves we use thee sources of information. Ecological data come from the annual ecological monitoring of reserve and control areas, carried out by members from each community and personnel from the Mexican CSO "Comunidad y Biodiversidad" ([COBI](www.cobi.org.mx)). These monitorings record richness and abundances of fish and invertebrate species in the reserves and control sites. For fish census, size structures are also collected to derive biomass. We define control sites as regions with habitat characteristics similar to the corresponding reserves, and that presumably had the same probability of being selected as reserves during the design phase. From all the reserves in these three communities, we use the ones that have data for reserve and control sites before and after the implementation of the reserve. This provides us with a Before-After-Control-Impact (*i.e.* BACI) design that allows us to capture and control for temporal and spatial dynamics \citep{depalma_2018,ferraro_2006-oW}. BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causally attribute observed changes to the intervention \citep{moland_2013-VP,Villasenor-Derbez_2018}. All reserves were surveyed annually from at least one year before implementation until 2016. Table \ref{table:com_sum} shows a summary of the number of reserves, year of implementation, and number of transects for each reserve.
 
 ```{r}
-inv_summary <- group_by(invert, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
+inv_summary <- group_by(invert, comunidad, rc, zona, sitio, transecto, ano) %>%
   count() %>% 
   ungroup() %>% 
-  group_by(Comunidad, RC, Zona) %>% 
+  group_by(comunidad, rc, zona) %>% 
   summarize(n = n()) %>% 
   ungroup() %>% 
-  spread(Zona, n) %>% 
-  select(Comunidad, RC, Control, Reserve = Reserva)
+  spread(zona, n) %>% 
+  select(comunidad, rc, control = Control, reserve = Reserva)
 
-group_by(fish, Comunidad, RC, Zona, Sitio, Transecto, Ano) %>%
+group_by(fish, comunidad, rc, zona, sitio, transecto, ano) %>%
   count() %>% 
   ungroup() %>% 
-  group_by(Comunidad, RC, Zona) %>% 
-  summarize(Start = min(Ano), n = n()) %>% 
+  group_by(comunidad, rc, zona) %>% 
+  summarize(ano = min(ano), n = n()) %>% 
   ungroup() %>% 
-  spread(Zona, n) %>% 
-  mutate(Implementation = c(2006, 2012, 2013, 2013)) %>% 
-  select(Comunidad, RC, Implementation, Start, Control, Reserve = Reserva) %>% 
-  left_join(inv_summary, by = c("Comunidad", "RC")) %>% 
+  spread(zona, n) %>% 
+  mutate(implementation = c(2006, 2012, 2013, 2013)) %>% 
+  select(comunidad, implementation, ano, rc, control = Control, reserve = Reserva) %>% 
+  left_join(inv_summary, by = c("comunidad", "rc")) %>% 
   knitr::kable(format = "latex",
                caption = "\\label{table:com_sum} Summary of commuity--based marine reserves by community. Imp = Year of implementation, Start = Year of first sampling, number of fish transects in control (Cf) and reserve (Rf) sites, and number of invertebrate transects in Control (Ci) and Reserve (Ri) sites.",
                col.names = c("Community", "Reserve - Control", "Imp", "Start", "Cf", "Rf", "Ci", "Ri"))
@@ -285,105 +234,38 @@ I_i = \beta_0 + \beta_1Post
 
 This approach does not allow for a causal attribution of the observed changes to the reserve, but still allows us to draw important information that can inform our conclusions. For both approaches, model coefficients are estimated via ordinary least--squares and heteroskedastic--robust standard errors \citep{zeileis_2004-7n}.
 
-\clearpage
-
-```{r, prepare_covars}
-fish_covars <- fish %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto, Comunidad) %>% 
-  count() %>% 
-  select(-n)
-
-invert_covars <- invert %>% 
-  group_by(RC, Ano, Sitio, Zona, Transecto, Comunidad) %>% 
-  count() %>% 
-  select(-n)
-```
-
-```{r complete_fish}
-fish_complete <- fish %>% 
-  select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
-  group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
-  summarize(Abundancia = sum(Abundancia)) %>% 
-  ungroup() %>% 
-  complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
-  left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
-  select(Comunidad, Ano, RC, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
-  arrange() %>% 
-  filter(!is.na(RC))
-
-species_bio <- MPAtools::species_bio
-
-spp <- group_by(fish_complete, GeneroEspecie) %>% 
-  count() %>% 
-  left_join(species_bio, by = "GeneroEspecie") %>% 
-  filter(is.na(a) | is.na(b))
-
-FB_update <- rfishbase::length_weight(c("Kyphosus incisor", "Kyphosus sectatrix", "Pterois volitans", "Scarus guacamaia", "Chaetodon capistratus", "Chaetodon capistratus", "Chaetodon striatus", "Calamus pennatula"), fields = c("a", "b")) %>% 
-  select(GeneroEspecie = sciname, a, b) %>% 
-  mutate(GeneroEspecie = case_when(
-    GeneroEspecie %in% c("Kyphosus sectatrix", "Kyphosus incisor") ~ "Kyphosus",
-    GeneroEspecie %in% c("Chaetodon capistratus", "Chaetodon striatus") ~ "Chaetodon",
-    TRUE ~ GeneroEspecie
-  )) %>% 
-  group_by(GeneroEspecie) %>% 
-  summarize_all(mean, na.rm = T)
-
-GenusLevelBio <- species_bio %>% 
-  filter(Genus %in% c("Mycteroperca", "Chromis", "Stegastes", "Haemulon", "Acanthurus", "Sebastes", "Lutjanus", "Scarus")) %>%
-  select(GeneroEspecie = Genus, a, b) %>% 
-  group_by(GeneroEspecie) %>% 
-  summarize_all(mean, na.rm = T)
-
-species_bio %<>%
-  select(GeneroEspecie, a, b) %>% 
-  rbind(FB_update) %>% 
-  rbind(GenusLevelBio)
-```
-
-```{r complete_inverts}
-invert_complete <- invert %>%
-  select(Ano, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
-  group_by(Ano, Sitio, Zona, Transecto, GeneroEspecie) %>% 
-  summarize(Abundancia = sum(Abundancia)) %>% 
-  ungroup() %>% 
-  complete(Ano, Transecto, nesting(Sitio, Zona, GeneroEspecie), fill = list(Abundancia = 0L)) %>% 
-  left_join(fish_covars, by = c("Ano", "Sitio", "Zona", "Transecto")) %>% 
-  select(Comunidad, Ano, RC, Sitio, Zona, Transecto, GeneroEspecie, Abundancia) %>% 
-  arrange()
-```
 
 ```{r model_fit}
-
 # Invertebrates
 
 ## Lobsters
-L_IN <- invert_complete %>%
-  filter(GeneroEspecie == "Panulirus interruptus") %>% 
+L_IN <- invert %>%
+  filter(generoespecie == "Panulirus interruptus") %>% 
   abundance(com = "Isla Natividad") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
+  model(sfe = F, spfe = F)
 
-L_ME <- invert_complete %>% 
-  filter(GeneroEspecie == "Panulirus argus") %>% 
+L_ME <- invert %>% 
+  filter(generoespecie == "Panulirus argus") %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
+  model(sfe = F, spfe = F)
 
-L_PH <- invert_complete %>% 
-  filter(GeneroEspecie == "Panulirus argus") %>% 
+L_PH <- invert %>% 
+  filter(generoespecie == "Panulirus argus") %>% 
   abundance(com = "Punta Herrero") %>% 
-  model(sfe = F, spfe = F, family = "quasipoisson")
+  model(sfe = F, spfe = F)
 
 ## Abundance
-Ni_IN <- invert_complete %>% 
+Ni_IN <- invert %>% 
   abundance(com = "Isla Natividad") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
-Ni_ME <- invert_complete %>% 
+Ni_ME <- invert %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
-Ni_PH <- invert_complete %>% 
+Ni_PH <- invert %>% 
   abundance(com = "Punta Herrero") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
 
 # Fish
@@ -402,17 +284,17 @@ B_PH <- fish %>%
   model(sfe = F)
 
 ## Abundance
-N_IN <- fish_complete %>% 
+N_IN <- fish %>% 
   abundance(com = "Isla Natividad") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
-N_ME <- fish_complete %>% 
+N_ME <- fish %>% 
   abundance(com = "Maria Elena") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
-N_PH <- fish_complete %>% 
+N_PH <- fish %>% 
   abundance(com = "Punta Herrero") %>% 
-  model(sfe = F, family = "quasipoisson")
+  model(sfe = F)
 
 ```
 
