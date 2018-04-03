@@ -218,7 +218,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
 <h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2018-03-21</em></h4>
+<h4 class="date"><em>last compilation: 2018-04-03</em></h4>
 
 </div>
 
@@ -240,7 +240,7 @@ div.tocify {
                    &quot;Manchon - Manchon (Control)&quot;,
                    &quot;El Faro - El Faro (Control)&quot;)) %&gt;% 
   filter(!(rc %in% c(&quot;El Faro - El Faro (Control)&quot;) &amp; ano == 2012)) %&gt;% 
-  filter(abundancia &gt; 0) %&gt;% 
+  filter(between(abundancia, 0, 100)) %&gt;% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
@@ -327,13 +327,13 @@ species_bio %&lt;&gt;%
                                    generoespecie == &quot;Vieja spp&quot; ~ &quot;Bodianus rufus&quot;,
                                    TRUE ~ generoespecie)) %&gt;% 
   left_join(species_bio, by = c(&quot;generoespecie&quot;)) %&gt;% 
-  group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla) %&gt;% 
+  group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla, a,b) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
   mutate(year = case_when(comunidad == &quot;Isla Natividad&quot; ~ ano - 2006,
                          comunidad == &quot;Maria Elena&quot; ~ ano - 2012,
                          TRUE ~ ano - 2013)) %&gt;% 
-  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia) %&gt;% 
+  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %&gt;% 
   arrange()</code></pre>
 </div>
 </div>
@@ -348,25 +348,65 @@ cpi_2014 &lt;- cpi$CPI[cpi$Ano == 2014]</code></pre>
 </div>
 <div id="landings-and-revenue" class="section level2">
 <h2>Landings and revenue</h2>
+<pre class="r"><code>cooperatives_t &lt;- c(&quot;Scpp cozumel scl&quot;,
+                    &quot;Scpp jose maria azcorra scl&quot;,
+                    &quot;Scpp buzos y pescadores de la baja california scl&quot;)
+
+cooperatives_c &lt;- c(&quot;Scpp langosteros del caribe scl&quot;,
+                    &quot;Scpp vigia chico scl&quot;,
+                    &quot;Scpp pesc nacionales de abulon sc de rl&quot;,
+                    &quot;Scpp la purisima scl&quot;,
+                    &quot;Scpp bahia tortugas scl&quot;)
+
+cooperatives &lt;- c(cooperatives_t, cooperatives_c)</code></pre>
+<pre class="r"><code>L_conapesca &lt;- tibble(UnidadEconomica = c(&quot;buzos y pescadores de la baja california&quot;,
+                                          &quot;bahia tortugas&quot;,
+                                          &quot;pesc nacionales de abulon&quot;,
+                                          &quot;la purisima&quot;,
+                                          &quot;cozumel&quot;,
+                                          &quot;jose maria azcorra&quot;,
+                                          &quot;vigia chico&quot;,
+                                          &quot;langosteros del caribe&quot;),
+                      Comunidad = c(&quot;Isla Natividad&quot;,
+                                    NA, NA, NA, 
+                                    &quot;Maria Elena&quot;,
+                                    &quot;Punta Herrero&quot;,
+                                    NA, NA),
+                      Zona = c(&quot;PN&quot;, &quot;PN&quot;, &quot;PN&quot;, &quot;PN&quot;, &quot;MC&quot;, &quot;MC&quot;, &quot;MC&quot;, &quot;MC&quot;),
+                      Start = c(2006, 2006, 2006, 2006, 2012, 2013, 2012, 2012))</code></pre>
 <pre class="r"><code>conapesca &lt;- readRDS(here::here(&quot;raw_data&quot;,&quot;conapesca.rds&quot;)) %&gt;% 
-  filter(UnidadEconomica %in% c(&quot;Scpp cozumel scl&quot;,
-                                &quot;Scpp jose maria azcorra scl&quot;,
-                                &quot;Scpp buzos y pescadores de la baja california scl&quot;)) %&gt;% 
+  mutate(UnidadEconomica = as.character(UnidadEconomica)) %&gt;% 
+  mutate(UnidadEconomica = ifelse(UnidadEconomica == &quot;Scpp bahia tortugas s.c de r.l&quot;, 
+                                  &quot;Scpp bahia tortugas scl&quot;,
+                                  UnidadEconomica)) %&gt;% 
+  filter(UnidadEconomica %in% cooperatives) %&gt;%
   filter(NombreComun %in% c(&quot;Langosta roja ent. fca.&quot;, &quot;Langosta ent. fca.&quot;)) %&gt;%
   group_by(UnidadEconomica, Ano, NombreComun) %&gt;%
   summarize(PesoDesembarcado = sum(PesoDesembarcado), 
             PesoVivo = sum(PesoVivo),
             Valor = sum(Valor)) %&gt;%
+  ungroup() %&gt;% 
   filter(!(UnidadEconomica == &quot;Scpp buzos y pescadores de la baja california scl&quot; &amp; NombreComun == &quot;Langosta ent. fca.&quot;)) %&gt;% 
   left_join(cpi, by = &quot;Ano&quot;) %&gt;% 
-  mutate(Valor = Valor * (CPI / cpi_2014))</code></pre>
+  mutate(Valor = Valor * (CPI / cpi_2014),
+         Group = case_when(UnidadEconomica %in% cooperatives_t ~ &quot;Treated&quot;,
+                           TRUE ~ &quot;Control&quot;),
+         UnidadEconomica = gsub(pattern = &quot;Scpp &quot;, replacement = &quot;&quot;, x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = &quot; scl&quot;, replacement = &quot;&quot;, x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = &quot; s.c de r.l&quot;, replacement = &quot;&quot;, x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = &quot; sc de rl&quot;, replacement = &quot;&quot;, x = UnidadEconomica)) %&gt;% 
+  left_join(L_conapesca, by = &quot;UnidadEconomica&quot;) %&gt;% 
+  mutate(Post = ifelse(Ano &lt;= Start, 0, 1),
+         years_centered = Ano - Start) %&gt;% 
+  select(Zona, Grupo = Group, Comunidad, UnidadEconomica, Ano, Post, years_centered, NombreComun, PesoVivo, PesoDesembarcado, Valor, CPI) %&gt;% 
+  janitor::clean_names()</code></pre>
 </div>
 </div>
 <div id="export-all-data" class="section level1">
 <h1>Export all data</h1>
-<pre class="r"><code>write.csv(x = invert, file = here::here(&quot;data&quot;, &quot;invertebrates.csv&quot;))
+<pre class="r"><code>write.csv(x = invert, file = here::here(&quot;data&quot;, &quot;invertebrates.csv&quot;), row.names = F)
 
-write.csv(x = fish, file = here::here(&quot;data&quot;, &quot;fish.csv&quot;))
+write.csv(x = fish, file = here::here(&quot;data&quot;, &quot;fish.csv&quot;), row.names = F)
 
 write.csv(x = conapesca, file = here::here(&quot;data&quot;, &quot;conapesca.csv&quot;))</code></pre>
 </div>

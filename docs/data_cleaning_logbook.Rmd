@@ -34,7 +34,7 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
                    "Manchon - Manchon (Control)",
                    "El Faro - El Faro (Control)")) %>% 
   filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
-  filter(abundancia > 0) %>% 
+  filter(between(abundancia, 0, 100)) %>% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 
@@ -149,20 +149,66 @@ cpi_2014 <- cpi$CPI[cpi$Ano == 2014]
 ## Landings and revenue
 
 ```{r}
+cooperatives_t <- c("Scpp cozumel scl",
+                    "Scpp jose maria azcorra scl",
+                    "Scpp buzos y pescadores de la baja california scl")
+
+cooperatives_c <- c("Scpp langosteros del caribe scl",
+                    "Scpp vigia chico scl",
+                    "Scpp pesc nacionales de abulon sc de rl",
+                    "Scpp la purisima scl",
+                    "Scpp bahia tortugas scl")
+
+cooperatives <- c(cooperatives_t, cooperatives_c)
+```
+
+```{r}
+L_conapesca <- tibble(UnidadEconomica = c("buzos y pescadores de la baja california",
+                                          "bahia tortugas",
+                                          "pesc nacionales de abulon",
+                                          "la purisima",
+                                          "cozumel",
+                                          "jose maria azcorra",
+                                          "vigia chico",
+                                          "langosteros del caribe"),
+                      Comunidad = c("Isla Natividad",
+                                    NA, NA, NA, 
+                                    "Maria Elena",
+                                    "Punta Herrero",
+                                    NA, NA),
+                      Zona = c("PN", "PN", "PN", "PN", "MC", "MC", "MC", "MC"),
+                      Start = c(2006, 2006, 2006, 2006, 2012, 2013, 2012, 2012))
+```
+
+
+```{r}
 conapesca <- readRDS(here::here("raw_data","conapesca.rds")) %>% 
-  filter(UnidadEconomica %in% c("Scpp cozumel scl",
-                                "Scpp jose maria azcorra scl",
-                                "Scpp buzos y pescadores de la baja california scl")) %>% 
+  mutate(UnidadEconomica = as.character(UnidadEconomica)) %>% 
+  mutate(UnidadEconomica = ifelse(UnidadEconomica == "Scpp bahia tortugas s.c de r.l", 
+                                  "Scpp bahia tortugas scl",
+                                  UnidadEconomica)) %>% 
+  filter(UnidadEconomica %in% cooperatives) %>%
   filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
   group_by(UnidadEconomica, Ano, NombreComun) %>%
   summarize(PesoDesembarcado = sum(PesoDesembarcado), 
             PesoVivo = sum(PesoVivo),
             Valor = sum(Valor)) %>%
+  ungroup() %>% 
   filter(!(UnidadEconomica == "Scpp buzos y pescadores de la baja california scl" & NombreComun == "Langosta ent. fca.")) %>% 
   left_join(cpi, by = "Ano") %>% 
-  mutate(Valor = Valor * (CPI / cpi_2014))
+  mutate(Valor = Valor * (CPI / cpi_2014),
+         Group = case_when(UnidadEconomica %in% cooperatives_t ~ "Treated",
+                           TRUE ~ "Control"),
+         UnidadEconomica = gsub(pattern = "Scpp ", replacement = "", x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = " scl", replacement = "", x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = " s.c de r.l", replacement = "", x = UnidadEconomica),
+         UnidadEconomica = gsub(pattern = " sc de rl", replacement = "", x = UnidadEconomica)) %>% 
+  left_join(L_conapesca, by = "UnidadEconomica") %>% 
+  mutate(Post = ifelse(Ano <= Start, 0, 1),
+         years_centered = Ano - Start) %>% 
+  select(Zona, Grupo = Group, Comunidad, UnidadEconomica, Ano, Post, years_centered, NombreComun, PesoVivo, PesoDesembarcado, Valor, CPI) %>% 
+  janitor::clean_names()
 ```
-
 
 # Export all data
 
