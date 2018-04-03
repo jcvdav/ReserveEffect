@@ -20,6 +20,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 options(knitr.table.format = "latex")
 ```
 
+**Last_update**: `r Sys.Date()`
+
 \clearpage
 
 # Introduction
@@ -414,18 +416,6 @@ rbind(IN, ME, PH) %>%
 Lobster catches and income showed a increase after the implementation of the reserves for Isla Natividad and Maria Elena, but not for Punta Herrero (Fig \ref{fig:lobsters}). However, the differences in catches and and revenue were not different in the periods before and after the implementation ($p > 0.05$) except for revenues in Isla Natividad, which presented a significant increase of 14.37 (M MXP; $p<0.05$). Table \ref{table:soc_res} presents all the regression coefficients.
 
 ```{r, results = "asis"}
-L_conapesca <- tibble(UnidadEconomica = c("Scpp buzos y pescadores de la baja california scl",
-                                          "Scpp cozumel scl",
-                                          "Scpp jose maria azcorra scl"),
-                      Comunidad = c("Isla Natividad",
-                                    "Maria Elena",
-                                    "Punta Herrero")) %>% 
-  left_join(conapesca, ., by = "UnidadEconomica") %>% 
-  mutate(Post = case_when(Comunidad == "Isla Natividad" && Ano <= 2006 ~ 0,
-                          Comunidad == "Maria Elena" && Ano <= 2012 ~ 0,
-                          Comunidad == "Punta Herrero" && Ano <= 2013 ~ 0,
-                          TRUE ~ 1))
-
 C_IN <- filter(L_conapesca, Comunidad == "Isla Natividad") %>% 
   lm(PesoVivo/1000~Post, data = .)
 
@@ -606,6 +596,19 @@ The authors wish to acknowledge Arturo Hernández and Imelda Amador for contribu
 \paragraph*{S1 Figure}
 \label{S1_Figure}
 Timeseries of indicators for IN
+
+```{r}
+invert %>%
+  filter(generoespecie == "Panulirus interruptus",
+         abundancia < 100) %>% 
+  abundance(com = "Isla Natividad") %>%
+  mutate(ano = as.numeric(ano)) %>%
+  ggplot(aes(x = ano, y = indicador, color = zona)) +
+  geom_jitter(height = 0, alpha = 0.5) +
+  stat_summary(geom = "line", fun.y = mean) +
+  scale_color_brewer(palette = "Set1")
+```
+
 
 \paragraph*{S2 Figure}
 \label{S2_Figure}
