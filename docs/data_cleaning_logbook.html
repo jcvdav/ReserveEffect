@@ -218,7 +218,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
 <h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2018-04-05</em></h4>
+<h4 class="date"><em>last compilation: 2018-04-10</em></h4>
 
 </div>
 
@@ -240,7 +240,7 @@ div.tocify {
                    &quot;Manchon - Manchon (Control)&quot;,
                    &quot;El Faro - El Faro (Control)&quot;)) %&gt;% 
   filter(!(rc %in% c(&quot;El Faro - El Faro (Control)&quot;) &amp; ano == 2012)) %&gt;% 
-  filter(between(abundancia, 0, 100)) %&gt;% 
+  filter(between(abundancia, 0.1, 100)) %&gt;% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
@@ -408,7 +408,7 @@ cooperatives &lt;- c(cooperatives_t, cooperatives_c)</code></pre>
 
 write.csv(x = fish, file = here::here(&quot;data&quot;, &quot;fish.csv&quot;), row.names = F)
 
-write.csv(x = conapesca, file = here::here(&quot;data&quot;, &quot;conapesca.csv&quot;))</code></pre>
+write.csv(x = conapesca, file = here::here(&quot;data&quot;, &quot;conapesca.csv&quot;), row.names = F)</code></pre>
 </div>
 
 
