@@ -34,7 +34,7 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
                    "Manchon - Manchon (Control)",
                    "El Faro - El Faro (Control)")) %>% 
   filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
-  filter(between(abundancia, 0, 100)) %>% 
+  filter(between(abundancia, 0.1, 100)) %>% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 
@@ -217,7 +217,7 @@ write.csv(x = invert, file = here::here("data", "invertebrates.csv"), row.names 
 
 write.csv(x = fish, file = here::here("data", "fish.csv"), row.names = F)
 
-write.csv(x = conapesca, file = here::here("data", "conapesca.csv"))
+write.csv(x = conapesca, file = here::here("data", "conapesca.csv"), row.names = F)
 
 ```
 
