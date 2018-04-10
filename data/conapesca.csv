@@ -1,114 +1,114 @@
-"","zona","grupo","comunidad","unidadeconomica","ano","post","years_centered","nombrecomun","pesovivo","pesodesembarcado","valor","cpi"
-"1","PN","Control",NA,"bahia tortugas",2000,0,-6,"Langosta roja ent. fca.",192686,192686,27293634.5920997,9.49156
-"2","PN","Control",NA,"bahia tortugas",2001,0,-5,"Langosta roja ent. fca.",139743,139743,29893194.7644637,6.367737
-"3","PN","Control",NA,"bahia tortugas",2002,0,-4,"Langosta roja ent. fca.",125010,125010,20939230.2606479,5.030733
-"4","PN","Control",NA,"bahia tortugas",2003,0,-3,"Langosta roja ent. fca.",154383,154383,23581522.3946671,4.546898
-"5","PN","Control",NA,"bahia tortugas",2004,0,-2,"Langosta roja ent. fca.",133604,133604,21042722.0090345,4.688407
-"6","PN","Control",NA,"bahia tortugas",2005,0,-1,"Langosta roja ent. fca.",144597,144597,19373735.9774955,3.988061
-"7","PN","Control",NA,"bahia tortugas",2006,0,0,"Langosta roja ent. fca.",166231,166231,20268030.1789534,3.629463
-"8","PN","Control",NA,"bahia tortugas",2007,1,1,"Langosta roja ent. fca.",134021.52,134021.52,17859836.1059588,3.96685
-"9","PN","Control",NA,"bahia tortugas",2008,1,2,"Langosta roja ent. fca.",178299,178299,30751362.432302,5.124982
-"10","PN","Control",NA,"bahia tortugas",2009,1,3,"Langosta roja ent. fca.",169452,169452,29259172.3315957,5.297357
-"11","PN","Control",NA,"bahia tortugas",2010,1,4,"Langosta roja ent. fca.",133339,133339,15664548.6171586,4.156728
-"12","PN","Control",NA,"bahia tortugas",2011,1,5,"Langosta roja ent. fca.",245167,245167,21279738.2983748,3.40738
-"13","PN","Control",NA,"bahia tortugas",2012,1,6,"Langosta roja ent. fca.",184418,184418,18868085.2727194,4.111508
-"14","PN","Control",NA,"bahia tortugas",2013,1,7,"Langosta roja ent. fca.",156088,156088,14784484.3716134,3.80639
-"15","PN","Control",NA,"bahia tortugas",2014,1,8,"Langosta roja ent. fca.",128387.8,128387.8,12838780,4.018617
-"16","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2000,0,-6,"Langosta roja ent. fca.",114806,114806,14570833.9714583,9.49156
-"17","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2001,0,-5,"Langosta roja ent. fca.",116286,116286,10868077.1857348,6.367737
-"18","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2002,0,-4,"Langosta roja ent. fca.",101362,101362,7574803.95039263,5.030733
-"19","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2003,0,-3,"Langosta roja ent. fca.",147982,147982,11097513.8010664,4.546898
-"20","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2004,0,-2,"Langosta roja ent. fca.",124437,124437,11758097.245464,4.688407
-"21","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2005,0,-1,"Langosta roja ent. fca.",117285,117285,9868612.98245765,3.988061
-"22","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2006,0,0,"Langosta roja ent. fca.",136620,136620,10476812.5631617,3.629463
-"23","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2007,1,1,"Langosta roja ent. fca.",89202,89202,7484498.04111713,3.96685
-"24","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2008,1,2,"Langosta roja ent. fca.",147093,147093,30036449.2147547,5.124982
-"25","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2009,1,3,"Langosta roja ent. fca.",123429,123429,32540920.2794394,5.297357
-"26","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2010,1,4,"Langosta roja ent. fca.",76413,76413,15807829.2439414,4.156728
-"27","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2011,1,5,"Langosta roja ent. fca.",123264,123264,20903076.2732552,3.40738
-"28","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2012,1,6,"Langosta roja ent. fca.",173282,173282,35397402.9397118,4.111508
-"29","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2013,1,7,"Langosta roja ent. fca.",131470,131470,24905388.7593667,3.80639
-"30","PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2014,1,8,"Langosta roja ent. fca.",176229.78,176229.78,35009778,4.018617
-"31","MC","Treated","Maria Elena","cozumel",2000,0,-12,"Langosta ent. fca.",3841,3841,952564.926142501,9.49156
-"32","MC","Treated","Maria Elena","cozumel",2001,0,-11,"Langosta ent. fca.",648,648,112947.387959589,6.367737
-"33","MC","Treated","Maria Elena","cozumel",2003,0,-9,"Langosta ent. fca.",534,534,138965.721878945,4.546898
-"34","MC","Treated","Maria Elena","cozumel",2004,0,-8,"Langosta ent. fca.",477,477,61215.2676629796,4.688407
-"35","MC","Treated","Maria Elena","cozumel",2005,0,-7,"Langosta ent. fca.",6152,6152,783869.097845105,3.988061
-"36","MC","Treated","Maria Elena","cozumel",2006,0,-6,"Langosta ent. fca.",8027,8027,1000757.91541717,3.629463
-"37","MC","Treated","Maria Elena","cozumel",2007,0,-5,"Langosta ent. fca.",12515.34,12515.34,2058359.51203237,3.96685
-"38","MC","Treated","Maria Elena","cozumel",2008,0,-4,"Langosta ent. fca.",13341,13341,3528017.2767895,5.124982
-"39","MC","Treated","Maria Elena","cozumel",2009,0,-3,"Langosta ent. fca.",7435,7435,1247165.98552935,5.297357
-"40","MC","Treated","Maria Elena","cozumel",2010,0,-2,"Langosta ent. fca.",21030,21030,3513023.33773037,4.156728
-"41","MC","Treated","Maria Elena","cozumel",2011,0,-1,"Langosta ent. fca.",25167,25167,3836919.52972876,3.40738
-"42","MC","Treated","Maria Elena","cozumel",2012,0,0,"Langosta ent. fca.",37753,37753,7263299.18815354,4.111508
-"43","MC","Treated","Maria Elena","cozumel",2013,1,1,"Langosta ent. fca.",9215,9215,1546333.47604412,3.80639
-"44","MC","Treated","Maria Elena","cozumel",2014,1,2,"Langosta ent. fca.",25273,25273,5013000,4.018617
-"45","MC","Treated","Punta Herrero","jose maria azcorra",2000,0,-13,"Langosta ent. fca.",791,791,224073.1816941,9.49156
-"46","MC","Treated","Punta Herrero","jose maria azcorra",2003,0,-10,"Langosta ent. fca.",418,418,54389.2057541189,4.546898
-"47","MC","Treated","Punta Herrero","jose maria azcorra",2004,0,-9,"Langosta ent. fca.",7770,7770,1087384.75457601,4.688407
-"48","MC","Treated","Punta Herrero","jose maria azcorra",2005,0,-8,"Langosta ent. fca.",5088,5088,655160.248160001,3.988061
-"49","MC","Treated","Punta Herrero","jose maria azcorra",2006,0,-7,"Langosta ent. fca.",1791,1791,357227.74785206,3.629463
-"50","MC","Treated","Punta Herrero","jose maria azcorra",2007,0,-6,"Langosta ent. fca.",5576,5576,898988.291743154,3.96685
-"51","MC","Treated","Punta Herrero","jose maria azcorra",2008,0,-5,"Langosta ent. fca.",5898,5898,1579573.3222549,5.124982
-"52","MC","Treated","Punta Herrero","jose maria azcorra",2009,0,-4,"Langosta ent. fca.",1889,1889,298810.482501816,5.297357
-"53","MC","Treated","Punta Herrero","jose maria azcorra",2010,0,-3,"Langosta ent. fca.",6795,6795,1110005.93861022,4.156728
-"54","MC","Treated","Punta Herrero","jose maria azcorra",2011,0,-2,"Langosta ent. fca.",14314,14314,2156830.3651928,3.40738
-"55","MC","Treated","Punta Herrero","jose maria azcorra",2012,0,-1,"Langosta ent. fca.",16027,16027,3096795.67862277,4.111508
-"56","MC","Treated","Punta Herrero","jose maria azcorra",2013,0,0,"Langosta ent. fca.",6362,6362,1174249.20334533,3.80639
-"57","MC","Treated","Punta Herrero","jose maria azcorra",2014,1,1,"Langosta ent. fca.",4795,4795,996540,4.018617
-"58","PN","Control",NA,"la purisima",2000,0,-6,"Langosta roja ent. fca.",217675,217675,17827502.7767115,9.49156
-"59","PN","Control",NA,"la purisima",2001,0,-5,"Langosta roja ent. fca.",225182,225182,14095678.7305439,6.367737
-"60","PN","Control",NA,"la purisima",2002,0,-4,"Langosta roja ent. fca.",275020,275020,12293419.006709,5.030733
-"61","PN","Control",NA,"la purisima",2003,0,-3,"Langosta roja ent. fca.",301288,301288,20976230.7863332,4.546898
-"62","PN","Control",NA,"la purisima",2004,0,-2,"Langosta roja ent. fca.",226436,226436,18397153.7746543,4.688407
-"63","PN","Control",NA,"la purisima",2005,0,-1,"Langosta roja ent. fca.",265979,265979,18476961.9424618,3.988061
-"64","PN","Control",NA,"la purisima",2006,0,0,"Langosta roja ent. fca.",223123,223123,14106138.2825061,3.629463
-"65","PN","Control",NA,"la purisima",2007,1,1,"Langosta roja ent. fca.",170411,170411,13182993.2425757,3.96685
-"66","PN","Control",NA,"la purisima",2008,1,2,"Langosta roja ent. fca.",237934,237934,30010898.3811296,5.124982
-"67","PN","Control",NA,"la purisima",2009,1,3,"Langosta roja ent. fca.",185529,185529,28418235.9542457,5.297357
-"68","PN","Control",NA,"la purisima",2010,1,4,"Langosta roja ent. fca.",169373,169373,26440881.9148677,4.156728
-"69","PN","Control",NA,"la purisima",2011,1,5,"Langosta roja ent. fca.",260743,260743,37423508.4763241,3.40738
-"70","PN","Control",NA,"la purisima",2012,1,6,"Langosta roja ent. fca.",267117,267117,39769100.3807529,4.111508
-"71","PN","Control",NA,"la purisima",2013,1,7,"Langosta roja ent. fca.",221599,221599,47927860.4154116,3.80639
-"72","PN","Control",NA,"la purisima",2014,1,8,"Langosta roja ent. fca.",220764,220764,53324700,4.018617
-"73","MC","Control",NA,"langosteros del caribe",2003,0,-9,"Langosta ent. fca.",21,21,2732.47205941746,4.546898
-"74","MC","Control",NA,"langosteros del caribe",2004,0,-8,"Langosta ent. fca.",349,349,52931.8981107182,4.688407
-"75","MC","Control",NA,"langosteros del caribe",2005,0,-7,"Langosta ent. fca.",368,368,47476.2432548312,3.988061
-"76","MC","Control",NA,"langosteros del caribe",2006,0,-6,"Langosta ent. fca.",580,580,69028.687503686,3.629463
-"77","MC","Control",NA,"langosteros del caribe",2007,0,-5,"Langosta ent. fca.",775,775,108109.185821888,3.96685
-"78","MC","Control",NA,"langosteros del caribe",2008,0,-4,"Langosta ent. fca.",109,109,25021.5800211864,5.124982
-"79","MC","Control",NA,"langosteros del caribe",2010,0,-2,"Langosta ent. fca.",5192,5192,908361.10906812,4.156728
-"80","MC","Control",NA,"langosteros del caribe",2011,0,-1,"Langosta ent. fca.",17917,17917,2751889.04172754,3.40738
-"81","MC","Control",NA,"langosteros del caribe",2012,0,0,"Langosta ent. fca.",21703,21703,3838011.92310688,4.111508
-"82","MC","Control",NA,"langosteros del caribe",2013,1,1,"Langosta ent. fca.",25056,25056,4427876.72586116,3.80639
-"83","MC","Control",NA,"langosteros del caribe",2014,1,2,"Langosta ent. fca.",26138,26138,5322015,4.018617
-"84","PN","Control",NA,"pesc nacionales de abulon",2000,0,-6,"Langosta roja ent. fca.",169001,169001,19651803.7850634,9.49156
-"85","PN","Control",NA,"pesc nacionales de abulon",2001,0,-5,"Langosta roja ent. fca.",164035,164035,8880867.08799893,6.367737
-"86","PN","Control",NA,"pesc nacionales de abulon",2002,0,-4,"Langosta roja ent. fca.",182160,182160,8323395.53625538,5.030733
-"87","PN","Control",NA,"pesc nacionales de abulon",2003,0,-3,"Langosta roja ent. fca.",241231,241231,10495837.0310836,4.546898
-"88","PN","Control",NA,"pesc nacionales de abulon",2004,0,-2,"Langosta roja ent. fca.",195307,195307,17381306.9995439,4.688407
-"89","PN","Control",NA,"pesc nacionales de abulon",2005,0,-1,"Langosta roja ent. fca.",181766,181766,11984813.9285331,3.988061
-"90","PN","Control",NA,"pesc nacionales de abulon",2006,0,0,"Langosta roja ent. fca.",219250,219250,12177074.1239411,3.629463
-"91","PN","Control",NA,"pesc nacionales de abulon",2007,1,1,"Langosta roja ent. fca.",164004,164004,9889251.24968366,3.96685
-"92","PN","Control",NA,"pesc nacionales de abulon",2008,1,2,"Langosta roja ent. fca.",219481,219481,18193908.8328721,5.124982
-"93","PN","Control",NA,"pesc nacionales de abulon",2009,1,3,"Langosta roja ent. fca.",182229,182229,17148693.7810184,5.297357
-"94","PN","Control",NA,"pesc nacionales de abulon",2010,1,4,"Langosta roja ent. fca.",143601,143601,12893937.5915147,4.156728
-"95","PN","Control",NA,"pesc nacionales de abulon",2011,1,5,"Langosta roja ent. fca.",246729,246729,18986866.8314547,3.40738
-"96","PN","Control",NA,"pesc nacionales de abulon",2012,1,6,"Langosta roja ent. fca.",274550,274550,25561560.469037,4.111508
-"97","PN","Control",NA,"pesc nacionales de abulon",2013,1,7,"Langosta roja ent. fca.",194941,194941,16802784.1523813,3.80639
-"98","PN","Control",NA,"pesc nacionales de abulon",2014,1,8,"Langosta roja ent. fca.",180656,180656,22945272,4.018617
-"99","MC","Control",NA,"vigia chico",2000,0,-12,"Langosta ent. fca.",24111,24111,5903375.31214346,9.49156
-"100","MC","Control",NA,"vigia chico",2001,0,-11,"Langosta ent. fca.",5293,5293,859948.262943445,6.367737
-"101","MC","Control",NA,"vigia chico",2002,0,-10,"Langosta ent. fca.",32977,32977,4015696.21378101,5.030733
-"102","MC","Control",NA,"vigia chico",2003,0,-9,"Langosta ent. fca.",46914,46914,6012536.04537581,4.546898
-"103","MC","Control",NA,"vigia chico",2004,0,-8,"Langosta ent. fca.",71862,71862,10112519.5501965,4.688407
-"104","MC","Control",NA,"vigia chico",2005,0,-7,"Langosta ent. fca.",73846,73846,10727813.8978034,3.988061
-"105","MC","Control",NA,"vigia chico",2006,0,-6,"Langosta ent. fca.",56149,56149,6751327.16360629,3.629463
-"106","MC","Control",NA,"vigia chico",2007,0,-5,"Langosta ent. fca.",73213,73213,12149352.1564757,3.96685
-"107","MC","Control",NA,"vigia chico",2008,0,-4,"Langosta ent. fca.",62314,62314,16638470.7502656,5.124982
-"108","MC","Control",NA,"vigia chico",2009,0,-3,"Langosta ent. fca.",29239,29239,4710859.04034025,5.297357
-"109","MC","Control",NA,"vigia chico",2010,0,-2,"Langosta ent. fca.",78241,78241,13240124.9765479,4.156728
-"110","MC","Control",NA,"vigia chico",2011,0,-1,"Langosta ent. fca.",74840,74840,11800896.7947679,3.40738
-"111","MC","Control",NA,"vigia chico",2012,0,0,"Langosta ent. fca.",56015,56015,10412534.6346218,4.111508
-"112","MC","Control",NA,"vigia chico",2013,1,1,"Langosta ent. fca.",33326,33326,5842328.33517103,3.80639
-"113","MC","Control",NA,"vigia chico",2014,1,2,"Langosta ent. fca.",37044,37044,7001510,4.018617
+"zona","grupo","comunidad","unidadeconomica","ano","post","years_centered","nombrecomun","pesovivo","pesodesembarcado","valor","cpi"
+"PN","Control",NA,"bahia tortugas",2000,0,-6,"Langosta roja ent. fca.",192686,192686,27293634.5920997,9.49156
+"PN","Control",NA,"bahia tortugas",2001,0,-5,"Langosta roja ent. fca.",139743,139743,29893194.7644637,6.367737
+"PN","Control",NA,"bahia tortugas",2002,0,-4,"Langosta roja ent. fca.",125010,125010,20939230.2606479,5.030733
+"PN","Control",NA,"bahia tortugas",2003,0,-3,"Langosta roja ent. fca.",154383,154383,23581522.3946671,4.546898
+"PN","Control",NA,"bahia tortugas",2004,0,-2,"Langosta roja ent. fca.",133604,133604,21042722.0090345,4.688407
+"PN","Control",NA,"bahia tortugas",2005,0,-1,"Langosta roja ent. fca.",144597,144597,19373735.9774955,3.988061
+"PN","Control",NA,"bahia tortugas",2006,0,0,"Langosta roja ent. fca.",166231,166231,20268030.1789534,3.629463
+"PN","Control",NA,"bahia tortugas",2007,1,1,"Langosta roja ent. fca.",134021.52,134021.52,17859836.1059588,3.96685
+"PN","Control",NA,"bahia tortugas",2008,1,2,"Langosta roja ent. fca.",178299,178299,30751362.432302,5.124982
+"PN","Control",NA,"bahia tortugas",2009,1,3,"Langosta roja ent. fca.",169452,169452,29259172.3315957,5.297357
+"PN","Control",NA,"bahia tortugas",2010,1,4,"Langosta roja ent. fca.",133339,133339,15664548.6171586,4.156728
+"PN","Control",NA,"bahia tortugas",2011,1,5,"Langosta roja ent. fca.",245167,245167,21279738.2983748,3.40738
+"PN","Control",NA,"bahia tortugas",2012,1,6,"Langosta roja ent. fca.",184418,184418,18868085.2727194,4.111508
+"PN","Control",NA,"bahia tortugas",2013,1,7,"Langosta roja ent. fca.",156088,156088,14784484.3716134,3.80639
+"PN","Control",NA,"bahia tortugas",2014,1,8,"Langosta roja ent. fca.",128387.8,128387.8,12838780,4.018617
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2000,0,-6,"Langosta roja ent. fca.",114806,114806,14570833.9714583,9.49156
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2001,0,-5,"Langosta roja ent. fca.",116286,116286,10868077.1857348,6.367737
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2002,0,-4,"Langosta roja ent. fca.",101362,101362,7574803.95039263,5.030733
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2003,0,-3,"Langosta roja ent. fca.",147982,147982,11097513.8010664,4.546898
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2004,0,-2,"Langosta roja ent. fca.",124437,124437,11758097.245464,4.688407
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2005,0,-1,"Langosta roja ent. fca.",117285,117285,9868612.98245765,3.988061
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2006,0,0,"Langosta roja ent. fca.",136620,136620,10476812.5631617,3.629463
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2007,1,1,"Langosta roja ent. fca.",89202,89202,7484498.04111713,3.96685
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2008,1,2,"Langosta roja ent. fca.",147093,147093,30036449.2147547,5.124982
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2009,1,3,"Langosta roja ent. fca.",123429,123429,32540920.2794394,5.297357
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2010,1,4,"Langosta roja ent. fca.",76413,76413,15807829.2439414,4.156728
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2011,1,5,"Langosta roja ent. fca.",123264,123264,20903076.2732552,3.40738
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2012,1,6,"Langosta roja ent. fca.",173282,173282,35397402.9397118,4.111508
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2013,1,7,"Langosta roja ent. fca.",131470,131470,24905388.7593667,3.80639
+"PN","Treated","Isla Natividad","buzos y pescadores de la baja california",2014,1,8,"Langosta roja ent. fca.",176229.78,176229.78,35009778,4.018617
+"MC","Treated","Maria Elena","cozumel",2000,0,-12,"Langosta ent. fca.",3841,3841,952564.926142501,9.49156
+"MC","Treated","Maria Elena","cozumel",2001,0,-11,"Langosta ent. fca.",648,648,112947.387959589,6.367737
+"MC","Treated","Maria Elena","cozumel",2003,0,-9,"Langosta ent. fca.",534,534,138965.721878945,4.546898
+"MC","Treated","Maria Elena","cozumel",2004,0,-8,"Langosta ent. fca.",477,477,61215.2676629796,4.688407
+"MC","Treated","Maria Elena","cozumel",2005,0,-7,"Langosta ent. fca.",6152,6152,783869.097845105,3.988061
+"MC","Treated","Maria Elena","cozumel",2006,0,-6,"Langosta ent. fca.",8027,8027,1000757.91541717,3.629463
+"MC","Treated","Maria Elena","cozumel",2007,0,-5,"Langosta ent. fca.",12515.34,12515.34,2058359.51203237,3.96685
+"MC","Treated","Maria Elena","cozumel",2008,0,-4,"Langosta ent. fca.",13341,13341,3528017.2767895,5.124982
+"MC","Treated","Maria Elena","cozumel",2009,0,-3,"Langosta ent. fca.",7435,7435,1247165.98552935,5.297357
+"MC","Treated","Maria Elena","cozumel",2010,0,-2,"Langosta ent. fca.",21030,21030,3513023.33773037,4.156728
+"MC","Treated","Maria Elena","cozumel",2011,0,-1,"Langosta ent. fca.",25167,25167,3836919.52972876,3.40738
+"MC","Treated","Maria Elena","cozumel",2012,0,0,"Langosta ent. fca.",37753,37753,7263299.18815354,4.111508
+"MC","Treated","Maria Elena","cozumel",2013,1,1,"Langosta ent. fca.",9215,9215,1546333.47604412,3.80639
+"MC","Treated","Maria Elena","cozumel",2014,1,2,"Langosta ent. fca.",25273,25273,5013000,4.018617
+"MC","Treated","Punta Herrero","jose maria azcorra",2000,0,-13,"Langosta ent. fca.",791,791,224073.1816941,9.49156
+"MC","Treated","Punta Herrero","jose maria azcorra",2003,0,-10,"Langosta ent. fca.",418,418,54389.2057541189,4.546898
+"MC","Treated","Punta Herrero","jose maria azcorra",2004,0,-9,"Langosta ent. fca.",7770,7770,1087384.75457601,4.688407
+"MC","Treated","Punta Herrero","jose maria azcorra",2005,0,-8,"Langosta ent. fca.",5088,5088,655160.248160001,3.988061
+"MC","Treated","Punta Herrero","jose maria azcorra",2006,0,-7,"Langosta ent. fca.",1791,1791,357227.74785206,3.629463
+"MC","Treated","Punta Herrero","jose maria azcorra",2007,0,-6,"Langosta ent. fca.",5576,5576,898988.291743154,3.96685
+"MC","Treated","Punta Herrero","jose maria azcorra",2008,0,-5,"Langosta ent. fca.",5898,5898,1579573.3222549,5.124982
+"MC","Treated","Punta Herrero","jose maria azcorra",2009,0,-4,"Langosta ent. fca.",1889,1889,298810.482501816,5.297357
+"MC","Treated","Punta Herrero","jose maria azcorra",2010,0,-3,"Langosta ent. fca.",6795,6795,1110005.93861022,4.156728
+"MC","Treated","Punta Herrero","jose maria azcorra",2011,0,-2,"Langosta ent. fca.",14314,14314,2156830.3651928,3.40738
+"MC","Treated","Punta Herrero","jose maria azcorra",2012,0,-1,"Langosta ent. fca.",16027,16027,3096795.67862277,4.111508
+"MC","Treated","Punta Herrero","jose maria azcorra",2013,0,0,"Langosta ent. fca.",6362,6362,1174249.20334533,3.80639
+"MC","Treated","Punta Herrero","jose maria azcorra",2014,1,1,"Langosta ent. fca.",4795,4795,996540,4.018617
+"PN","Control",NA,"la purisima",2000,0,-6,"Langosta roja ent. fca.",217675,217675,17827502.7767115,9.49156
+"PN","Control",NA,"la purisima",2001,0,-5,"Langosta roja ent. fca.",225182,225182,14095678.7305439,6.367737
+"PN","Control",NA,"la purisima",2002,0,-4,"Langosta roja ent. fca.",275020,275020,12293419.006709,5.030733
+"PN","Control",NA,"la purisima",2003,0,-3,"Langosta roja ent. fca.",301288,301288,20976230.7863332,4.546898
+"PN","Control",NA,"la purisima",2004,0,-2,"Langosta roja ent. fca.",226436,226436,18397153.7746543,4.688407
+"PN","Control",NA,"la purisima",2005,0,-1,"Langosta roja ent. fca.",265979,265979,18476961.9424618,3.988061
+"PN","Control",NA,"la purisima",2006,0,0,"Langosta roja ent. fca.",223123,223123,14106138.2825061,3.629463
+"PN","Control",NA,"la purisima",2007,1,1,"Langosta roja ent. fca.",170411,170411,13182993.2425757,3.96685
+"PN","Control",NA,"la purisima",2008,1,2,"Langosta roja ent. fca.",237934,237934,30010898.3811296,5.124982
+"PN","Control",NA,"la purisima",2009,1,3,"Langosta roja ent. fca.",185529,185529,28418235.9542457,5.297357
+"PN","Control",NA,"la purisima",2010,1,4,"Langosta roja ent. fca.",169373,169373,26440881.9148677,4.156728
+"PN","Control",NA,"la purisima",2011,1,5,"Langosta roja ent. fca.",260743,260743,37423508.4763241,3.40738
+"PN","Control",NA,"la purisima",2012,1,6,"Langosta roja ent. fca.",267117,267117,39769100.3807529,4.111508
+"PN","Control",NA,"la purisima",2013,1,7,"Langosta roja ent. fca.",221599,221599,47927860.4154116,3.80639
+"PN","Control",NA,"la purisima",2014,1,8,"Langosta roja ent. fca.",220764,220764,53324700,4.018617
+"MC","Control",NA,"langosteros del caribe",2003,0,-9,"Langosta ent. fca.",21,21,2732.47205941746,4.546898
+"MC","Control",NA,"langosteros del caribe",2004,0,-8,"Langosta ent. fca.",349,349,52931.8981107182,4.688407
+"MC","Control",NA,"langosteros del caribe",2005,0,-7,"Langosta ent. fca.",368,368,47476.2432548312,3.988061
+"MC","Control",NA,"langosteros del caribe",2006,0,-6,"Langosta ent. fca.",580,580,69028.687503686,3.629463
+"MC","Control",NA,"langosteros del caribe",2007,0,-5,"Langosta ent. fca.",775,775,108109.185821888,3.96685
+"MC","Control",NA,"langosteros del caribe",2008,0,-4,"Langosta ent. fca.",109,109,25021.5800211864,5.124982
+"MC","Control",NA,"langosteros del caribe",2010,0,-2,"Langosta ent. fca.",5192,5192,908361.10906812,4.156728
+"MC","Control",NA,"langosteros del caribe",2011,0,-1,"Langosta ent. fca.",17917,17917,2751889.04172754,3.40738
+"MC","Control",NA,"langosteros del caribe",2012,0,0,"Langosta ent. fca.",21703,21703,3838011.92310688,4.111508
+"MC","Control",NA,"langosteros del caribe",2013,1,1,"Langosta ent. fca.",25056,25056,4427876.72586116,3.80639
+"MC","Control",NA,"langosteros del caribe",2014,1,2,"Langosta ent. fca.",26138,26138,5322015,4.018617
+"PN","Control",NA,"pesc nacionales de abulon",2000,0,-6,"Langosta roja ent. fca.",169001,169001,19651803.7850634,9.49156
+"PN","Control",NA,"pesc nacionales de abulon",2001,0,-5,"Langosta roja ent. fca.",164035,164035,8880867.08799893,6.367737
+"PN","Control",NA,"pesc nacionales de abulon",2002,0,-4,"Langosta roja ent. fca.",182160,182160,8323395.53625538,5.030733
+"PN","Control",NA,"pesc nacionales de abulon",2003,0,-3,"Langosta roja ent. fca.",241231,241231,10495837.0310836,4.546898
+"PN","Control",NA,"pesc nacionales de abulon",2004,0,-2,"Langosta roja ent. fca.",195307,195307,17381306.9995439,4.688407
+"PN","Control",NA,"pesc nacionales de abulon",2005,0,-1,"Langosta roja ent. fca.",181766,181766,11984813.9285331,3.988061
+"PN","Control",NA,"pesc nacionales de abulon",2006,0,0,"Langosta roja ent. fca.",219250,219250,12177074.1239411,3.629463
+"PN","Control",NA,"pesc nacionales de abulon",2007,1,1,"Langosta roja ent. fca.",164004,164004,9889251.24968366,3.96685
+"PN","Control",NA,"pesc nacionales de abulon",2008,1,2,"Langosta roja ent. fca.",219481,219481,18193908.8328721,5.124982
+"PN","Control",NA,"pesc nacionales de abulon",2009,1,3,"Langosta roja ent. fca.",182229,182229,17148693.7810184,5.297357
+"PN","Control",NA,"pesc nacionales de abulon",2010,1,4,"Langosta roja ent. fca.",143601,143601,12893937.5915147,4.156728
+"PN","Control",NA,"pesc nacionales de abulon",2011,1,5,"Langosta roja ent. fca.",246729,246729,18986866.8314547,3.40738
+"PN","Control",NA,"pesc nacionales de abulon",2012,1,6,"Langosta roja ent. fca.",274550,274550,25561560.469037,4.111508
+"PN","Control",NA,"pesc nacionales de abulon",2013,1,7,"Langosta roja ent. fca.",194941,194941,16802784.1523813,3.80639
+"PN","Control",NA,"pesc nacionales de abulon",2014,1,8,"Langosta roja ent. fca.",180656,180656,22945272,4.018617
+"MC","Control",NA,"vigia chico",2000,0,-12,"Langosta ent. fca.",24111,24111,5903375.31214346,9.49156
+"MC","Control",NA,"vigia chico",2001,0,-11,"Langosta ent. fca.",5293,5293,859948.262943445,6.367737
+"MC","Control",NA,"vigia chico",2002,0,-10,"Langosta ent. fca.",32977,32977,4015696.21378101,5.030733
+"MC","Control",NA,"vigia chico",2003,0,-9,"Langosta ent. fca.",46914,46914,6012536.04537581,4.546898
+"MC","Control",NA,"vigia chico",2004,0,-8,"Langosta ent. fca.",71862,71862,10112519.5501965,4.688407
+"MC","Control",NA,"vigia chico",2005,0,-7,"Langosta ent. fca.",73846,73846,10727813.8978034,3.988061
+"MC","Control",NA,"vigia chico",2006,0,-6,"Langosta ent. fca.",56149,56149,6751327.16360629,3.629463
+"MC","Control",NA,"vigia chico",2007,0,-5,"Langosta ent. fca.",73213,73213,12149352.1564757,3.96685
+"MC","Control",NA,"vigia chico",2008,0,-4,"Langosta ent. fca.",62314,62314,16638470.7502656,5.124982
+"MC","Control",NA,"vigia chico",2009,0,-3,"Langosta ent. fca.",29239,29239,4710859.04034025,5.297357
+"MC","Control",NA,"vigia chico",2010,0,-2,"Langosta ent. fca.",78241,78241,13240124.9765479,4.156728
+"MC","Control",NA,"vigia chico",2011,0,-1,"Langosta ent. fca.",74840,74840,11800896.7947679,3.40738
+"MC","Control",NA,"vigia chico",2012,0,0,"Langosta ent. fca.",56015,56015,10412534.6346218,4.111508
+"MC","Control",NA,"vigia chico",2013,1,1,"Langosta ent. fca.",33326,33326,5842328.33517103,3.80639
+"MC","Control",NA,"vigia chico",2014,1,2,"Langosta ent. fca.",37044,37044,7001510,4.018617
