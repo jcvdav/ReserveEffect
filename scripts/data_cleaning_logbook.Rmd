@@ -50,7 +50,9 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
 ### Species biology
 
 ```{r}
-species_bio <- MPAtools::species_bio
+species_bio <- MPAtools::species_bio %>% 
+  mutate(Genus = as.character(str_split(GeneroEspecie, pattern = " ", simplify = T)[,1]),
+         Genus = str_replace(Genus, " ", ""))
 
 needed_spp <- c("Kyphosus incisor",
                 "Kyphosus sectatrix",
