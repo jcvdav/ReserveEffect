@@ -115,13 +115,27 @@ location_labels <- spTransform(location_labels, proj) %>%
 
 # Load ZRP shapefile
 zrp <- st_read(dsn = here::here("raw_data", "spatial"), layer = "ZRP", quiet = T) %>% 
-  filter(Name %in% c("El Cabezo", "El Faro")) %>% 
-  st_transform(crs = "+proj=longlat +datum=NAD27")
+  filter(Name %in% c("El Cabezo",
+                     "Gallineros",
+                     "Punta Loria",
+                     "San Roman Norte",
+                     "San Roman Sur",
+                     "Anegado de Chal",
+                     "Laguna Canche Balam",
+                     "Niluc",
+                     "Mimis",
+                     "El Faro (Pesca de Langosta)",
+                     "El Faro")) %>% 
+  st_transform(crs = "+proj=longlat +datum=NAD27") %>% 
+  mutate(evaluated = ifelse(Name %in% c("El Cabezo", "El Faro (Pesca de Langosta)", "El Faro"), T, F))
 
 # Load Community reserve shapefile
 rescom <- st_read(dsn = here::here("raw_data", "spatial"), layer = "Res_Com", quiet = T) %>% 
-  filter(Nombre == "La_Plana") %>% 
+  filter(Nombre %in% c("La_Plana", "PuntaPrieta")) %>% 
   st_transform(crs = "+proj=longlat +datum=NAD27")
+
+turf <- st_read(dsn = here::here("raw_data", "spatial"), layer = "turfs", quiet = T) %>% 
+  filter(Coop %in% c("SCPP Buzos y Pescadores de la Baja California", "SCPP Cozumel", "SCPP Jose Maria Azcorra"))
 
 ```
 
@@ -133,31 +147,42 @@ mex <- ggplot() +
   theme_classic() +
   scale_color_brewer(palette = "Set1") +
   scale_fill_brewer(palette = "Set1") +
-  theme(legend.position = "none") +
-  lims(x = c(-118.36648, -86.71074), y = c(14.53507, 32.71863))
+  theme(legend.position = "none",
+        panel.grid.major = element_line(colour = "transparent"),
+        axis.text = element_text(size = 7)) +
+  lims(x = c(-118.36648, -86.71074), y = c(14.53507, 32.71863)) +
+  annotate(geom = "text", x = -102, y = 25, label = "Mexico") +
+  annotate(geom = "text", x = -90, y = 25, label = "Gulf of\nMexico") +
+  annotate(geom = "text", x = -112, y = 20, label = "Pacific\nOcean") +
+  labs(x = "", y = "")
 
-# Map for Punta Herrero
+# Map for SAM
 ph <- ggplot() +
+  geom_sf(data = turf, fill = "steelblue", alpha = 0.5, size = 1, color = "black") +
   geom_sf(data = coastline_mx) +
-  lims(x = c(-87.5, -87.4), y = c(19.29, 19.36)) +
-  geom_sf(data = zrp, fill = "red") +
-  theme_classic()
+  lims(x = c(-87.7, -87.35), y = c(19.15, 19.6)) +
+  geom_sf(data = zrp, fill = "red2") +
+  theme_classic() +
+  theme(panel.grid.major = element_line(colour = "transparent"),
+        axis.text = element_text(size = 7)) +
+  annotate(geom = "text", x = -87.6, y = 19.45, label = "Maria Elena") +
+  annotate(geom = "text", x = -87.64, y = 19.15, label = "Punta Herrero") +
+  labs(x = "", y = "")
 
-# Map for Maria Elena
-ma <- ggplot() +
-  geom_sf(data = coastline_mx) +
-  lims(x = c(-87.54, -87.44), y = c(19.38, 19.44)) +
-  geom_sf(data = zrp, fill = "red") +
-  theme_classic()
-
-# Map for Natividad
+# Map for PBC
 pbc <- ggplot() +
+  geom_sf(data = turf, fill = "steelblue", alpha = 0.5, size = 1, color = "black") +
+  lims(x = c(-115.65, -115.109), y = c(27.7, 28)) +
   geom_sf(data = coastline_mx) +
-  lims(x = c(-115.24, -115.14), y = c(27.83, 27.90)) +
-  geom_sf(data = rescom, fill = "red") +
-  theme_classic()
+  geom_sf(data = rescom, fill = "red2") +
+  theme_classic() +
+  theme(panel.grid.major = element_line(colour = "transparent"),
+        axis.text = element_text(size = 7)) +
+  labs(x = "", y = "")
 
-plot_grid(mex, ma, pbc, ph, labels = c("A", "C", "B", "D"), ncol = 2)
+left <- plot_grid(mex, pbc, ncol = 1, labels = "AUTO")
+
+plot_grid(left, ph, labels = c("", "C"), ncol = 2)
 ```
 
 ```{r}
