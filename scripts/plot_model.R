@@ -23,7 +23,7 @@ plot_model <- function(model, model_names = NULL, legend = F){
     theme(text = element_text(size = 12)) +
     labs(x = "Years since implementation", y = quo(lambda[t])) +
     scale_color_brewer(guide = guide_legend(title.position = "top", nrow = 2), palette = "Set1") +
-    scale_x_continuous(breaks = seq(0, 10, by = 1))
+    scale_x_continuous(breaks = seq(-1, 10, by = 1))
   
   if(!legend){
     p <- p +
