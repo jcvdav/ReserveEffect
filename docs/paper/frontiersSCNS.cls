@@ -180,7 +180,7 @@
 % The total number of floats that can be allowed on a page.
 \setcounter{totalnumber}{10}
 % The maximum number of floats at the top and bottom of a page.
-\setcounter{topnumber}{5}
+\setcounter{topnumber}{0}
 \setcounter{bottomnumber}{5}
 % The maximum part of the top or bottom of a text page that can be
 % occupied by floats. This is set so that at least four lines of text

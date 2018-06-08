@@ -1,0 +1,18 @@
+---
+output: pdf_document
+---
+
+Update this table and fill with information from ERE's table
+
+```{r, echo = F}
+library(magrittr)
+read.csv(here::here("data","gov_res.csv")) %>% 
+  knitr::kable(caption = "\\label{table:gov_res}Analysis of the fishing cooperatives based on the Social-Ecological systems framework \\citep{mcginnis_2014}.",
+               col.names = c("", "Indicator", "Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
+  kableExtra::column_spec(1, width = "10em") %>%
+  kableExtra::column_spec(2, width = "10em") %>%
+  kableExtra::row_spec(1 , bold = T) %>% 
+  kableExtra::row_spec(7 , bold = T) %>% 
+  kableExtra::row_spec(15 , bold = T) %>% 
+  kableExtra::row_spec(19 , bold = T)
+```
