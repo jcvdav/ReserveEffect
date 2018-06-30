@@ -27,6 +27,7 @@ suppressPackageStartupMessages({
 ```{r}
 invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
   janitor::clean_names() %>% 
+  rename(generoespecie = genero_especie) %>% 
   filter(comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(rc),
          rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
@@ -92,7 +93,8 @@ species_bio %<>%
   select(GeneroEspecie, a, b) %>% 
   rbind(FB_update) %>% 
   rbind(GenusLevelBio) %>% 
-  janitor::clean_names()
+  janitor::clean_names() %>% 
+    rename(generoespecie = genero_especie)
 ```
 
 ### Clean data
@@ -100,6 +102,7 @@ species_bio %<>%
 ```{r}
 fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
   janitor::clean_names() %>% 
+  rename(generoespecie = genero_especie) %>% 
   filter(comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
   filter(!is.na(rc),
          rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
@@ -134,7 +137,8 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
                          comunidad == "Maria Elena" ~ ano - 2012,
                          TRUE ~ ano - 2013)) %>% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %>% 
-  arrange()
+  arrange() %>% 
+  drop_na(a, b)
 ```
 
 # Socioeconomic data

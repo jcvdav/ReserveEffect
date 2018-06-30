@@ -1,4 +1,4 @@
-"zona","grupo","comunidad","unidadeconomica","ano","post","years_centered","nombrecomun","pesovivo","pesodesembarcado","valor","cpi"
+"zona","grupo","comunidad","unidad_economica","ano","post","years_centered","nombre_comun","peso_vivo","peso_desembarcado","valor","cpi"
 "PN","Control",NA,"bahia tortugas",2000,0,-6,"Langosta roja ent. fca.",192686,192686,27293634.5920997,9.49156
 "PN","Control",NA,"bahia tortugas",2001,0,-5,"Langosta roja ent. fca.",139743,139743,29893194.7644637,6.367737
 "PN","Control",NA,"bahia tortugas",2002,0,-4,"Langosta roja ent. fca.",125010,125010,20939230.2606479,5.030733

@@ -218,7 +218,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
 <h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2018-04-23</em></h4>
+<h4 class="date"><em>last compilation: 2018-06-29</em></h4>
 
 </div>
 
@@ -233,6 +233,7 @@ div.tocify {
 <h2>Invertebrates</h2>
 <pre class="r"><code>invert &lt;- read.csv(here::here(&quot;raw_data&quot;, &quot;invert_data.csv&quot;), strip.white = T, stringsAsFactors = F) %&gt;% 
   janitor::clean_names() %&gt;% 
+  rename(generoespecie = genero_especie) %&gt;% 
   filter(comunidad %in% c(&quot;Isla Natividad&quot;, &quot;Maria Elena&quot;, &quot;Punta Herrero&quot;)) %&gt;% 
   filter(!is.na(rc),
          rc %in% c(&quot;La Plana / Las Cuevas - La Dulce / Babencho&quot;,
@@ -296,12 +297,14 @@ species_bio %&lt;&gt;%
   select(GeneroEspecie, a, b) %&gt;% 
   rbind(FB_update) %&gt;% 
   rbind(GenusLevelBio) %&gt;% 
-  janitor::clean_names()</code></pre>
+  janitor::clean_names() %&gt;% 
+    rename(generoespecie = genero_especie)</code></pre>
 </div>
 <div id="clean-data" class="section level3">
 <h3>Clean data</h3>
 <pre class="r"><code>fish &lt;- read.csv(here::here(&quot;raw_data&quot;, &quot;fish_data.csv&quot;), strip.white = T, stringsAsFactors = F) %&gt;% 
   janitor::clean_names() %&gt;% 
+  rename(generoespecie = genero_especie) %&gt;% 
   filter(comunidad %in% c(&quot;Isla Natividad&quot;, &quot;Maria Elena&quot;, &quot;Punta Herrero&quot;)) %&gt;% 
   filter(!is.na(rc),
          rc %in% c(&quot;La Plana / Las Cuevas - La Dulce / Babencho&quot;,
@@ -336,7 +339,8 @@ species_bio %&lt;&gt;%
                          comunidad == &quot;Maria Elena&quot; ~ ano - 2012,
                          TRUE ~ ano - 2013)) %&gt;% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %&gt;% 
-  arrange()</code></pre>
+  arrange() %&gt;% 
+  drop_na(a, b)</code></pre>
 </div>
 </div>
 </div>
