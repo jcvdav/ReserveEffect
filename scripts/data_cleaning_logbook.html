@@ -218,7 +218,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
 <h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2018-06-29</em></h4>
+<h4 class="date"><em>last compilation: 2018-07-05</em></h4>
 
 </div>
 
@@ -381,12 +381,16 @@ cooperatives &lt;- c(cooperatives_t, cooperatives_c)</code></pre>
                       Zona = c(&quot;PN&quot;, &quot;PN&quot;, &quot;PN&quot;, &quot;PN&quot;, &quot;MC&quot;, &quot;MC&quot;, &quot;MC&quot;, &quot;MC&quot;),
                       Start = c(2006, 2006, 2006, 2006, 2012, 2013, 2012, 2012))</code></pre>
 <pre class="r"><code>conapesca &lt;- readRDS(here::here(&quot;raw_data&quot;,&quot;conapesca.rds&quot;)) %&gt;% 
-  mutate(UnidadEconomica = as.character(UnidadEconomica)) %&gt;% 
+  mutate(UnidadEconomica = as.character(UnidadEconomica),
+         LugarDeCaptura = as.character(LugarDeCaptura)) %&gt;% 
   mutate(UnidadEconomica = ifelse(UnidadEconomica == &quot;Scpp bahia tortugas s.c de r.l&quot;, 
                                   &quot;Scpp bahia tortugas scl&quot;,
                                   UnidadEconomica)) %&gt;% 
   filter(UnidadEconomica %in% cooperatives) %&gt;%
   filter(NombreComun %in% c(&quot;Langosta roja ent. fca.&quot;, &quot;Langosta ent. fca.&quot;)) %&gt;%
+  filter(!(UnidadEconomica == &quot;Scpp cozumel scl&quot; &amp; !LugarDeCaptura %in% c(&quot;Bahia espiritu santo&quot;,
+                                                                          &quot;Bahia del del espiritu santo&quot;,
+                                                                          &quot;Bahia espiritu santo&quot;))) %&gt;% 
   group_by(UnidadEconomica, Ano, NombreComun) %&gt;%
   summarize(PesoDesembarcado = sum(PesoDesembarcado), 
             PesoVivo = sum(PesoVivo),

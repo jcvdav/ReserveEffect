@@ -189,12 +189,16 @@ L_conapesca <- tibble(UnidadEconomica = c("buzos y pescadores de la baja califor
 
 ```{r}
 conapesca <- readRDS(here::here("raw_data","conapesca.rds")) %>% 
-  mutate(UnidadEconomica = as.character(UnidadEconomica)) %>% 
+  mutate(UnidadEconomica = as.character(UnidadEconomica),
+         LugarDeCaptura = as.character(LugarDeCaptura)) %>% 
   mutate(UnidadEconomica = ifelse(UnidadEconomica == "Scpp bahia tortugas s.c de r.l", 
                                   "Scpp bahia tortugas scl",
                                   UnidadEconomica)) %>% 
   filter(UnidadEconomica %in% cooperatives) %>%
   filter(NombreComun %in% c("Langosta roja ent. fca.", "Langosta ent. fca.")) %>%
+  filter(!(UnidadEconomica == "Scpp cozumel scl" & !LugarDeCaptura %in% c("Bahia espiritu santo",
+                                                                          "Bahia del del espiritu santo",
+                                                                          "Bahia espiritu santo"))) %>% 
   group_by(UnidadEconomica, Ano, NombreComun) %>%
   summarize(PesoDesembarcado = sum(PesoDesembarcado), 
             PesoVivo = sum(PesoVivo),
