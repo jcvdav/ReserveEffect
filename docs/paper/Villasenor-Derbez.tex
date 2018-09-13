@@ -11,14 +11,17 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Villaseñor-Derbez {et~al.}}
-\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,*}\), Eréndira Aceves-Bueno\(^{1}\),
-Álvin Suarez\(^{2}\), Arturo Hernández-Velasco\(^{2}\), Stuart
-Fulton\(^{2}\), Jorge Torre\(^{2}\)}
+\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,2,*}\), Eréndira
+Aceves-Bueno\(^{1}\), Álvin Suarez\(^{2}\), Stuart Fulton\(^{2}\),
+Arturo Hernández-Velasco\(^{2}\), Jorge Torre\(^{2}\), Fiorenza
+Micheli\&\textsuperscript{\{3\}}\&}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
 \def\Address{\(^{1}\)Bren School of Environmental Science and Management, University
 of California, Santa Barbara, Santa Barbara, CA,
-USA\newline \(^{2}\)Comunidad y Biodiversidad A.C., Guaymas, Mexico}
+USA\newline \(^{2}\)Comunidad y Biodiversidad A.C., Guaymas,
+Mexico\newline \(^{3}\)Hopkins Marine Station and Center for Ocean
+Solutions, Stanford University, Pacific Grove, California}
 % The Corresponding Author should be marked with an asterisk
 % Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
 \def\corrAuthor{Juan Carlos Villaseñor-Derbez, Bren Hall, University of California,
@@ -44,7 +47,7 @@ Santa Barbara, Santa Barbara, CA, 93106}
 \onecolumn
 \firstpage{1}
 
-\title[Community-based marine reserves: 2018-08-30]{Effectiveness of community-based marine reserves in small-scale
+\title[Community-based marine reserves: 2018-09-13]{Effectiveness of community-based marine reserves in small-scale
 fisheries} 
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
@@ -115,7 +118,7 @@ the maintainance of healthy resources
 \citep{afflerbach_2014-HP,lester_2017}. Although in theory these systems
 are successful \citep{costello_2010-Ix}, there is little empirical
 evidence of their effectiveness and the drivers of their success
-\citep{afflerbach_2014-HP,lester_2017}.
+\citep{afflerbach_2014-HP,lester_2017,smallhornwest_2018}.
 
 The performance of these systems depends on how environmental and social
 factors combine and interact. The science of marine reserves has largely
@@ -127,10 +130,9 @@ from environmental variability
 Modelling studies show that fishery benefits of marine reserves depend
 on initial stock status and the management under which the fishery
 operates, as well as reserve size and the amount of larvae exported from
-these \citep{hilborn_2006,krueck_2017-J1}
-\href{http://dx.doi.org/10.1098/rstb.2014.0276}{\textbf{add De Leo and
-Micheli 2015}}. Other research has focused on the relationship between
-socioeconomic and governance structures and reserve effectiveness
+these \citep{hilborn_2006,krueck_2017-J1,deleo_2015}. Other research has
+focused on the relationship between socioeconomic and governance
+structures and reserve effectiveness
 \citep{halpern_2013,lpezangarita_2014,mascia_2017-m_}. However, to our
 knowledge, no studies exist that evaluate TURF-reserves from both a
 social and ecological perspective. This is especially important in
@@ -205,22 +207,20 @@ recognized as Fishing Refugia since their creation.
 
 These communities are representative of their region in terms of
 ecology, socioeconomic, and governance aspects. Isla Natividad, for
-example, is part of a greater group of fishing cooperatives that
-assamble into a Federation of Cooperatives (\textbf{FEDECOOP}). This
-group of X communities has been identified as a cohesive group that
-often cooperate to better manage their resources
-\citep{mccay_2017-1m,mccay_2014-CN} (\textbf{Aceves, 2018?}). All these
-communities occur in the sourthenmost raange distribution of Giant Kelp,
-and are still under the influence of the California Current System.
-Likewise, Maria Elena and Punta Herrero are representative of fishing
-cooperatives in the Mexican Caribbean. Together, these three communities
-provide an accurate representation of all other fishing communities in
-Mexico. While each region has more communities that have established
-community-based TURF-reserves, available data would not allow us to
-perform the in-depth analysis that we undertake. Yet, given the
-similarities among communities and the socioeconomic and governance
-setting under which they opperate, it is sage to generalize our results
-to other communities in Mexico and other regions around the world.
+example, is part of a greater group of fishing cooperatives belonging to
+a Federation of Fishing Cooperatives. This group has been identified as
+a cohesive group that often cooperates to better manage their resources
+\citep{mccay_2017-1m,mccay_2014-CN,acevesbueno_2017}. Likewise, Maria
+Elena and Punta Herrero are representative of fishing cooperatives in
+the Mexican Caribbean, which are also part of a regional Federation.
+Together, these three communities provide an accurate representation of
+other fishing communities in each of their regions. While each region
+has more communities that have established community-based
+TURF-reserves, available data would not allow us to perform the in-depth
+analysis that we undertake. Yet, given the similarities among
+communities and the socioeconomic and governance setting under which
+they opperate, it is safe to cautiously generalize our results to other
+communities in Mexico and other regions around the world.
 
 \clearpage
 
@@ -301,7 +301,7 @@ product between the reported income for that year and the ratio between
 the consumer price index in that year (\(CPI_t\)) to the most recent
 year's consumer price index (\(CPI_T\)).
 
-Data for the qualitative analysis of the social-ecological system were
+Data for the operationalization of the social-ecological system were
 collected at the community--level from official documents used in the
 creation and designation of the marine reserves
 \citep{dof_website_2012,dof_website_2013,dof_website_2018} and based on
@@ -392,6 +392,27 @@ heteroskedastic-robust standard errors \citep{zeileis_2004-7n}. All
 analyses were performed in R 3.5.0 and R Studio 1.1.453 \citep{R_2018}.
 Data and code are available on
 \href{https://github.com/jcvdav/ReserveEffect}{github.com}.
+
+We use the social-ecologycal system (SES) framework to evaluate each
+community as a means of providing an explanation to the biological and
+socioeconomic results. The use the SES framework standardizes our
+analysis and allows us to communicate our results in a common language
+across fields. We based our variable selection primarily on
+\citet{leslie_2015-na,basurto_2013-oq}, who have previously analyzed
+Mexican fishing cooperatives using this framework. \textbf{S1 Table}
+shows the selected variables, the definition and selected indicators and
+scoring system.
+
+We followed \citet{leslie_2015-na} to operationalize the implementation
+of the SES framework. We analyzed 18 variables, that fitted within the
+first, second and third tires of the framework. Categorical variables
+were scored as binary data (0 or 1). Numerical variables were given a
+continuous score, and then standardized between 0 and 1. For example,
+the score on number of actors was relative to the smallest values (21
+fishers) which was given a score of one since theoretically smaller
+groups facilitate coordination \citep{viana_2018}. Each component of the
+SES framework had a cumulative value of 1 and was equally weighted to
+calculate the final score.
 
 \section{Results}\label{results}
 
@@ -527,9 +548,9 @@ Figure}, \textbf{S6 Figure}).
 A first possible explanation for the lack of effectivenes may be the
 young age of the reserves. Literature shows that age and enforcement are
 important factors that influence reserve effectiveness
-\citep{edgar_2014-UO} \textbf{Babcock PNAS 2010}. Isla Natividad has the
-oldest reserves, and our SES analysis suggests that all communities have
-a well-established community-based enforcement system. With these
+\citep{edgar_2014-UO,babcock_2010}. Isla Natividad has the oldest
+reserves, and our SES analysis suggests that all communities have a
+well-established community-based enforcement system. With these
 characteristics, one would expect the reserves to be effective. Maria
 Elena and Punta Herrero are relatively young reserves (\emph{i.e.}
 \textless{} 5 years old) and effects may not yet be evident due to the
@@ -614,24 +635,26 @@ potential conflict of interest.
 \section*{Author Contributions}
 
 JC and EA analyzed and interpreted data, discussed the results, and
-wrote the first draft. AS, SF and JT discussed the results and edited
-the manuscript.
+wrote the first draft. AHV coordinated fieldwork and collected the data.
+AS, AHV, SF, JT, and FM discussed the results and edited the manuscript.
 
 \section*{Funding}
+
+\textbf{Tell me about your funding}
 
 JCVD: CONACyT (Beca de Posgrados en el extranjero, CVU 669403) and the
 Latin American Fisheries Fellowship.
 
-AS, SF and JT Walton Family Foundation, Summit Foundation, and Oak
+AS, AHV, SF and JT Walton Family Foundation, Summit Foundation, and Oak
 Foundation.
 
 \section*{Acknowledgments}
 
-The authors wish to acknowledge Arturo Hernández and Imelda Amador for
-contributions on the governance data, as well as pre-processing
-biological data. This study would have not been possible without the
-effort by members of the communities here mentioned, who collected the
-biological data.
+The authors wish to acknowledge Imelda Amador for contributions on the
+governance data, as well as pre-processing biological data. This study
+would have not been possible without the effort by members of the
+fishing communities here mentioned, who participated in the
+data-collection process.
 
 \section*{Supplemental Data}
 
