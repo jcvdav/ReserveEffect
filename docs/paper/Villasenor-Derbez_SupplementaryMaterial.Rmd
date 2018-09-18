@@ -1,0 +1,82 @@
+---
+title: "Effectiveness of community-based marine reserves in small-scale fisheries"
+output:
+  bookdown::pdf_document2:
+    keep_tex: yes
+    template: template_sup.tex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+options(knitr.table.format = "latex")
+```
+
+```{r}
+suppressPackageStartupMessages({
+  library(magrittr)
+  library(tidyverse)
+})
+```
+
+```{r}
+load(here::here("data", "results", "results.RData"))
+```
+
+```{r}
+supp_regtable <- function(models, caption = "", fs = "tiny", bio = T){
+  
+  labels <- c(
+    "Lobster abundance",
+    "Fish biomass",
+    "Invertebrate abundance",
+    "Invertebrate biomass")
+  
+  if(!bio){
+    labels <- c(
+      "Landings",
+      "Revenues")
+  }
+  
+  stargazer::stargazer(models,
+                     omit = c(
+                       "generoespecie",
+                       "unidad"),
+                     se = commarobust::makerobustseslist(models, type = "HC1"),
+                     t.auto = T,
+                     p.auto = T,
+                     column.labels = labels,
+                     dep.var.labels = "",
+                     single.row = T,
+                     omit.stat = c("f", "adj.rsq"),
+                     title = caption,
+                     header = F,
+                     font.size = fs,
+                     column.sep.width = "1pt")
+}
+```
+
+```{r, results = "asis"}
+list(L_IN, B_IN, Ni_IN, N_IN) %>% 
+  supp_regtable(caption = "Coefficient estimates of biological indicators for Isla Natividad.")
+```
+
+```{r, results = "asis"}
+list(L_ME, B_ME, Ni_ME, N_ME) %>% 
+  supp_regtable(caption = "Coefficient estimates of biological indicators for Maria Elena.")
+```
+
+```{r, results = "asis"}
+list(L_PH, B_PH, Ni_PH, N_PH) %>% 
+  supp_regtable(caption = "Coefficient estimates of biological indicators for Punta Herrero.", fs = "small")
+```
+
+```{r, results = "asis"}
+list(C_IN, V_IN) %>% 
+  supp_regtable(caption = "Coefficient estimates of socioeconomic indicators Isla Natividad.", bio = F)
+```
+
+```{r, results = "asis"}
+list(C_ME, V_ME) %>% 
+  supp_regtable(caption = "Coefficient estimates of socioeconomic indicators for Maria Elena.", bio = F)
+```
