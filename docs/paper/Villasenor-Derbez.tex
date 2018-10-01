@@ -56,26 +56,25 @@ manage. Combining territorial user rights for fisheries (TURF) with
 no-take marine reserves to create TURF-reserves can improve the
 performance of small-scale fisheries by buffering fisheries from
 environmental variability and management errors, while ensuring that
-fishers reap the benefits of conservation investments. In the last six
-years, 18 TURF-reserves have been implemented in Mexico following a new
-regulation; their effectiveness has not been formally evaluated. We
-combine causal inference techniques and the Social-Ecological Systems
-framework to provide a holistic evaluation of community-based
-TURF-reserves in three coastal communities in Mexico. We find that while
-reserves have not yet achieved their stated goal of increasing the
-density of lobster and other benthic invertebrates, they continue to
-receive significant support from the fishing communities. A lack of
-clear ecological and socioeconomic effects likely results from a
-combination of factors. First, lobster and other invertebrate fisheries
-are already well managed, and it is unlikely that reserves might have a
-detectable effect. Second, some of the reserves are not large enough to
-protect mobile species, like lobster. Third, some of these reserves
-might be too young for the effects to show. Fourth, variable and extreme
-oceanographic conditions have impacted harvested populations. However,
-these reserves have shaped small-scale fishers' way of thinking about
-marine conservation, which can provide a foundation for establishing
-additional, larger marine reserves needed to effectively conserve mobile
-species.
+fishers reap the benefits of conservation investments. In the last 12
+years, 18 community-based TURF-reserves gained legal recognition thanks
+to a 2014 regulation; their effectiveness has not been formally
+evaluated. We combine causal inference techniques and the
+Social-Ecological Systems framework to provide a holistic evaluation of
+community-based TURF-reserves in three coastal communities in Mexico. We
+find that while reserves have not yet achieved their stated goal of
+increasing the density of lobster and other benthic invertebrates, they
+continue to receive significant support from the fishing communities. A
+lack of clear ecological and socioeconomic effects likely results from a
+combination of factors. First, local fisheries are already well managed,
+and it is unlikely that reserves might have a detectable effect. Second,
+some of the reserves are not large enough to protect mobile species,
+like lobster. Third, some of these reserves might be too young for the
+effects to show. Fourth, variable and extreme oceanographic conditions
+have impacted harvested populations. However, these reserves have shaped
+small-scale fishers' way of thinking about marine conservation, which
+can provide a foundation for establishing additional, larger marine
+reserves needed to effectively conserve mobile species.
 
 
 
@@ -90,7 +89,7 @@ Protected Areas, Marine Conservation, Small-Scale Fisheries}
 \end{abstract}
 
 
-Words in text: 3718 \textbar{} Words in headers: 35 \textbar{} Words
+Words in text: 3714 \textbar{} Words in headers: 35 \textbar{} Words
 outside text (captions, etc.): 192
 
 \clearpage
@@ -150,11 +149,10 @@ allowing fishers to request the legal recognition of community-based
 reserves as ``Fish Refuges'' (\emph{Zona de Refugio Pesquero};
 \citet{nom}). Fish refuges can be implemented as temporal or partial
 reserves, which can protect one, some, or all resources within their
-boundaries. Since 2006, 45 Fish Refuges have been created along the
-Pacific, Gulf of California, and Mexican Caribbean coastlines, with 18
-of them implemented as TURF-reserves legally recognized as ``Fish
-Refuges''. However, their effectiveness has not yet been formally
-evaluated and reported in the scientific literature.
+boundaries. Since 2012, old and new marine reserves have gained legal
+recognition as Fishing Refuges. Oh these, 18 were originally implemented
+as community-based TURF-reserves. However, their effectiveness has not
+yet been formally evaluated and reported in the scientific literature.
 
 Here, we combine causal inference techniques and the Social-Ecological
 Systems (SES) framework to provide a holistic evaluation of
@@ -187,8 +185,9 @@ resources like finfish, sea cucumber, read sea urchin, snail, and
 abalone are also an important source of income. In 2006, the community
 decided to implement two marine reserves within their fishing grounds to
 protect commercially important invertebrate species; mainly lobster and
-abalone. While these reserves obtained legal recognition only in 2018,
-they have been well enforced since their implementation.
+abalone. While these reserves obtained legal recognition only in 2018
+\citep{dof_website_2018}, they have been well enforced since their
+implementation.
 
 The other two TURF-reserves are located in Maria Elena and Punta
 Herrero, in the Yucatan Peninsula (Fig \ref{fig:map}C). In contrast with
@@ -208,7 +207,7 @@ ecology, socioeconomic, and governance aspects. Isla Natividad, for
 example, is part of a greater group of fishing cooperatives belonging to
 a Federation of Fishing Cooperatives. This group has been identified as
 a cohesive group that often cooperates to better manage their resources
-\citep{mccay_2017-1m,mccay_2014-CN,acevesbueno_2017}. Likewise, Maria
+\citep{mccay_2014-CN,mccay_2017-1m,acevesbueno_2017}. Likewise, Maria
 Elena and Punta Herrero are representative of fishing cooperatives in
 the Mexican Caribbean, which are also part of a regional Federation.
 Together, these three communities provide an accurate representation of
@@ -217,8 +216,8 @@ has additional communities that have established community-based
 TURF-reserves, available data would not allow us to perform the in-depth
 causal inference analysis that we undertake. Yet, given the similarities
 among communities and the socioeconomic and governance setting under
-which they operate, it is safe to cautiously generalize our results to
-other communities in Mexico and other regions around the world.
+which they operate, it is safe to cautiously generalize our insights to
+other similar reserves in Mexico and elsewhere around the world.
 
 \hypertarget{data-collection}{%
 \subsection{Data collection}\label{data-collection}}
@@ -282,19 +281,19 @@ ecological indicators is performed with a multiple linear regression of
 the form:
 
 \begin{equation}
-I_{itj} = \alpha + \gamma_{t} Year_t + \beta Zone_i + \lambda_{t} Year_t\times Zone_i + \sigma_jSpp_j + \epsilon
+I_{i,t,j} = \alpha + \gamma_{t} Year_t + \beta Zone_i + \lambda_{t} Year_t\times Zone_i + \sigma_jSpp_j + \epsilon_{i,t,j}
 \label{eqn:reg_bio}
 \end{equation}
 
-Where year-level fixed effects are represented by
-\(\gamma_{it} Year_t\), and \(\beta Zone_i\) captures the difference
-between reserve (\(Zone = 1\)) and control (\(Zone = 0\)) sites. The
-interaction term \(\lambda_{it} Year_t\times Zone_i\) represents the
-mean change in the indicator inside the reserve, for year \(t\), with
-respect to the year of implementation in the control site. When
-evaluating biomass and densities of the invertebrate or fish
-communities, we include \(\sigma_j\) to control for species-level fixed
-effects.
+Where year-level fixed effects are represented by \(\gamma_t Year_t\),
+and \(\beta Zone_i\) captures the difference between reserve
+(\(Zone = 1\)) and control (\(Zone = 0\)) sites. The interaction term
+\(\lambda_{it} Year_t\times Zone_i\) represents the mean change in the
+indicator inside the reserve, for year \(t\), with respect to the year
+of implementation in the control site. When evaluating biomass and
+densities of the invertebrate or fish communities, we include
+\(\sigma_j\) to control for species-level fixed effects.
+\(\epsilon_{i,t,j}\) represents the error term of the regression.
 
 Socioeconomic indicators are evaluated with a similar approach. Due to
 data constrains, we only evaluate socioeconomic data for Isla Natividad
@@ -304,7 +303,7 @@ time-invariants. Each focal community (Isla Natividad and Maria Elena)
 has three counterfactual communities.
 
 \begin{equation}
-I = \alpha + \gamma_{t} Year_t + \beta Treated_i + \lambda_{t} Year_t\times Treated_i + \sigma_jCom_j +\epsilon
+I_{i,t,j} = \alpha + \gamma_{t} Year_t + \beta Treated_i + \lambda_{t} Year_t\times Treated_i + \sigma_jCom_j +\epsilon_{i,t,j}
 \label{eqn:soc_reg}
 \end{equation}
 
@@ -324,7 +323,7 @@ heteroskedastic-robust standard errors \citep{zeileis_2004-7n}. All
 analyses were performed in R version 3.5.1 (2018-07-02) and R Studio
 version 1.1.456 \citep{R_2018}.
 
-We use the SES framework to evaluate each community. The use the SES
+We use the SES framework to evaluate each community. The use of this
 framework standardizes our analysis and allows us to communicate our
 results in a common language across fields by using a set of previously
 defined variables and indicators. We based our variable selection
@@ -333,7 +332,7 @@ operationalized and analyzed Mexican fishing cooperatives using this
 framework. We also incorporate other relevant variables known to
 influence reserve performance following \citet{difranco_2016-Xw} and
 \citet{edgar_2014-UO}. Table \ref{table:ses} shows the selected
-variables, their definition and selected indicators.
+variables, their definition and values.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -454,8 +453,8 @@ characteristics, one would expect the reserves to be effective. Maria
 Elena and Punta Herrero are relatively young reserves (\emph{i.e.}
 \textless{} 6 years old) and effects may not yet be evident due to the
 short duration of protection, relative to the life histories of the
-protected species; other community-based marine reserves in tropical
-ecosystems may take up to six years to show a spillover effect
+protected species; community-based marine reserves in tropical
+ecosystems may take six years or more to show a spillover effect
 \citep{dasilva_2015-zX}.
 
 Another key condition for effectiveness is reserve size
@@ -532,14 +531,14 @@ implemented. Lessons learned from these cases can guide implementation
 of community-based marine reserves elsewhere. For the particular case of
 the marine reserves that we evaluate, the possibility of expanding
 reserves or merging existing polygons into larger areas should be
-evaluated and proposed to the communities. At the broader scale, having
-full community support surely represents an advantage, but it is
-important that marine reserves meet essential design principles such as
-size and placement. Community-based marine reserves might have more
-benefits that result from indirect effects of the reserves, particularly
-providing resilience to shocks and management errors, and promoting
-social cohesion, which should be taken into account when evaluating the
-outcomes of TURF-reserves.
+evaluated and proposed to the communities. Community-based marine
+reserves might have more benefits that result from indirect effects of
+the reserves, particularly providing resilience to shocks and management
+errors, and promoting social cohesion, which should be taken into
+account when evaluating the outcomes of TURF-reserves. Having full
+community support surely represents an advantage, but it is important
+that community-based TURF-reserves meet essential design principles such
+as size and placement so as to maximize their effectiveness.
 
 \section*{Conflict of Interest Statement}
 
