@@ -11,17 +11,17 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Villaseñor-Derbez {et~al.}}
-\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,2,*}\), Eréndira
-Aceves-Bueno\(^{1,3}\), Álvin Suarez\(^{2}\), Stuart Fulton\(^{2}\),
-Arturo Hernández-Velasco\(^{2}\), Jorge Torre\(^{2}\), Fiorenza
+\def\Authors{Juan Carlos Villaseñor-Derbez\(^{1,*}\), Eréndira
+Aceves-Bueno\(^{1,2}\), Stuart Fulton\(^{3}\), Álvin Suarez\(^{3}\),
+Arturo Hernández-Velasco\(^{3}\), Jorge Torre\(^{3}\), Fiorenza
 Micheli\(^{4}\)}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
 \def\Address{\(^{1}\)Bren School of Environmental Science and Management, University
 of California, Santa Barbara, Santa Barbara, CA,
-USA\newline \(^{2}\)Comunidad y Biodiversidad A.C., Guaymas, Sonora,
-Mexico\newline \(^{3}\)Nicholas School of the Environment, Duke
-University, Beaufort, NC, USA\newline \(^{4}\)Hopkins Marine Station and
+USA\newline \(^{2}\)Nicholas School of the Environment, Duke University,
+Beaufort, NC, USA\newline \(^{3}\)Comunidad y Biodiversidad A.C.,
+Guaymas, Sonora, Mexico\newline \(^{4}\)Hopkins Marine Station and
 Center for Ocean Solutions, Stanford University, Pacific Grove, CA, USA}
 % The Corresponding Author should be marked with an asterisk
 % Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
@@ -30,20 +30,6 @@ Santa Barbara, Santa Barbara, CA, 93106}
 
 \def\corrEmail{\href{mailto:juancarlos@ucsb.edu}{\nolinkurl{juancarlos@ucsb.edu}}}
 
-\usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}{Lemma}[section]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{proposition}{Proposition}[section]
-\theoremstyle{definition}
-\newtheorem{example}{Example}[section]
-\theoremstyle{definition}
-\newtheorem{exercise}{Exercise}[section]
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{solution}{Solution}
 \begin{document}
 \onecolumn
 \firstpage{1}
@@ -101,6 +87,9 @@ Protected Areas, Marine Conservation, Small-Scale Fisheries}
 \end{abstract}
 
 
+Words in text: 3821 \textbar{} Words in headers: 35 \textbar{} Words
+outside text (captions, etc.): 192
+
 \clearpage
 
 \section{Introduction}\label{introduction}
@@ -115,7 +104,7 @@ marine reserves (MRs) can greatly improve the performance of coastal
 fisheries and the health of the local resouces
 \citep{costello_2010-Ix,lester_2017}. Commonly known as TURF-Reserves,
 these systems increase the benefits of spatial access rights allowing
-the maintainance of healthy resources
+the maintenance of healthy resources
 \citep{afflerbach_2014-HP,lester_2017}. Although in theory these systems
 are successful \citep{costello_2010-Ix,smallhornwest_2018}, there is
 little empirical evidence of their effectiveness and the drivers of
@@ -154,7 +143,7 @@ normative gap, Mexican Civil Society Organizations (CSOs) served as a
 link between fishers and government, and created a legal framework that
 solves this governance issue. In Mexico, a new norm was created in 2014
 allowing fishers to request the legal recognition of community-based
-reserves as ``Fish Refuged'' (\emph{Zona de Refugio Pesquero};
+reserves as ``Fish Refuges'' (\emph{Zona de Refugio Pesquero};
 \citet{nom}). Fish refuges can be implemented as temporal or partial
 reserves, which can protect one, some, or all resources within their
 boundaries. Since 2012, 45 Fish Refuges have been created along the
@@ -177,7 +166,7 @@ might lead to increased effectiveness. We draw from lessons learned in
 these three case studies and provide management recommendations to
 maximize the effectiveness of community-based marine reserves in
 small-scale fisheries in Mexico and in other regions around the world
-that use this tool to manage and rebuild their coastal fisheries.
+where this tool is used to manage and rebuild their coastal fisheries.
 
 \section{Methods}\label{methods}
 
@@ -205,7 +194,7 @@ and similar to Isla Natividad hosts a local community. Their main
 fishery is the Caribbean spiny lobster (\emph{Panulirus argus}), but
 they also target finfish in the off-season. Maria Elena and Punta
 Herrero established eight and four marine reserves in 2012 and 2013,
-respectively. All these reserves have been legally recognized as Fishing
+respectively. These reserves have been legally recognized as Fishing
 Refuges since their creation \citep{dof_website_2012,dof_website_2013}.
 
 These communities are representative of their region in terms of
@@ -222,7 +211,7 @@ has additional communities that have established community-based
 TURF-reserves, available data would not allow us to perform the in-depth
 causal inference analysis that we undertake. Yet, given the similarities
 among communities and the socioeconomic and governance setting under
-which they opperate, it is safe to cautiously generalize our results to
+which they operate, it is safe to cautiously generalize our results to
 other communities in Mexico and other regions around the world.
 
 \subsection{Data collection}\label{data-collection}
@@ -234,11 +223,11 @@ and control areas, carried out by members from each community and
 personnel from the Mexican CSO \emph{Comunidad y Biodiversidad}
 (\href{www.cobi.org.mx}{COBI}). Trained divers record richness and
 abundances of fish and invertebrate species along replicate transects
-(30x 2 m each) at depths 5-20 m in the reserves and control sites
-\citep{fulton_2018,fulton_2019}. Size structures are also collected
-during fish surveys. We define control sites as regions with habitat
-characteristics similar to the corresponding reserves, and that
-presumably had a similar probability of being selected as reserves
+(30 \(\times\) 2 m each) at depths 5-20 m in the reserves and control
+sites \citep{fulton_2018,fulton_2019,suman_2010-ez}. Size structures are
+also collected during fish surveys. We define control sites as regions
+with habitat characteristics similar to the corresponding reserves, and
+that presumably had a similar probability of being selected as reserves
 during the design phase. We focus our evaluation on sites where data are
 available for reserve and control sites, before and after the
 implementation of the reserve. This provides us with a
@@ -389,7 +378,7 @@ in the supplementary materials (S4 Table, S5 Table).
 Our analysis of the SES (Table \ref{table:ses}) shows that all analyzed
 communities share similarities known to foster sustainable resource
 management and increase reserve effectiveness. For example, fishers
-opperate within clearly outlined TURFs (RS2, GS6.1.4.3) that provide
+operate within clearly outlined TURFs (RS2, GS6.1.4.3) that provide
 exclusive access to resources and reserves. Along with their relatively
 small groups (A1 - Number of relevant actors), Isolation (A3),
 Operational rules (GS6.2), Social monitoring (GS9.1), and Graduated
@@ -540,9 +529,10 @@ potential conflict of interest.
 
 \section*{Author Contributions}
 
-JC and EA analyzed and interpreted data, discussed the results, and
-wrote the first draft. AHV coordinated fieldwork and collected the data.
-AS, AHV, SF, JT, and FM discussed the results and edited the manuscript.
+JC and AS conceived the idea. JC and EA analyzed data, discussed the
+results, and wrote the first draft. FM, SF, AS, JT, and AHV discussed
+the results and edited the manuscript. All authors provided valuable
+contributions.
 
 \section*{Funding}
 
@@ -645,7 +635,7 @@ Variable & Narrative\\
 \hline
 \hspace{1em}RS3 - Size of resource system: Reserve area (Evaluated reserve area; Km$^2$) & IN = 2 (1.3); ME = 10.48(0.09); PH = 11.25 (4.37)\\
 \hline
-\hspace{1em}RS4.1 - Stock status: Status of the main fishery & Lobster stocks are well managed, and are (IN) orhave been (ME, PH) MSC certified.\\
+\hspace{1em}RS4.1 - Stock status: Status of the main fishery & Lobster stocks are well managed, and are (IN) or have been (ME, PH) MSC certified.\\
 \hline
 \hspace{1em}*RS5 - Age of reserves: Years since reserves were implemented & IN = 12; ME = 6; PH = 5\\
 \hline
@@ -667,7 +657,7 @@ Variable & Narrative\\
 \hline
 \hspace{1em}GS9.1 - Social monitoring: Monitoring of the activities performed by cooperative members and external fishers & Fishing cooperatives have a group that monitors and enforces formal and internal rules. They ensure fishers of their fishing cooperative adhere to the established rules, and that foreign vessels do not poach their TURF and reserves.\\
 \hline
-\hspace{1em}GS9.2 - Biophysical monitoring:Monitoring of biological resources, including targeted species & Fishers perform annual standardized underwater surveys in the reserves and fishing grounds. Recently, they have installed oceanographic sensors to monitor oceanographic variables.\\
+\hspace{1em}GS9.2 - Biophysical monitoring: Monitoring of biological resources, including targeted species & Fishers perform annual standardized underwater surveys in the reserves and fishing grounds. Recently, they have installed oceanographic sensors to monitor oceanographic variables.\\
 \hline
 GS10.1 - Graduated sanctions & Fishers have penalties for breaking collective-choice rules or fishing inside the reserves. These may range from scoldings and warnings to not being allowed to harvest a particular resource or being expelled from the cooperative.\\
 \hline
