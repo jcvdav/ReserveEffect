@@ -46,9 +46,7 @@ This review focuses on the more substantial points, and I have not commented on 
 
 ### METHODS
 
-- In the study area section more information would be useful on the wider context (some of this is in the introduction 
-
-– e.g. the TURF system in Mexico and governance arrangements for this system and the reserves within it). 
+- In the study area section more information would be useful on the wider context (some of this is in the introduction e.g. the TURF system in Mexico and governance arrangements for this system and the reserves within it). 
 
 - The claims that the communities are representative and that insights could be generalised to elsewhere in the world could be toned down. Some evidence that the communities share similarities with other fishing communities is useful, but the authors themselves suggest in the discussion that wide generalisations are not possible. 
 
@@ -72,7 +70,7 @@ This review focuses on the more substantial points, and I have not commented on 
 
 - The latter part of the discussion focuses on the additional potential benefits of reserves including the positive perceptions of fishers noted in another study. My view is that these benefits are over-emphasised here, given that there is no data in the manuscript to support them. Furthermore the potential counter-arguments (e.g. that resources invested in these reserves might be put to better use) are not considered, which leads to a fairly one-sided view. 
 
-- It would be worth discussing fully the limitations of the data e.g. presumably the lack of data on fishing effort restricts interpretation of the time series, and the indicators representing socio-economic benefits of the MPAs are limited
+- It would be worth discussing fully the limitations of the data e.g. presumably the lack of data on fishing effort restricts interpretation of the time series, and the indicators representing socio-economic benefits of the MPAs are limited.
 
 ## Q4 - Please comment on the methods, results and data interpretation. If there are any objective errors, or if the conclusions are not supported, you should detail your concerns.
 
@@ -124,8 +122,7 @@ See further comments in Q3 below.
 ## Q3 - Please provide your detailed review report to the editor and authors (including any comments on the Q4 Check List):
 
 - This paper assesses the effectiveness of 3 TURF-reserves using a Before-After-Control-Impact design. The results indicate that the reserves have not increased the density of targeted species. Besides the biological analysis, the authors also evaluate the social-ecological system at each study community based on selected indicators. While it is encouraging to see the authors consider the social and governance aspects of marine reserves, it appears that this is secondary to the biological assessment. As it is presented now, I don’t see the added insights that the SES analysis brings to the study. The effectiveness of reserves are primarily assessed based on the biological indicators only. This is due to the lack of evaluation criteria for the SES component. I’d suggest using some rating system to rate each of the SES indicators. E.g., for RS4.1 stock status – range of possible values would be overfished, underfished, etc. Where would each study site fall along the gradient of underfished to overfished stocks?
-
-- By doing this you can assess each site in terms of biological performance and SES conditions. This then allows you to establish a stronger connection on how biological and social factors together act to contribute to better protection and effectiveness of marine reserves. This to me, is where the study can make a contribution to the literature. 
+ By doing this you can assess each site in terms of biological performance and SES conditions. This then allows you to establish a stronger connection on how biological and social factors together act to contribute to better protection and effectiveness of marine reserves. This to me, is where the study can make a contribution to the literature. 
 
 - Further to my comment above, my understanding of this paper is that the authors are making an argument for TURF-reserves. However the rationale for this does not come out clearly in the paper. There needs to be stronger justification provided for why the authors expect the 18 TURF-reserves to perform better than i) non-TURF community based marine reserves, and ii) TURF fisheries (but not necessarily marine reserves). Without this clarification, there is nothing to distinguish this study from others which assess the fishery impacts of marine reserves. 
 
@@ -138,9 +135,7 @@ See further comments in Q3 below.
 
 ### Methods
 
-- Please provide the size of each of the reserves.
-
-- Reserve size is an important factor affecting ecological outcomes, especially when comparing comparatively mobile vs non-mobile species (as noted by the authors in the Discussion). Why was the effect of reserve size not assessed? 
+- Please provide the size of each of the reserves. Reserve size is an important factor affecting ecological outcomes, especially when comparing comparatively mobile vs non-mobile species (as noted by the authors in the Discussion). Why was the effect of reserve size not assessed? 
 
 - Are the control sites managed with TURFs even though they are non-reserves? 
 
@@ -158,7 +153,7 @@ The socioeconomic analysis needs to address these points:
 
 - What was the species and community effect on biological and socioeconomic indicators, respectively? 
 
-- Table 2: Some variables need further clarification.
+#### Table 2: Some variables need further clarification.
 
 - RU5 – Number of targeted species is the variable, but this isn’t specified in the narrative. In addition to noting that lobster is the main target species please enter the total number of targeted species.
 
@@ -194,9 +189,7 @@ The socioeconomic analysis needs to address these points:
 
 - L196. “…the benefits of conservation directly benefit the members of the fishing cooperatives…” But what about benefits to the community as a whole? Going back to my question about number of actors in Table 2 – I assume that the invertebrate fisheries are high value fisheries. As such, it’s important to consider how the benefits of TURF-reserves are distributed among the entire community. Please provide some discussion about the distribution of fishery benefits – do the number of TURF fishers make up only a small proportion of total active fishers in the community? Or are all fishers in each community able to participate in the TURFs? 
 
-- The Discussion is focused mainly on ecological factors which may have affected the effectiveness of the TURF-reserves. What about potential changes in social-economic and governance conditions over the assessed time period which may have affected the reserve? For instance was there a breakdown in enforcement which may have led to illegal fishing, thereby resulting in lower density of target species? What about market drivers that may have motivated increased fishing pressure?
-
-- Elaboration on these factors will strengthen the authors’ attempt to bring in the SES framework to this primarily biological analysis. 
+- The Discussion is focused mainly on ecological factors which may have affected the effectiveness of the TURF-reserves. What about potential changes in social-economic and governance conditions over the assessed time period which may have affected the reserve? For instance was there a breakdown in enforcement which may have led to illegal fishing, thereby resulting in lower density of target species? What about market drivers that may have motivated increased fishing pressure? Elaboration on these factors will strengthen the authors’ attempt to bring in the SES framework to this primarily biological analysis. 
 
 ### Minor comments:
 
