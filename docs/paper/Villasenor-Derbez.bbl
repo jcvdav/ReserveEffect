@@ -1,0 +1,646 @@
+\begin{thebibliography}{71}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+
+\bibitem[{Aalto et~al.(in press)Aalto, Micheli, Boch, Espinoza-Montes, Woodson,
+  and De~Leo}]{aalto}
+Aalto, E., Micheli, F., Boch, C., Espinoza-Montes, A., Woodson, C., and De~Leo,
+  G. (in press).
+\newblock Marine protected areas lower risk of abalone fishery collapse
+  following widespread catastrophic mortality events.
+\newblock \emph{American Naturalist}
+\bibAnnoteFile{aalto}
+
+\bibitem[{Aceves-Bueno et~al.(2017)Aceves-Bueno, Cornejo-Donoso, Miller, and
+  Gaines}]{acevesbueno_2017}
+Aceves-Bueno, E., Cornejo-Donoso, J., Miller, S.~J., and Gaines, S.~D. (2017).
+\newblock Are territorial use rights in fisheries ({TURFs}) sufficiently large?
+\newblock \emph{Marine Policy} 78, 189--195.
+\newblock \doi{10.1016/j.marpol.2017.01.024}
+\bibAnnoteFile{acevesbueno_2017}
+
+\bibitem[{Afflerbach et~al.(2014)Afflerbach, Lester, Dougherty, and
+  Poon}]{afflerbach_2014-HP}
+Afflerbach, J.~C., Lester, S.~E., Dougherty, D.~T., and Poon, S.~E. (2014).
+\newblock A global survey of turf-reserves, territorial use rights for
+  fisheries coupled with marine reserves.
+\newblock \emph{Global Ecology and Conservation} 2, 97--106.
+\newblock \doi{10.1016/j.gecco.2014.08.001}
+\bibAnnoteFile{afflerbach_2014-HP}
+
+\bibitem[{Ayer et~al.(2018)Ayer, Fulton, Caamal-Madrigal, and
+  Espinoza-Tenorio}]{ayer_2018}
+Ayer, A., Fulton, S., Caamal-Madrigal, J.~A., and Espinoza-Tenorio, A. (2018).
+\newblock Halfway to sustainability: Management lessons from community-based,
+  marine no-take zones in the mexican caribbean.
+\newblock \emph{Marine Policy} 93, 22--30.
+\newblock \doi{10.1016/j.marpol.2018.03.008}
+\bibAnnoteFile{ayer_2018}
+
+\bibitem[{Babcock et~al.(2010)Babcock, Shears, Alcala, Barrett, Edgar, Lafferty
+  et~al.}]{babcock_2010}
+Babcock, R.~C., Shears, N.~T., Alcala, A.~C., Barrett, N.~S., Edgar, G.~J.,
+  Lafferty, K.~D., et~al. (2010).
+\newblock Decadal trends in marine reserves reveal differential rates of change
+  in direct and indirect effects.
+\newblock \emph{Proc Natl Acad Sci {USA}} 107, 18256--18261.
+\newblock \doi{10.1073/pnas.0908012107}
+\bibAnnoteFile{babcock_2010}
+
+\bibitem[{Basurto et~al.(2013)Basurto, Gelcich, and Ostrom}]{basurto_2013-oq}
+Basurto, X., Gelcich, S., and Ostrom, E. (2013).
+\newblock The social–ecological system framework as a knowledge
+  classificatory system for benthic small-scale fisheries.
+\newblock \emph{Global Environmental Change} 23, 1366--1380.
+\newblock \doi{10.1016/j.gloenvcha.2013.08.001}
+\bibAnnoteFile{basurto_2013-oq}
+
+\bibitem[{Beger et~al.(2004)Beger, Harborne, Dacles, Solandt, and
+  Ledesma}]{beger_2004-Y8}
+Beger, M., Harborne, A.~R., Dacles, T.~P., Solandt, J.-L., and Ledesma, G.~L.
+  (2004).
+\newblock A framework of lessons learned from community-based marine reserves
+  and its effectiveness in guiding a new coastal management initiative in the
+  philippines.
+\newblock \emph{Environ Manage} 34, 786--801.
+\newblock \doi{10.1007/s00267-004-0149-z}
+\bibAnnoteFile{beger_2004-Y8}
+
+\bibitem[{Betti et~al.(2017)Betti, Bavestrello, Bo, Asnaghi, Chiantore, Bava
+  et~al.}]{betti_2017-lq}
+Betti, F., Bavestrello, G., Bo, M., Asnaghi, V., Chiantore, M., Bava, S.,
+  et~al. (2017).
+\newblock Over 10 years of variation in mediterranean reef benthic communities.
+\newblock \emph{Marine Ecology} 38, e12439.
+\newblock \doi{10.1111/maec.12439}
+\bibAnnoteFile{betti_2017-lq}
+
+\bibitem[{Bohnsack et~al.(2004)Bohnsack, Ault, and Causey}]{bohnsack_2004}
+Bohnsack, J.~A., Ault, J.~S., and Causey, B. (2004).
+\newblock Why have no-take marine protected areas?
+\newblock In \emph{American Fisheries Society Symposium}. vol.~42, 185--193
+\bibAnnoteFile{bohnsack_2004}
+
+\bibitem[{Breitburg et~al.(2018)Breitburg, Levin, Oschlies, Grégoire, Chavez,
+  Conley et~al.}]{breitburg_2018}
+Breitburg, D., Levin, L.~A., Oschlies, A., Grégoire, M., Chavez, F.~P.,
+  Conley, D.~J., et~al. (2018).
+\newblock Declining oxygen in the global ocean and coastal waters.
+\newblock \emph{Science}
+\bibAnnoteFile{breitburg_2018}
+
+\bibitem[{Cavole et~al.(2016)Cavole, Demko, Diner, Giddings, Koester, Pagniello
+  et~al.}]{cavole_2016}
+Cavole, L.~M., Demko, A.~M., Diner, R.~E., Giddings, A., Koester, I.,
+  Pagniello, C.~M., et~al. (2016).
+\newblock Biological impacts of the 2013–2015 warm-water anomaly in the
+  northeast pacific: Winners, losers, and the future.
+\newblock \emph{Oceanography} 29, 273--285
+\bibAnnoteFile{cavole_2016}
+
+\bibitem[{Costello and Kaffine(2010)}]{costello_2010-Ix}
+Costello, C. and Kaffine, D.~T. (2010).
+\newblock Marine protected areas in spatial property-rights fisheries*.
+\newblock \emph{Australian Journal of Agricultural and Resource Economics} 54,
+  321--341.
+\newblock \doi{10.1111/j.1467-8489.2010.00495.x}
+\bibAnnoteFile{costello_2010-Ix}
+
+\bibitem[{Costello et~al.(2012)Costello, Ovando, Hilborn, Gaines, Deschenes,
+  and Lester}]{costello_2012}
+Costello, C., Ovando, D., Hilborn, R., Gaines, S.~D., Deschenes, O., and
+  Lester, S.~E. (2012).
+\newblock Status and solutions for the world's unassessed fisheries.
+\newblock \emph{Science} 338, 517--520.
+\newblock \doi{10.1126/science.1223389}
+\bibAnnoteFile{costello_2012}
+
+\bibitem[{da~Silva et~al.(2015)da~Silva, Hill, Shimadzu, Soares, and
+  Dornelas}]{dasilva_2015-zX}
+da~Silva, I.~M., Hill, N., Shimadzu, H., Soares, A. M. V.~M., and Dornelas, M.
+  (2015).
+\newblock Spillover effects of a community-managed marine reserve.
+\newblock \emph{PLoS ONE} 10, e0111774.
+\newblock \doi{10.1371/journal.pone.0111774}
+\bibAnnoteFile{dasilva_2015-zX}
+
+\bibitem[{De~Leo and Micheli(2015)}]{deleo_2015}
+De~Leo, G.~A. and Micheli, F. (2015).
+\newblock The good, the bad and the ugly of marine reserves for fishery yields.
+\newblock \emph{Philos Trans R Soc Lond, B, Biol Sci} 370.
+\newblock \doi{10.1098/rstb.2014.0276}
+\bibAnnoteFile{deleo_2015}
+
+\bibitem[{De~Palma et~al.(2018)De~Palma, Sanchez~Ortiz, Martin, Chadwick,
+  Gilbert, Bates et~al.}]{depalma_2018}
+De~Palma, A., Sanchez~Ortiz, K., Martin, P.~A., Chadwick, A., Gilbert, G.,
+  Bates, A.~E., et~al. (2018).
+\newblock Challenges with inferring how land-use affects terrestrial
+  biodiversity: Study design, time, space and synthesis.
+\newblock \emph{Advances in ecological research}
+  \doi{10.1016/bs.aecr.2017.12.004}
+\bibAnnoteFile{depalma_2018}
+
+\bibitem[{Di~Franco et~al.(2016)Di~Franco, Thiriet, Di~Carlo, Dimitriadis,
+  Francour, Gutiérrez et~al.}]{difranco_2016-Xw}
+Di~Franco, A., Thiriet, P., Di~Carlo, G., Dimitriadis, C., Francour, P.,
+  Gutiérrez, N.~L., et~al. (2016).
+\newblock Five key attributes can increase marine protected areas performance
+  for small-scale fisheries management.
+\newblock \emph{Sci Rep} 6, 38135.
+\newblock \doi{10.1038/srep38135}
+\bibAnnoteFile{difranco_2016-Xw}
+
+\bibitem[{{DOF}(1993)}]{dof_website_1993}
+{DOF}, D. (1993).
+\newblock Norma oficial mexicana 006-pesc-1993, para regular el aprovechamiento
+  de todas las especies de langosta en las aguas de jurisdiccion federal del
+  golfo de mexico y mar caribe, asi como del oceano pacifico incluyendo el
+  golfo de california.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_website_1993}
+
+\bibitem[{{DOF}(2012{\natexlab{a}})}]{dof_websiteC_2012}
+{DOF}, D. (2012{\natexlab{a}}).
+\newblock Acuerdo por el que se establece una red de zonas de refugio en aguas
+  marinas de jurisdicción federal frente a la costa oriental del estado de
+  baja california sur, en el corredor marino de san cosme a punta coyote.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_websiteC_2012}
+
+\bibitem[{{DOF}(2012{\natexlab{b}})}]{dof_website_2012}
+{DOF}, D. (2012{\natexlab{b}}).
+\newblock Acuerdo por el que se establece una red de zonas de refugio pesquero
+  en aguas marinas de jurisdicción federal ubicadas en el área de sian ka an,
+  dentro de la bahía espíritu santo en el estado de quintana roo.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_website_2012}
+
+\bibitem[{{DOF}(2013)}]{dof_website_2013}
+{DOF}, D. (2013).
+\newblock Acuerdo por el que se establece una red de zonas de refugio pesquero
+  en aguas marinas de jurisdicción federal ubicadas en las áreas de banco
+  chinchorro y punta herrero en el estado de quintana roo.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_website_2013}
+
+\bibitem[{{DOF}(2018{\natexlab{a}})}]{dof_websiteU_2018}
+{DOF}, D. (2018{\natexlab{a}}).
+\newblock Acuerdo por el que se establece el área de refugio para la tortuga
+  amarilla (caretta caretta) en el golfo de ulloa, en baja california sur.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_websiteU_2018}
+
+\bibitem[{{DOF}(2018{\natexlab{b}})}]{dof_website_2018}
+{DOF}, D. (2018{\natexlab{b}}).
+\newblock Acuerdo por el que se establece una red de dos zonas de refugio
+  pesquero parciales permanentes en aguas marinas de jurisdicción federal
+  adyacentes a isla natividad, ubicada en el municipio de mulegé, en el estado
+  de baja california sur.
+\newblock \emph{Diario Oficial de la Federación}
+\bibAnnoteFile{dof_website_2018}
+
+\bibitem[{Edgar et~al.(2014)Edgar, Stuart-Smith, Willis, Kininmonth, Baker,
+  Banks et~al.}]{edgar_2014-UO}
+Edgar, G.~J., Stuart-Smith, R.~D., Willis, T.~J., Kininmonth, S., Baker, S.~C.,
+  Banks, S., et~al. (2014).
+\newblock Global conservation outcomes depend on marine protected areas with
+  five key features.
+\newblock \emph{Nature} 506, 216--220.
+\newblock \doi{10.1038/nature13022}
+\bibAnnoteFile{edgar_2014-UO}
+
+\bibitem[{Espinosa-Romero et~al.(2014)Espinosa-Romero, Rodriguez, Weaver,
+  Villanueva-Aznar, and Torre}]{espinosaromero_2014-PY}
+Espinosa-Romero, M.~J., Rodriguez, L.~F., Weaver, A.~H., Villanueva-Aznar, C.,
+  and Torre, J. (2014).
+\newblock The changing role of ngos in mexican small-scale fisheries: From
+  environmental conservation to multi-scale governance.
+\newblock \emph{Marine Policy} 50, 290--299.
+\newblock \doi{10.1016/j.marpol.2014.07.005}
+\bibAnnoteFile{espinosaromero_2014-PY}
+
+\bibitem[{Ferraro and Pattanayak(2006)}]{ferraro_2006-oW}
+Ferraro, P.~J. and Pattanayak, S.~K. (2006).
+\newblock Money for nothing? a call for empirical evaluation of biodiversity
+  conservation investments.
+\newblock \emph{PLoS Biol} 4, e105.
+\newblock \doi{10.1371/journal.pbio.0040105}
+\bibAnnoteFile{ferraro_2006-oW}
+
+\bibitem[{Finkbeiner et~al.(2018)Finkbeiner, Micheli, Saenz-Arroyo,
+  Vazquez-Vera, Perafan, and Cárdenas}]{finkbeiner_2018}
+Finkbeiner, E., Micheli, F., Saenz-Arroyo, A., Vazquez-Vera, L., Perafan, C.,
+  and Cárdenas, J. (2018).
+\newblock Local response to global uncertainty: Insights from experimental
+  economics in small-scale fisheries.
+\newblock \emph{Global Environmental Change} 48, 151--157.
+\newblock \doi{10.1016/j.gloenvcha.2017.11.010}
+\bibAnnoteFile{finkbeiner_2018}
+
+\bibitem[{Friedlander et~al.(2017)Friedlander, Golbuu, Ballesteros, Caselle,
+  Gouezo, Olsudong et~al.}]{friedlander_2017-oI}
+Friedlander, A.~M., Golbuu, Y., Ballesteros, E., Caselle, J.~E., Gouezo, M.,
+  Olsudong, D., et~al. (2017).
+\newblock Size, age, and habitat determine effectiveness of palau's marine
+  protected areas.
+\newblock \emph{PLoS ONE} 12, e0174787.
+\newblock \doi{10.1371/journal.pone.0174787}
+\bibAnnoteFile{friedlander_2017-oI}
+
+\bibitem[{Fulton et~al.(2018)Fulton, Caamal-Madrigal, Aguilar-Perera,
+  Bourillón, and Heyman}]{fulton_2018}
+Fulton, S., Caamal-Madrigal, J., Aguilar-Perera, A., Bourillón, L., and
+  Heyman, W.~D. (2018).
+\newblock Marine conservation outcomes are more likely when fishers participate
+  as citizen scientists: Case studies from the mexican mesoamerican reef.
+\newblock \emph{CSTP} 3.
+\newblock \doi{10.5334/cstp.118}
+\bibAnnoteFile{fulton_2018}
+
+\bibitem[{Fulton et~al.(2019)Fulton, Hernandez-Velasco, Suarez-Castillo,
+  Fernandez-Rivera~Melo, Rojo, Saenz-Arroyo et~al.}]{fulton_2019}
+Fulton, S., Hernandez-Velasco, A., Suarez-Castillo, A., Fernandez-Rivera~Melo,
+  F., Rojo, M., Saenz-Arroyo, A., et~al. (2019).
+\newblock From fishing fish to fishing data: the role of artisanal fishers in
+  conservation and resource management in mexico.
+\newblock In \emph{Viability and Sustainability of Small-Scale Fisheries in
+  Latin America and The Caribbean}, eds. S.~Salas, M.~J. Barragán-Paladines,
+  and R.~Chuenpagdee (Cham: Springer International Publishing), vol.~19 of
+  \emph{{MARE} Publication Series}. 151--175.
+\newblock \doi{10.1007/978-3-319-76078-0\_7}
+\bibAnnoteFile{fulton_2019}
+
+\bibitem[{Gelcich and Donlan(2015)}]{gelcich_2015-Gw}
+Gelcich, S. and Donlan, C.~J. (2015).
+\newblock Incentivizing biodiversity conservation in artisanal fishing
+  communities through territorial user rights and business model innovation.
+\newblock \emph{Conserv Biol} 29, 1076--1085.
+\newblock \doi{10.1111/cobi.12477}
+\bibAnnoteFile{gelcich_2015-Gw}
+
+\bibitem[{Gelcich et~al.(2008)Gelcich, Godoy, Prado, and
+  Castilla}]{gelcich_2008}
+Gelcich, S., Godoy, N., Prado, L., and Castilla, J.~C. (2008).
+\newblock Add-on conservation benefits of marine territorial user rights
+  fishery policies in central chile.
+\newblock \emph{Ecol Appl} 18, 273--281.
+\newblock \doi{10.1890/06-1896.1}
+\bibAnnoteFile{gelcich_2008}
+
+\bibitem[{Giakoumi et~al.(2017)Giakoumi, Scianna, Plass-Johnson, Micheli,
+  Grorud-Colvert, Thiriet et~al.}]{giakoumi_2017-V2}
+Giakoumi, S., Scianna, C., Plass-Johnson, J., Micheli, F., Grorud-Colvert, K.,
+  Thiriet, P., et~al. (2017).
+\newblock Ecological effects of full and partial protection in the crowded
+  mediterranean sea: a regional meta-analysis.
+\newblock \emph{Sci Rep} 7, 8940.
+\newblock \doi{10.1038/s41598-017-08850-w}
+\bibAnnoteFile{giakoumi_2017-V2}
+
+\bibitem[{Green et~al.(2017)Green, Chollett, Suarez, Dahlgren, Cruz, Zepeda
+  et~al.}]{green_2017}
+Green, A., Chollett, I., Suarez, A., Dahlgren, C., Cruz, S., Zepeda, C., et~al.
+  (2017).
+\newblock \emph{Biophysical Principles for Designing a Network of Replenishment
+  Zones for the Mesoamerican Reef System}.
+\newblock Technical report
+\bibAnnoteFile{green_2017}
+
+\bibitem[{Guidetti et~al.(2014)Guidetti, Baiata, Ballesteros, Di~Franco, Hereu,
+  Macpherson et~al.}]{guidetti_2014-8Z}
+Guidetti, P., Baiata, P., Ballesteros, E., Di~Franco, A., Hereu, B.,
+  Macpherson, E., et~al. (2014).
+\newblock Large-scale assessment of mediterranean marine protected areas
+  effects on fish assemblages.
+\newblock \emph{PLoS ONE} 9, e91841.
+\newblock \doi{10.1371/journal.pone.0091841}
+\bibAnnoteFile{guidetti_2014-8Z}
+
+\bibitem[{Halpern et~al.(2013)Halpern, Klein, Brown, Beger, Grantham, Mangubhai
+  et~al.}]{halpern_2013}
+Halpern, B.~S., Klein, C.~J., Brown, C.~J., Beger, M., Grantham, H.~S.,
+  Mangubhai, S., et~al. (2013).
+\newblock Achieving the triple bottom line in the face of inherent trade-offs
+  among social equity, economic return, and conservation.
+\newblock \emph{Proc Natl Acad Sci USA} 110, 6229--6234.
+\newblock \doi{10.1073/pnas.1217689110}
+\bibAnnoteFile{halpern_2013}
+
+\bibitem[{Halpern et~al.(2008)Halpern, Walbridge, Selkoe, Kappel, Micheli,
+  D'Agrosa et~al.}]{halpern_2008-dK}
+Halpern, B.~S., Walbridge, S., Selkoe, K.~A., Kappel, C.~V., Micheli, F.,
+  D'Agrosa, C., et~al. (2008).
+\newblock A global map of human impact on marine ecosystems.
+\newblock \emph{Science} 319, 948--952.
+\newblock \doi{10.1126/science.1149345}
+\bibAnnoteFile{halpern_2008-dK}
+
+\bibitem[{Hilborn et~al.(2006)Hilborn, Micheli, and De~Leo}]{hilborn_2006}
+Hilborn, R., Micheli, F., and De~Leo, G.~A. (2006).
+\newblock Integrating marine protected areas with catch regulation.
+\newblock \emph{Can. J. Fish. Aquat. Sci.} 63, 642--649.
+\newblock \doi{10.1139/f05-243}
+\bibAnnoteFile{hilborn_2006}
+
+\bibitem[{Hilborn et~al.(2004)Hilborn, Stokes, Maguire, Smith, Botsford, Mangel
+  et~al.}]{hilborn_2004}
+Hilborn, R., Stokes, K., Maguire, J.-J., Smith, T., Botsford, L.~W., Mangel,
+  M., et~al. (2004).
+\newblock When can marine reserves improve fisheries management?
+\newblock \emph{Ocean and Coastal Management} 47, 197 -- 205.
+\newblock \doi{https://doi.org/10.1016/j.ocecoaman.2004.04.001}
+\bibAnnoteFile{hilborn_2004}
+
+\bibitem[{Hughes et~al.(2018)Hughes, Anderson, Connolly, Heron, Kerry, Lough
+  et~al.}]{hughes_2018}
+Hughes, T.~P., Anderson, K.~D., Connolly, S.~R., Heron, S.~F., Kerry, J.~T.,
+  Lough, J.~M., et~al. (2018).
+\newblock Spatial and temporal patterns of mass bleaching of corals in the
+  anthropocene.
+\newblock \emph{Science}
+\bibAnnoteFile{hughes_2018}
+
+\bibitem[{Johannes(2002)}]{johannes_2002}
+Johannes, R.~E. (2002).
+\newblock The renaissance of community-based marine resource management in
+  oceania.
+\newblock \emph{Annual Review of Ecology and Systematics} 33, 317--340
+\bibAnnoteFile{johannes_2002}
+
+\bibitem[{Jupiter et~al.(2017)Jupiter, Epstein, Ban, Mangubhai, Fox, and
+  Cox}]{jupiter_2017}
+Jupiter, S.~D., Epstein, G., Ban, N.~C., Mangubhai, S., Fox, M., and Cox, M.
+  (2017).
+\newblock A social–ecological systems approach to assessing conservation and
+  fisheries outcomes in fijian locally managed marine areas.
+\newblock \emph{Soc Nat Resour} 30, 1096--1111.
+\newblock \doi{10.1080/08941920.2017.1315654}
+\bibAnnoteFile{jupiter_2017}
+
+\bibitem[{Krueck et~al.(2017)Krueck, Ahmadia, Possingham, Riginos, Treml, and
+  Mumby}]{krueck_2017-J1}
+Krueck, N.~C., Ahmadia, G.~N., Possingham, H.~P., Riginos, C., Treml, E.~A.,
+  and Mumby, P.~J. (2017).
+\newblock Marine reserve targets to sustain and rebuild unregulated fisheries.
+\newblock \emph{PLoS Biol} 15, e2000537.
+\newblock \doi{10.1371/journal.pbio.2000537}
+\bibAnnoteFile{krueck_2017-J1}
+
+\bibitem[{Leslie et~al.(2015)Leslie, Basurto, Nenadovic, Sievanen, Cavanaugh,
+  Cota-Nieto et~al.}]{leslie_2015-na}
+Leslie, H.~M., Basurto, X., Nenadovic, M., Sievanen, L., Cavanaugh, K.~C.,
+  Cota-Nieto, J.~J., et~al. (2015).
+\newblock Operationalizing the social-ecological systems framework to assess
+  sustainability.
+\newblock \emph{Proc Natl Acad Sci U S A} 112, 5979--5984.
+\newblock \doi{10.1073/pnas.1414640112}
+\bibAnnoteFile{leslie_2015-na}
+
+\bibitem[{Lester et~al.(2009)Lester, Halpern, Grorud-Colvert, Lubchenco,
+  Ruttenberg, Gaines et~al.}]{lester_2009-Ks}
+Lester, S., Halpern, B., Grorud-Colvert, K., Lubchenco, J., Ruttenberg, B.,
+  Gaines, S., et~al. (2009).
+\newblock Biological effects within no-take marine reserves: a global
+  synthesis.
+\newblock \emph{Mar. Ecol. Prog. Ser.} 384, 33--46.
+\newblock \doi{10.3354/meps08029}
+\bibAnnoteFile{lester_2009-Ks}
+
+\bibitem[{Lester et~al.(2017)Lester, {McDonald}, Clemence, Dougherty, and
+  Szuwalski}]{lester_2017}
+Lester, S., {McDonald}, G., Clemence, M., Dougherty, D., and Szuwalski, C.
+  (2017).
+\newblock Impacts of {TURFs} and marine reserves on fisheries and conservation
+  goals: theory, empirical evidence, and modeling.
+\newblock \emph{BMS} 93, 173--198.
+\newblock \doi{10.5343/bms.2015.1083}
+\bibAnnoteFile{lester_2017}
+
+\bibitem[{López-Angarita et~al.(2014)López-Angarita, Moreno-Sánchez,
+  Maldonado, and Sánchez}]{lpezangarita_2014}
+López-Angarita, J., Moreno-Sánchez, R., Maldonado, J.~H., and Sánchez, J.~A.
+  (2014).
+\newblock Evaluating linked social-ecological systems in marine protected
+  areas.
+\newblock \emph{Conserv Lett} 7, 241--252.
+\newblock \doi{10.1111/conl.12063}
+\bibAnnoteFile{lpezangarita_2014}
+
+\bibitem[{Mascia et~al.(2017)Mascia, Fox, Glew, Ahmadia, Agrawal, Barnes
+  et~al.}]{mascia_2017-m_}
+Mascia, M.~B., Fox, H.~E., Glew, L., Ahmadia, G.~N., Agrawal, A., Barnes, M.,
+  et~al. (2017).
+\newblock A novel framework for analyzing conservation impacts: evaluation,
+  theory, and marine protected areas.
+\newblock \emph{Ann N Y Acad Sci} 1399, 93--115.
+\newblock \doi{10.1111/nyas.13428}
+\bibAnnoteFile{mascia_2017-m_}
+
+\bibitem[{McCay(2017)}]{mccay_2017-1m}
+McCay, B. (2017).
+\newblock Territorial use rights in fisheries of the northern pacific coast of
+  mexico.
+\newblock \emph{BMS} 93, 69--81.
+\newblock \doi{10.5343/bms.2015.1091}
+\bibAnnoteFile{mccay_2017-1m}
+
+\bibitem[{McCay et~al.(2014)McCay, Micheli, Ponce-Díaz, Murray, Shester,
+  Ramirez-Sanchez et~al.}]{mccay_2014-CN}
+McCay, B.~J., Micheli, F., Ponce-Díaz, G., Murray, G., Shester, G.,
+  Ramirez-Sanchez, S., et~al. (2014).
+\newblock Cooperatives, concessions, and co-management on the pacific coast of
+  mexico.
+\newblock \emph{Marine Policy} 44, 49--59.
+\newblock \doi{10.1016/j.marpol.2013.08.001}
+\bibAnnoteFile{mccay_2014-CN}
+
+\bibitem[{Micheli et~al.(2012)Micheli, Saenz-Arroyo, Greenley, Vazquez,
+  Espinoza~Montes, Rossetto et~al.}]{micheli_2012-EU}
+Micheli, F., Saenz-Arroyo, A., Greenley, A., Vazquez, L., Espinoza~Montes,
+  J.~A., Rossetto, M., et~al. (2012).
+\newblock Evidence that marine reserves enhance resilience to climatic impacts.
+\newblock \emph{PLoS ONE} 7, e40832.
+\newblock \doi{10.1371/journal.pone.0040832}
+\bibAnnoteFile{micheli_2012-EU}
+
+\bibitem[{Moland et~al.(2013)Moland, Olsen, Knutsen, Garrigou, Espeland,
+  Kleiven et~al.}]{moland_2013-VP}
+Moland, E., Olsen, E.~M., Knutsen, H., Garrigou, P., Espeland, S.~H., Kleiven,
+  A.~R., et~al. (2013).
+\newblock Lobster and cod benefit from small-scale northern marine protected
+  areas: inference from an empirical before-after control-impact study.
+\newblock \emph{Proceedings of the Royal Society B: Biological Sciences} 280,
+  20122679--20122679.
+\newblock \doi{10.1098/rspb.2012.2679}
+\bibAnnoteFile{moland_2013-VP}
+
+\bibitem[{NOM-049-SAG/PESC(2014)}]{nom}
+NOM-049-SAG/PESC (2014).
+\newblock Norma oficial mexicana nom-049-sag/pesc-2014, que determina el
+  procedimiento para establecer zonas de refugio para los recursos pesqueros en
+  aguas de jurisdicción federal de los estados unidos mexicanos.
+\newblock \emph{DOF}
+\bibAnnoteFile{nom}
+
+\bibitem[{OECD(2017)}]{oecd_2017-VV}
+[Dataset] OECD (2017).
+\newblock Inflation {CPI}
+\bibAnnoteFile{oecd_2017-VV}
+
+\bibitem[{Ostrom(2009)}]{ostrom_2009-hg}
+Ostrom, E. (2009).
+\newblock A general framework for analyzing sustainability of social-ecological
+  systems.
+\newblock \emph{Science} 325, 419--422.
+\newblock \doi{10.1126/science.1172133}
+\bibAnnoteFile{ostrom_2009-hg}
+
+\bibitem[{Ovando et~al.(2016)Ovando, Dougherty, and Wilson}]{ovando_2016-Wg}
+Ovando, D., Dougherty, D., and Wilson, J.~R. (2016).
+\newblock Market and design solutions to the short-term economic impacts of
+  marine reserves.
+\newblock \emph{Fish Fish} 17, 939--954.
+\newblock \doi{10.1111/faf.12153}
+\bibAnnoteFile{ovando_2016-Wg}
+
+\bibitem[{Pauly et~al.(2005)Pauly, Watson, and Alder}]{pauly_2005-qV}
+Pauly, D., Watson, R., and Alder, J. (2005).
+\newblock Global trends in world fisheries: impacts on marine ecosystems and
+  food security.
+\newblock \emph{Philosophical Transactions of the Royal Society B: Biological
+  Sciences} 360, 5--12.
+\newblock \doi{10.1098/rstb.2004.1574}
+\bibAnnoteFile{pauly_2005-qV}
+
+\bibitem[{Pérez-Ramírez et~al.(2016)Pérez-Ramírez, Castrejón, Gutiérrez,
+  and Defeo}]{prezramrez_2016-J1}
+Pérez-Ramírez, M., Castrejón, M., Gutiérrez, N.~L., and Defeo, O. (2016).
+\newblock The marine stewardship council certification in latin america and the
+  caribbean: A review of experiences, potentials and pitfalls.
+\newblock \emph{Fisheries Research} 182, 50--58.
+\newblock \doi{10.1016/j.fishres.2015.11.007}
+\bibAnnoteFile{prezramrez_2016-J1}
+
+\bibitem[{Pérez-Ramírez et~al.(2012)Pérez-Ramírez, Ponce-Díaz, and
+  Lluch-Cota}]{prezramrez_2012}
+Pérez-Ramírez, M., Ponce-Díaz, G., and Lluch-Cota, S. (2012).
+\newblock The role of msc certification in the empowerment of fishing
+  cooperatives in mexico: The case of red rock lobster co-managed fishery.
+\newblock \emph{Ocean Coast Manag} 63, 24--29.
+\newblock \doi{10.1016/j.ocecoaman.2012.03.009}
+\bibAnnoteFile{prezramrez_2012}
+
+\bibitem[{{R Core Team}(2018)}]{R_2018}
+{R Core Team} (2018).
+\newblock \emph{R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria
+\bibAnnoteFile{R_2018}
+
+\bibitem[{Rees et~al.(2018)Rees, Pittman, Foster, Langmead, Griffiths, Fletcher
+  et~al.}]{rees_2018}
+Rees, S.~E., Pittman, S.~J., Foster, N., Langmead, O., Griffiths, C., Fletcher,
+  S., et~al. (2018).
+\newblock Bridging the divide: Social–ecological coherence in marine
+  protected area network design.
+\newblock \emph{Aquatic Conservation: Marine and Freshwater Ecosystems}
+\bibAnnoteFile{rees_2018}
+
+\bibitem[{Roberts et~al.(2017)Roberts, OLeary, McCauley, Cury, Duarte,
+  Lubchenco et~al.}]{roberts_2017-J9}
+Roberts, C.~M., OLeary, B.~C., McCauley, D.~J., Cury, P.~M., Duarte, C.~M.,
+  Lubchenco, J., et~al. (2017).
+\newblock Marine reserves can mitigate and promote adaptation to climate
+  change.
+\newblock \emph{Proc Natl Acad Sci USA} 114, 6167--6175.
+\newblock \doi{10.1073/pnas.1701262114}
+\bibAnnoteFile{roberts_2017-J9}
+
+\bibitem[{Rodriguez and Fanning(2017)}]{rodriguez_2017-PD}
+Rodriguez, A.~G. and Fanning, L.~M. (2017).
+\newblock Assessing marine protected areas effectiveness: A case study with the
+  tobago cays marine park.
+\newblock \emph{OJMS} 07, 379--408.
+\newblock \doi{10.4236/ojms.2017.73027}
+\bibAnnoteFile{rodriguez_2017-PD}
+
+\bibitem[{Rossetto et~al.(2015)Rossetto, Micheli, Saenz-Arroyo, Montes, and
+  De~Leo}]{rossetto_2015-V0}
+Rossetto, M., Micheli, F., Saenz-Arroyo, A., Montes, J. A.~E., and De~Leo,
+  G.~A. (2015).
+\newblock No-take marine reserves can enhance population persistence and
+  support the fishery of abalone.
+\newblock \emph{Can. J. Fish. Aquat. Sci.} 72, 1503--1517.
+\newblock \doi{10.1139/cjfas-2013-0623}
+\bibAnnoteFile{rossetto_2015-V0}
+
+\bibitem[{Sala and Giakoumi(2017)}]{sala_2017-69}
+Sala, E. and Giakoumi, S. (2017).
+\newblock No-take marine reserves are the most effective protected areas in the
+  ocean.
+\newblock \emph{ICES Journal of Marine Science} \doi{10.1093/icesjms/fsx059}
+\bibAnnoteFile{sala_2017-69}
+
+\bibitem[{Smallhorn-West et~al.(2018)Smallhorn-West, Bridge, Malimali, Pressey,
+  and Jones}]{smallhornwest_2018}
+Smallhorn-West, P.~F., Bridge, T. C.~L., Malimali, S., Pressey, R.~L., and
+  Jones, G.~P. (2018).
+\newblock Predicting impact to assess the efficacy of community-based marine
+  reserve design.
+\newblock \emph{Conserv Lett} , e12602\doi{10.1111/conl.12602}
+\bibAnnoteFile{smallhornwest_2018}
+
+\bibitem[{Suman et~al.(2010)Suman, Saenz-Arroyo, Dawson, and
+  Luna}]{suman_2010-ez}
+Suman, C.~S., Saenz-Arroyo, A., Dawson, C., and Luna, M.~C. (2010).
+\newblock \emph{Manual de Instruccion de Reef Check California: Guia de
+  instruccion para el monitoreo del bosque de sargazo en la Peninsula de Baja
+  California} (Pacific Palisades, CA, USA: Reef Check Foundation)
+\bibAnnoteFile{suman_2010-ez}
+
+\bibitem[{Villaseñor-Derbez et~al.(2018)Villaseñor-Derbez, Faro, Wright,
+  Martínez, Fitzgerald, Fulton et~al.}]{Villasenor-Derbez_2018}
+Villaseñor-Derbez, J.~C., Faro, C., Wright, M., Martínez, J., Fitzgerald, S.,
+  Fulton, S., et~al. (2018).
+\newblock A user-friendly tool to evaluate the effectiveness of no-take marine
+  reserves.
+\newblock \emph{PLOS ONE} 13, 1--21.
+\newblock \doi{10.1371/journal.pone.0191821}
+\bibAnnoteFile{Villasenor-Derbez_2018}
+
+\bibitem[{Woodson et~al.(in press)Woodson, Micheli, Boch, M, Hernandez, Vera
+  et~al.}]{woodson}
+Woodson, C., Micheli, F., Boch, C., M, A.-N., Hernandez, A., Vera, L., et~al.
+  (in press).
+\newblock Harnessing environmental variability as a climate change adaptation
+  for small-scale fisheries.
+\newblock \emph{Conservation Letters}
+\bibAnnoteFile{woodson}
+
+\bibitem[{Worm et~al.(2006)Worm, Barbier, Beaumont, Duffy, Folke, Halpern
+  et~al.}]{worm_2006-IB}
+Worm, B., Barbier, E.~B., Beaumont, N., Duffy, J.~E., Folke, C., Halpern,
+  B.~S., et~al. (2006).
+\newblock Impacts of biodiversity loss on ocean ecosystem services.
+\newblock \emph{Science} 314, 787--790.
+\newblock \doi{10.1126/science.1132294}
+\bibAnnoteFile{worm_2006-IB}
+
+\bibitem[{Zeileis(2004)}]{zeileis_2004-7n}
+Zeileis, A. (2004).
+\newblock Econometric computing with hc and hac covariance matrix estimators.
+\newblock \emph{J Stat Softw} 11.
+\newblock \doi{10.18637/jss.v011.i10}
+\bibAnnoteFile{zeileis_2004-7n}
+
+\end{thebibliography}
