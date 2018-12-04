@@ -243,9 +243,9 @@ Data for the evaluation of the SES were collected at the community-level from of
 
 ## Data analysis
 
-BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causally attribute observed changes to the intervention \citep{francinifilho_2008,moland_2013,Villasenor-Derbez_2018}. All sites were surveyed annually, and at least once before implementation of the reserves. We evaluate the effect that marine reserves have had on four ecological and two socioeconomic indicators shown in Table \ref{table:indicators}. Recall that reserves were implemented to protect lobster and other benthic invertebrates. However, we also use the available fish and invertebrate data to test for associated co-benefits.
+BACI designs and causal inference techniques have proven effective to evaluate marine reserves, as they allow us to causally attribute observed changes to the intervention \citep{francinifilho_2008,moland_2013,Villasenor-Derbez_2018}. All sites were surveyed annually, and at least once before implementation of the reserves. We evaluate the effect that the TURF-reserves have had on four ecological and two socioeconomic indicators shown in Table \ref{table:indicators}. Recall that reserves were implemented to protect lobster and other benthic invertebrates. However, we also use the available fish and invertebrate data to test for associated co-benefits.
 
-We use a difference-in-differences analysis to evaluate these indicators. This approach allows us to estimate the effect that the reserve had by comparing trends across time and treatments \citep{moland_2013,Villasenor-Derbez_2018}. The analysis of ecological indicators is performed with a multiple linear regression of the form:
+We use a difference-in-differences analysis to evaluate these indicators. This approach allows us to estimate the effect that the reserve had by comparing trends across time and treatments \citep{moland_2013,Villasenor-Derbez_2018}. To perform difference-in-differences, we regress the indicator of interest on a dummy variable for treatment, a dummy variable for years, and the interaction term between these with a multiple linear regression of the form:
 
 \begin{equation}
 I_{i,t,j} = \alpha + \gamma_{t} Year_t + \beta Zone_i + \lambda_{t} Year_t\times Zone_i + \sigma_jSpp_j + \epsilon_{i,t,j}
