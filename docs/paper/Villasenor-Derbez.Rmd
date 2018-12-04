@@ -77,13 +77,9 @@ Here, we combine causal inference techniques and the Social-Ecological Systems (
 
 <!-- Modelling studies show that fishery benefits of marine reserves depend on initial stock status and the management under which the fishery operates, as well as reserve size and the amount of larvae exported from these \citep{hilborn_2006,krueck_2017-J1,deleo_2015}. -->
 
-<!-- While many ecology studies incporporate BACI\citep{stewartoaten_1986}, few MPA studies do the same. Importance of evidence-based conservation mediterranean and as a movement \{guidetti_2002,ferraro_2006}. Whole paragraph here. -->
-
-
-
 # Methods
 
-Before discussing our data collection methods and describing our analyses, our case studies warrant some more background. TURF-reserves can be created as community-based marine reserves, voluntarily established and enforced by local communities. This bottom-up approach increases compliance and self-enforcement, and reserves can yield benefits similar to systematically-designed reserves \citep{gelcich_2015-Gw,beger_2004-Y8,smallhornwest_2018}. Community-based spatial closures occur in different contexts, like the *kapu* or *ra’ui* areas in the Pacific Islands \citep{bohnsack_2004,johannes_2002}. However, marine reserves are difficult to enforce if they are not legally recognized, and fishers rely on the exclusive access granted by the TURF.
+Before discussing our data collection methods and describing our analyses, our case studies warrant some more background. TURF-reserves can be created as community-based marine reserves, voluntarily established and enforced by local communities. This bottom-up approach increases compliance and self-enforcement, and reserves can yield benefits similar to systematically-designed reserves \citep{gelcich_2015,beger_2004,smallhornwest_2018}. Community-based spatial closures occur in different contexts, like the *kapu* or *ra’ui* areas in the Pacific Islands \citep{bohnsack_2004,johannes_2002}. However, marine reserves are difficult to enforce if they are not legally recognized, and fishers rely on the exclusive access granted by the TURF.
 
 In an effort to bridge this normative gap, Mexican Civil Society Organizations (CSOs) served as a link between fishers and government, and created a legal framework that solves this governance issue (*i.e.* Fish Refuges; \citet{nom}). Fish refuges can be implemented as temporal or partial reserves, which can protect one, some, or all resources within their boundaries. One of the ways in which fishing communities have takane advantage of this new tool is by implementing marine reserves within their TURFs. Our work focuses on some of these community-based TURF-reserves that occur in small-scale fisheries.
 
