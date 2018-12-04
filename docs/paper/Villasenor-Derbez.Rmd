@@ -1,6 +1,6 @@
 ---
 title: "Effectiveness of community-based TURF-reserves in small-scale fisheries"
-rtitle: "Community-based marine reserves"
+rtitle: "Community-based TURF-reserves"
 author: "Juan Carlos Villaseñor-Derbez$^{1,*}$, Eréndira Aceves-Bueno$^{1,2}$, Stuart Fulton$^{3}$, Álvin Suarez$^{3}$, Arturo Hernández-Velasco$^{3}$, Jorge Torre$^{3}$, Fiorenza Micheli$^{4}$"
 institution: |
   $^{1}$Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA \newline
