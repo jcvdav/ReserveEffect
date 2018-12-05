@@ -6,7 +6,7 @@ output:
     template: template_sup.tex
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 options(knitr.table.format = "latex")
@@ -17,6 +17,72 @@ suppressPackageStartupMessages({
   library(magrittr)
   library(tidyverse)
 })
+```
+
+# Data
+
+```{r load_data}
+invert <- read.csv(file = here::here("data", "invertebrates.csv"),
+                stringsAsFactors = F)
+
+fish <- read.csv(file = here::here("data", "fish.csv"),
+                stringsAsFactors = F)
+
+conapesca <- read.csv(file = here::here("data", "conapesca.csv"),
+                stringsAsFactors = F)
+```
+
+```{r}
+invert %>% 
+  group_by(ano, comunidad, zona, sitio, transecto) %>%
+  count() %>%
+  group_by(comunidad, zona) %>%
+  count() %>% 
+  spread(zona, nn) %>% 
+  knitr::kable(caption = "Number of invertebrate transects performed in each site of each community.",
+               col.names = c("Community", "Control", "Reserve"))
+```
+
+```{r}
+invert %>%
+  group_by(rc, ano, year, comunidad, sitio, zona, transecto, generoespecie) %>% 
+  summarize(indicador = sum(abundancia)/60) %>% 
+  ungroup() %>% 
+  mutate(year = as.numeric(year)) %>% 
+  ggplot(aes(x = year, y = indicador, color = zona, fill = zona, group)) +
+  stat_summary(geom = "ribbon", fun.data = mean_se, alpha = 0.5) +
+  stat_summary(geom = "line", fun.y = mean) +
+  theme_minimal() +
+  facet_wrap(~comunidad, scales = "free", ncol = 2) +
+  scale_color_brewer(palette = "Set1", direction = -1) +
+  scale_fill_brewer(palette = "Set1", direction = -1)
+```
+
+
+```{r}
+fish %>% 
+  group_by(ano, comunidad, zona, sitio, transecto) %>%
+  count() %>%
+  group_by(comunidad, zona) %>%
+  count() %>% 
+  spread(zona, nn) %>% 
+  knitr::kable(caption = "Number of fish transects performed in each site of each community.",
+               col.names = c("Community", "Control", "Reserve"))
+```
+
+```{r}
+fish %>%
+  group_by(rc, ano, year, comunidad, sitio, zona, transecto, generoespecie) %>% 
+  summarize(indicador = sum(abundancia)/60) %>% 
+  ungroup() %>% 
+  mutate(year = as.numeric(year)) %>% 
+  ggplot(aes(x = year, y = indicador, color = zona, fill = zona, group)) +
+  stat_summary(geom = "ribbon", fun.data = mean_se, alpha = 0.5) +
+  stat_summary(geom = "line", fun.y = mean) +
+  theme_minimal() +
+  facet_wrap(~comunidad, scales = "free", ncol = 2) +
+  scale_color_brewer(palette = "Set1", direction = -1) +
+  scale_fill_brewer(palette = "Set1", direction = -1)
 ```
 
 ```{r}
