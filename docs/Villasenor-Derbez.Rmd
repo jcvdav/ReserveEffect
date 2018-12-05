@@ -522,7 +522,7 @@ The authors wish to acknowledge Imelda Amador for contributions on the governanc
 plot1
 ```
 
-```{r, fig.width = 6.5, fig.height = 4, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red cirlcles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for lobster densities (*Panulirus spp*; A), fish biomass (B), invertebrate densities (C), and fish densities (D). Plots are ordered by survey type (left column: invertebrates; right column: fish). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size and standard errors. Years have been centered to year of implementation."}
+```{r, fig.width = 6.5, fig.height = 4, fig.cap = "\\label{fig:indicators}Effect sizes for marine reserves from Isla Natividad (IN; red circles), Maria Elena (ME; blue triangles), and Punta Herrero (PH; green squares) for lobster densities (*Panulirus spp*; A), fish biomass (B), invertebrate densities (C), and fish densities (D). Plots are ordered by survey type (left column: invertebrates; right column: fish). Points are jittered hotizontally to avoid overplotting. Points indicate the effect size and standard errors. Years have been centered to year of implementation."}
 plot2
 ```
 
