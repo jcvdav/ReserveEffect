@@ -1,5 +1,10 @@
-# Effectiveness of community-based marine reserves in small-scale fisheries
+# Effectiveness of community-based TURF-reserves in small-scale fisheries
 
+This repository contains the data and code for:
+
+Villaseñor-Derbez, J.C., Aceves-Bueno E., Fulton, S., Suarez-Castillo, A., HernándezVelasco, A., Torre, J., Micheli, F. (*in review*). Effectiveness of community-based TURF-reserves in small-scale fisheries.
+
+The packrat folder should include all the relevant R packages to reproduce the analyses and results presented in this paper. The manuscript, written in Rmd, can be found under the `docs/` folder.
 
 ## Repository structure 
 
@@ -14,15 +19,37 @@
    |__invertebrates.csv
    |__results
 -- docs
-   |__paper
-   |__technical_report
-   |__WSSFConf_abstract
+   |__FMS_templates
+   |__frontiers_suppmat.cls
+   |__frontiersinSCNS_ENG_HUMS.bst
+   |__frontiersSCNS.cls
+   |__header.tex
+   |__logo1.jpg
+   |__references.bib
+   |__reviewer_comments.Rmd
+   |__template.tex
+   |__template_sup.synctex.gz
+   |__template_sup.tex
+   |__Villasenor-Derbez.pdf
+   |__Villasenor-Derbez.Rmd
+   |__Villasenor-Derbez.tex
+   |__Villasenor-Derbez_files
+   |__Villasenor-Derbez_SupplementaryMaterial.pdf
+   |__Villasenor-Derbez_SupplementaryMaterial.Rmd
+   |__Villasenor-Derbez_SupplementaryMaterial.tex
 -- figures
    |__bio_results.png
    |__map.png
    |__pbc.png
    |__ph.png
    |__soc_results.png
+-- packrat
+   |__lib
+   |__lib-ext
+   |__lib-R
+   |__packrat.lock
+   |__packrat.opts
+   |__src
 -- raw_data
    |__conapesca.rds
    |__conapesca_2000-2015.RData
@@ -31,9 +58,8 @@
    |__fish_data.csv
    |__invert_complete.csv
    |__invert_data.csv
+   |__SES.csv
    |__spatial
--- README.md
--- ReserveEffect.Rproj
 -- scripts
    |__abundance.R
    |__analisis.R
@@ -51,13 +77,6 @@
    |__robust_se.R
    |__robust_se_list.R
    |__trophic.R
--- slides
-   |__GainesLabPresentation.html
-   |__GainesLabPresentation.Rmd
-   |__GainesLabPresentation_files
-   |__img
-   |__libs
--- test.html
 ```
 
 --------- 
