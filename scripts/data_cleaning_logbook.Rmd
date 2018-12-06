@@ -42,6 +42,8 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
   mutate(year = case_when(comunidad == "Isla Natividad" ~ ano - 2006,
                          comunidad == "Maria Elena" ~ ano - 2012,
                          TRUE ~ ano - 2013)) %>% 
+  spread(generoespecie, abundancia, fill = 0) %>% 
+  gather(generoespecie, abundancia, -c("comunidad", "ano", "year", "rc", "sitio", "zona", "transecto")) %>% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, abundancia) %>% 
   arrange()
 ```
@@ -136,6 +138,8 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
   mutate(year = case_when(comunidad == "Isla Natividad" ~ ano - 2006,
                          comunidad == "Maria Elena" ~ ano - 2012,
                          TRUE ~ ano - 2013)) %>% 
+  spread(generoespecie, abundancia, fill = 0) %>% 
+  gather(generoespecie, abundancia, -c("comunidad", "ano", "year", "rc", "sitio", "zona", "transecto", "talla", "a", "b")) %>% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %>% 
   arrange() %>% 
   drop_na(a, b)
