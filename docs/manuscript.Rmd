@@ -417,55 +417,21 @@ V_ME <- conapesca %>%
   filter(comunidad == "Maria Elena" | is.na(comunidad)) %>% 
   filter(grupo == "MC") %>%
   lm(valor ~ zona * year + unidad_economica, data = .)
-
-#soc_res se fue
-
-plot_socioeco <- function(model_list, model_names, ylab){
-  
-  extract_filter <- function(model, name){
-    model %>% 
-      robust_se() %>% 
-      filter(grepl(pattern = "zonaReserva:year", x = term)) %>% 
-      mutate(years_centered = as.numeric(gsub(pattern = "zonaReserva:year",
-                                              replacement = "",
-                                              x = term)),
-             Community = name)
-  }
-  
-  purrr::map2_df(model_list, model_names, extract_filter) %>% 
-    ggplot(aes(x = years_centered, y = estimate, group = Community)) +
-    geom_hline(yintercept = 0,
-               linetype = "dashed",
-               size = 1) +
-    geom_vline(xintercept = 0,
-               linetype = "dashed",
-               size = 1) +
-    geom_errorbar(aes(color = Community,
-                      ymin = estimate-std.error,
-                      ymax = estimate + std.error),
-                  width = 0.1,
-                  size = 1,
-                  position = position_dodge(width = 0.4)) +
-    geom_point(aes(color = Community, shape = Community),
-               size = 4,
-               position = position_dodge(width = 0.4),
-               alpha = 0.5) +
-    scale_color_brewer(palette = "Set1") +
-    labs(x = "Years since implementation", y = ylab) +
-    theme(text = element_text(size = 12))
-}
 ```
-
 
 ```{r}
 
 c_plot <- plot_socioeco(model_list = list(C_IN, C_ME),
                         model_names = list("IN", "ME"),
-                        ylab = quo(lambda[t]))
+                        ylab = quo(lambda[t])) +
+  theme(legend.justification = c(0, 0),
+        legend.position = c(0, 0.55),
+        legend.title = element_blank())
 
 v_plot <- plot_socioeco(model_list = list(V_IN, V_ME),
                         model_names = list("IN", "ME"),
-                        ylab = quo(lambda[t]))
+                        ylab = quo(lambda[t])) +
+  theme(legend.position = "none")
 
 plot3 <- plot_grid(c_plot, v_plot, ncol = 1, labels = "AUTO")
 ```
