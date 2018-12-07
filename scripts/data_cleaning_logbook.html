@@ -1474,11 +1474,12 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
 <h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2018-12-05</em></h4>
+<h4 class="date"><em>last compilation: 2018-12-06</em></h4>
 
 </div>
 
 
+<p>The commit history for this file can be seen <a href="https://github.com/jcvdav/ReserveEffect/commits/master/scripts/data_cleaning_logbook.Rmd">here</a></p>
 <pre class="r"><code>suppressPackageStartupMessages({
   library(rfishbase)
   library(tidyverse)
@@ -1504,8 +1505,6 @@ div.tocify {
   mutate(year = case_when(comunidad == &quot;Isla Natividad&quot; ~ ano - 2006,
                          comunidad == &quot;Maria Elena&quot; ~ ano - 2012,
                          TRUE ~ ano - 2013)) %&gt;% 
-  spread(generoespecie, abundancia, fill = 0) %&gt;% 
-  gather(generoespecie, abundancia, -c(&quot;comunidad&quot;, &quot;ano&quot;, &quot;year&quot;, &quot;rc&quot;, &quot;sitio&quot;, &quot;zona&quot;, &quot;transecto&quot;)) %&gt;% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, abundancia) %&gt;% 
   arrange()</code></pre>
 </div>
@@ -1515,9 +1514,11 @@ div.tocify {
 <h3>Species biology</h3>
 <pre class="r"><code>species_bio &lt;- MPAtools::species_bio %&gt;% 
   mutate(Genus = as.character(str_split(GeneroEspecie, pattern = &quot; &quot;, simplify = T)[,1]),
-         Genus = str_replace(Genus, &quot; &quot;, &quot;&quot;))
+         Genus = str_replace(Genus, &quot; &quot;, &quot;&quot;)) %&gt;% 
+  drop_na(a, b)
 
-needed_spp &lt;- c(&quot;Kyphosus incisor&quot;,
+needed_spp &lt;- c(&quot;Embiotoca jacksoni&quot;,
+                &quot;Kyphosus incisor&quot;,
                 &quot;Kyphosus sectatrix&quot;,
                 &quot;Pterois volitans&quot;,
                 &quot;Scarus guacamaia&quot;,
@@ -1535,6 +1536,16 @@ FB_update &lt;- rfishbase::length_weight(needed_spp, fields = c(&quot;a&quot;, &
   summarize_all(mean, na.rm = T) %&gt;% 
   ungroup()
 
+manual_fishbase_bayesian &lt;- tibble(
+  GeneroEspecie = c(&quot;Chromis punctipinnis&quot;,
+                    &quot;Oxyjulis californica&quot;,
+                    &quot;Heterodontus francisci&quot;,
+                    &quot;Rhacochilus vacca&quot;,
+                &quot;Squatina californica&quot;),
+  a = c(0.01514, 0.00447, 0.00355, 0.01950, 0.00741),
+  b = c(2.99, 3.14,3.16, 3.02, 3.04)
+)
+
 needed_genus &lt;- c(&quot;Mycteroperca&quot;,
                   &quot;Chromis&quot;,
                   &quot;Stegastes&quot;,
@@ -1545,16 +1556,15 @@ needed_genus &lt;- c(&quot;Mycteroperca&quot;,
                   &quot;Scarus&quot;)
 
 GenusLevelBio &lt;- species_bio %&gt;% 
-  filter(Genus %in% needed_genus) %&gt;%
-  select(GeneroEspecie = Genus, a, b) %&gt;% 
-  group_by(GeneroEspecie) %&gt;% 
+  select(Genus, ag = a, bg = b) %&gt;% 
+  group_by(Genus) %&gt;% 
   summarize_all(mean, na.rm = T) %&gt;% 
   ungroup()
 
 species_bio %&lt;&gt;%
   select(GeneroEspecie, a, b) %&gt;% 
   rbind(FB_update) %&gt;% 
-  rbind(GenusLevelBio) %&gt;% 
+  rbind(manual_fishbase_bayesian) %&gt;% 
   janitor::clean_names() %&gt;% 
     rename(generoespecie = genero_especie)</code></pre>
 </div>
@@ -1589,18 +1599,22 @@ species_bio %&lt;&gt;%
                                    generoespecie == &quot;Sparisoma aurolineatum&quot; ~ &quot;Sparisoma aurofrenatum&quot;,
                                    generoespecie == &quot;Vieja spp&quot; ~ &quot;Bodianus rufus&quot;,
                                    TRUE ~ generoespecie)) %&gt;% 
-  left_join(species_bio, by = c(&quot;generoespecie&quot;)) %&gt;% 
+  mutate(Genus = as.character(str_split(generoespecie, pattern = &quot; &quot;, simplify = T)[,1]),
+         Genus = str_replace(Genus, &quot; &quot;, &quot;&quot;)) %&gt;% 
+  left_join(species_bio, by = &quot;generoespecie&quot;) %&gt;% 
+  left_join(GenusLevelBio, by = &quot;Genus&quot;) %&gt;%
+  mutate(a = ifelse(is.na(a), ag, a),
+         b = ifelse(is.na(b), bg, b)) %&gt;% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla, a,b) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
   mutate(year = case_when(comunidad == &quot;Isla Natividad&quot; ~ ano - 2006,
                          comunidad == &quot;Maria Elena&quot; ~ ano - 2012,
-                         TRUE ~ ano - 2013)) %&gt;% 
-  spread(generoespecie, abundancia, fill = 0) %&gt;% 
-  gather(generoespecie, abundancia, -c(&quot;comunidad&quot;, &quot;ano&quot;, &quot;year&quot;, &quot;rc&quot;, &quot;sitio&quot;, &quot;zona&quot;, &quot;transecto&quot;, &quot;talla&quot;, &quot;a&quot;, &quot;b&quot;)) %&gt;% 
+                         TRUE ~ ano - 2013))
+
+fish &lt;- fish %&gt;% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %&gt;% 
-  arrange() %&gt;% 
-  drop_na(a, b)</code></pre>
+  arrange()</code></pre>
 </div>
 </div>
 </div>
@@ -1669,16 +1683,15 @@ cooperatives &lt;- c(cooperatives_t, cooperatives_c)</code></pre>
   mutate(Post = ifelse(Ano &lt;= Start, 0, 1),
          years_centered = Ano - Start) %&gt;% 
   select(Zona, Grupo = Group, Comunidad, UnidadEconomica, Ano, Post, years_centered, NombreComun, PesoVivo, PesoDesembarcado, Valor, CPI) %&gt;% 
-  janitor::clean_names()</code></pre>
-</div>
-</div>
-<div id="export-all-data" class="section level1">
-<h1>Export all data</h1>
+  janitor::clean_names() %&gt;% 
+  filter(!(zona == &quot;MC&quot; &amp; years_centered %in% c(-3, 2))) %&gt;% 
+  filter(years_centered &gt; -7)</code></pre>
 <pre class="r"><code>write.csv(x = invert, file = here::here(&quot;data&quot;, &quot;invertebrates.csv&quot;), row.names = F)
 
 write.csv(x = fish, file = here::here(&quot;data&quot;, &quot;fish.csv&quot;), row.names = F)
 
 write.csv(x = conapesca, file = here::here(&quot;data&quot;, &quot;conapesca.csv&quot;), row.names = F)</code></pre>
+</div>
 </div>
 
 

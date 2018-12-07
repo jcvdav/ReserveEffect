@@ -8,6 +8,8 @@ output:
     toc_float: yes
 ---
 
+The commit history for this file can be seen [here](https://github.com/jcvdav/ReserveEffect/commits/master/scripts/data_cleaning_logbook.Rmd)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -42,8 +44,6 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
   mutate(year = case_when(comunidad == "Isla Natividad" ~ ano - 2006,
                          comunidad == "Maria Elena" ~ ano - 2012,
                          TRUE ~ ano - 2013)) %>% 
-  spread(generoespecie, abundancia, fill = 0) %>% 
-  gather(generoespecie, abundancia, -c("comunidad", "ano", "year", "rc", "sitio", "zona", "transecto")) %>% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, abundancia) %>% 
   arrange()
 ```
@@ -55,9 +55,11 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
 ```{r}
 species_bio <- MPAtools::species_bio %>% 
   mutate(Genus = as.character(str_split(GeneroEspecie, pattern = " ", simplify = T)[,1]),
-         Genus = str_replace(Genus, " ", ""))
+         Genus = str_replace(Genus, " ", "")) %>% 
+  drop_na(a, b)
 
-needed_spp <- c("Kyphosus incisor",
+needed_spp <- c("Embiotoca jacksoni",
+                "Kyphosus incisor",
                 "Kyphosus sectatrix",
                 "Pterois volitans",
                 "Scarus guacamaia",
@@ -75,6 +77,16 @@ FB_update <- rfishbase::length_weight(needed_spp, fields = c("a", "b")) %>%
   summarize_all(mean, na.rm = T) %>% 
   ungroup()
 
+manual_fishbase_bayesian <- tibble(
+  GeneroEspecie = c("Chromis punctipinnis",
+                    "Oxyjulis californica",
+                    "Heterodontus francisci",
+                    "Rhacochilus vacca",
+                "Squatina californica"),
+  a = c(0.01514, 0.00447, 0.00355, 0.01950, 0.00741),
+  b = c(2.99, 3.14,3.16, 3.02, 3.04)
+)
+
 needed_genus <- c("Mycteroperca",
                   "Chromis",
                   "Stegastes",
@@ -85,16 +97,15 @@ needed_genus <- c("Mycteroperca",
                   "Scarus")
 
 GenusLevelBio <- species_bio %>% 
-  filter(Genus %in% needed_genus) %>%
-  select(GeneroEspecie = Genus, a, b) %>% 
-  group_by(GeneroEspecie) %>% 
+  select(Genus, ag = a, bg = b) %>% 
+  group_by(Genus) %>% 
   summarize_all(mean, na.rm = T) %>% 
   ungroup()
 
 species_bio %<>%
   select(GeneroEspecie, a, b) %>% 
   rbind(FB_update) %>% 
-  rbind(GenusLevelBio) %>% 
+  rbind(manual_fishbase_bayesian) %>% 
   janitor::clean_names() %>% 
     rename(generoespecie = genero_especie)
 ```
@@ -131,18 +142,22 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
                                    generoespecie == "Sparisoma aurolineatum" ~ "Sparisoma aurofrenatum",
                                    generoespecie == "Vieja spp" ~ "Bodianus rufus",
                                    TRUE ~ generoespecie)) %>% 
-  left_join(species_bio, by = c("generoespecie")) %>% 
+  mutate(Genus = as.character(str_split(generoespecie, pattern = " ", simplify = T)[,1]),
+         Genus = str_replace(Genus, " ", "")) %>% 
+  left_join(species_bio, by = "generoespecie") %>% 
+  left_join(GenusLevelBio, by = "Genus") %>%
+  mutate(a = ifelse(is.na(a), ag, a),
+         b = ifelse(is.na(b), bg, b)) %>% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla, a,b) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 
   mutate(year = case_when(comunidad == "Isla Natividad" ~ ano - 2006,
                          comunidad == "Maria Elena" ~ ano - 2012,
-                         TRUE ~ ano - 2013)) %>% 
-  spread(generoespecie, abundancia, fill = 0) %>% 
-  gather(generoespecie, abundancia, -c("comunidad", "ano", "year", "rc", "sitio", "zona", "transecto", "talla", "a", "b")) %>% 
+                         TRUE ~ ano - 2013))
+
+fish <- fish %>% 
   select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %>% 
-  arrange() %>% 
-  drop_na(a, b)
+  arrange()
 ```
 
 # Socioeconomic data
@@ -221,10 +236,11 @@ conapesca <- readRDS(here::here("raw_data","conapesca.rds")) %>%
   mutate(Post = ifelse(Ano <= Start, 0, 1),
          years_centered = Ano - Start) %>% 
   select(Zona, Grupo = Group, Comunidad, UnidadEconomica, Ano, Post, years_centered, NombreComun, PesoVivo, PesoDesembarcado, Valor, CPI) %>% 
-  janitor::clean_names()
+  janitor::clean_names() %>% 
+  filter(!(zona == "MC" & years_centered %in% c(-3, 2))) %>% 
+  filter(years_centered > -7)
 ```
 
-# Export all data
 
 ```{r}
 write.csv(x = invert, file = here::here("data", "invertebrates.csv"), row.names = F)
