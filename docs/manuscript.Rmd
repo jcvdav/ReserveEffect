@@ -388,7 +388,6 @@ plot2 <- cowplot::plot_grid(plotlist = list(L_plot, F_B, I_N, F_N),
 
 ```{r}
 conapesca %<>%
-   filter(years_centered > -10) %>% 
   mutate(years_centered = as.factor(years_centered),
          year = fct_relevel(years_centered, "0"),
          peso_vivo = peso_vivo/1e3,
