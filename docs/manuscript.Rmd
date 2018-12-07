@@ -52,7 +52,9 @@ source(file = here::here("scripts", "trophic.R")) # Calculate mean trophic level
 source(file = here::here("scripts", "model.R")) #fits the model
 source(file = here::here("scripts", "robust_se.R")) #calculates heteroskedastic-robust Standard Errors
 source(file = here::here("scripts", "robust_se_list.R")) #heteroskedastic-robust Standard Errors for stargazer
-source(file = here::here("scripts", "plot_model.R")) #plots effect sizes
+source(file = here::here("scripts", "plot_model.R")) #plots effect sizes for Bio
+source(file = here::here("scripts", "plot_socioeco.R")) #plots effect sizes for Socioeco
+
 ```
 
 <!-- Words in text: 3714 | Words in headers: 35 | Words outside text (captions, etc.): 192 -->
