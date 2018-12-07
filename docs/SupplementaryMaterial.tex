@@ -1,140 +1,132 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Effectiveness of community-based marine reserves in small-scale fisheries},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{longtable,booktabs}
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is just an example/guide for you to refer to when producing your supplementary material for your Frontiers article.                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
+%%% Version 2.4 Generated 2017/05/01 %%%
+%%% You will need to have the following packages installed: datetime, fmtcount, etoolbox, fcprefix, which are normally inlcuded in WinEdt. %%%
+%%% In http://www.ctan.org/ you can find the packages and how to install them, if necessary. %%%
+%%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
 
-%%% Change title format to be more compact
-\usepackage{titling}
+\documentclass[utf8]{frontiers_suppmat} % for all articles
+\usepackage{url,hyperref,lineno,microtype,subcaption}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{lscape}
+\usepackage{booktabs}
 
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
+\def\firstAuthorLast{Villaseñor-Derbez {et~al.}}
 
-\setlength{\droptitle}{-2em}
-
-  \title{Effectiveness of community-based marine reserves in small-scale
-fisheries}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{}
-    \preauthor{}\postauthor{}
-    \date{}
-    \predate{}\postdate{}
-  
+% Leave a blank line between paragraphs instead of using \\
 
 \begin{document}
+\onecolumn
+\firstpage{1}
+
+\title[Supplementary Material]{{\helveticaitalic{Supplementary Material}}:
+\\ \helvetica{Effectiveness of community-based TURF-reserves in small-scale fisheries}} %Please insert the title of your article here
+
+
 \maketitle
 
-{
-\setcounter{tocdepth}{2}
-\tableofcontents
-}
-\hypertarget{data}{%
-\section{Data}\label{data}}
+%%% There is no need for adding the file termination, as long as you indicate where the file is saved. In the examples below the files (logo1.jpg and logos.jpg) are in the Frontiers LaTeX folder
+%%% If using *.tif files convert them to .jpg or .png
+%%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
+
+Raw data and code are available on GitHub at:
+\url{https://github.com/jcvdav/ReserveEffect}
 
 \begin{table}
 
 \caption{\label{tab:unnamed-chunk-2}Number of invertebrate transects performed in each site of each community.}
 \centering
-\begin{tabular}[t]{l|r|r}
-\hline
+\begin{tabular}[t]{lrr}
+\toprule
 Community & Control & Reserve\\
-\hline
+\midrule
 Isla Natividad & 415 & 244\\
-\hline
 Maria Elena & 27 & 21\\
-\hline
 Punta Herrero & 51 & 73\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
+\begin{figure}
+\centering
 \includegraphics{SupplementaryMaterial_files/figure-latex/unnamed-chunk-3-1.pdf}
+\caption{\label{fig:unnamed-chunk-3}Time series of lobster densities. Bars
+indicate standard errors.}
+\end{figure}
 
+\begin{figure}
+\centering
 \includegraphics{SupplementaryMaterial_files/figure-latex/unnamed-chunk-4-1.pdf}
+\caption{\label{fig:unnamed-chunk-4}Time series of invertebrate densities.
+Bars indicate standard errors.}
+\end{figure}
+
+\clearpage
 
 \begin{table}
 
 \caption{\label{tab:unnamed-chunk-5}Number of fish transects performed in each site of each community.}
 \centering
-\begin{tabular}[t]{l|r|r}
-\hline
+\begin{tabular}[t]{lrr}
+\toprule
 Community & Control & Reserve\\
-\hline
-Isla Natividad & 400 & 240\\
-\hline
+\midrule
+Isla Natividad & 400 & 241\\
 Maria Elena & 44 & 45\\
-\hline
 Punta Herrero & 82 & 85\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
+\begin{figure}
+\centering
 \includegraphics{SupplementaryMaterial_files/figure-latex/unnamed-chunk-6-1.pdf}
+\caption{\label{fig:unnamed-chunk-6}Time series of fish biomass. Bars
+indicate standard errors.}
+\end{figure}
 
+\clearpage
+
+\begin{figure}
+\centering
 \includegraphics{SupplementaryMaterial_files/figure-latex/unnamed-chunk-7-1.pdf}
+\caption{\label{fig:unnamed-chunk-7}Time series of fish densities. Bars
+indicate standard errors.}
+\end{figure}
+
+\clearpage
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-8}Mean ex-vessel prices for lobster (Panulirus spp.) on each TURF (community) by zone (MC = Caribbean; PN = Pacific) and group (Control = only TURF, Treated = TURF and reserve).}
+\centering
+\begin{tabular}[t]{lllrr}
+\toprule
+Zone & Group & TURF & Before & After\\
+\midrule
+MC & Control & langosteros del caribe & 165.58 & 176.72\\
+MC & Control & vigia chico & 177.66 & 175.31\\
+MC & Treated & cozumel & 178.21 & 170.49\\
+MC & Treated & jose maria azcorra & 185.95 & 207.83\\
+PN & Control & bahia tortugas & 155.60 & 122.46\\
+\addlinespace
+PN & Control & la purisima & 67.54 & 157.88\\
+PN & Control & pesc nacionales de abulon & 67.16 & 88.79\\
+PN & Treated & buzos y pescadores de la baja california & 89.35 & 190.07\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics{SupplementaryMaterial_files/figure-latex/unnamed-chunk-9-1.pdf}
+\caption{\label{fig:unnamed-chunk-9}Time series of landings and value of
+landings.}
+\end{figure}
+
+\clearpage
 
 \begin{table}[!htbp] \centering 
   \caption{Coefficient estimates of biological indicators for Isla Natividad.} 
@@ -149,37 +141,39 @@ Punta Herrero & 82 & 85\\
  & Lobster abundance & Fish biomass & Invertebrate abundance & Invertebrate biomass \\ 
 \\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
 \hline \\[-1.8ex] 
- zonaReserva & $-$0.011 (0.058) & $-$0.0001 (0.0002) & 0.007 (0.004) & $-$0.001 (0.001) \\ 
-  year1 & 0.032 (0.067) & 0.0001 (0.0002) & $-$0.002 (0.004) & 0.001 (0.001) \\ 
-  year2 & 0.0002 (0.077) & 0.0001 (0.0002) & 0.008$^{*}$ (0.004) & $-$0.001 (0.001) \\ 
-  year3 & 0.023 (0.072) & 0.0003$^{*}$ (0.0002) & 0.012$^{***}$ (0.004) & 0.002 (0.001) \\ 
-  year4 & $-$0.030 (0.058) & 0.0001 (0.0002) & 0.006 (0.004) & 0.0001 (0.001) \\ 
-  year5 & $-$0.006 (0.061) & 0.0002 (0.0002) & 0.007 (0.004) & $-$0.0003 (0.001) \\ 
-  year6 & $-$0.014 (0.062) & 0.001$^{***}$ (0.0003) & 0.011$^{**}$ (0.004) & 0.003$^{***}$ (0.001) \\ 
-  year7 & $-$0.021 (0.060) & 0.004$^{***}$ (0.001) & $-$0.002 (0.004) & 0.003$^{***}$ (0.001) \\ 
-  year8 & $-$0.026 (0.059) & 0.002$^{***}$ (0.0003) & 0.004 (0.004) & 0.002$^{*}$ (0.001) \\ 
-  year9 & $-$0.038 (0.057) & 0.003$^{***}$ (0.001) & 0.001 (0.004) & 0.005$^{***}$ (0.001) \\ 
-  year10 & $-$0.066 (0.057) & 0.002$^{***}$ (0.0005) & $-$0.006$^{*}$ (0.004) & 0.0001 (0.001) \\ 
-  zonaReserva:year1 & $-$0.058 (0.078) & 0.0001 (0.0003) & 0.003 (0.006) & 0.001 (0.001) \\ 
-  zonaReserva:year2 & 0.126 (0.121) & $-$0.00001 (0.0003) & 0.001 (0.007) & 0.001 (0.001) \\ 
-  zonaReserva:year3 & 0.053 (0.093) & $-$0.00003 (0.0003) & $-$0.007 (0.006) & $-$0.0002 (0.001) \\ 
-  zonaReserva:year4 & 0.035 (0.065) & 0.0003 (0.0003) & $-$0.007 (0.006) & 0.003$^{**}$ (0.001) \\ 
-  zonaReserva:year5 & $-$0.045 (0.068) & $-$0.0001 (0.0003) & $-$0.009 (0.006) & $-$0.00003 (0.001) \\ 
-  zonaReserva:year6 & 0.096 (0.075) & $-$0.001 (0.0003) & $-$0.009 (0.006) & $-$0.001 (0.001) \\ 
-  zonaReserva:year7 & $-$0.030 (0.065) & $-$0.001 (0.001) & $-$0.005 (0.005) & $-$0.001 (0.001) \\ 
-  zonaReserva:year8 & 0.012 (0.069) & 0.001 (0.001) & $-$0.004 (0.005) & 0.0004 (0.001) \\ 
-  zonaReserva:year9 & 0.002 (0.064) & 0.0004 (0.001) & $-$0.013$^{**}$ (0.005) & 0.001 (0.002) \\ 
-  zonaReserva:year10 & $-$0.016 (0.062) & $-$0.001 (0.001) & $-$0.007 (0.005) & 0.001 (0.001) \\ 
-  Constant & 0.122$^{**}$ (0.054) & $-$0.001$^{***}$ (0.0002) & 0.017$^{***}$ (0.004) & $-$0.001 (0.001) \\ 
+ zonaReserva & $-$0.011 (0.058) & $-$0.003 (0.002) & 0.002 (0.020) & $-$0.031$^{*}$ (0.017) \\ 
+  year1 & 0.032 (0.067) & $-$0.004 (0.003) & $-$0.027 (0.021) & 0.001 (0.018) \\ 
+  year2 & 0.0002 (0.077) & $-$0.004 (0.003) & 0.002 (0.020) & 0.010 (0.022) \\ 
+  year3 & 0.023 (0.072) & 0.004 (0.003) & 0.014 (0.020) & 0.053$^{**}$ (0.025) \\ 
+  year4 & $-$0.030 (0.058) & $-$0.002 (0.002) & $-$0.009 (0.020) & $-$0.005 (0.018) \\ 
+  year5 & $-$0.006 (0.061) & 0.001 (0.002) & 0.006 (0.020) & 0.036$^{*}$ (0.020) \\ 
+  year6 & $-$0.014 (0.062) & 0.008$^{**}$ (0.003) & 0.014 (0.020) & 0.049$^{**}$ (0.022) \\ 
+  year7 & $-$0.021 (0.060) & 0.064$^{***}$ (0.010) & $-$0.044$^{*}$ (0.023) & 0.063$^{***}$ (0.019) \\ 
+  year8 & $-$0.026 (0.059) & 0.027$^{***}$ (0.005) & $-$0.029 (0.020) & 0.025 (0.020) \\ 
+  year9 & $-$0.038 (0.057) & 0.040$^{***}$ (0.009) & $-$0.021 (0.025) & 0.056$^{**}$ (0.022) \\ 
+  year10 & $-$0.066 (0.057) & 0.043$^{***}$ (0.009) & $-$0.107$^{***}$ (0.024) & $-$0.006 (0.018) \\ 
+  zonaReserva:year1 & $-$0.058 (0.078) & 0.005 (0.004) & 0.041 (0.031) & 0.013 (0.023) \\ 
+  zonaReserva:year2 & 0.126 (0.121) & 0.005 (0.004) & 0.049 (0.033) & 0.007 (0.024) \\ 
+  zonaReserva:year3 & 0.053 (0.093) & 0.001 (0.004) & 0.004 (0.027) & $-$0.020 (0.028) \\ 
+  zonaReserva:year4 & 0.035 (0.065) & 0.007$^{**}$ (0.003) & 0.017 (0.030) & 0.075$^{***}$ (0.025) \\ 
+  zonaReserva:year5 & $-$0.045 (0.068) & 0.001 (0.004) & 0.013 (0.029) & $-$0.0003 (0.028) \\ 
+  zonaReserva:year6 & 0.096 (0.075) & $-$0.001 (0.004) & 0.013 (0.029) & 0.009 (0.027) \\ 
+  zonaReserva:year7 & $-$0.030 (0.065) & $-$0.013 (0.017) & 0.012 (0.033) & 0.008 (0.026) \\ 
+  zonaReserva:year8 & 0.012 (0.069) & 0.026 (0.016) & 0.032 (0.028) & 0.021 (0.025) \\ 
+  zonaReserva:year9 & 0.002 (0.064) & 0.007 (0.012) & $-$0.077$^{**}$ (0.036) & 0.031 (0.027) \\ 
+  zonaReserva:year10 & $-$0.016 (0.062) & $-$0.011 (0.016) & $-$0.018 (0.034) & 0.027 (0.024) \\ 
+  Constant & 0.122$^{**}$ (0.054) & 0.001 (0.006) & 0.059$^{***}$ (0.018) & 0.119$^{***}$ (0.042) \\ 
  \hline \\[-1.8ex] 
-Observations & 659 & 50,560 & 23,065 & 50,560 \\ 
-R$^{2}$ & 0.049 & 0.128 & 0.388 & 0.366 \\ 
-Residual Std. Error & 0.189 (df = 637) & 0.018 (df = 50460) & 0.088 (df = 23009) & 0.033 (df = 50460) \\ 
+Observations & 659 & 2,987 & 3,714 & 2,987 \\ 
+R$^{2}$ & 0.049 & 0.211 & 0.426 & 0.153 \\ 
+Residual Std. Error & 0.189 (df = 637) & 0.067 (df = 2947) & 0.187 (df = 3667) & 0.165 (df = 2947) \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table}
+
+\clearpage
 
 \begin{table}[!htbp] \centering 
   \caption{Coefficient estimates of biological indicators for Maria Elena.} 
@@ -194,25 +188,27 @@ Residual Std. Error & 0.189 (df = 637) & 0.018 (df = 50460) & 0.088 (df = 23009)
  & Lobster abundance & Fish biomass & Invertebrate abundance & Invertebrate biomass \\ 
 \\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
 \hline \\[-1.8ex] 
- zonaReserva & $-$0.033$^{**}$ (0.013) & $-$0.0002 (0.0003) & $-$0.0002 (0.001) & $-$0.005 (0.007) \\ 
-  year1 & 0.008 (0.023) & 0.001$^{***}$ (0.0003) & 0.001 (0.001) & 0.0002 (0.006) \\ 
-  year2 & $-$0.019 (0.015) & 0.0004 (0.0003) & $-$0.0003 (0.001) & $-$0.001 (0.007) \\ 
-  year3 & $-$0.028$^{**}$ (0.014) & 0.0001 (0.0003) & $-$0.0005 (0.001) & $-$0.007 (0.006) \\ 
-  year4 & 0.023 (0.028) & 0.0004 (0.0003) & 0.001 (0.001) & 0.012$^{*}$ (0.007) \\ 
-  zonaReserva:year1 & $-$0.003 (0.024) & 0.001$^{**}$ (0.0004) & $-$0.0001 (0.001) & 0.017$^{**}$ (0.008) \\ 
-  zonaReserva:year2 & 0.046$^{*}$ (0.024) & 0.0002 (0.0004) & 0.001 (0.001) & 0.002 (0.008) \\ 
-  zonaReserva:year3 & 0.074$^{***}$ (0.024) & 0.001 (0.001) & 0.003 (0.002) & 0.002 (0.007) \\ 
-  zonaReserva:year4 & 0.001 (0.031) & 0.0001 (0.0003) & $-$0.0003 (0.001) & $-$0.012 (0.008) \\ 
-  Constant & 0.033$^{**}$ (0.013) & 0.0001 (0.0003) & $-$0.001 (0.0005) & 0.058$^{***}$ (0.012) \\ 
+ zonaReserva & $-$0.033$^{**}$ (0.013) & $-$0.001 (0.002) & $-$0.007 (0.021) & $-$0.024 (0.047) \\ 
+  year1 & 0.008 (0.023) & 0.003$^{*}$ (0.002) & 0.010 (0.019) & $-$0.034 (0.038) \\ 
+  year2 & $-$0.019 (0.015) & 0.001 (0.002) & $-$0.004 (0.015) & $-$0.037 (0.044) \\ 
+  year3 & $-$0.028$^{**}$ (0.014) & $-$0.0001 (0.002) & $-$0.002 (0.016) & $-$0.057 (0.040) \\ 
+  year4 & 0.023 (0.028) & 0.0004 (0.002) & 0.022 (0.022) & 0.044 (0.041) \\ 
+  zonaReserva:year1 & $-$0.003 (0.024) & 0.004$^{*}$ (0.002) & 0.008 (0.023) & 0.065 (0.051) \\ 
+  zonaReserva:year2 & 0.046$^{*}$ (0.024) & 0.002 (0.002) & 0.017 (0.022) & 0.020 (0.053) \\ 
+  zonaReserva:year3 & 0.074$^{***}$ (0.024) & 0.001 (0.002) & 0.039 (0.040) & 0.013 (0.049) \\ 
+  zonaReserva:year4 & 0.001 (0.031) & 0.003 (0.002) & $-$0.001 (0.027) & $-$0.040 (0.052) \\ 
+  Constant & 0.033$^{**}$ (0.013) & $-$0.0004 (0.001) & 0.010 (0.019) & 0.133$^{***}$ (0.040) \\ 
  \hline \\[-1.8ex] 
-Observations & 48 & 7,031 & 1,680 & 7,031 \\ 
-R$^{2}$ & 0.222 & 0.054 & 0.250 & 0.185 \\ 
-Residual Std. Error & 0.038 (df = 38) & 0.009 (df = 6943) & 0.009 (df = 1636) & 0.081 (df = 6943) \\ 
+Observations & 48 & 1,146 & 75 & 1,146 \\ 
+R$^{2}$ & 0.222 & 0.807 & 0.199 & 0.248 \\ 
+Residual Std. Error & 0.038 (df = 38) & 0.010 (df = 1090) & 0.035 (df = 57) & 0.175 (df = 1090) \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table}
+
+\clearpage
 
 \begin{table}[!htbp] \centering 
   \caption{Coefficient estimates of biological indicators for Punta Herrero.} 
@@ -227,25 +223,27 @@ Residual Std. Error & 0.038 (df = 38) & 0.009 (df = 6943) & 0.009 (df = 1636) & 
  & Lobster abundance & Fish biomass & Invertebrate abundance & Invertebrate biomass \\ 
 \\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
 \hline \\[-1.8ex] 
- zonaReserva & 0.004 (0.009) & 0.003$^{***}$ (0.001) & 0.005$^{**}$ (0.003) & 0.033$^{***}$ (0.009) \\ 
-  year-1 & $-$0.006 (0.007) & $-$0.001 (0.0004) & $-$0.001 (0.002) & $-$0.018$^{***}$ (0.005) \\ 
-  year1 & $-$0.008 (0.005) & $-$0.0004$^{*}$ (0.0002) & $-$0.002 (0.001) & $-$0.013$^{***}$ (0.003) \\ 
-  year2 & 0.004 (0.009) & $-$0.001$^{**}$ (0.0002) & $-$0.0001 (0.001) & $-$0.014$^{***}$ (0.003) \\ 
-  year3 & $-$0.001 (0.006) & $-$0.0004 (0.0003) & 0.001 (0.001) & $-$0.009$^{**}$ (0.004) \\ 
-  zonaReserva:year-1 & 0.017 (0.023) & 0.003 (0.003) & $-$0.003 (0.003) & 0.006 (0.016) \\ 
-  zonaReserva:year1 & 0.018 (0.024) & $-$0.002$^{*}$ (0.001) & 0.001 (0.004) & $-$0.013 (0.010) \\ 
-  zonaReserva:year2 & 0.019 (0.021) & $-$0.001 (0.001) & $-$0.004 (0.003) & 0.0002 (0.013) \\ 
-  zonaReserva:year3 & 0.016 (0.016) & $-$0.002$^{**}$ (0.001) & $-$0.001 (0.004) & $-$0.020$^{*}$ (0.011) \\ 
-  Constant & 0.011$^{**}$ (0.005) & 0.0002 (0.0004) & $-$0.002$^{***}$ (0.001) & 0.039$^{***}$ (0.011) \\ 
+ zonaReserva & 0.004 (0.009) & 0.014$^{**}$ (0.005) & 0.069$^{**}$ (0.035) & 0.170$^{***}$ (0.054) \\ 
+  year-1 & $-$0.006 (0.007) & $-$0.001 (0.002) & 0.019 (0.022) & $-$0.087$^{***}$ (0.031) \\ 
+  year1 & $-$0.008 (0.005) & $-$0.003 (0.002) & $-$0.0001 (0.018) & $-$0.073$^{***}$ (0.028) \\ 
+  year2 & 0.004 (0.009) & $-$0.002 (0.002) & 0.032$^{**}$ (0.014) & $-$0.053$^{*}$ (0.028) \\ 
+  year3 & $-$0.001 (0.006) & $-$0.002 (0.002) & 0.038$^{*}$ (0.020) & $-$0.016 (0.032) \\ 
+  zonaReserva:year-1 & 0.017 (0.023) & $-$0.013$^{*}$ (0.008) & $-$0.044 (0.043) & $-$0.134$^{*}$ (0.081) \\ 
+  zonaReserva:year1 & 0.018 (0.024) & $-$0.011$^{*}$ (0.006) & 0.048 (0.071) & $-$0.021 (0.066) \\ 
+  zonaReserva:year2 & 0.019 (0.021) & $-$0.001 (0.008) & $-$0.076 (0.048) & 0.032 (0.086) \\ 
+  zonaReserva:year3 & 0.016 (0.016) & $-$0.013$^{*}$ (0.007) & $-$0.012 (0.047) & $-$0.110 (0.069) \\ 
+  Constant & 0.011$^{**}$ (0.005) & $-$0.001 (0.002) & 0.092$^{***}$ (0.023) & 0.122$^{***}$ (0.046) \\ 
  \hline \\[-1.8ex] 
-Observations & 124 & 13,193 & 4,340 & 13,193 \\ 
-R$^{2}$ & 0.051 & 0.059 & 0.127 & 0.110 \\ 
-Residual Std. Error & 0.049 (df = 114) & 0.021 (df = 13105) & 0.043 (df = 4296) & 0.206 (df = 13105) \\ 
+Observations & 124 & 1,628 & 262 & 1,628 \\ 
+R$^{2}$ & 0.051 & 0.345 & 0.127 & 0.271 \\ 
+Residual Std. Error & 0.049 (df = 114) & 0.051 (df = 1566) & 0.165 (df = 243) & 0.506 (df = 1566) \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table}
+
+\clearpage
 
 \begin{table}[!htbp] \centering 
   \caption{Coefficient estimates of socioeconomic indicators Isla Natividad.} 
@@ -300,6 +298,8 @@ Residual Std. Error (df = 28) & 25.072 & 8.460 \\
 \end{tabular} 
 \end{table}
 
+\clearpage
+
 \begin{table}[!htbp] \centering 
   \caption{Coefficient estimates of socioeconomic indicators for Maria Elena.} 
   \label{} 
@@ -313,39 +313,38 @@ Residual Std. Error (df = 28) & 25.072 & 8.460 \\
  & Landings & Revenues \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- zonaReserva & $-$38.159$^{***}$ (11.296) & $-$6.065$^{***}$ (1.413) \\ 
-  year-9 & $-$15.392 (10.833) & $-$4.118$^{**}$ (1.899) \\ 
-  year-8 & $-$2.753 (16.161) & $-$2.043 (1.515) \\ 
-  year-7 & $-$1.752 (17.095) & $-$1.738 (1.783) \\ 
-  year-6 & $-$10.495 (10.778) & $-$3.715$^{**}$ (1.593) \\ 
-  year-5 & $-$1.865 (16.596) & $-$0.997 (2.477) \\ 
-  year-4 & $-$7.648 (12.383) & 1.206 (5.122) \\ 
-  year-3 & $-$35.327$^{***}$ (11.296) & $-$6.648$^{***}$ (1.413) \\ 
-  year-2 & 2.857 (16.888) & $-$0.051 (2.635) \\ 
-  year-1 & 7.520 (11.003) & 0.151 (1.212) \\ 
-  year1 & $-$9.668 (28.420) & $-$1.990 (4.472) \\ 
-  year2 & $-$7.268 (26.926) & $-$0.964 (4.315) \\ 
-  zonaReserva:year-9 &  &  \\ 
-  zonaReserva:year-8 &  &  \\ 
-  zonaReserva:year-7 &  &  \\ 
-  zonaReserva:year-6 & $-$7.994 (10.778) & $-$0.607 (1.593) \\ 
-  zonaReserva:year-5 & $-$12.027 (16.596) & $-$2.239 (2.477) \\ 
-  zonaReserva:year-4 & $-$11.520 (12.383) & $-$4.595 (5.122) \\ 
-  zonaReserva:year-3 &  &  \\ 
-  zonaReserva:year-2 & $-$18.128 (16.888) & $-$3.360 (2.635) \\ 
-  zonaReserva:year-1 & $-$11.395 (11.003) & $-$2.079$^{*}$ (1.212) \\ 
-  zonaReserva:year1 & $-$9.629 (28.420) & $-$2.092 (4.472) \\ 
-  zonaReserva:year2 &  &  \\ 
-  Constant & 64.566$^{***}$ (11.296) & 11.359$^{***}$ (1.413) \\ 
+ zonaReserva & $-$38.364$^{***}$ (12.766) & $-$6.453$^{***}$ (2.104) \\ 
+  year-6 & $-$10.495 (11.845) & $-$3.715 (2.447) \\ 
+  year-5 & $-$1.865 (17.891) & $-$0.997 (2.558) \\ 
+  year-4 & $-$7.648 (13.465) & 1.206 (5.184) \\ 
+  year-2 & 2.857 (18.201) & $-$0.051 (2.700) \\ 
+  year-1 & 7.519 (12.064) & 0.151 (1.770) \\ 
+  year1 & $-$9.668 (31.049) & $-$1.990 (5.471) \\ 
+  zonaReserva:year-6 & $-$7.993 (11.845) & $-$0.607 (2.447) \\ 
+  zonaReserva:year-5 & $-$12.027 (17.891) & $-$2.239 (2.558) \\ 
+  zonaReserva:year-4 & $-$11.519 (13.465) & $-$4.595 (5.184) \\ 
+  zonaReserva:year-2 & $-$18.128 (18.201) & $-$3.360 (2.700) \\ 
+  zonaReserva:year-1 & $-$11.394 (12.064) & $-$2.079 (1.770) \\ 
+  zonaReserva:year1 & $-$9.629 (31.049) & $-$2.092 (5.471) \\ 
+  Constant & 64.771$^{***}$ (12.766) & 11.747$^{***}$ (2.104) \\ 
  \hline \\[-1.8ex] 
-Observations & 30 & 30 \\ 
-R$^{2}$ & 0.863 & 0.833 \\ 
-Residual Std. Error (df = 10) & 17.000 & 3.244 \\ 
+Observations & 21 & 21 \\ 
+R$^{2}$ & 0.887 & 0.851 \\ 
+Residual Std. Error (df = 6) & 16.398 & 3.496 \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table}
 
+%%% If you are submitting a figure with subfigures please combine these into one image file with part labels integrated.
+%%% If you don't add the figures in the LaTeX files, please upload them when submitting the article.
+%%% Frontiers will add the figures at the end of the provisional pdf automatically
+%%% The use of LaTeX coding to draw Diagrams/Figures/Structures should be avoided. They should be external callouts including graphics.
+
+
+%\bibliographystyle{frontiersinSCNS_ENG_HUMS} %  for Science, Engineering and Humanities and Social Sciences articles, for Humanities and Social Sciences articles please include page numbers in the in-text citations
+%\bibliographystyle{frontiersinHLTH&FPHY} % for Health and Physics articles
+%\bibliography{test}
 
 \end{document}
