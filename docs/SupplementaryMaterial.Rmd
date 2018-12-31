@@ -1,5 +1,5 @@
 ---
-title: "Effectiveness of community-based TURF-reserves in small-scale fisheries"
+title: "Effectiveness of community-based TURF-reserves in Mexican small-scale fisheries"
 output:
   bookdown::pdf_document2:
     keep_tex: yes
