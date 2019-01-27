@@ -166,7 +166,7 @@ conapesca %>%
   spread(post, price) %>% 
   knitr::kable(digits = 2,
                col.names = c("Zone", "Group", "TURF", "Before", "After"),
-               caption = "Mean ex-vessel prices for lobster (Panulirus spp.) on each TURF (community) by zone (MC = Caribbean; PN = Pacific) and group (Control = only TURF, Treated = TURF and reserve).",
+               caption = "Mean ex-vessel prices (MXP / Kg) for lobster (Panulirus spp.) on each TURF (community) by zone (MC = Caribbean; PN = Pacific) and group (Control = only TURF, Treated = TURF and reserve).",
                booktabs = T)
 ```
 
