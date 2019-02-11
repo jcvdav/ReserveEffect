@@ -159,19 +159,24 @@ fish %>%
 
 ```{r}
 conapesca %>% 
+  filter(!unidad_economica == "jose maria azcorra") %>% 
   mutate(price = valor / peso_vivo) %>% 
   group_by(zona, grupo, post, unidad_economica) %>% 
   summarize(price = mean(price, na.rm = T)) %>% 
   ungroup() %>% 
   spread(post, price) %>% 
+  mutate(zona = ifelse(zona == "MC", "Yucatan Peninsula", "Baja California"),
+         unidad_economica = taxize::taxize_capwords(unidad_economica)) %>% 
   knitr::kable(digits = 2,
-               col.names = c("Zone", "Group", "TURF", "Before", "After"),
-               caption = "Mean ex-vessel prices (MXP / Kg) for lobster (Panulirus spp.) on each TURF (community) by zone (MC = Caribbean; PN = Pacific) and group (Control = only TURF, Treated = TURF and reserve).",
+               col.names = c("Community", "Group", "TURF", "Before", "After"),
+               caption = "Mean ex-vessel prices (MXP / Kg) for lobster (Panulirus spp.) on each TURF (community) and group (Control = only TURF, Treated = TURF and reserve).",
                booktabs = T)
 ```
 
 ```{r, fig.cap = "Time series of landings and value of landings."}
 valor <- conapesca %>% 
+  filter(!unidad_economica == "jose maria azcorra") %>% 
+  mutate(zona = ifelse(zona == "MC", "Yucatan Peninsula", "Baja California")) %>% 
   ggplot(aes(x = years_centered, y = valor / 1000, color = grupo)) +
   facet_wrap(~ zona, ncol = 2, scales = "free_y")  +
   stat_summary(geom = "errorbar", fun.data = mean_se, width = 0.1, size = 1) +
@@ -188,6 +193,7 @@ valor <- conapesca %>%
   geom_vline(xintercept = 0, linetype = "dashed", size = 1)
 
 peso <- conapesca %>% 
+  filter(!unidad_economica == "jose maria azcorra") %>% 
   ggplot(aes(x = years_centered, y = peso_vivo / 1000, color = grupo)) +
   facet_wrap(~ zona, ncol = 2, scales = "free_y")  +
   stat_summary(geom = "errorbar", fun.data = mean_se, width = 0.1, size = 1) +
@@ -201,7 +207,7 @@ peso <- conapesca %>%
   theme(legend.position = "none") +
   geom_vline(xintercept = 0, linetype = "dashed", size = 1)
 
-cowplot::plot_grid(valor, peso, ncol = 1)
+cowplot::plot_grid(peso, valor, ncol = 1)
   
 ```
 
