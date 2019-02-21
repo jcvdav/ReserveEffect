@@ -31,21 +31,20 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
   janitor::clean_names() %>% 
   rename(generoespecie = genero_especie) %>% 
   filter(comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(rc),
-         rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
-                   "Cabezo - Cabezo (Control)",
-                   "Manchon - Manchon (Control)",
-                   "El Faro - El Faro (Control)")) %>% 
-  filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
-  filter(between(abundancia, 0.1, 100)) %>% 
+  filter(!is.na(rc)) %>% 
+  # filter(rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
+  #                  "Cabezo - Cabezo (Control)",
+  #                  "Manchon - Manchon (Control)",
+  #                  "El Faro - El Faro (Control)")) %>% 
+  # filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
+  filter(between(abundancia, 0.1, 100)) %>%
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 
   mutate(year = case_when(comunidad == "Isla Natividad" ~ ano - 2006,
                          comunidad == "Maria Elena" ~ ano - 2012,
                          TRUE ~ ano - 2013)) %>% 
-  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, abundancia) %>% 
-  arrange()
+  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, abundancia)
 ```
 
 ## Fish
@@ -117,12 +116,12 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
   janitor::clean_names() %>% 
   rename(generoespecie = genero_especie) %>% 
   filter(comunidad %in% c("Isla Natividad", "Maria Elena", "Punta Herrero")) %>% 
-  filter(!is.na(rc),
-         rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
-                   "Cabezo - Cabezo (Control)",
-                   "Manchon - Manchon (Control)",
-                   "El Faro - El Faro (Control)")) %>% 
-  filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
+  filter(!is.na(rc)) %>% 
+  # filter(rc %in% c("La Plana / Las Cuevas - La Dulce / Babencho",
+  #                  "Cabezo - Cabezo (Control)",
+  #                  "Manchon - Manchon (Control)",
+  #                  "El Faro - El Faro (Control)")) %>% 
+  # filter(!(rc %in% c("El Faro - El Faro (Control)") & ano == 2012)) %>% 
   filter(abundancia > 0) %>% 
   mutate(generoespecie = case_when(generoespecie == "Cephalopholis cruentatus" ~ "Cephalopholis cruentata",
                                    generoespecie == "Haemulon macrostomun" ~ "Haemulon macrostomum",
@@ -156,8 +155,7 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
                          TRUE ~ ano - 2013))
 
 fish <- fish %>% 
-  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b) %>% 
-  arrange()
+  select(comunidad, ano, year, rc, sitio, zona, transecto, generoespecie, talla, abundancia, a, b)
 ```
 
 # Socioeconomic data

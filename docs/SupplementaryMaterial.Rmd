@@ -51,7 +51,14 @@ invert %>%
 
 ```{r, eval = T, fig.cap = "Time series of lobster densities. Bars indicate standard errors."}
 invert %>%
-  filter(generoespecie %in% c("Panulirus interruptus", "Panulirus argus")) %>% 
+  mutate(generoespecie = ifelse(generoespecie %in% c("Panulirus interruptus", "Panulirus argus"),
+                             generoespecie,
+                             "any_invert")) %>% 
+  group_by(rc, ano, year, comunidad, sitio, zona, transecto, generoespecie) %>% 
+  summarize(abundancia = sum(abundancia)) %>% 
+  spread(generoespecie, abundancia, fill = 0) %>% 
+  gather(generoespecie, abundancia, -c(rc, ano, year, comunidad, sitio, zona, transecto)) %>% 
+  filter(generoespecie %in% c("Panulirus interruptus","Panulirus argus")) %>% 
   group_by(rc, ano, year, comunidad, sitio, zona, transecto, generoespecie) %>% 
   summarize(indicador = sum(abundancia)/60) %>%
   ungroup() %>% 
