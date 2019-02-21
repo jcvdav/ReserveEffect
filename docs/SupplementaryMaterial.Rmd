@@ -40,12 +40,15 @@ conapesca <- read.csv(file = here::here("data", "conapesca.csv"),
 ```{r eval = T}
 invert %>% 
   group_by(ano, comunidad, zona, sitio, transecto) %>%
-  count() %>%
+  count() %>% 
+  ungroup() %>% 
   group_by(comunidad, zona) %>%
   count() %>% 
+  ungroup() %>% 
   spread(zona, nn) %>% 
+  mutate(age = c(10, 4, 4)) %>% 
   knitr::kable(caption = "Number of invertebrate transects performed in each site of each community.",
-               col.names = c("Community", "Control", "Reserve"),
+               col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T)
 ```
 
@@ -106,12 +109,15 @@ invert %>%
 ```{r}
 fish %>% 
   group_by(ano, comunidad, zona, sitio, transecto) %>%
-  count() %>%
+  count() %>% 
+  ungroup() %>% 
   group_by(comunidad, zona) %>%
   count() %>% 
+  ungroup() %>% 
   spread(zona, nn) %>% 
-  knitr::kable(caption = "Number of fish transects performed in each site of each community.",
-               col.names = c("Community", "Control", "Reserve"),
+  mutate(age = c(10, 4, 4)) %>% 
+  knitr::kable(caption = "Number of invertebrate transects performed in each site of each community.",
+               col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T)
 ```
 
