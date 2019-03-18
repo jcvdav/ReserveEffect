@@ -1,0 +1,198 @@
+\documentclass[10pt]{article}
+\usepackage[top=0.85in,footskip=0.75in]{geometry}
+
+\usepackage{float}
+\usepackage{amsmath,amssymb}
+\usepackage{changepage}
+\usepackage[utf8x]{inputenc}
+\usepackage{textcomp,marvosym}
+\usepackage{cite}
+\usepackage{nameref,hyperref}
+\usepackage[right]{lineno}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{hyperref}
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Fig #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+\usepackage{booktabs}
+
+% Use the PLoS provided BiBTeX style
+\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+% Leave date blank
+\date{}
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{27.023pt}
+\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\lfoot{\sf PLOS}
+
+\begin{document}
+\vspace*{0.2in}
+
+% Title must be 250 characters or less.
+
+{\Large
+\textbf\newline{Effectiveness of community-based TURF-reserves in Mexican small-scale fisheries} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Juan Carlos Villaseñor-Derbez\textsuperscript{1\Yinyang*},
+Eréndira Aceves-Bueno\textsuperscript{1,2\Yinyang},
+Stuart Fulton\textsuperscript{3\ddag},
+Álvin Suarez\textsuperscript{3\ddag},
+Arturo Hernández-Velasco\textsuperscript{3\ddag},
+Jorge Torre\textsuperscript{3\ddag},
+Fiorenza Micheli\textsuperscript{4\ddag}
+\\
+\bigskip
+\textbf{1} Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA
+\\
+\textbf{2} Nicholas School of the Environment, Duke University, Beaufort, NC, USA
+\\
+\textbf{3} Comunidad y Biodiversidad A.C., Guaymas, Sonora, Mexico
+\\
+\textbf{4} Hopkins Marine Station and Center for Ocean Solutions, Stanford University, Pacific Grove, CA, USA
+\\
+\bigskip
+
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+% 
+% Remove or comment out the author notes below if they aren't used.
+%
+% Primary Equal Contribution Note
+\Yinyang These authors contributed equally to this work.
+
+% Additional Equal Contribution Note
+% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
+\ddag These authors also contributed equally to this work.
+
+% Current address notes
+%\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+% \textcurrency b Insert second current address 
+% \textcurrency c Insert third current address
+
+% Deceased author note
+%\dag Deceased
+
+% Group/Consortium Author Note
+%\textpilcrow Membership list can be found in the Acknowledgments section.
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+* juancarlos@ucsb.edu
+
+\section*{Supporting information}
+
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+\paragraph*{S1 Table.}
+\input{tab/S1_table.tex}
+\label{S1_Table}
+{\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.
+
+\paragraph*{S1 Fig.}
+\label{S1_Fig}
+{\bf Mean annual lobster density.} Dots indicate mean, bars indicate standard errors.
+
+\paragraph*{S2 Fig.}
+\label{S2_Fig}
+{\bf Mean annual invertebrate density.} Dots indicate mean, bars indicate standard errors.
+
+\paragraph*{S2 Table.}
+\input{tab/S2_table.tex}
+\label{S2_Table}
+{\bf Fish sampling effort} Number of invertebrate transects performed in each site of each community.
+
+\paragraph*{S3 Fig.}
+\label{S3_Fig}
+{\bf Mean annual fish biomass} Dots indicate mean, bars indicate standard errors.
+
+\paragraph*{S4 Fig.}
+\label{S4_Fig}
+{\bf Mean annual fish density} Dots indicate mean, bars indicate standard errors.
+
+\paragraph*{S3 Table.}
+\input{tab/S3_table.tex}
+\label{S3_Table}
+{\bf Summary of socioeconomic data} Mean ex-vessel prices (MXP / Kg) for lobster (\emph{Panulirus spp.}) on each TURF (community) and group (Control = only TURF, Treated = TURF and reserve).
+
+\paragraph*{S5 Fig.}
+\label{S5_Fig}
+{\bf Timeseries of socioeconomic indicators.} A) Mean annual value of landings and B) Mean landings.
+
+\paragraph*{S4 Table.}
+\input{tab/S4_table.tex}
+\label{S4_Table}
+{\bf Coefficient estimates of biological indicators for Isla Natividad.}
+
+\paragraph*{S5 Table.}
+\input{tab/S5_table.tex}
+\label{S5_Table}
+{\bf Coefficient estimates of biological indicators for Maria Elena.}
+
+\paragraph*{S6 Table.}
+\input{tab/S6_table.tex}
+\label{S6_Table}
+{\bf Coefficient estimates of biological indicators for Punta Herrero.}
+
+\paragraph*{S7 Table.}
+\input{tab/S7_table.tex}
+\label{S7_Table}
+{\bf Coefficient estimates of socioeconomic indicators Isla Natividad.}
+
+\paragraph*{S8 Table.}
+\input{tab/S8_table.tex}
+\label{S8_Table}
+{\bf Coefficient estimates of socioeconomic indicators Maria Elena.}
+
+\nolinenumbers
+
+%\bibliography{references}
+
+\end{document}
+
