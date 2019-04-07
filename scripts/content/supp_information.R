@@ -38,7 +38,8 @@ invert %>%
   mutate(age = c(10, 4, 4)) %>% 
   knitr::kable(col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T,
-               format = "latex") %>% 
+               format = "latex",
+               caption = "{\\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.") %>% 
   cat(file = here("docs", "tab", "S1_table.tex"))
 
 # Time series of lobster densities. Bars indicate standard errors
@@ -77,6 +78,11 @@ ggsave(plot = lobster_ts_plot,
        width = 6,
        height = 4.5)
 
+ggsave(plot = lobster_ts_plot,
+       file = here("docs", "img", "S1_fig.tiff"),
+       width = 6,
+       height = 4.5)
+
 
 # Time series of invertebrate densities. Bars indicate standard errors
 invert_ts_plot <- invert %>%
@@ -105,6 +111,11 @@ ggsave(plot = invert_ts_plot,
        width = 6,
        height = 4.5)
 
+ggsave(plot = invert_ts_plot,
+       file = here("docs", "img", "S2_fig.tiff"),
+       width = 6,
+       height = 4.5)
+
 
 # Table of sampling effort for fish
 fish %>% 
@@ -118,7 +129,8 @@ fish %>%
   mutate(age = c(10, 4, 4)) %>% 
   knitr::kable(col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T,
-               format = "latex") %>% 
+               format = "latex",
+               caption = "{\\bf Fish sampling effort.} Number of invertebrate transects performed in each site of each community.") %>% 
   cat(file = here("docs", "tab", "S2_table.tex"))
 
 #Time series of fish biomass. Bars indicate standard errors
@@ -151,6 +163,11 @@ ggsave(plot = fish_biomass_ts_plot,
        width = 6,
        height = 4.5)
 
+ggsave(plot = fish_biomass_ts_plot,
+       file = here("docs", "img", "S3_fig.tiff"),
+       width = 6,
+       height = 4.5)
+
 
 #Time series of fish densities. Bars indicate standard errors
 fish_density_ts_plot <- fish %>%
@@ -178,6 +195,11 @@ ggsave(plot = fish_density_ts_plot,
        width = 6,
        height = 4.5)
 
+ggsave(plot = fish_density_ts_plot,
+       file = here("docs", "img", "S4_fig.tiff"),
+       width = 6,
+       height = 4.5)
+
 # BACI of socioeconomic data
 conapesca %>% 
   filter(!unidad_economica == "jose maria azcorra") %>% 
@@ -195,6 +217,22 @@ conapesca %>%
   cat(file = here("docs", "tab", "S3_table.tex"))
 
 #Time series of landings and value of landings
+peso <- conapesca %>% 
+  filter(!unidad_economica == "jose maria azcorra") %>% 
+  mutate(zona = ifelse(zona == "MC", "Yucatan Peninsula", "Baja California")) %>% 
+  ggplot(aes(x = years_centered, y = peso_vivo / 1000, color = grupo)) +
+  facet_wrap(~ zona, ncol = 2, scales = "free_y")  +
+  stat_summary(geom = "errorbar", fun.data = mean_se, width = 0.1, size = 1) +
+  stat_summary(geom = "line", fun.y = mean) +
+  stat_summary(geom = "point", fun.y = mean, size = 2) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1", direction = -1) +
+  scale_fill_brewer(palette = "Set1", direction = -1) +
+  ylab("Landings (Tones)") +
+  xlab("Year since implementation") +
+  theme(legend.position = "none") +
+  geom_vline(xintercept = 0, linetype = "dashed", size = 1)
+
 valor <- conapesca %>% 
   filter(!unidad_economica == "jose maria azcorra") %>% 
   mutate(zona = ifelse(zona == "MC", "Yucatan Peninsula", "Baja California")) %>% 
@@ -213,23 +251,7 @@ valor <- conapesca %>%
         legend.position = c(0.55, 0.7)) +
   geom_vline(xintercept = 0, linetype = "dashed", size = 1)
 
-peso <- conapesca %>% 
-  filter(!unidad_economica == "jose maria azcorra") %>% 
-  mutate(zona = ifelse(zona == "MC", "Yucatan Peninsula", "Baja California")) %>% 
-  ggplot(aes(x = years_centered, y = peso_vivo / 1000, color = grupo)) +
-  facet_wrap(~ zona, ncol = 2, scales = "free_y")  +
-  stat_summary(geom = "errorbar", fun.data = mean_se, width = 0.1, size = 1) +
-  stat_summary(geom = "line", fun.y = mean) +
-  stat_summary(geom = "point", fun.y = mean, size = 2) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1", direction = -1) +
-  scale_fill_brewer(palette = "Set1", direction = -1) +
-  ylab("Landings (Tones)") +
-  xlab("Year since implementation") +
-  theme(legend.position = "none") +
-  geom_vline(xintercept = 0, linetype = "dashed", size = 1)
-
-socioeco_ts_plot <- cowplot::plot_grid(peso, valor, ncol = 1)
+socioeco_ts_plot <- cowplot::plot_grid(peso, valor, ncol = 1, labels = "AUTO")
 
 #Save plot
 ggsave(plot = socioeco_ts_plot,
@@ -237,6 +259,10 @@ ggsave(plot = socioeco_ts_plot,
        width = 6,
        height = 4.5)
 
+ggsave(plot = socioeco_ts_plot,
+       file = here("docs", "img", "S5_fig.tiff"),
+       width = 6,
+       height = 4.5)
 
 
 # Load models
@@ -246,18 +272,17 @@ load(here("data", "results", "socioeco_results.RData"))
 
 
 # Create a function to get standard stargazer tables
-supp_regtable <- function(models, caption = "", fs = "tiny", bio = T, filename){
+supp_regtable <- function(models, caption = "", fs = "small", bio = T, filename){
   
   labels <- c(
-    "Lobster abundance",
+    "Lobster density",
     "Fish biomass",
-    "Invertebrate abundance",
-    "Invertebrate biomass")
+    "Invertebrate density",
+    "Fish density")
   
   if(!bio){
-    labels <- c(
-      "Landings",
-      "Revenues")
+    labels <- c("Landings",
+                "Revenues")
   }
   
   stargazer::stargazer(models,
@@ -289,7 +314,6 @@ list(L_ME, B_ME, Ni_ME, N_ME) %>%
 # Punta Herrero Bio
 list(L_PH, B_PH, Ni_PH, N_PH) %>% 
   supp_regtable(caption = "Coefficient estimates of biological indicators for Punta Herrero.",
-                fs = "small",
                 filename = here("docs", "tab", "S6_table.tex"))
 
 # Socioeco Natividad

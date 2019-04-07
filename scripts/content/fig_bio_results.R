@@ -141,6 +141,12 @@ ggsave(plot = plot,
        width = 6.5,
        height = 4)
 
+# Export figure
+ggsave(plot = plot,
+       filename = here("docs", "img", "fig_bio_results.tiff"),
+       width = 6.5,
+       height = 4)
+
 # Save all model output
 save(L_IN,
      L_ME,

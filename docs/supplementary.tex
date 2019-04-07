@@ -37,16 +37,14 @@
 %\usepackage{setspace} 
 %\doublespacing
 
-% Text layout
-\raggedright
-\setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
-\textheight 8.75in
-
 % Bold the 'Fig #' in the caption and separate it from the title/caption with a period
 % Captions will be left justified
 \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
-\renewcommand{\figurename}{Fig}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\thefigure}{\Alph{figure}}
+
+\renewcommand{\tablename}{Table}
+\renewcommand{\thetable}{\Alph{table}}
 \usepackage{booktabs}
 
 % Use the PLoS provided BiBTeX style
@@ -67,132 +65,326 @@
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{27.023pt}
-\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
 \rfoot{\thepage/\pageref{LastPage}}
 \renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
 \lfoot{\sf PLOS}
 
 \begin{document}
-\vspace*{0.2in}
 
 % Title must be 250 characters or less.
 
 {\Large
-\textbf\newline{Effectiveness of community-based TURF-reserves in Mexican small-scale fisheries} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+\textbf\newline{Supporting Information for ``Effectiveness of community-based TURF-reserves in Mexican small-scale fisheries''}
 }
-\newline
-% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
-\\
-Juan Carlos Villaseñor-Derbez\textsuperscript{1\Yinyang*},
-Eréndira Aceves-Bueno\textsuperscript{1,2\Yinyang},
-Stuart Fulton\textsuperscript{3\ddag},
-Álvin Suarez\textsuperscript{3\ddag},
-Arturo Hernández-Velasco\textsuperscript{3\ddag},
-Jorge Torre\textsuperscript{3\ddag},
-Fiorenza Micheli\textsuperscript{4\ddag}
-\\
-\bigskip
-\textbf{1} Bren School of Environmental Science and Management, University of California, Santa Barbara, Santa Barbara, CA, USA
-\\
-\textbf{2} Nicholas School of the Environment, Duke University, Beaufort, NC, USA
-\\
-\textbf{3} Comunidad y Biodiversidad A.C., Guaymas, Sonora, Mexico
-\\
-\textbf{4} Hopkins Marine Station and Center for Ocean Solutions, Stanford University, Pacific Grove, CA, USA
-\\
-\bigskip
 
-% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
-% 
-% Remove or comment out the author notes below if they aren't used.
-%
-% Primary Equal Contribution Note
-\Yinyang These authors contributed equally to this work.
+% Table S1
+\begin{table}[h]
+\caption{{\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Community & Control & Reserve & Years of monitoring\\
+\midrule
+Isla Natividad & 415 & 244 & 10\\
+Maria Elena & 27 & 21 & 4\\
+Punta Herrero & 51 & 78 & 4\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-% Additional Equal Contribution Note
-% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
-\ddag These authors also contributed equally to this work.
+ % Figure S1
+\begin{figure}[h]
+\centering
+\includegraphics{img/S1_fig.pdf}
+\caption{{\bf Mean annual lobster density.} Dots indicate mean, bars indicate standard errors.}
+\end{figure}
 
-% Current address notes
-%\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
-% \textcurrency b Insert second current address 
-% \textcurrency c Insert third current address
+\clearpage
 
-% Deceased author note
-%\dag Deceased
+% Figure S2
+\begin{figure}[h]
+\centering
+\includegraphics{img/S2_fig.pdf}
+\caption{{\bf Mean annual invertebrate density.} Dots indicate mean, bars indicate standard errors.}
+\end{figure}
 
-% Group/Consortium Author Note
-%\textpilcrow Membership list can be found in the Acknowledgments section.
+% Table S2
+\begin{table}[h]
+\caption{{\bf Fish sampling effort.} Number of invertebrate transects performed in each site of each community.}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Community & Control & Reserve & Years of monitoring\\
+\midrule
+Isla Natividad & 400 & 241 & 10\\
+Maria Elena & 44 & 45 & 4\\
+Punta Herrero & 82 & 85 & 4\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-% Use the asterisk to denote corresponding authorship and provide email address in note below.
-* juancarlos@ucsb.edu
+\clearpage
 
-\section*{Supporting information}
+% Figure S3
+\begin{figure}[h]
+\centering
+\includegraphics{img/S3_fig.pdf}
+\caption{{\bf Mean annual fish biomass} Dots indicate mean, bars indicate standard errors.}
+\end{figure}
 
-% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
-\paragraph*{S1 Table.}
-\input{tab/S1_table.tex}
-\label{S1_Table}
-{\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.
+\clearpage
 
-\paragraph*{S1 Fig.}
-\label{S1_Fig}
-{\bf Mean annual lobster density.} Dots indicate mean, bars indicate standard errors.
+% Figure S4
+\begin{figure}[h]
+\centering
+\includegraphics{img/S4_fig.pdf}
+\caption{{\bf Mean annual fish density} Dots indicate mean, bars indicate standard errors.}
+\end{figure}
 
-\paragraph*{S2 Fig.}
-\label{S2_Fig}
-{\bf Mean annual invertebrate density.} Dots indicate mean, bars indicate standard errors.
+\clearpage
 
-\paragraph*{S2 Table.}
-\input{tab/S2_table.tex}
-\label{S2_Table}
-{\bf Fish sampling effort} Number of invertebrate transects performed in each site of each community.
+%Table S3
+\begin{table}[h]
+\caption{{\bf Summary of socioeconomic data.} Mean ex-vessel prices (MXP / Kg) for lobster (\emph{Panulirus spp.}) on each TURF (community) and group (Control = only TURF, Treated = TURF and reserve).}
+\centering
+\begin{tabular}{lllrr}
+\toprule
+Community & Group & TURF & Before & After\\
+\midrule
+Yucatan Peninsula & Control & Langosteros Del Caribe & 165.58 & 176.72\\
+Yucatan Peninsula & Control & Vigia Chico & 177.66 & 175.31\\
+Yucatan Peninsula & Treated & Cozumel & 178.21 & 170.49\\
+Baja California & Control & Bahia Tortugas & 155.60 & 122.46\\
+Baja California & Control & La Purisima & 67.54 & 157.88\\
+Baja California & Control & Pesc Nacionales De Abulon & 67.16 & 88.79\\
+Baja California & Treated & Buzos Y Pescadores De La Baja California & 89.35 & 190.07\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\paragraph*{S3 Fig.}
-\label{S3_Fig}
-{\bf Mean annual fish biomass} Dots indicate mean, bars indicate standard errors.
+\clearpage
 
-\paragraph*{S4 Fig.}
-\label{S4_Fig}
-{\bf Mean annual fish density} Dots indicate mean, bars indicate standard errors.
+% Figure S5
+\begin{figure}[h]
+\centering
+\includegraphics{img/S5_fig.pdf}
+\caption{{\bf Time series of socioeconomic indicators.} A) Mean annual value of landings and B) Mean landings.}
+\end{figure}
 
-\paragraph*{S3 Table.}
-\input{tab/S3_table.tex}
-\label{S3_Table}
-{\bf Summary of socioeconomic data} Mean ex-vessel prices (MXP / Kg) for lobster (\emph{Panulirus spp.}) on each TURF (community) and group (Control = only TURF, Treated = TURF and reserve).
+\clearpage
 
-\paragraph*{S5 Fig.}
-\label{S5_Fig}
-{\bf Timeseries of socioeconomic indicators.} A) Mean annual value of landings and B) Mean landings.
+%Table S4
+\begin{table}[h] \centering 
+  \caption{{\bf Coefficient estimates of biological indicators for Isla Natividad.}} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{1pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{} \\ 
+ & Lobster density & Fish biomass & Invertebrate density & Fish density \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ zonaReserva & $-$0.011 (0.058) & $-$0.006$^{*}$ (0.003) & 0.228 (0.160) & $-$0.167 (0.104) \\ 
+  year1 & 0.032 (0.067) & 0.007 (0.004) & $-$0.087 (0.159) & 0.005 (0.122) \\ 
+  year2 & 0.0002 (0.077) & 0.006 (0.005) & 0.270 (0.176) & $-$0.027 (0.146) \\ 
+  year3 & 0.023 (0.072) & 0.036$^{***}$ (0.010) & 0.427$^{***}$ (0.165) & 0.230 (0.160) \\ 
+  year4 & $-$0.030 (0.058) & 0.011$^{**}$ (0.005) & 0.222 (0.153) & $-$0.040 (0.112) \\ 
+  year5 & $-$0.006 (0.061) & 0.024$^{***}$ (0.006) & 0.231 (0.156) & 0.102 (0.126) \\ 
+  year6 & $-$0.014 (0.062) & 0.080$^{***}$ (0.023) & 0.375$^{**}$ (0.161) & 0.300$^{**}$ (0.140) \\ 
+  year7 & $-$0.021 (0.060) & 0.339$^{***}$ (0.067) & $-$0.057 (0.156) & 0.276$^{*}$ (0.147) \\ 
+  year8 & $-$0.026 (0.059) & 0.174$^{***}$ (0.028) & 0.147 (0.146) & 0.066 (0.126) \\ 
+  year9 & $-$0.038 (0.057) & 0.210$^{***}$ (0.054) & 0.045 (0.154) & 0.217 (0.138) \\ 
+  year10 & $-$0.066 (0.057) & 0.189$^{***}$ (0.040) & $-$0.223 (0.145) & $-$0.159 (0.111) \\ 
+  zonaReserva:year1 & $-$0.058 (0.078) & 0.008 (0.006) & 0.107 (0.238) & 0.134 (0.144) \\ 
+  zonaReserva:year2 & 0.126 (0.121) & $-$0.0005 (0.007) & 0.047 (0.265) & 0.086 (0.177) \\ 
+  zonaReserva:year3 & 0.053 (0.093) & $-$0.008 (0.011) & $-$0.256 (0.224) & $-$0.072 (0.178) \\ 
+  zonaReserva:year4 & 0.035 (0.065) & 0.024$^{***}$ (0.009) & $-$0.234 (0.221) & 0.448$^{***}$ (0.167) \\ 
+  zonaReserva:year5 & $-$0.045 (0.068) & $-$0.009 (0.009) & $-$0.318 (0.215) & $-$0.078 (0.169) \\ 
+  zonaReserva:year6 & 0.096 (0.075) & $-$0.042$^{*}$ (0.024) & $-$0.331 (0.230) & 0.038 (0.169) \\ 
+  zonaReserva:year7 & $-$0.030 (0.065) & $-$0.124 (0.089) & $-$0.166 (0.206) & $-$0.047 (0.199) \\ 
+  zonaReserva:year8 & 0.012 (0.069) & 0.084 (0.082) & $-$0.149 (0.193) & 0.120 (0.160) \\ 
+  zonaReserva:year9 & 0.002 (0.064) & 0.036 (0.069) & $-$0.441$^{**}$ (0.190) & 0.210 (0.181) \\ 
+  zonaReserva:year10 & $-$0.016 (0.062) & $-$0.056 (0.065) & $-$0.261 (0.185) & 0.167 (0.143) \\ 
+  Constant & 0.122$^{**}$ (0.054) & 0.016$^{***}$ (0.003) & 0.672$^{***}$ (0.131) & 0.567$^{***}$ (0.094) \\ 
+ \hline \\[-1.8ex] 
+Observations & 659 & 641 & 659 & 641 \\ 
+R$^{2}$ & 0.049 & 0.267 & 0.119 & 0.080 \\ 
+Residual Std. Error & 0.189 (df = 637) & 0.175 (df = 619) & 0.552 (df = 637) & 0.525 (df = 619) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
 
-\paragraph*{S4 Table.}
-\input{tab/S4_table.tex}
-\label{S4_Table}
-{\bf Coefficient estimates of biological indicators for Isla Natividad.}
+\clearpage
 
-\paragraph*{S5 Table.}
-\input{tab/S5_table.tex}
-\label{S5_Table}
-{\bf Coefficient estimates of biological indicators for Maria Elena.}
+%Table S5
+\begin{table}[h] \centering 
+  \caption{{\bf Coefficient estimates of biological indicators for Maria Elena.}} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{1pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{} \\ 
+ & Lobster density & Fish biomass & Invertebrate density & Fish density \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ zonaReserva & $-$0.033$^{**}$ (0.013) & $-$0.017 (0.027) & $-$0.008 (0.015) & $-$0.362 (0.758) \\ 
+  year1 & 0.008 (0.023) & 0.075$^{**}$ (0.029) & 0.033$^{*}$ (0.018) & 0.028 (0.755) \\ 
+  year2 & $-$0.019 (0.015) & 0.034 (0.033) & $-$0.010 (0.015) & $-$0.046 (0.759) \\ 
+  year3 & $-$0.028$^{**}$ (0.014) & 0.006 (0.027) & $-$0.017 (0.013) & $-$0.566 (0.700) \\ 
+  year4 & 0.023 (0.028) & 0.031 (0.033) & 0.044$^{*}$ (0.026) & 0.993 (0.952) \\ 
+  zonaReserva:year1 & $-$0.003 (0.024) & 0.064 (0.042) & $-$0.003 (0.023) & 1.342 (0.915) \\ 
+  zonaReserva:year2 & 0.046$^{*}$ (0.024) & 0.017 (0.036) & 0.035 (0.023) & 0.181 (0.838) \\ 
+  zonaReserva:year3 & 0.074$^{***}$ (0.024) & 0.064 (0.070) & 0.092$^{*}$ (0.049) & 0.139 (0.774) \\ 
+  zonaReserva:year4 & 0.001 (0.031) & 0.003 (0.037) & $-$0.009 (0.029) & $-$0.953 (1.043) \\ 
+  Constant & 0.033$^{**}$ (0.013) & 0.041 (0.025) & 0.033$^{**}$ (0.013) & 1.462$^{**}$ (0.691) \\ 
+ \hline \\[-1.8ex] 
+Observations & 48 & 89 & 48 & 89 \\ 
+R$^{2}$ & 0.222 & 0.171 & 0.308 & 0.258 \\ 
+Residual Std. Error & 0.038 (df = 38) & 0.086 (df = 79) & 0.043 (df = 38) & 1.074 (df = 79) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
 
-\paragraph*{S6 Table.}
-\input{tab/S6_table.tex}
-\label{S6_Table}
-{\bf Coefficient estimates of biological indicators for Punta Herrero.}
 
-\paragraph*{S7 Table.}
-\input{tab/S7_table.tex}
-\label{S7_Table}
-{\bf Coefficient estimates of socioeconomic indicators Isla Natividad.}
+%Table S6
+\begin{table}[h] \centering 
+  \caption{Coefficient estimates of biological indicators for Punta Herrero.} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{1pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{} \\ 
+ & Lobster density & Fish biomass & Invertebrate density & Fish density \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ zonaReserva & 0.004 (0.009) & 0.212$^{**}$ (0.097) & 0.192$^{*}$ (0.103) & 2.570$^{**}$ (1.254) \\ 
+  year-1 & $-$0.006 (0.007) & $-$0.045$^{***}$ (0.016) & $-$0.018 (0.033) & $-$1.398$^{***}$ (0.279) \\ 
+  year1 & $-$0.008 (0.005) & $-$0.033$^{**}$ (0.016) & $-$0.053$^{***}$ (0.013) & $-$1.057$^{***}$ (0.279) \\ 
+  year2 & 0.004 (0.009) & $-$0.040$^{***}$ (0.015) & $-$0.004 (0.026) & $-$1.112$^{***}$ (0.312) \\ 
+  year3 & $-$0.001 (0.006) & $-$0.031 (0.023) & 0.025 (0.033) & $-$0.691 (0.498) \\ 
+  zonaReserva:year-1 & 0.010 (0.015) & 0.263 (0.186) & $-$0.066 (0.121) & 0.496 (1.312) \\ 
+  zonaReserva:year1 & 0.018 (0.024) & $-$0.149 (0.100) & 0.041 (0.143) & $-$1.015 (1.348) \\ 
+  zonaReserva:year2 & 0.019 (0.021) & $-$0.044 (0.121) & $-$0.153 (0.110) & 0.018 (1.561) \\ 
+  zonaReserva:year3 & 0.016 (0.016) & $-$0.167 (0.106) & $-$0.034 (0.134) & $-$1.575 (1.444) \\ 
+  Constant & 0.011$^{**}$ (0.005) & 0.060$^{***}$ (0.015) & 0.079$^{***}$ (0.012) & 2.009$^{***}$ (0.259) \\ 
+ \hline \\[-1.8ex] 
+Observations & 129 & 167 & 129 & 167 \\ 
+R$^{2}$ & 0.050 & 0.211 & 0.113 & 0.169 \\ 
+Residual Std. Error & 0.048 (df = 119) & 0.213 (df = 157) & 0.263 (df = 119) & 2.769 (df = 157) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
 
-\paragraph*{S8 Table.}
-\input{tab/S8_table.tex}
-\label{S8_Table}
-{\bf Coefficient estimates of socioeconomic indicators Maria Elena.}
+\clearpage
 
-\nolinenumbers
+%Table S7
+\begin{table}[h] \centering 
+  \caption{{\bf Coefficient estimates of socioeconomic indicators in Isla Natividad.}} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{1pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] &  & valor \\ 
+ & Landings & Revenues \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ zonaReserva & $-$66.248$^{***}$ (21.192) & $-$5.040$^{*}$ (2.817) \\ 
+  year-6 & $-$9.747 (26.691) & 6.074 (4.376) \\ 
+  year-5 & $-$26.548 (36.201) & 2.106 (7.819) \\ 
+  year-4 & $-$8.805 (54.742) & $-$1.665 (5.141) \\ 
+  year-3 & 29.433 (53.606) & 2.834 (5.409) \\ 
+  year-2 & $-$17.752 (37.964) & 3.423 (3.086) \\ 
+  year-1 & $-$5.421 (46.563) & 1.095 (3.894) \\ 
+  year1 & $-$46.722$^{*}$ (24.836) & $-$1.873 (3.882) \\ 
+  year2 & 9.037 (29.383) & 10.802$^{**}$ (5.477) \\ 
+  year3 & $-$23.798 (21.935) & 9.425$^{*}$ (5.316) \\ 
+  year4 & $-$54.097$^{**}$ (24.541) & 2.816 (5.541) \\ 
+  year5 & 48.012$^{**}$ (21.950) & 10.380 (7.267) \\ 
+  year6 & 39.160 (39.516) & 12.549 (7.653) \\ 
+  year7 & $-$11.992 (30.520) & 10.988 (12.703) \\ 
+  year8 & $-$26.265 (37.453) & 14.186 (14.328) \\ 
+  zonaReserva:year-6 & $-$12.067 (26.691) & $-$1.980 (4.376) \\ 
+  zonaReserva:year-5 & 6.214 (36.201) & $-$1.715 (7.819) \\ 
+  zonaReserva:year-4 & $-$26.453 (54.742) & $-$1.237 (5.141) \\ 
+  zonaReserva:year-3 & $-$18.071 (53.606) & $-$2.213 (5.409) \\ 
+  zonaReserva:year-2 & 5.569 (37.964) & $-$2.142 (3.086) \\ 
+  zonaReserva:year-1 & $-$13.914 (46.563) & $-$1.703 (3.894) \\ 
+  zonaReserva:year1 & $-$0.696 (24.836) & $-$1.119 (3.882) \\ 
+  zonaReserva:year2 & 1.436 (29.383) & 8.758 (5.477) \\ 
+  zonaReserva:year3 & 10.607 (21.935) & 12.639$^{**}$ (5.316) \\ 
+  zonaReserva:year4 & $-$6.110 (24.541) & 2.515 (5.541) \\ 
+  zonaReserva:year5 & $-$61.368$^{***}$ (21.950) & 0.047 (7.267) \\ 
+  zonaReserva:year6 & $-$2.498 (39.516) & 12.371 (7.653) \\ 
+  zonaReserva:year7 & 6.842 (30.520) & 3.441 (12.703) \\ 
+  zonaReserva:year8 & 65.875$^{*}$ (37.453) & 10.347 (14.328) \\ 
+  Constant & 202.868$^{***}$ (21.192) & 15.517$^{***}$ (2.817) \\ 
+ \hline \\[-1.8ex] 
+Observations & 60 & 60 \\ 
+R$^{2}$ & 0.638 & 0.492 \\ 
+Residual Std. Error (df = 30) & 43.483 & 9.794 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
 
-%\bibliography{references}
+\clearpage
+
+% Table S8
+\begin{table}[!htbp] \centering 
+  \caption{{\bf Coefficient estimates of socioeconomic indicators in Maria Elena.}} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{1pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] &  & valor \\ 
+ & Landings & Revenues \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ zonaReserva & $-$12.452 (21.012) & $-$1.831 (4.026) \\ 
+  year-6 & $-$10.495 (39.993) & $-$3.715 (5.741) \\ 
+  year-5 & $-$1.865 (49.084) & $-$0.997 (8.401) \\ 
+  year-4 & $-$7.648 (43.503) & 1.206 (10.941) \\ 
+  year-2 & 2.857 (49.422) & $-$0.051 (8.558) \\ 
+  year-1 & 7.519 (40.701) & 0.151 (6.850) \\ 
+  year1 & $-$9.668 (21.613) & $-$1.990 (4.118) \\ 
+  zonaReserva:year-6 & $-$7.993 (39.993) & $-$0.607 (5.741) \\ 
+  zonaReserva:year-5 & $-$12.027 (49.084) & $-$2.239 (8.401) \\ 
+  zonaReserva:year-4 & $-$11.520 (43.503) & $-$4.595 (10.941) \\ 
+  zonaReserva:year-2 & $-$18.129 (49.422) & $-$3.360 (8.558) \\ 
+  zonaReserva:year-1 & $-$11.395 (40.701) & $-$2.079 (6.850) \\ 
+  zonaReserva:year1 & $-$9.629 (21.613) & $-$2.092 (4.118) \\ 
+  Constant & 38.859$^{*}$ (21.012) & 7.125$^{*}$ (4.026) \\ 
+ \hline \\[-1.8ex] 
+Observations & 21 & 21 \\ 
+R$^{2}$ & 0.230 & 0.242 \\ 
+Residual Std. Error (df = 7) & 39.665 & 7.294 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
 
 \end{document}
 

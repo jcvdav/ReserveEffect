@@ -150,7 +150,13 @@ left <- plot_grid(mex, pbc, ncol = 1, labels = "AUTO")
 
 plot1 <- plot_grid(left, ph, labels = c("", "C"), ncol = 2)
 
+# Save map
 ggsave(plot1,
        filename = here("docs", "img", "fig_map.pdf"),
+       width = 6.5,
+       height = 4.5)
+
+ggsave(plot1,
+       filename = here("docs", "img", "fig_map.tiff"),
        width = 6.5,
        height = 4.5)

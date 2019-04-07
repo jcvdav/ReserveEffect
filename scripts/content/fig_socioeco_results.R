@@ -14,6 +14,7 @@ library(here)
 library(tidyverse)
 
 ## Load custom functions
+source(file = here("scripts", "functions", "robust_se.R")) #calculates heteroskedastic-robust Standard Errors
 source(file = here("scripts", "functions", "plot_socioeco.R")) #plots effect sizes for Socioeco
 
 # Load data
@@ -66,6 +67,11 @@ plot <- plot_grid(c_plot, v_plot, ncol = 1, labels = "AUTO")
 # Export figures
 ggsave(plot = plot,
        filename = here("docs", "img", "fig_socioeco_results.pdf"),
+       width = 6.5,
+       height = 4)
+
+ggsave(plot = plot,
+       filename = here("docs", "img", "fig_socioeco_results.tiff"),
        width = 6.5,
        height = 4)
 
