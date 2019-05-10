@@ -55,25 +55,29 @@ c_plot <- plot_socioeco(model_list = list(C_IN, C_ME),
                         ylab = quo(lambda[t])) +
   theme(legend.justification = c(0, 0),
         legend.position = c(0, 0.55),
-        legend.title = element_blank())
+        legend.title = element_blank()) +
+  ggtitle("Lobster catches")
 
 v_plot <- plot_socioeco(model_list = list(V_IN, V_ME),
                         model_names = list("IN", "ME"),
                         ylab = quo(lambda[t])) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  ggtitle("Revenues from lobster catches")
 
-plot <- plot_grid(c_plot, v_plot, ncol = 1, labels = "AUTO")
+plot <- plot_grid(c_plot,
+                  v_plot,
+                  ncol = 1)
 
 # Export figures
 ggsave(plot = plot,
        filename = here("docs", "img", "fig_socioeco_results.pdf"),
-       width = 6.5,
-       height = 4)
+       width = 6,
+       height = 4.4)
 
 ggsave(plot = plot,
        filename = here("docs", "img", "fig_socioeco_results.tiff"),
-       width = 6.5,
-       height = 4)
+       width = 6,
+       height = 4.4)
 
 # Save the models
 save(C_IN,

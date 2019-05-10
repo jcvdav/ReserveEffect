@@ -110,16 +110,19 @@ N_PH <- fish %>%
 # Invert plots ##################################################
 ## Lobsters
 L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
-                     model_names = c("IS", "ME", "PH"))
+                     model_names = c("IS", "ME", "PH")) +
+  ggtitle("Lobster density")
 
 ## Abundance
 I_N <- plot_model(model = list(Ni_IN, Ni_ME, Ni_PH),
-                  model_names = c("IN", "ME", "PH"))
+                  model_names = c("IN", "ME", "PH")) +
+  ggtitle("Invertebrate density")
 
 # Fish plots ####################################################
 ## Biomass
 F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
-                  model_names = c("IS", "ME", "PH"))
+                  model_names = c("IS", "ME", "PH")) +
+  ggtitle("Fish biomass")
 
 ## Abundance
 F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
@@ -128,24 +131,24 @@ F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
         legend.position = c(1, 0),
         legend.text = element_text(size = 8),
         legend.title = element_text(size = 8),
-        legend.direction = "horizontal")
+        legend.direction = "horizontal") +
+  ggtitle("Fish density")
 
 # Combine plots
 plot <- cowplot::plot_grid(plotlist = list(L_plot, F_B, I_N, F_N),
-                            labels = "AUTO",
                             ncol = 2)
 
 # Export figure
 ggsave(plot = plot,
        filename = here("docs", "img", "fig_bio_results.pdf"),
        width = 6.5,
-       height = 4)
+       height = 4.2)
 
 # Export figure
 ggsave(plot = plot,
        filename = here("docs", "img", "fig_bio_results.tiff"),
        width = 6.5,
-       height = 4)
+       height = 4.2)
 
 # Save all model output
 save(L_IN,
