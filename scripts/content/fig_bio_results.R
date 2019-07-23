@@ -111,18 +111,18 @@ N_PH <- fish %>%
 ## Lobsters
 L_plot <- plot_model(model = list(L_IN, L_ME, L_PH),
                      model_names = c("IS", "ME", "PH")) +
-  ggtitle("Lobster density")
+  ggtitle("A) Lobster density")
 
 ## Abundance
 I_N <- plot_model(model = list(Ni_IN, Ni_ME, Ni_PH),
                   model_names = c("IN", "ME", "PH")) +
-  ggtitle("Invertebrate density")
+  ggtitle("C) Invertebrate density")
 
 # Fish plots ####################################################
 ## Biomass
 F_B <- plot_model(model = list(B_IN, B_ME, B_PH),
                   model_names = c("IS", "ME", "PH")) +
-  ggtitle("Fish biomass")
+  ggtitle("B) Fish biomass")
 
 ## Abundance
 F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
@@ -132,7 +132,7 @@ F_N <- plot_model(model = list(N_IN, N_ME, N_PH),
         legend.text = element_text(size = 8),
         legend.title = element_text(size = 8),
         legend.direction = "horizontal") +
-  ggtitle("Fish density")
+  ggtitle("D) Fish density")
 
 # Combine plots
 plot <- cowplot::plot_grid(plotlist = list(L_plot, F_B, I_N, F_N),

@@ -56,13 +56,13 @@ c_plot <- plot_socioeco(model_list = list(C_IN, C_ME),
   theme(legend.justification = c(0, 0),
         legend.position = c(0, 0.55),
         legend.title = element_blank()) +
-  ggtitle("Lobster catches")
+  ggtitle("A) Lobster catches")
 
 v_plot <- plot_socioeco(model_list = list(V_IN, V_ME),
                         model_names = list("IN", "ME"),
                         ylab = quo(lambda[t])) +
   theme(legend.position = "none") +
-  ggtitle("Revenues from lobster catches")
+  ggtitle("B) Revenues from lobster catches")
 
 plot <- plot_grid(c_plot,
                   v_plot,
