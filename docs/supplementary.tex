@@ -46,6 +46,7 @@
 \renewcommand{\tablename}{Table}
 \renewcommand{\thetable}{\Alph{table}}
 \usepackage{booktabs}
+\usepackage{longtable}
 
 % Use the PLoS provided BiBTeX style
 \bibliographystyle{plos2015}
@@ -79,7 +80,8 @@
 
 % Table S1
 \begin{table}[h]
-\caption{{\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.}
+
+\caption{\label{tab:}{\bf Invertebrate sampling effort.} Number of invertebrate transects performed in each site of each community.}
 \centering
 \begin{tabular}{lrrr}
 \toprule
@@ -174,8 +176,9 @@ Baja California & Treated & Buzos Y Pescadores De La Baja California & 89.35 & 1
 \clearpage
 
 %Table S4
+
 \begin{table}[h] \centering 
-  \caption{{\bf Coefficient estimates of biological indicators for Isla Natividad.}} 
+  \caption{Coefficient estimates of biological indicators for Isla Natividad.} 
   \label{} 
 \small 
 \begin{tabular}{@{\extracolsep{1pt}}lcccc} 
@@ -187,37 +190,38 @@ Baja California & Treated & Buzos Y Pescadores De La Baja California & 89.35 & 1
  & Lobster density & Fish biomass & Invertebrate density & Fish density \\ 
 \\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
 \hline \\[-1.8ex] 
- zonaReserva & $-$0.011 (0.058) & $-$0.006$^{*}$ (0.003) & 0.228 (0.160) & $-$0.167 (0.104) \\ 
-  year1 & 0.032 (0.067) & 0.007 (0.004) & $-$0.087 (0.159) & 0.005 (0.122) \\ 
-  year2 & 0.0002 (0.077) & 0.006 (0.005) & 0.270 (0.176) & $-$0.027 (0.146) \\ 
-  year3 & 0.023 (0.072) & 0.036$^{***}$ (0.010) & 0.427$^{***}$ (0.165) & 0.230 (0.160) \\ 
-  year4 & $-$0.030 (0.058) & 0.011$^{**}$ (0.005) & 0.222 (0.153) & $-$0.040 (0.112) \\ 
-  year5 & $-$0.006 (0.061) & 0.024$^{***}$ (0.006) & 0.231 (0.156) & 0.102 (0.126) \\ 
-  year6 & $-$0.014 (0.062) & 0.080$^{***}$ (0.023) & 0.375$^{**}$ (0.161) & 0.300$^{**}$ (0.140) \\ 
-  year7 & $-$0.021 (0.060) & 0.339$^{***}$ (0.067) & $-$0.057 (0.156) & 0.276$^{*}$ (0.147) \\ 
-  year8 & $-$0.026 (0.059) & 0.174$^{***}$ (0.028) & 0.147 (0.146) & 0.066 (0.126) \\ 
-  year9 & $-$0.038 (0.057) & 0.210$^{***}$ (0.054) & 0.045 (0.154) & 0.217 (0.138) \\ 
-  year10 & $-$0.066 (0.057) & 0.189$^{***}$ (0.040) & $-$0.223 (0.145) & $-$0.159 (0.111) \\ 
-  zonaReserva:year1 & $-$0.058 (0.078) & 0.008 (0.006) & 0.107 (0.238) & 0.134 (0.144) \\ 
-  zonaReserva:year2 & 0.126 (0.121) & $-$0.0005 (0.007) & 0.047 (0.265) & 0.086 (0.177) \\ 
-  zonaReserva:year3 & 0.053 (0.093) & $-$0.008 (0.011) & $-$0.256 (0.224) & $-$0.072 (0.178) \\ 
-  zonaReserva:year4 & 0.035 (0.065) & 0.024$^{***}$ (0.009) & $-$0.234 (0.221) & 0.448$^{***}$ (0.167) \\ 
-  zonaReserva:year5 & $-$0.045 (0.068) & $-$0.009 (0.009) & $-$0.318 (0.215) & $-$0.078 (0.169) \\ 
-  zonaReserva:year6 & 0.096 (0.075) & $-$0.042$^{*}$ (0.024) & $-$0.331 (0.230) & 0.038 (0.169) \\ 
-  zonaReserva:year7 & $-$0.030 (0.065) & $-$0.124 (0.089) & $-$0.166 (0.206) & $-$0.047 (0.199) \\ 
-  zonaReserva:year8 & 0.012 (0.069) & 0.084 (0.082) & $-$0.149 (0.193) & 0.120 (0.160) \\ 
-  zonaReserva:year9 & 0.002 (0.064) & 0.036 (0.069) & $-$0.441$^{**}$ (0.190) & 0.210 (0.181) \\ 
-  zonaReserva:year10 & $-$0.016 (0.062) & $-$0.056 (0.065) & $-$0.261 (0.185) & 0.167 (0.143) \\ 
-  Constant & 0.122$^{**}$ (0.054) & 0.016$^{***}$ (0.003) & 0.672$^{***}$ (0.131) & 0.567$^{***}$ (0.094) \\ 
+ zonaReserva & $-$0.011 (0.058) & $-$0.006$^{*}$ (0.003) & 0.165 (0.152) & $-$0.167 (0.104) \\ 
+  year1 & 0.032 (0.067) & 0.007 (0.004) & $-$0.097 (0.155) & 0.005 (0.122) \\ 
+  year2 & 0.0002 (0.077) & 0.006 (0.005) & 0.188 (0.167) & $-$0.027 (0.146) \\ 
+  year3 & 0.023 (0.072) & 0.036$^{***}$ (0.010) & 0.293$^{*}$ (0.161) & 0.230 (0.160) \\ 
+  year4 & $-$0.030 (0.058) & 0.011$^{**}$ (0.005) & 0.175 (0.148) & $-$0.040 (0.112) \\ 
+  year5 & $-$0.006 (0.061) & 0.024$^{***}$ (0.006) & 0.188 (0.152) & 0.102 (0.126) \\ 
+  year6 & $-$0.014 (0.062) & 0.080$^{***}$ (0.023) & 0.305$^{*}$ (0.158) & 0.300$^{**}$ (0.140) \\ 
+  year7 & $-$0.021 (0.060) & 0.339$^{***}$ (0.067) & $-$0.099 (0.148) & 0.276$^{*}$ (0.147) \\ 
+  year8 & $-$0.026 (0.059) & 0.174$^{***}$ (0.028) & 0.082 (0.142) & 0.066 (0.126) \\ 
+  year9 & $-$0.038 (0.057) & 0.210$^{***}$ (0.054) & 0.020 (0.149) & 0.217 (0.138) \\ 
+  year10 & $-$0.066 (0.057) & 0.189$^{***}$ (0.040) & $-$0.241$^{*}$ (0.142) & $-$0.159 (0.111) \\ 
+  zonaReserva:year1 & $-$0.058 (0.078) & 0.008 (0.006) & 0.189 (0.232) & 0.134 (0.144) \\ 
+  zonaReserva:year2 & 0.126 (0.121) & $-$0.0005 (0.007) & 0.195 (0.256) & 0.086 (0.177) \\ 
+  zonaReserva:year3 & 0.053 (0.093) & $-$0.008 (0.011) & $-$0.106 (0.211) & $-$0.072 (0.178) \\ 
+  zonaReserva:year4 & 0.035 (0.065) & 0.024$^{***}$ (0.009) & $-$0.140 (0.211) & 0.448$^{***}$ (0.167) \\ 
+  zonaReserva:year5 & $-$0.045 (0.068) & $-$0.009 (0.009) & $-$0.233 (0.204) & $-$0.078 (0.169) \\ 
+  zonaReserva:year6 & 0.096 (0.075) & $-$0.042$^{*}$ (0.024) & $-$0.222 (0.223) & 0.038 (0.169) \\ 
+  zonaReserva:year7 & $-$0.030 (0.065) & $-$0.124 (0.089) & $-$0.080 (0.194) & $-$0.047 (0.199) \\ 
+  zonaReserva:year8 & 0.012 (0.069) & 0.084 (0.082) & $-$0.082 (0.179) & 0.120 (0.160) \\ 
+  zonaReserva:year9 & 0.002 (0.064) & 0.036 (0.069) & $-$0.380$^{**}$ (0.181) & 0.210 (0.181) \\ 
+  zonaReserva:year10 & $-$0.016 (0.062) & $-$0.056 (0.065) & $-$0.189 (0.178) & 0.167 (0.143) \\ 
+  Constant & 0.122$^{**}$ (0.054) & 0.016$^{***}$ (0.003) & 0.659$^{***}$ (0.128) & 0.567$^{***}$ (0.094) \\ 
  \hline \\[-1.8ex] 
 Observations & 659 & 641 & 659 & 641 \\ 
-R$^{2}$ & 0.049 & 0.267 & 0.119 & 0.080 \\ 
-Residual Std. Error & 0.189 (df = 637) & 0.175 (df = 619) & 0.552 (df = 637) & 0.525 (df = 619) \\ 
+R$^{2}$ & 0.049 & 0.267 & 0.114 & 0.080 \\ 
+Residual Std. Error & 0.189 (df = 637) & 0.175 (df = 619) & 0.526 (df = 637) & 0.525 (df = 619) \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
-\end{table}
+\end{table} 
+
 
 \clearpage
 
@@ -275,8 +279,8 @@ Residual Std. Error & 0.038 (df = 38) & 0.086 (df = 79) & 0.043 (df = 38) & 1.07
   year1 & $-$0.008 (0.005) & $-$0.033$^{**}$ (0.016) & $-$0.053$^{***}$ (0.013) & $-$1.057$^{***}$ (0.279) \\ 
   year2 & 0.004 (0.009) & $-$0.040$^{***}$ (0.015) & $-$0.004 (0.026) & $-$1.112$^{***}$ (0.312) \\ 
   year3 & $-$0.001 (0.006) & $-$0.031 (0.023) & 0.025 (0.033) & $-$0.691 (0.498) \\ 
-  zonaReserva:year-1 & 0.010 (0.015) & 0.263 (0.186) & $-$0.066 (0.121) & 0.496 (1.312) \\ 
-  zonaReserva:year1 & 0.018 (0.024) & $-$0.149 (0.100) & 0.041 (0.143) & $-$1.015 (1.348) \\ 
+  zonaReserva:year-1 & 0.010 (0.015) & 0.264 (0.186) & $-$0.066 (0.121) & 0.496 (1.312) \\ 
+  zonaReserva:year1 & 0.018 (0.024) & $-$0.148 (0.100) & 0.041 (0.143) & $-$1.015 (1.348) \\ 
   zonaReserva:year2 & 0.019 (0.021) & $-$0.044 (0.121) & $-$0.153 (0.110) & 0.018 (1.561) \\ 
   zonaReserva:year3 & 0.016 (0.016) & $-$0.167 (0.106) & $-$0.034 (0.134) & $-$1.575 (1.444) \\ 
   Constant & 0.011$^{**}$ (0.005) & 0.060$^{***}$ (0.015) & 0.079$^{***}$ (0.012) & 2.009$^{***}$ (0.259) \\ 
@@ -289,6 +293,7 @@ Residual Std. Error & 0.048 (df = 119) & 0.213 (df = 157) & 0.263 (df = 119) & 2
 \textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table} 
+ 
 
 \clearpage
 
@@ -385,6 +390,171 @@ Residual Std. Error (df = 7) & 39.665 & 7.294 \\
 \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table} 
+
+\clearpage
+
+%Table S9
+\begin{table}[h]
+\caption{\label{tab:}{\bf Invertebrate species checklist.}}
+\centering
+\begin{tabular}{>{\itshape}lrrr}
+\toprule
+\normalfont{Species} & Isla Natividad & Maria Elena & Punta Herrero\\
+\midrule
+Anthopleura spp & 1 & 0 & 0\\
+Cancer spp & 1 & 0 & 0\\
+Centrostephanus coronatus & 1 & 0 & 0\\
+Crassedoma giganteum & 1 & 0 & 0\\
+Cypraea spp & 1 & 0 & 0\\
+\addlinespace
+Diadema antillarum & 0 & 1 & 1\\
+Eucidaris tribuloides & 0 & 1 & 1\\
+Haliotis corrugata & 1 & 0 & 0\\
+Haliotis fulgens & 1 & 0 & 0\\
+Haliotis rufescens & 1 & 0 & 0\\
+\addlinespace
+Holothuroidea spp & 0 & 1 & 1\\
+Kelletia kelletii & 1 & 0 & 0\\
+Loxorhynchus grandis & 1 & 0 & 0\\
+Megastraea turbanica & 1 & 0 & 0\\
+Megastraea undosa & 1 & 0 & 0\\
+\addlinespace
+Megathura crenulata & 1 & 0 & 0\\
+Mesocentrotus franciscanus & 1 & 0 & 0\\
+Neobernaya spadicea & 1 & 0 & 0\\
+Octopus spp & 1 & 0 & 1\\
+Other sea urchins & 0 & 1 & 1\\
+\addlinespace
+Panulirus argus & 0 & 1 & 1\\
+Panulirus guttatus & 0 & 1 & 1\\
+Panulirus interruptus & 1 & 0 & 0\\
+Parastichopus parvimensis & 1 & 0 & 0\\
+Patiria miniata & 1 & 0 & 0\\
+\addlinespace
+Pisaster giganteus & 1 & 0 & 0\\
+Pycnopodia heliantoides & 1 & 0 & 0\\
+Stenopus hispidus & 0 & 1 & 1\\
+Strombus gigas & 0 & 1 & 1\\
+Strongylocentrotus purpuratus & 1 & 0 & 0\\
+\addlinespace
+Tripneustes esculentus & 0 & 1 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+%Table S10
+\begin{longtable}{>{\itshape}lrrr}
+\caption{\label{tab:}{\bf Fish species checklist.}}\\
+\toprule
+\normalfont{Species} & Isla Natividad & Maria Elena & Punta Herrero\\
+\midrule
+\endfirsthead
+\caption[]{{\bf Fish species checklist.} \textit{(continued)}}\\
+\toprule
+\normalfont{Species} & Isla Natividad & Maria Elena & Punta Herrero\\
+\midrule
+\endhead
+\
+\endfoot
+\bottomrule
+\endlastfoot
+Abudefduf saxatilis & 0 & 1 & 1\\
+Acanthurus & 0 & 1 & 1\\
+Aetobatus narinari & 0 & 1 & 0\\
+Anisotremus davidsonii & 1 & 0 & 0\\
+Anisotremus surinamensis & 0 & 1 & 1\\
+\addlinespace
+Anisotremus virginicus & 0 & 1 & 1\\
+Balistes vetula & 0 & 1 & 1\\
+Bodianus rufus & 0 & 1 & 1\\
+Calamus pennatula & 0 & 1 & 1\\
+Canthidermis sufflamen & 0 & 0 & 1\\
+\addlinespace
+Caranx bartholomaei & 0 & 1 & 0\\
+Caranx crysos & 0 & 0 & 1\\
+Caranx latus & 0 & 1 & 0\\
+Caranx ruber & 0 & 1 & 1\\
+Caulolatilus princeps & 1 & 0 & 0\\
+\addlinespace
+Cephalopholis cruentata & 0 & 1 & 1\\
+Cephalopholis fulva & 0 & 1 & 1\\
+Chaetodon & 0 & 1 & 1\\
+Chromis punctipinnis & 1 & 0 & 0\\
+Chromis spp & 0 & 1 & 1\\
+\addlinespace
+Embiotoca jacksoni & 1 & 0 & 0\\
+Epinephelus guttatus & 0 & 0 & 1\\
+Epinephelus striatus & 0 & 1 & 0\\
+Gerres cinereus & 0 & 0 & 1\\
+Girella nigricans & 1 & 0 & 0\\
+\addlinespace
+Haemulon aurolineatum & 0 & 1 & 1\\
+Haemulon carbonarium & 0 & 1 & 1\\
+Haemulon chrysargyreum & 0 & 1 & 1\\
+Haemulon flavolineatum & 0 & 1 & 1\\
+Haemulon macrostomum & 0 & 1 & 0\\
+\addlinespace
+Haemulon melanurum & 0 & 0 & 1\\
+Haemulon parra & 0 & 1 & 1\\
+Haemulon plumierii & 0 & 1 & 1\\
+Haemulon sciurus & 0 & 1 & 1\\
+Haemulon spp & 0 & 0 & 1\\
+\addlinespace
+Haemulon striatum & 0 & 1 & 1\\
+Halichoeres semicinctus & 1 & 0 & 0\\
+Heterodontus francisci & 1 & 0 & 0\\
+Holacanthus ciliaris & 0 & 1 & 1\\
+Holacanthus tricolor & 0 & 1 & 1\\
+\addlinespace
+Hypsypops rubicundus & 1 & 0 & 0\\
+Kyphosus spp & 0 & 1 & 1\\
+Lachnolaimus maximus & 0 & 1 & 1\\
+Lutjanus analis & 0 & 1 & 1\\
+Lutjanus apodus & 0 & 1 & 1\\
+\addlinespace
+Lutjanus cyanopterus & 0 & 0 & 1\\
+Lutjanus griseus & 0 & 1 & 1\\
+Lutjanus jocu & 0 & 1 & 1\\
+Lutjanus mahogoni & 0 & 1 & 1\\
+Lutjanus spp & 0 & 0 & 1\\
+\addlinespace
+Lutjanus synagris & 0 & 1 & 0\\
+Melichthys niger & 0 & 0 & 1\\
+Microspathodon chrysurus & 0 & 1 & 1\\
+Mycteroperca bonaci & 0 & 0 & 1\\
+Ocyurus chrysurus & 0 & 1 & 1\\
+\addlinespace
+Ophiodon elongatus & 1 & 0 & 0\\
+Oxyjulis californica & 1 & 0 & 0\\
+Paralabrax clathratus & 1 & 0 & 0\\
+Paralabrax nebulifer & 1 & 0 & 0\\
+Pomacanthus arcuatus & 0 & 1 & 1\\
+\addlinespace
+Pomacanthus paru & 0 & 1 & 1\\
+Pterois volitans & 0 & 1 & 1\\
+Rhacochilus vacca & 1 & 0 & 0\\
+Rhinobatos productus & 1 & 0 & 0\\
+Scarus coeruleus & 0 & 0 & 1\\
+\addlinespace
+Scarus spp & 0 & 1 & 1\\
+Scarus vetula & 0 & 1 & 0\\
+Scomberomorus regalis & 0 & 1 & 1\\
+Scomberomorus spp & 0 & 0 & 1\\
+Scorpaenichthys marmoratus & 1 & 0 & 0\\
+\addlinespace
+Sebastes spp & 1 & 0 & 0\\
+Semicossyphus pulcher & 1 & 0 & 0\\
+Sparisoma aurofrenatum & 0 & 1 & 1\\
+Sparisoma viride & 0 & 1 & 1\\
+Sphyraena barracuda & 0 & 0 & 1\\
+\addlinespace
+Squatina californica & 1 & 0 & 0\\
+Stegastes spp & 0 & 1 & 1\\
+Stereolepis gigas & 1 & 0 & 0\\
+Thalassoma bifasciatum & 0 & 1 & 1\\*
+\end{longtable}
 
 \end{document}
 

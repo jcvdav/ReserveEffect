@@ -38,6 +38,10 @@ invert <- read.csv(here::here("raw_data", "invert_data.csv"), strip.white = T, s
                    "El Faro - El Faro (Control)")) %>%
   # filter(!(rc == "El Faro - El Faro (Control)" & ano == 2012)) %>%
   filter(between(abundancia, 0.1, 100)) %>%
+  filter(!generoespecie %in% c("Leptogorgia chilensis", "Muricea californica", "Muricea spp")) %>% 
+  mutate(generoespecie = case_when(generoespecie == "Anemona spp" ~ "Anthopleura spp",
+                                   generoespecie == "Otros erizos" ~ "Other sea urchins",
+                                   T ~ generoespecie)) %>%
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 
@@ -67,8 +71,8 @@ needed_spp <- c("Embiotoca jacksoni",
                 "Chaetodon striatus",
                 "Calamus pennatula")
 
-FB_update <- rfishbase::length_weight(needed_spp, fields = c("a", "b")) %>% 
-  select(GeneroEspecie = sciname, a, b) %>% 
+FB_update <- rfishbase::length_weight(needed_spp, fields = c("Species", "a", "b")) %>% 
+  select(GeneroEspecie = Species, a, b) %>% 
   mutate(GeneroEspecie = case_when(GeneroEspecie %in% c("Kyphosus sectatrix", "Kyphosus incisor") ~ "Kyphosus",
                                    GeneroEspecie %in% c("Chaetodon capistratus", "Chaetodon striatus") ~ "Chaetodon",
                                    TRUE ~ GeneroEspecie)) %>% 
@@ -146,7 +150,15 @@ fish <- read.csv(here::here("raw_data", "fish_data.csv"), strip.white = T, strin
   left_join(species_bio, by = "generoespecie") %>% 
   left_join(GenusLevelBio, by = "Genus") %>%
   mutate(a = ifelse(is.na(a), ag, a),
-         b = ifelse(is.na(b), bg, b)) %>% 
+         b = ifelse(is.na(b), bg, b)) %>%
+  mutate(generoespecie = case_when(generoespecie == "Chromis" ~ "Chromis spp",
+                                   generoespecie == "Haemulon" ~ "Haemulon spp",
+                                   generoespecie == "Kyphosus" ~ "Kyphosus spp",
+                                   generoespecie == "Lutjanus" ~ "Lutjanus spp",
+                                   generoespecie == "Scarus" ~ "Scarus spp",
+                                   generoespecie == "Sebastes" ~ "Sebastes spp",
+                                   generoespecie == "Stegastes" ~ "Stegastes spp",
+                                   T ~ generoespecie)) %>% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla, a,b) %>% 
   summarize(abundancia = sum(abundancia)) %>% 
   ungroup() %>% 

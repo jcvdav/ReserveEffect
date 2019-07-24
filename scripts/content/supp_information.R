@@ -34,7 +34,7 @@ invert %>%
   group_by(comunidad, zona) %>%
   count() %>% 
   ungroup() %>% 
-  spread(zona, nn) %>% 
+  spread(zona, n) %>% 
   mutate(age = c(10, 4, 4)) %>% 
   knitr::kable(col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T,
@@ -125,7 +125,7 @@ fish %>%
   group_by(comunidad, zona) %>%
   count() %>% 
   ungroup() %>% 
-  spread(zona, nn) %>% 
+  spread(zona, n) %>% 
   mutate(age = c(10, 4, 4)) %>% 
   knitr::kable(col.names = c("Community", "Control", "Reserve", "Years of monitoring"),
                booktabs = T,
@@ -326,4 +326,29 @@ list(C_ME, V_ME) %>%
   supp_regtable(caption = "Coefficient estimates of socioeconomic indicators for Maria Elena.",
                 bio = F,
                 filename = here("docs", "tab", "S8_table.tex"))
+
+# invert species checklist
+invert %>%
+  group_by(comunidad, generoespecie) %>%
+  summarize(n = (n() > 0) * 1) %>%
+  spread(comunidad, n, fill = 0) %>% 
+  knitr::kable(col.names = c("Species", "Isla Natividad", "Maria Elena", "Punta Herrero"),
+               booktabs = T,
+               format = "latex",
+               caption = "{\\bf Invertebrate species checklist.}") %>% 
+  cat(file = here("docs", "tab", "S9_table.tex"))
+  
+
+# fish species checklist
+fish %>%
+  group_by(comunidad, generoespecie) %>%
+  summarize(n = (n() > 0) * 1) %>% 
+  spread(comunidad, n, fill = 0) %>% 
+  knitr::kable(col.names = c("Species", "Isla Natividad", "Maria Elena", "Punta Herrero"),
+               booktabs = T,
+               format = "latex",
+               caption = "{\\bf Fish species checklist.}",
+               longtable = T) %>% 
+  kableExtra::kable_styling(latex_options = c("repeat_header")) %>% 
+  cat(file = here("docs", "tab", "S10_table.tex"))
 

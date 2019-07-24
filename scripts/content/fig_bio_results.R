@@ -21,9 +21,7 @@ source(file = here("scripts", "functions", "biomass.R")) # Calculate fish biomas
 # Load analysis functions
 source(file = here("scripts", "functions", "model.R")) #fits the model
 source(file = here("scripts", "functions", "robust_se.R")) #calculates heteroskedastic-robust Standard Errors
-# source(file = here("scripts", "robust_se_list.R")) #heteroskedastic-robust Standard Errors for stargazer
 source(file = here("scripts", "functions", "plot_model.R")) #plots effect sizes for Bio
-# source(file = here("scripts", "plot_socioeco.R")) #plots effect sizes for Socioeco
 
 # Load data
 # # Invertebrate data

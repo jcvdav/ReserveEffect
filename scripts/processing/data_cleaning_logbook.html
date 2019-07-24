@@ -255,9 +255,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -288,8 +286,6 @@ summary {
 </style>
 
 
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -364,14 +360,23 @@ $(document).ready(function () {
 
 
 
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
 
 <div class="fluid-row" id="header">
 
 
 
 <h1 class="title toc-ignore">Data Cleaning logbook</h1>
-<h4 class="author"><em>Juan Carlos Villaseñor-Derbez</em></h4>
-<h4 class="date"><em>last compilation: 2019-02-21</em></h4>
+<h4 class="author">Juan Carlos Villaseñor-Derbez</h4>
+<h4 class="date">last compilation: 2019-07-24</h4>
 
 </div>
 
@@ -396,6 +401,8 @@ $(document).ready(function () {
   library(rfishbase)
   library(tidyverse)
 })</code></pre>
+<pre><code>## Warning: package &#39;rfishbase&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
 <div id="ecological-data" class="section level1">
 <h1>Ecological data</h1>
 <div id="invertebrates" class="section level2">
@@ -411,6 +418,10 @@ $(document).ready(function () {
                    &quot;El Faro - El Faro (Control)&quot;)) %&gt;%
   # filter(!(rc == &quot;El Faro - El Faro (Control)&quot; &amp; ano == 2012)) %&gt;%
   filter(between(abundancia, 0.1, 100)) %&gt;%
+  filter(!generoespecie %in% c(&quot;Leptogorgia chilensis&quot;, &quot;Muricea californica&quot;, &quot;Muricea spp&quot;)) %&gt;% 
+  mutate(generoespecie = case_when(generoespecie == &quot;Anemona spp&quot; ~ &quot;Anthopleura spp&quot;,
+                                   generoespecie == &quot;Otros erizos&quot; ~ &quot;Other sea urchins&quot;,
+                                   T ~ generoespecie)) %&gt;%
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
@@ -438,8 +449,8 @@ needed_spp &lt;- c(&quot;Embiotoca jacksoni&quot;,
                 &quot;Chaetodon striatus&quot;,
                 &quot;Calamus pennatula&quot;)
 
-FB_update &lt;- rfishbase::length_weight(needed_spp, fields = c(&quot;a&quot;, &quot;b&quot;)) %&gt;% 
-  select(GeneroEspecie = sciname, a, b) %&gt;% 
+FB_update &lt;- rfishbase::length_weight(needed_spp, fields = c(&quot;Species&quot;, &quot;a&quot;, &quot;b&quot;)) %&gt;% 
+  select(GeneroEspecie = Species, a, b) %&gt;% 
   mutate(GeneroEspecie = case_when(GeneroEspecie %in% c(&quot;Kyphosus sectatrix&quot;, &quot;Kyphosus incisor&quot;) ~ &quot;Kyphosus&quot;,
                                    GeneroEspecie %in% c(&quot;Chaetodon capistratus&quot;, &quot;Chaetodon striatus&quot;) ~ &quot;Chaetodon&quot;,
                                    TRUE ~ GeneroEspecie)) %&gt;% 
@@ -515,7 +526,15 @@ species_bio %&lt;&gt;%
   left_join(species_bio, by = &quot;generoespecie&quot;) %&gt;% 
   left_join(GenusLevelBio, by = &quot;Genus&quot;) %&gt;%
   mutate(a = ifelse(is.na(a), ag, a),
-         b = ifelse(is.na(b), bg, b)) %&gt;% 
+         b = ifelse(is.na(b), bg, b)) %&gt;%
+  mutate(generoespecie = case_when(generoespecie == &quot;Chromis&quot; ~ &quot;Chromis spp&quot;,
+                                   generoespecie == &quot;Haemulon&quot; ~ &quot;Haemulon spp&quot;,
+                                   generoespecie == &quot;Kyphosus&quot; ~ &quot;Kyphosus spp&quot;,
+                                   generoespecie == &quot;Lutjanus&quot; ~ &quot;Lutjanus spp&quot;,
+                                   generoespecie == &quot;Scarus&quot; ~ &quot;Scarus spp&quot;,
+                                   generoespecie == &quot;Sebastes&quot; ~ &quot;Sebastes spp&quot;,
+                                   generoespecie == &quot;Stegastes&quot; ~ &quot;Stegastes spp&quot;,
+                                   T ~ generoespecie)) %&gt;% 
   group_by(comunidad, ano, rc, sitio, zona, transecto, generoespecie, talla, a,b) %&gt;% 
   summarize(abundancia = sum(abundancia)) %&gt;% 
   ungroup() %&gt;% 
